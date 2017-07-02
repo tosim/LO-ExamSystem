@@ -1,15 +1,13 @@
-'use strict';
+exports.static = true;
 
-// had enabled by egg
-// exports.static = true;
-exports.nunjucks = {
+exports.vue = {
   enable: true,
-  package: 'egg-view-nunjucks'
+  package: 'egg-view-vue'
 };
 
-exports.validate = {
+exports.vuessr = {
   enable: true,
-  package: 'egg-validate',
+  package: 'egg-view-vue-ssr'
 };
 
 exports.mysql = {
