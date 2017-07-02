@@ -17,6 +17,6 @@ module.exports = () => {
         this.body.detail = err.errors;
       }
       this.status = status;
-    }
+     }
   };
 };
