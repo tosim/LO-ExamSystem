@@ -1,0 +1,179 @@
+2017-07-03 16:19:28,384 INFO 14146 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:19:28,585 INFO 14146 [egg-watcher:agent] watcher start success
+2017-07-03 16:22:42,314 INFO 14729 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:22:42,506 INFO 14729 [egg-watcher:agent] watcher start success
+2017-07-03 16:22:45,007 WARN 14729 agent can't call sendToApp before server started
+    at Messenger.messenger.(anonymous function) [as sendToApp] (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/lib/agent.js:64:23)
+    at build (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-webpack/lib/server.js:48:28)
+    at MultiCompiler.compiler.plugin.compilation (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack-tool/lib/tool.js:101:19)
+    at MultiCompiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at MultiCompiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/MultiCompiler.js:61:10)
+    at Compiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at Watching._done (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:98:16)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:73:18
+    at Compiler.emitRecords (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:367:37)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:56:19
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:360:11
+    at next (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:154:11)
+    at Compiler.compiler.plugin (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/performance/SizeLimitsPlugin.js:99:4)
+    at Compiler.applyPluginsAsyncSeries1 (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:158:13)
+    at Compiler.afterEmit (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:357:8)
+    at Compiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:352:14)
+2017-07-03 16:23:19,658 WARN 14729 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/controller/about.js rename
+2017-07-03 16:23:41,506 WARN 14729 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/router.js change
+2017-07-03 16:23:47,368 INFO 15096 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:23:47,552 INFO 15096 [egg-watcher:agent] watcher start success
+2017-07-03 16:23:50,079 WARN 15096 agent can't call sendToApp before server started
+    at Messenger.messenger.(anonymous function) [as sendToApp] (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/lib/agent.js:64:23)
+    at build (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-webpack/lib/server.js:48:28)
+    at MultiCompiler.compiler.plugin.compilation (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack-tool/lib/tool.js:101:19)
+    at MultiCompiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at MultiCompiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/MultiCompiler.js:61:10)
+    at Compiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at Watching._done (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:98:16)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:73:18
+    at Compiler.emitRecords (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:367:37)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:56:19
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:360:11
+    at next (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:154:11)
+    at Compiler.compiler.plugin (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/performance/SizeLimitsPlugin.js:99:4)
+    at Compiler.applyPluginsAsyncSeries1 (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:158:13)
+    at Compiler.afterEmit (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:357:8)
+    at Compiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:352:14)
+2017-07-03 16:25:07,674 WARN 15096 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/router.js change
+2017-07-03 16:25:12,601 WARN 15096 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/router.js change
+2017-07-03 16:25:17,244 INFO 15471 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:25:17,433 INFO 15471 [egg-watcher:agent] watcher start success
+2017-07-03 16:25:19,950 WARN 15471 agent can't call sendToApp before server started
+    at Messenger.messenger.(anonymous function) [as sendToApp] (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/lib/agent.js:64:23)
+    at build (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-webpack/lib/server.js:48:28)
+    at MultiCompiler.compiler.plugin.compilation (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack-tool/lib/tool.js:101:19)
+    at MultiCompiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at MultiCompiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/MultiCompiler.js:61:10)
+    at Compiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at Watching._done (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:98:16)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:73:18
+    at Compiler.emitRecords (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:367:37)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:56:19
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:360:11
+    at next (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:154:11)
+    at Compiler.compiler.plugin (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/performance/SizeLimitsPlugin.js:99:4)
+    at Compiler.applyPluginsAsyncSeries1 (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:158:13)
+    at Compiler.afterEmit (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:357:8)
+    at Compiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:352:14)
+2017-07-03 16:25:51,522 WARN 15471 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/controller/about/about.js change
+2017-07-03 16:26:08,314 INFO 15778 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:26:08,501 INFO 15778 [egg-watcher:agent] watcher start success
+2017-07-03 16:26:11,280 WARN 15778 agent can't call sendToApp before server started
+    at Messenger.messenger.(anonymous function) [as sendToApp] (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/lib/agent.js:64:23)
+    at build (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-webpack/lib/server.js:48:28)
+    at MultiCompiler.compiler.plugin.compilation (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack-tool/lib/tool.js:101:19)
+    at MultiCompiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at MultiCompiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/MultiCompiler.js:61:10)
+    at Compiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at Watching._done (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:98:16)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:73:18
+    at Compiler.emitRecords (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:367:37)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:56:19
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:360:11
+    at next (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:154:11)
+    at Compiler.compiler.plugin (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/performance/SizeLimitsPlugin.js:99:4)
+    at Compiler.applyPluginsAsyncSeries1 (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:158:13)
+    at Compiler.afterEmit (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:357:8)
+    at Compiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:352:14)
+2017-07-03 16:26:54,811 INFO 16052 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:26:55,020 INFO 16052 [egg-watcher:agent] watcher start success
+2017-07-03 16:27:18,004 INFO 16276 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:27:18,198 INFO 16276 [egg-watcher:agent] watcher start success
+2017-07-03 16:28:00,009 INFO 16499 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:28:00,197 INFO 16499 [egg-watcher:agent] watcher start success
+2017-07-03 16:28:19,848 INFO 16725 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:28:20,034 INFO 16725 [egg-watcher:agent] watcher start success
+2017-07-03 16:28:22,763 WARN 16725 agent can't call sendToApp before server started
+    at Messenger.messenger.(anonymous function) [as sendToApp] (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/lib/agent.js:64:23)
+    at build (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-webpack/lib/server.js:48:28)
+    at MultiCompiler.compiler.plugin.compilation (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack-tool/lib/tool.js:101:19)
+    at MultiCompiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at MultiCompiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/MultiCompiler.js:61:10)
+    at Compiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at Watching._done (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:98:16)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:73:18
+    at Compiler.emitRecords (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:367:37)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:56:19
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:360:11
+    at next (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:154:11)
+    at Compiler.compiler.plugin (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/performance/SizeLimitsPlugin.js:99:4)
+    at Compiler.applyPluginsAsyncSeries1 (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:158:13)
+    at Compiler.afterEmit (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:357:8)
+    at Compiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:352:14)
+2017-07-03 16:29:47,301 INFO 17064 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:29:47,513 INFO 17064 [egg-watcher:agent] watcher start success
+2017-07-03 16:30:40,267 INFO 17344 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:30:40,456 INFO 17344 [egg-watcher:agent] watcher start success
+2017-07-03 16:30:43,365 WARN 17344 agent can't call sendToApp before server started
+    at Messenger.messenger.(anonymous function) [as sendToApp] (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/lib/agent.js:64:23)
+    at build (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-webpack/lib/server.js:48:28)
+    at MultiCompiler.compiler.plugin.compilation (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack-tool/lib/tool.js:101:19)
+    at MultiCompiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at MultiCompiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/MultiCompiler.js:61:10)
+    at Compiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at Watching._done (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:98:16)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:73:18
+    at Compiler.emitRecords (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:367:37)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:56:19
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:360:11
+    at next (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:154:11)
+    at Compiler.compiler.plugin (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/performance/SizeLimitsPlugin.js:99:4)
+    at Compiler.applyPluginsAsyncSeries1 (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:158:13)
+    at Compiler.afterEmit (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:357:8)
+    at Compiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:352:14)
+2017-07-03 16:32:02,520 WARN 17344 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/controller/about.js change
+2017-07-03 16:32:15,650 WARN 17344 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/router.js change
+2017-07-03 16:32:20,505 INFO 17748 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:32:20,702 INFO 17748 [egg-watcher:agent] watcher start success
+2017-07-03 16:32:41,342 INFO 17850 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:32:41,541 INFO 17850 [egg-watcher:agent] watcher start success
+2017-07-03 16:36:20,124 INFO 18280 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:36:20,326 INFO 18280 [egg-watcher:agent] watcher start success
+2017-07-03 16:36:49,290 INFO 18541 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:36:49,488 INFO 18541 [egg-watcher:agent] watcher start success
+2017-07-03 16:36:52,415 WARN 18541 agent can't call sendToApp before server started
+    at Messenger.messenger.(anonymous function) [as sendToApp] (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/lib/agent.js:64:23)
+    at build (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-webpack/lib/server.js:48:28)
+    at MultiCompiler.compiler.plugin.compilation (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack-tool/lib/tool.js:101:19)
+    at MultiCompiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at MultiCompiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/MultiCompiler.js:61:10)
+    at Compiler.applyPlugins (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:61:14)
+    at Watching._done (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:98:16)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:73:18
+    at Compiler.emitRecords (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:367:37)
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:56:19
+    at /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:360:11
+    at next (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:154:11)
+    at Compiler.compiler.plugin (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/performance/SizeLimitsPlugin.js:99:4)
+    at Compiler.applyPluginsAsyncSeries1 (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/tapable/lib/Tapable.js:158:13)
+    at Compiler.afterEmit (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:357:8)
+    at Compiler.<anonymous> (/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/Compiler.js:352:14)
+2017-07-03 16:37:07,832 INFO 18763 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:37:08,021 INFO 18763 [egg-watcher:agent] watcher start success
+2017-07-03 16:37:46,029 INFO 19010 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:37:46,233 INFO 19010 [egg-watcher:agent] watcher start success
+2017-07-03 16:38:33,534 INFO 19244 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:38:33,736 INFO 19244 [egg-watcher:agent] watcher start success
+2017-07-03 16:41:27,198 INFO 19727 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:41:27,396 INFO 19727 [egg-watcher:agent] watcher start success
+2017-07-03 16:42:03,111 INFO 19986 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 16:42:03,308 INFO 19986 [egg-watcher:agent] watcher start success
+2017-07-03 16:44:11,200 WARN 19986 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/service/about.js rename
+2017-07-03 16:45:51,122 WARN 19986 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/service/about.js change
+2017-07-03 17:03:17,742 INFO 23086 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 17:03:17,932 INFO 23086 [egg-watcher:agent] watcher start success
+2017-07-03 17:03:59,089 WARN 23086 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/controller/about.js change
+2017-07-03 17:04:13,074 INFO 23422 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 17:04:13,273 INFO 23422 [egg-watcher:agent] watcher start success
+2017-07-03 17:05:56,771 WARN 23422 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/controller/about.js change
+2017-07-03 17:06:04,889 INFO 23757 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 17:06:05,085 INFO 23757 [egg-watcher:agent] watcher start success
+2017-07-03 17:06:47,374 WARN 23757 [agent:development] reload worker because /home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/controller/about.js change
+2017-07-03 17:07:05,437 INFO 24093 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"agent"}
+2017-07-03 17:07:05,642 INFO 24093 [egg-watcher:agent] watcher start success
