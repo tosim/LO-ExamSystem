@@ -1,7 +1,7 @@
 {
   "name": "egg-vue-webpack-boilerplate",
-  "version": "2.0.0",
-  "description": "基于egg-vue-webpack-dev和egg-view-vue(ssr)插件的工程骨架项目",
+  "version": "1.0.0",
+  "description": "蓝欧IT教育考试评测系统",
   "scripts": {
     "build": "cross-env NODE_ENV=production node build",
     "view": "cross-env NODE_ENV=development NODE_SERVER=true node build",
@@ -64,9 +64,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hubcarl/egg-vue-webpack-boilerplate.git"
+    "url": "git+https://github.com/tosim/LO-ExamSystem.git"
   },
   "author": "hubcarl@126.com",
   "license": "MIT",
-  "homepage": "https://github.com/hubcarl/egg-vue-webpack-boilerplate"
+  "homepage": "https://github.com/tosim/LO-ExamSystem.git"
 }

@@ -1558,3 +1558,159 @@
 2017-07-03 17:07:08,701 INFO 24111 [egg-security] use dta middleware
 2017-07-03 17:07:08,702 INFO 24111 [egg-security] compose 7 middlewares into one security middleware
 2017-07-03 17:07:08,904 INFO 24111 [egg-watcher:app] watcher start success
+2017-07-03 17:37:51,596 INFO 26499 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 17:37:51,652 INFO 26499 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 17:37:51,652 INFO 26499 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 17:37:51,733 INFO 26499 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 17:37:51,736 INFO 26499 [egg-security] use csrf middleware
+2017-07-03 17:37:51,737 INFO 26499 [egg-security] use methodnoallow middleware
+2017-07-03 17:37:51,738 INFO 26499 [egg-security] use noopen middleware
+2017-07-03 17:37:51,738 INFO 26499 [egg-security] use nosniff middleware
+2017-07-03 17:37:51,739 INFO 26499 [egg-security] use xssProtection middleware
+2017-07-03 17:37:51,740 INFO 26499 [egg-security] use xframe middleware
+2017-07-03 17:37:51,740 INFO 26499 [egg-security] use dta middleware
+2017-07-03 17:37:51,740 INFO 26499 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 17:37:51,896 INFO 26499 [egg-watcher:app] watcher start success
+2017-07-03 17:37:51,610 INFO 26505 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 17:37:51,664 INFO 26505 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 17:37:51,664 INFO 26505 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 17:37:51,730 INFO 26505 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 17:37:51,733 INFO 26505 [egg-security] use csrf middleware
+2017-07-03 17:37:51,734 INFO 26505 [egg-security] use methodnoallow middleware
+2017-07-03 17:37:51,735 INFO 26505 [egg-security] use noopen middleware
+2017-07-03 17:37:51,735 INFO 26505 [egg-security] use nosniff middleware
+2017-07-03 17:37:51,736 INFO 26505 [egg-security] use xssProtection middleware
+2017-07-03 17:37:51,736 INFO 26505 [egg-security] use xframe middleware
+2017-07-03 17:37:51,737 INFO 26505 [egg-security] use dta middleware
+2017-07-03 17:37:51,737 INFO 26505 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 17:37:51,862 INFO 26505 [egg-watcher:app] watcher start success
+2017-07-03 17:37:51,717 INFO 26498 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 17:37:51,775 INFO 26498 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 17:37:51,775 INFO 26498 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 17:37:51,850 INFO 26498 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 17:37:51,855 INFO 26498 [egg-security] use csrf middleware
+2017-07-03 17:37:51,856 INFO 26498 [egg-security] use methodnoallow middleware
+2017-07-03 17:37:51,856 INFO 26498 [egg-security] use noopen middleware
+2017-07-03 17:37:51,857 INFO 26498 [egg-security] use nosniff middleware
+2017-07-03 17:37:51,857 INFO 26498 [egg-security] use xssProtection middleware
+2017-07-03 17:37:51,858 INFO 26498 [egg-security] use xframe middleware
+2017-07-03 17:37:51,858 INFO 26498 [egg-security] use dta middleware
+2017-07-03 17:37:51,858 INFO 26498 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 17:37:52,206 INFO 26498 [egg-watcher:app] watcher start success
+2017-07-03 17:37:51,863 INFO 26493 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 17:37:51,923 INFO 26493 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 17:37:51,923 INFO 26493 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 17:37:51,994 INFO 26493 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 17:37:51,997 INFO 26493 [egg-security] use csrf middleware
+2017-07-03 17:37:51,998 INFO 26493 [egg-security] use methodnoallow middleware
+2017-07-03 17:37:51,999 INFO 26493 [egg-security] use noopen middleware
+2017-07-03 17:37:51,999 INFO 26493 [egg-security] use nosniff middleware
+2017-07-03 17:37:52,000 INFO 26493 [egg-security] use xssProtection middleware
+2017-07-03 17:37:52,000 INFO 26493 [egg-security] use xframe middleware
+2017-07-03 17:37:52,001 INFO 26493 [egg-security] use dta middleware
+2017-07-03 17:37:52,001 INFO 26493 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 17:37:52,207 INFO 26493 [egg-watcher:app] watcher start success
+2017-07-03 18:24:13,490 INFO 29110 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 18:24:13,544 INFO 29110 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 18:24:13,544 INFO 29110 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 18:24:13,608 INFO 29110 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 18:24:13,612 INFO 29110 [egg-security] use csrf middleware
+2017-07-03 18:24:13,613 INFO 29110 [egg-security] use methodnoallow middleware
+2017-07-03 18:24:13,613 INFO 29110 [egg-security] use noopen middleware
+2017-07-03 18:24:13,614 INFO 29110 [egg-security] use nosniff middleware
+2017-07-03 18:24:13,614 INFO 29110 [egg-security] use xssProtection middleware
+2017-07-03 18:24:13,615 INFO 29110 [egg-security] use xframe middleware
+2017-07-03 18:24:13,615 INFO 29110 [egg-security] use dta middleware
+2017-07-03 18:24:13,615 INFO 29110 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 18:24:14,229 INFO 29110 [egg-watcher:app] watcher start success
+2017-07-03 18:24:13,674 INFO 29115 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 18:24:13,727 INFO 29115 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 18:24:13,727 INFO 29115 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 18:24:13,795 INFO 29115 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 18:24:13,798 INFO 29115 [egg-security] use csrf middleware
+2017-07-03 18:24:13,799 INFO 29115 [egg-security] use methodnoallow middleware
+2017-07-03 18:24:13,800 INFO 29115 [egg-security] use noopen middleware
+2017-07-03 18:24:13,800 INFO 29115 [egg-security] use nosniff middleware
+2017-07-03 18:24:13,801 INFO 29115 [egg-security] use xssProtection middleware
+2017-07-03 18:24:13,801 INFO 29115 [egg-security] use xframe middleware
+2017-07-03 18:24:13,801 INFO 29115 [egg-security] use dta middleware
+2017-07-03 18:24:13,802 INFO 29115 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 18:24:14,237 INFO 29115 [egg-watcher:app] watcher start success
+2017-07-03 18:24:13,881 INFO 29117 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 18:24:13,938 INFO 29117 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 18:24:13,939 INFO 29117 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 18:24:14,005 INFO 29117 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 18:24:14,009 INFO 29117 [egg-security] use csrf middleware
+2017-07-03 18:24:14,010 INFO 29117 [egg-security] use methodnoallow middleware
+2017-07-03 18:24:14,010 INFO 29117 [egg-security] use noopen middleware
+2017-07-03 18:24:14,011 INFO 29117 [egg-security] use nosniff middleware
+2017-07-03 18:24:14,011 INFO 29117 [egg-security] use xssProtection middleware
+2017-07-03 18:24:14,012 INFO 29117 [egg-security] use xframe middleware
+2017-07-03 18:24:14,012 INFO 29117 [egg-security] use dta middleware
+2017-07-03 18:24:14,012 INFO 29117 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 18:24:14,234 INFO 29117 [egg-watcher:app] watcher start success
+2017-07-03 18:24:13,893 INFO 29123 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 18:24:13,958 INFO 29123 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 18:24:13,958 INFO 29123 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 18:24:14,047 INFO 29123 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 18:24:14,051 INFO 29123 [egg-security] use csrf middleware
+2017-07-03 18:24:14,053 INFO 29123 [egg-security] use methodnoallow middleware
+2017-07-03 18:24:14,054 INFO 29123 [egg-security] use noopen middleware
+2017-07-03 18:24:14,054 INFO 29123 [egg-security] use nosniff middleware
+2017-07-03 18:24:14,054 INFO 29123 [egg-security] use xssProtection middleware
+2017-07-03 18:24:14,055 INFO 29123 [egg-security] use xframe middleware
+2017-07-03 18:24:14,055 INFO 29123 [egg-security] use dta middleware
+2017-07-03 18:24:14,055 INFO 29123 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 18:24:14,238 INFO 29123 [egg-watcher:app] watcher start success
+2017-07-03 18:25:23,201 INFO 29412 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 18:25:23,255 INFO 29412 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 18:25:23,255 INFO 29412 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 18:25:23,320 INFO 29412 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 18:25:23,324 INFO 29412 [egg-security] use csrf middleware
+2017-07-03 18:25:23,325 INFO 29412 [egg-security] use methodnoallow middleware
+2017-07-03 18:25:23,325 INFO 29412 [egg-security] use noopen middleware
+2017-07-03 18:25:23,326 INFO 29412 [egg-security] use nosniff middleware
+2017-07-03 18:25:23,326 INFO 29412 [egg-security] use xssProtection middleware
+2017-07-03 18:25:23,327 INFO 29412 [egg-security] use xframe middleware
+2017-07-03 18:25:23,327 INFO 29412 [egg-security] use dta middleware
+2017-07-03 18:25:23,327 INFO 29412 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 18:25:23,631 INFO 29412 [egg-watcher:app] watcher start success
+2017-07-03 18:25:23,323 INFO 29413 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 18:25:23,379 INFO 29413 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 18:25:23,380 INFO 29413 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 18:25:23,517 INFO 29413 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 18:25:23,521 INFO 29413 [egg-security] use csrf middleware
+2017-07-03 18:25:23,522 INFO 29413 [egg-security] use methodnoallow middleware
+2017-07-03 18:25:23,523 INFO 29413 [egg-security] use noopen middleware
+2017-07-03 18:25:23,523 INFO 29413 [egg-security] use nosniff middleware
+2017-07-03 18:25:23,528 INFO 29413 [egg-security] use xssProtection middleware
+2017-07-03 18:25:23,528 INFO 29413 [egg-security] use xframe middleware
+2017-07-03 18:25:23,529 INFO 29413 [egg-security] use dta middleware
+2017-07-03 18:25:23,529 INFO 29413 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 18:25:23,636 INFO 29413 [egg-watcher:app] watcher start success
+2017-07-03 18:25:23,404 INFO 29426 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 18:25:23,500 INFO 29426 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 18:25:23,500 INFO 29426 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 18:25:23,589 INFO 29426 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 18:25:23,592 INFO 29426 [egg-security] use csrf middleware
+2017-07-03 18:25:23,594 INFO 29426 [egg-security] use methodnoallow middleware
+2017-07-03 18:25:23,594 INFO 29426 [egg-security] use noopen middleware
+2017-07-03 18:25:23,595 INFO 29426 [egg-security] use nosniff middleware
+2017-07-03 18:25:23,596 INFO 29426 [egg-security] use xssProtection middleware
+2017-07-03 18:25:23,597 INFO 29426 [egg-security] use xframe middleware
+2017-07-03 18:25:23,597 INFO 29426 [egg-security] use dta middleware
+2017-07-03 18:25:23,598 INFO 29426 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 18:25:23,827 INFO 29426 [egg-watcher:app] watcher start success
+2017-07-03 18:25:23,632 INFO 29422 [egg:logger] init all loggers with options: {"dir":"/home/joey/workspace/workspace-node/LO-ExamSystem/logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-03 18:25:23,701 INFO 29422 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/clean_log.js
+2017-07-03 18:25:23,701 INFO 29422 [egg-schedule]: register schedule egg-schedule:/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator/app/schedule/rotate_by_file.js
+2017-07-03 18:25:23,757 INFO 29422 [egg-static] starting static serve /public/ -> /home/joey/workspace/workspace-node/LO-ExamSystem/public
+2017-07-03 18:25:23,760 INFO 29422 [egg-security] use csrf middleware
+2017-07-03 18:25:23,761 INFO 29422 [egg-security] use methodnoallow middleware
+2017-07-03 18:25:23,761 INFO 29422 [egg-security] use noopen middleware
+2017-07-03 18:25:23,761 INFO 29422 [egg-security] use nosniff middleware
+2017-07-03 18:25:23,761 INFO 29422 [egg-security] use xssProtection middleware
+2017-07-03 18:25:23,762 INFO 29422 [egg-security] use xframe middleware
+2017-07-03 18:25:23,762 INFO 29422 [egg-security] use dta middleware
+2017-07-03 18:25:23,762 INFO 29422 [egg-security] compose 7 middlewares into one security middleware
+2017-07-03 18:25:23,942 INFO 29422 [egg-watcher:app] watcher start success

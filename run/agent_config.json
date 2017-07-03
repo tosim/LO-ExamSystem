@@ -20,8 +20,8 @@
     "watcher": {
       "type": "development",
       "eventSources": {
-        "default": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-watcher/lib/event-sources/default",
-        "development": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-watcher/lib/event-sources/development"
+        "default": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-watcher/lib/event-sources/default",
+        "development": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-watcher/lib/event-sources/development"
       }
     },
     "multipart": {
@@ -120,7 +120,7 @@
     },
     "static": {
       "prefix": "/public/",
-      "dir": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/public",
+      "dir": "/home/joey/workspace/workspace-node/LO-ExamSystem/public",
       "dynamic": true,
       "preload": false,
       "buffer": false,
@@ -136,7 +136,7 @@
       "csrf": false
     },
     "view": {
-      "root": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/view",
+      "root": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/view",
       "cache": false,
       "defaultExtension": ".html",
       "defaultViewEngine": "vue",
@@ -148,9 +148,9 @@
       "cache": false
     },
     "vuessr": {
-      "layout": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/view/layout.html",
-      "manifest": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/config/manifest.json",
-      "buildConfig": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/config/buildConfig.json",
+      "layout": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/view/layout.html",
+      "manifest": "/home/joey/workspace/workspace-node/LO-ExamSystem/config/manifest.json",
+      "buildConfig": "/home/joey/workspace/workspace-node/LO-ExamSystem/config/buildConfig.json",
       "injectCss": false,
       "injectJs": true,
       "fallbackToClient": true,
@@ -162,7 +162,7 @@
       "webpackConfigList": [
         {
           "entry": {
-            "about/about": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/page/about/about.js",
+            "about/about": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/page/about/about.js",
             "vendor": [
               "vue"
             ]
@@ -174,11 +174,11 @@
             ],
             "alias": {
               "vue": "vue/dist/vue.common.js",
-              "asset": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/asset",
-              "app": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/framework/vue/app",
-              "component": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/component",
-              "framework": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/framework",
-              "store": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/store"
+              "asset": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/asset",
+              "app": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/framework/vue/app",
+              "component": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/component",
+              "framework": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/framework",
+              "store": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/store"
             },
             "unsafeCache": true,
             "modules": [
@@ -205,7 +205,7 @@
               "chunkNames": [
                 "vendor"
               ],
-              "ident": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/optimize/CommonsChunkPlugin.js0"
+              "ident": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/webpack/lib/optimize/CommonsChunkPlugin.js0"
             },
             {
               "options": {
@@ -232,7 +232,7 @@
           "output": {
             "filename": "client/js/[name].js",
             "chunkFilename": "client/js/[id].js",
-            "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/public",
+            "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/public",
             "publicPath": "http://127.0.0.1:9001/public/",
             "library": "",
             "hotUpdateFunction": "webpackHotUpdate",
@@ -253,16 +253,16 @@
             "rules": [
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/babel-loader/lib/index.js",
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/babel-loader/lib/index.js",
                 "exclude": {}
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/json-loader/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/json-loader/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/url-loader/index.js",
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/url-loader/index.js",
                 "query": {
                   "limit": 1024,
                   "name": "client/img/[name].[ext]"
@@ -270,13 +270,13 @@
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-loader/index.js",
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-loader/index.js",
                 "options": {
                   "loaders": {
-                    "css": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js",
-                    "less": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/less-loader/dist/index.js",
-                    "scss": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js",
-                    "sass": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js"
+                    "css": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js",
+                    "less": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/less-loader/dist/index.js",
+                    "scss": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js",
+                    "sass": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js"
                   },
                   "postcss": [
                     null
@@ -285,23 +285,23 @@
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-html-loader/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-html-loader/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/less-loader/dist/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/less-loader/dist/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js"
               }
             ],
             "unknownContextRequest": ".",
@@ -319,7 +319,7 @@
             "unsafeCache": true
           },
           "cache": true,
-          "context": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate",
+          "context": "/home/joey/workspace/workspace-node/LO-ExamSystem",
           "target": "web",
           "node": {
             "console": false,
@@ -349,7 +349,7 @@
         },
         {
           "entry": {
-            "about/about": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/page/about/about.js",
+            "about/about": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/page/about/about.js",
             "vendor": [
               "vue"
             ]
@@ -361,11 +361,11 @@
             ],
             "alias": {
               "vue": "vue/dist/vue.runtime.common.js",
-              "asset": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/asset",
-              "app": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/framework/vue/app",
-              "component": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/component",
-              "framework": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/framework",
-              "store": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/store"
+              "asset": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/asset",
+              "app": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/framework/vue/app",
+              "component": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/component",
+              "framework": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/framework",
+              "store": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/store"
             },
             "unsafeCache": true,
             "modules": [
@@ -390,7 +390,7 @@
           "output": {
             "libraryTarget": "commonjs2",
             "filename": "[name].js",
-            "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/view",
+            "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/view",
             "publicPath": "http://127.0.0.1:9001/public/",
             "chunkFilename": "[id].js",
             "library": "",
@@ -407,7 +407,7 @@
             "devtoolLineToLine": false,
             "strictModuleExceptionHandling": false
           },
-          "context": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/easywebpack/lib",
+          "context": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/easywebpack/lib",
           "node": {
             "__filename": false,
             "__dirname": false,
@@ -1522,16 +1522,16 @@
             "rules": [
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/babel-loader/lib/index.js",
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/babel-loader/lib/index.js",
                 "exclude": {}
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/json-loader/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/json-loader/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/url-loader/index.js",
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/url-loader/index.js",
                 "query": {
                   "limit": 1024,
                   "name": "img/[name].[ext]"
@@ -1539,13 +1539,13 @@
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-loader/index.js",
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-loader/index.js",
                 "options": {
                   "loaders": {
-                    "css": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js",
-                    "less": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/less-loader/dist/index.js",
-                    "scss": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js",
-                    "sass": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js"
+                    "css": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js",
+                    "less": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/less-loader/dist/index.js",
+                    "scss": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js",
+                    "sass": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js"
                   },
                   "postcss": [
                     null
@@ -1554,23 +1554,23 @@
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-html-loader/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-html-loader/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/less-loader/dist/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/less-loader/dist/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js"
               }
             ],
             "unknownContextRequest": ".",
@@ -1608,7 +1608,7 @@
         },
         {
           "entry": {
-            "index/index": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/html/index/index.js",
+            "index/index": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/html/index/index.js",
             "vendor": [
               "vue"
             ]
@@ -1620,11 +1620,11 @@
             ],
             "alias": {
               "vue": "vue/dist/vue.common.js",
-              "asset": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/asset",
-              "app": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/framework/vue/app",
-              "component": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/component",
-              "framework": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/framework",
-              "store": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/store"
+              "asset": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/asset",
+              "app": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/framework/vue/app",
+              "component": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/component",
+              "framework": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/framework",
+              "store": "/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/store"
             },
             "unsafeCache": true,
             "modules": [
@@ -1651,7 +1651,7 @@
               "chunkNames": [
                 "vendor"
               ],
-              "ident": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/webpack/lib/optimize/CommonsChunkPlugin.js1"
+              "ident": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/webpack/lib/optimize/CommonsChunkPlugin.js1"
             },
             {
               "options": {
@@ -1664,7 +1664,7 @@
             },
             {
               "options": {
-                "template": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/html-webpack-plugin/lib/loader.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/app/web/view/layout.html",
+                "template": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/html-webpack-plugin/lib/loader.js!/home/joey/workspace/workspace-node/LO-ExamSystem/app/web/view/layout.html",
                 "filename": "html/index/index.html",
                 "hash": false,
                 "inject": true,
@@ -1691,7 +1691,7 @@
           "output": {
             "filename": "html/js/[name].js",
             "chunkFilename": "html/js/[id].js",
-            "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/public",
+            "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/public",
             "publicPath": "/public/",
             "library": "",
             "hotUpdateFunction": "webpackHotUpdate",
@@ -1712,16 +1712,16 @@
             "rules": [
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/babel-loader/lib/index.js",
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/babel-loader/lib/index.js",
                 "exclude": {}
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/json-loader/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/json-loader/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/url-loader/index.js",
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/url-loader/index.js",
                 "query": {
                   "limit": 1024,
                   "name": "html/img/[name].[ext]"
@@ -1729,13 +1729,13 @@
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-loader/index.js",
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-loader/index.js",
                 "options": {
                   "loaders": {
-                    "css": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js",
-                    "less": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/less-loader/dist/index.js",
-                    "scss": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js",
-                    "sass": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js"
+                    "css": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js",
+                    "less": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/less-loader/dist/index.js",
+                    "scss": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js",
+                    "sass": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js"
                   },
                   "postcss": [
                     null
@@ -1744,23 +1744,23 @@
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-html-loader/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-html-loader/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/less-loader/dist/index.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/less-loader/dist/index.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js"
               },
               {
                 "test": {},
-                "loader": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/sass-loader/lib/loader.js"
+                "loader": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/vue-style-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/css-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/postcss-loader/index.js!/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/sass-loader/lib/loader.js"
               }
             ],
             "unknownContextRequest": ".",
@@ -1778,7 +1778,7 @@
             "unsafeCache": true
           },
           "cache": true,
-          "context": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate",
+          "context": "/home/joey/workspace/workspace-node/LO-ExamSystem",
           "target": "web",
           "node": {
             "console": false,
@@ -1810,12 +1810,12 @@
       "isServerBuild": true
     },
     "webpackvue": {
-      "manifest": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/config/manifest.json"
+      "manifest": "/home/joey/workspace/workspace-node/LO-ExamSystem/config/manifest.json"
     },
     "logview": {
       "prefix": "__logs",
       "staticHost": "https://unpkg.cnpmjs.org",
-      "dir": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs"
+      "dir": "/home/joey/workspace/workspace-node/LO-ExamSystem/logs"
     },
     "env": "local",
     "name": "egg-vue-webpack-boilerplate",
@@ -1896,9 +1896,9 @@
       "license": "MIT",
       "homepage": "https://github.com/hubcarl/egg-vue-webpack-boilerplate"
     },
-    "baseDir": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate",
+    "baseDir": "/home/joey/workspace/workspace-node/LO-ExamSystem",
     "HOME": "/home/joey",
-    "rundir": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/run",
+    "rundir": "/home/joey/workspace/workspace-node/LO-ExamSystem/run",
     "dump": {
       "ignore": "<Set>"
     },
@@ -1928,7 +1928,7 @@
       }
     },
     "logger": {
-      "dir": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/logs",
+      "dir": "/home/joey/workspace/workspace-node/LO-ExamSystem/logs",
       "encoding": "utf8",
       "env": "local",
       "level": "INFO",
@@ -1988,8 +1988,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-onerror",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-onerror",
       "version": "1.4.6"
     },
     "session": {
@@ -1999,8 +1999,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-session",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-session",
       "version": "2.1.1"
     },
     "i18n": {
@@ -2010,8 +2010,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-i18n",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-i18n",
       "version": "1.1.1"
     },
     "watcher": {
@@ -2021,8 +2021,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-watcher",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-watcher",
       "version": "2.1.3"
     },
     "multipart": {
@@ -2032,8 +2032,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-multipart",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-multipart",
       "version": "1.5.0"
     },
     "security": {
@@ -2045,8 +2045,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-security",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-security",
       "version": "1.11.0"
     },
     "development": {
@@ -2060,8 +2060,8 @@
       "env": [
         "local"
       ],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-development",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-development",
       "version": "1.3.1"
     },
     "schedule": {
@@ -2071,8 +2071,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-schedule",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-schedule",
       "version": "2.4.1"
     },
     "logrotator": {
@@ -2084,8 +2084,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-logrotator",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logrotator",
       "version": "2.2.3"
     },
     "static": {
@@ -2095,8 +2095,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-static",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-static",
       "version": "1.4.1"
     },
     "jsonp": {
@@ -2108,8 +2108,8 @@
         "security"
       ],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-jsonp",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-jsonp",
       "version": "1.1.1"
     },
     "view": {
@@ -2119,8 +2119,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-view",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-view",
       "version": "1.1.1"
     },
     "vue": {
@@ -2132,8 +2132,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-view-vue",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-view-vue",
       "version": "1.0.0"
     },
     "vuessr": {
@@ -2145,8 +2145,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/config/plugin.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-view-vue-ssr",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/config/plugin.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-view-vue-ssr",
       "version": "1.0.0"
     },
     "cors": {
@@ -2156,8 +2156,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/config/plugin.local.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-cors",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/config/plugin.local.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-cors",
       "version": "1.1.0"
     },
     "webpack": {
@@ -2169,8 +2169,8 @@
       "env": [
         "local"
       ],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/config/plugin.local.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-webpack",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/config/plugin.local.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-webpack",
       "version": "2.1.1"
     },
     "webpackvue": {
@@ -2182,8 +2182,8 @@
       "env": [
         "local"
       ],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/config/plugin.local.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-webpack-vue",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/config/plugin.local.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-webpack-vue",
       "version": "0.4.0"
     },
     "logview": {
@@ -2195,8 +2195,8 @@
       "name": "logview",
       "dependencies": [],
       "optionalDependencies": [],
-      "from": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/config/plugin.local.js",
-      "path": "/home/joey/workspace/workspace-node/egg-vue-webpack-boilerplate/node_modules/egg-logview",
+      "from": "/home/joey/workspace/workspace-node/LO-ExamSystem/config/plugin.local.js",
+      "path": "/home/joey/workspace/workspace-node/LO-ExamSystem/node_modules/egg-logview",
       "version": "1.0.0"
     }
   }
