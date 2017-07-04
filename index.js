@@ -1,8 +1,7 @@
-'use strict';
 
-// npm run dev DO NOT read this file
-
+process.env.VUE_ENV = 'server';
 require('egg').startCluster({
   baseDir: __dirname,
-  port: process.env.PORT || 7001, // default to 7001
+  workers: process.env.WORKERS,
+  port: process.env.PORT
 });

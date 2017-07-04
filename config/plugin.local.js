@@ -12,3 +12,11 @@ exports.webpackvue = {
   enable: true,
   package: 'egg-webpack-vue'
 };
+<<<<<<< HEAD
+=======
+
+exports.logview = {
+  package: 'egg-logview',
+  env: ['local']
+};
+>>>>>>> master
