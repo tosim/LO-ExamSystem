@@ -143,3 +143,8 @@
 2017-07-03 18:25:23,598 INFO 29426 [egg-logview] mount log /home/joey/workspace/workspace-node/LO-ExamSystem/logs at http://127.0.0.1:7001/__logs
 2017-07-03 18:25:23,762 INFO 29422 [egg-logview] mount log /home/joey/workspace/workspace-node/LO-ExamSystem/logs at http://127.0.0.1:7001/__logs
 2017-07-03 18:25:31,256 INFO 29412 [-/::1/-/63ms GET /] [access] ::1: - GET / HTTP/200 184763 - 55 - Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36
+2017-07-04 11:23:17,851 INFO 10916 [egg-logview] mount log C:\Users\81947\Documents\GitHub\LO-ExamSystem\logs at http://127.0.0.1:7001/__logs
+2017-07-04 11:23:17,980 INFO 6640 [egg-logview] mount log C:\Users\81947\Documents\GitHub\LO-ExamSystem\logs at http://127.0.0.1:7001/__logs
+2017-07-04 11:23:18,039 INFO 3092 [egg-logview] mount log C:\Users\81947\Documents\GitHub\LO-ExamSystem\logs at http://127.0.0.1:7001/__logs
+2017-07-04 11:23:18,220 INFO 11000 [egg-logview] mount log C:\Users\81947\Documents\GitHub\LO-ExamSystem\logs at http://127.0.0.1:7001/__logs
+2017-07-04 11:23:22,569 INFO 11000 [-/127.0.0.1/-/112ms GET /] [access] 127.0.0.1: - GET / HTTP/200 193983 - 103 - Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36

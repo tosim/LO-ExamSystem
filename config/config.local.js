@@ -1,9 +1,4 @@
 const path = require('path');
-<<<<<<< HEAD
-module.exports = app => {
-  const exports = {};
-
-=======
 const ip = require('ip');
 module.exports = app => {
   const exports = {};
@@ -20,14 +15,11 @@ module.exports = app => {
   exports.logview = {
     dir: path.join(app.baseDir, 'logs')
   };
->>>>>>> master
 
   exports.vuessr = {
     injectCss: false
   };
 
-<<<<<<< HEAD
-=======
   exports.webpack = {
     webpackConfigList: [
       require(path.join(app.baseDir, 'build/client')),
@@ -45,7 +37,6 @@ module.exports = app => {
   });
 
   exports.security = { domainWhiteList };
->>>>>>> master
 
   return exports;
 };
