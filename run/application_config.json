@@ -17,27 +17,27 @@
     "i18n": {
       "defaultLocale": "en_US",
       "dirs": [
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-onerror\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-session\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-i18n\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-watcher\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-multipart\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-security\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-development\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-schedule\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-logrotator\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-static\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-jsonp\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view-vue\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view-vue-ssr\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-mysql\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-cors\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-webpack\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-webpack-vue\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-logview\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\locales",
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\locales"
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-onerror\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-session\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-i18n\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-watcher\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-multipart\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-security\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-development\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-schedule\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-logrotator\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-static\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-jsonp\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view-vue\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view-vue-ssr\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-mysql\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-cors\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-webpack\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-webpack-vue\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-logview\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\locales",
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\locales"
       ],
       "queryField": "locale",
       "cookieField": "locale",
@@ -47,8 +47,8 @@
     "watcher": {
       "type": "development",
       "eventSources": {
-        "default": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-watcher\\lib\\event-sources\\default",
-        "development": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-watcher\\lib\\event-sources\\development"
+        "default": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-watcher\\lib\\event-sources\\default",
+        "development": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-watcher\\lib\\event-sources\\development"
       }
     },
     "multipart": {
@@ -66,19 +66,19 @@
       "domainWhiteList": [
         "http://localhost:9000",
         "http://127.0.0.1:9000",
-        "http://192.168.1.103:9000",
+        "http://192.168.1.104:9000",
         "http://localhost:9001",
         "http://127.0.0.1:9001",
-        "http://192.168.1.103:9001",
+        "http://192.168.1.104:9001",
         "http://localhost:9002",
         "http://127.0.0.1:9002",
-        "http://192.168.1.103:9002",
+        "http://192.168.1.104:9002",
         "http://localhost:9003",
         "http://127.0.0.1:9003",
-        "http://192.168.1.103:9003",
+        "http://192.168.1.104:9003",
         "http://localhost:9004",
         "http://127.0.0.1:9004",
-        "http://192.168.1.103:9004"
+        "http://192.168.1.104:9004"
       ],
       "protocolWhiteList": [],
       "defaultMiddleware": "csrf,hsts,methodnoallow,noopen,nosniff,csp,xssProtection,xframe,dta",
@@ -145,7 +145,7 @@
     },
     "static": {
       "prefix": "/public/",
-      "dir": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\public",
+      "dir": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\public",
       "dynamic": true,
       "preload": false,
       "buffer": false,
@@ -163,7 +163,7 @@
     },
     "view": {
       "root": [
-        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\view"
+        "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\view"
       ],
       "cache": false,
       "defaultExtension": ".html",
@@ -176,9 +176,9 @@
       "cache": false
     },
     "vuessr": {
-      "layout": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\view\\layout.html",
-      "manifest": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\manifest.json",
-      "buildConfig": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\buildConfig.json",
+      "layout": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\view\\layout.html",
+      "manifest": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\manifest.json",
+      "buildConfig": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\buildConfig.json",
       "injectCss": false,
       "injectJs": true,
       "fallbackToClient": true,
@@ -210,8 +210,8 @@
       "webpackConfigList": [
         {
           "entry": {
-            "\\about\\about": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\about\\about.js",
-            "\\js\\user": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\js\\user.js",
+            "\\about\\about": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\about\\about.js",
+            "\\js\\user": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\js\\user.js",
             "vendor": [
               "vue"
             ]
@@ -223,11 +223,11 @@
             ],
             "alias": {
               "vue": "vue/dist/vue.common.js",
-              "asset": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\asset",
-              "app": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework\\vue\\app",
-              "component": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\component",
-              "framework": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework",
-              "store": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\store"
+              "asset": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\asset",
+              "app": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework\\vue\\app",
+              "component": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\component",
+              "framework": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework",
+              "store": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\store"
             }
           },
           "plugins": [
@@ -242,7 +242,7 @@
               "chunkNames": [
                 "vendor"
               ],
-              "ident": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\webpack\\lib\\optimize\\CommonsChunkPlugin.js0"
+              "ident": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\webpack\\lib\\optimize\\CommonsChunkPlugin.js0"
             },
             {
               "options": {
@@ -269,23 +269,23 @@
           "output": {
             "filename": "client/js/[name].js",
             "chunkFilename": "client/js/[id].js",
-            "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\public",
+            "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\public",
             "publicPath": "http://127.0.0.1:9001/public/"
           },
           "module": {
             "rules": [
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\babel-loader\\lib\\index.js",
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\babel-loader\\lib\\index.js",
                 "exclude": {}
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\json-loader\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\json-loader\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\url-loader\\index.js",
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\url-loader\\index.js",
                 "query": {
                   "limit": 1024,
                   "name": "client/img/[name].[ext]"
@@ -293,13 +293,13 @@
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-loader\\index.js",
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-loader\\index.js",
                 "options": {
                   "loaders": {
-                    "css": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js",
-                    "less": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js",
-                    "scss": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js",
-                    "sass": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
+                    "css": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js",
+                    "less": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js",
+                    "scss": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js",
+                    "sass": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
                   },
                   "postcss": [
                     null
@@ -308,31 +308,31 @@
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-html-loader\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-html-loader\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
               }
             ]
           }
         },
         {
           "entry": {
-            "\\about\\about": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\about\\about.js",
-            "\\js\\user": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\js\\user.js",
+            "\\about\\about": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\about\\about.js",
+            "\\js\\user": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\js\\user.js",
             "vendor": [
               "vue"
             ]
@@ -344,11 +344,11 @@
             ],
             "alias": {
               "vue": "vue/dist/vue.runtime.common.js",
-              "asset": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\asset",
-              "app": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework\\vue\\app",
-              "component": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\component",
-              "framework": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework",
-              "store": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\store"
+              "asset": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\asset",
+              "app": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework\\vue\\app",
+              "component": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\component",
+              "framework": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework",
+              "store": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\store"
             }
           },
           "plugins": [
@@ -364,10 +364,10 @@
           "output": {
             "libraryTarget": "commonjs2",
             "filename": "[name].js",
-            "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\view",
+            "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\view",
             "publicPath": "http://127.0.0.1:9001/public/"
           },
-          "context": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\easywebpack\\lib",
+          "context": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\easywebpack\\lib",
           "node": {
             "__filename": false,
             "__dirname": false
@@ -809,7 +809,6 @@
             "fs-extra": "commonjs2 fs-extra",
             "fs-readdir-recursive": "commonjs2 fs-readdir-recursive",
             "fs.realpath": "commonjs2 fs.realpath",
-            "fsevents": "commonjs2 fsevents",
             "fstream": "commonjs2 fstream",
             "function-bind": "commonjs2 function-bind",
             "gauge": "commonjs2 gauge",
@@ -1094,6 +1093,7 @@
             "node-homedir": "commonjs2 node-homedir",
             "node-libs-browser": "commonjs2 node-libs-browser",
             "node-noop": "commonjs2 node-noop",
+            "node-sass": "commonjs2 node-sass",
             "node-status-codes": "commonjs2 node-status-codes",
             "nopt": "commonjs2 nopt",
             "normalize-git-url": "commonjs2 normalize-git-url",
@@ -1482,16 +1482,16 @@
             "rules": [
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\babel-loader\\lib\\index.js",
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\babel-loader\\lib\\index.js",
                 "exclude": {}
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\json-loader\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\json-loader\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\url-loader\\index.js",
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\url-loader\\index.js",
                 "query": {
                   "limit": 1024,
                   "name": "img/[name].[ext]"
@@ -1499,13 +1499,13 @@
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-loader\\index.js",
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-loader\\index.js",
                 "options": {
                   "loaders": {
-                    "css": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js",
-                    "less": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js",
-                    "scss": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js",
-                    "sass": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
+                    "css": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js",
+                    "less": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js",
+                    "scss": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js",
+                    "sass": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
                   },
                   "postcss": [
                     null
@@ -1514,30 +1514,30 @@
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-html-loader\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-html-loader\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
               }
             ]
           }
         },
         {
           "entry": {
-            "\\index\\index": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\html\\index\\index.js",
+            "\\index\\index": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\html\\index\\index.js",
             "vendor": [
               "vue"
             ]
@@ -1549,11 +1549,11 @@
             ],
             "alias": {
               "vue": "vue/dist/vue.common.js",
-              "asset": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\asset",
-              "app": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework\\vue\\app",
-              "component": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\component",
-              "framework": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework",
-              "store": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\store"
+              "asset": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\asset",
+              "app": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework\\vue\\app",
+              "component": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\component",
+              "framework": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\framework",
+              "store": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\store"
             }
           },
           "plugins": [
@@ -1568,7 +1568,7 @@
               "chunkNames": [
                 "vendor"
               ],
-              "ident": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\webpack\\lib\\optimize\\CommonsChunkPlugin.js1"
+              "ident": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\webpack\\lib\\optimize\\CommonsChunkPlugin.js1"
             },
             {
               "options": {
@@ -1581,7 +1581,7 @@
             },
             {
               "options": {
-                "template": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\view\\layout.html",
+                "template": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\view\\layout.html",
                 "filename": "html/\\index\\index.html",
                 "hash": false,
                 "inject": true,
@@ -1608,23 +1608,23 @@
           "output": {
             "filename": "html/js/[name].js",
             "chunkFilename": "html/js/[id].js",
-            "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\public",
+            "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\public",
             "publicPath": "/public/"
           },
           "module": {
             "rules": [
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\babel-loader\\lib\\index.js",
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\babel-loader\\lib\\index.js",
                 "exclude": {}
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\json-loader\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\json-loader\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\url-loader\\index.js",
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\url-loader\\index.js",
                 "query": {
                   "limit": 1024,
                   "name": "html/img/[name].[ext]"
@@ -1632,13 +1632,13 @@
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-loader\\index.js",
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-loader\\index.js",
                 "options": {
                   "loaders": {
-                    "css": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js",
-                    "less": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js",
-                    "scss": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js",
-                    "sass": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
+                    "css": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js",
+                    "less": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js",
+                    "scss": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js",
+                    "sass": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
                   },
                   "postcss": [
                     null
@@ -1647,23 +1647,23 @@
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-html-loader\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-html-loader\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\less-loader\\dist\\index.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
               },
               {
                 "test": {},
-                "loader": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
+                "loader": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\vue-style-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\css-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\postcss-loader\\index.js!C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\sass-loader\\lib\\loader.js"
               }
             ]
           }
@@ -1671,12 +1671,12 @@
       ]
     },
     "webpackvue": {
-      "manifest": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\manifest.json"
+      "manifest": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\manifest.json"
     },
     "logview": {
       "prefix": "__logs",
       "staticHost": "https://unpkg.cnpmjs.org",
-      "dir": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\logs"
+      "dir": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\logs"
     },
     "env": "local",
     "name": "egg-vue-webpack-boilerplate",
@@ -1709,6 +1709,7 @@
         "core-js": "^2.4.0",
         "egg": "^1.4.0",
         "egg-logger": "^1.5.0",
+        "egg-mysql": "^3.0.0",
         "egg-validate": "^1.0.0",
         "egg-view-vue": "^1.0.0",
         "egg-view-vue-ssr": "^1.0.0",
@@ -1757,9 +1758,9 @@
       "license": "MIT",
       "homepage": "https://github.com/tosim/LO-ExamSystem.git"
     },
-    "baseDir": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem",
-    "HOME": "C:\\Users\\81947",
-    "rundir": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\run",
+    "baseDir": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem",
+    "HOME": "C:\\Users\\Administrator",
+    "rundir": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\run",
     "dump": {
       "ignore": "<Set>"
     },
@@ -1790,7 +1791,7 @@
       "returnRawBody": true
     },
     "logger": {
-      "dir": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\logs",
+      "dir": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\logs",
       "encoding": "utf8",
       "env": "local",
       "level": "INFO",
@@ -1874,8 +1875,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-onerror",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-onerror",
       "version": "1.4.6"
     },
     "session": {
@@ -1885,8 +1886,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-session",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-session",
       "version": "2.1.1"
     },
     "i18n": {
@@ -1896,8 +1897,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-i18n",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-i18n",
       "version": "1.1.1"
     },
     "watcher": {
@@ -1907,8 +1908,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-watcher",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-watcher",
       "version": "2.1.3"
     },
     "multipart": {
@@ -1918,8 +1919,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-multipart",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-multipart",
       "version": "1.5.0"
     },
     "security": {
@@ -1931,8 +1932,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-security",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-security",
       "version": "1.11.0"
     },
     "development": {
@@ -1946,8 +1947,8 @@
       "env": [
         "local"
       ],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-development",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-development",
       "version": "1.3.1"
     },
     "schedule": {
@@ -1957,8 +1958,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-schedule",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-schedule",
       "version": "2.4.1"
     },
     "logrotator": {
@@ -1970,8 +1971,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-logrotator",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-logrotator",
       "version": "2.2.3"
     },
     "static": {
@@ -1981,8 +1982,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-static",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-static",
       "version": "1.4.1"
     },
     "jsonp": {
@@ -1994,8 +1995,8 @@
         "security"
       ],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-jsonp",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-jsonp",
       "version": "1.1.1"
     },
     "view": {
@@ -2005,8 +2006,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view",
       "version": "1.1.1"
     },
     "vue": {
@@ -2018,8 +2019,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view-vue",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view-vue",
       "version": "1.0.0"
     },
     "vuessr": {
@@ -2031,8 +2032,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view-vue-ssr",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view-vue-ssr",
       "version": "1.0.0"
     },
     "mysql": {
@@ -2042,8 +2043,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-mysql",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-mysql",
       "version": "3.0.0"
     },
     "cors": {
@@ -2053,8 +2054,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.local.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-cors",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.local.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-cors",
       "version": "1.1.0"
     },
     "webpack": {
@@ -2066,8 +2067,8 @@
       "env": [
         "local"
       ],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.local.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-webpack",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.local.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-webpack",
       "version": "2.1.1"
     },
     "webpackvue": {
@@ -2079,8 +2080,8 @@
       "env": [
         "local"
       ],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.local.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-webpack-vue",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.local.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-webpack-vue",
       "version": "0.4.0"
     },
     "logview": {
@@ -2092,8 +2093,8 @@
       "name": "logview",
       "dependencies": [],
       "optionalDependencies": [],
-      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.local.js",
-      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-logview",
+      "from": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.local.js",
+      "path": "C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-logview",
       "version": "1.0.0"
     }
   }

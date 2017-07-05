@@ -103,3 +103,163 @@ SyntaxError: Unexpected token :
     at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5720:9)
     at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6027:22
     at <anonymous>
+2017-07-05 12:47:54,306 ERROR 11644 [-/127.0.0.1/-/0ms GET /] nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:3306
+    at Object.exports._errnoException (util.js:1026:11)
+    at exports._exceptionWithHostPort (util.js:1049:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1136:14)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 3306
+fatal: true
+name: 'ECONNREFUSEDError'
+pid: 11644
+hostname: DESKTOP-VJM3NPM
+
+2017-07-05 12:47:54,492 ERROR 12044 [-/127.0.0.1/-/1ms GET /] nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:3306
+    at Object.exports._errnoException (util.js:1026:11)
+    at exports._exceptionWithHostPort (util.js:1049:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1136:14)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 3306
+fatal: true
+name: 'ECONNREFUSEDError'
+pid: 12044
+hostname: DESKTOP-VJM3NPM
+
+2017-07-05 12:47:54,307 ERROR 12012 [-/127.0.0.1/-/0ms GET /] nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:3306
+    at Object.exports._errnoException (util.js:1026:11)
+    at exports._exceptionWithHostPort (util.js:1049:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1136:14)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 3306
+fatal: true
+name: 'ECONNREFUSEDError'
+pid: 12012
+hostname: DESKTOP-VJM3NPM
+
+2017-07-05 12:47:54,602 ERROR 8552 [-/127.0.0.1/-/0ms GET /] nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:3306
+    at Object.exports._errnoException (util.js:1026:11)
+    at exports._exceptionWithHostPort (util.js:1049:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1136:14)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 3306
+fatal: true
+name: 'ECONNREFUSEDError'
+pid: 8552
+hostname: DESKTOP-VJM3NPM
+
+2017-07-05 12:48:05,914 ERROR 8552 [-/127.0.0.1/-/1025ms GET /user] nodejs.ECONNREFUSEDError: connect ECONNREFUSED 127.0.0.1:3306
+    at Object.exports._errnoException (util.js:1026:11)
+    at exports._exceptionWithHostPort (util.js:1049:20)
+    at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1136:14)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: SELECT * FROM `user`
+code: 'ECONNREFUSED'
+errno: 'ECONNREFUSED'
+syscall: 'connect'
+address: '127.0.0.1'
+port: 3306
+fatal: true
+name: 'ECONNREFUSEDError'
+pid: 8552
+hostname: DESKTOP-VJM3NPM
+
