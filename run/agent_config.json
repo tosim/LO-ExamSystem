@@ -39,32 +39,23 @@
       "domainWhiteList": [
         "http://localhost:9000",
         "http://127.0.0.1:9000",
-        "http://192.168.0.105:9000",
+        "http://192.168.1.103:9000",
         "http://localhost:9001",
         "http://127.0.0.1:9001",
-        "http://192.168.0.105:9001",
+        "http://192.168.1.103:9001",
         "http://localhost:9002",
         "http://127.0.0.1:9002",
-        "http://192.168.0.105:9002",
+        "http://192.168.1.103:9002",
         "http://localhost:9003",
         "http://127.0.0.1:9003",
-        "http://192.168.0.105:9003",
+        "http://192.168.1.103:9003",
         "http://localhost:9004",
         "http://127.0.0.1:9004",
-        "http://192.168.0.105:9004"
+        "http://192.168.1.103:9004"
       ],
       "protocolWhiteList": [],
       "defaultMiddleware": "csrf,hsts,methodnoallow,noopen,nosniff,csp,xssProtection,xframe,dta",
-      "csrf": {
-        "enable": true,
-        "useSession": false,
-        "ignoreJSON": false,
-        "cookieName": "csrfToken",
-        "sessionName": "csrfToken",
-        "headerName": "x-csrf-token",
-        "bodyName": "_csrf",
-        "queryName": "_csrf"
-      },
+      "csrf": false,
       "xframe": {
         "enable": true,
         "value": "SAMEORIGIN"
@@ -93,7 +84,8 @@
       "csp": {
         "enable": false,
         "policy": {}
-      }
+      },
+      "ctoken": false
     },
     "helper": {
       "shtml": {}
@@ -178,7 +170,7 @@
         {
           "entry": {
             "\\about\\about": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\about\\about.js",
-            "\\user\\user": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\user\\user.js",
+            "\\js\\user": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\js\\user.js",
             "vendor": [
               "vue"
             ]
@@ -366,7 +358,7 @@
         {
           "entry": {
             "\\about\\about": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\about\\about.js",
-            "\\user\\user": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\user\\user.js",
+            "\\js\\user": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\js\\user.js",
             "vendor": [
               "vue"
             ]

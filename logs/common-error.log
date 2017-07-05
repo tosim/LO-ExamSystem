@@ -1,0 +1,105 @@
+2017-07-05 10:20:34,271 ERROR 4000 [user/user.js] server render bundle error, try client render, the server render error __vue_ssr_bundle__:2
+  "\\about\\about.js": "client/js/\\about\\about.js",
+                     ^
+
+SyntaxError: Unexpected token :
+    at getCompiledScript (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5787:18)
+    at evaluateModule (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5802:18)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5856:17
+    at Promise (<anonymous>)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5854:14
+    at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6022:9)
+    at Promise (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\egg-view-vue\lib\engine.js:48:62)
+    at Promise (<anonymous>)
+    at Engine.renderBundle (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\egg-view-vue\lib\engine.js:47:12)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\egg-webpack-vue\app.js:19:42
+    at Generator.next (<anonymous>)
+    at onFulfilled (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\co\index.js:65:19)
+    at <anonymous>
+2017-07-05 10:21:01,537 ERROR 3056 [user/user.js] server render bundle error, try client render, the server render error __vue_ssr_bundle__:2
+  "\\about\\about.js": "client/js/\\about\\about.js",
+                     ^
+
+SyntaxError: Unexpected token :
+    at getCompiledScript (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5787:18)
+    at evaluateModule (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5802:18)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5856:17
+    at Promise (<anonymous>)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5854:14
+    at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6022:9)
+    at Promise (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\egg-view-vue\lib\engine.js:48:62)
+    at Promise (<anonymous>)
+    at Engine.renderBundle (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\egg-view-vue\lib\engine.js:47:12)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\egg-webpack-vue\app.js:19:42
+    at Generator.next (<anonymous>)
+    at onFulfilled (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\co\index.js:65:19)
+    at <anonymous>
+2017-07-05 10:54:55,036 ERROR 10104 [user/user.js] server render bundle error, try client render, the server render error Error: render function or template not defined in component: Layout
+    at normalizeRender (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5413:13)
+    at renderComponentInner (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5535:3)
+    at renderComponent (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5506:5)
+    at renderNode (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5422:5)
+    at render (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5676:5)
+    at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5720:9)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6027:22
+    at <anonymous>
+2017-07-05 10:54:56,681 ERROR 10104 [user/user.js] server render bundle error, try client render, the server render error Error: render function or template not defined in component: Layout
+    at normalizeRender (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5413:13)
+    at renderComponentInner (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5535:3)
+    at renderComponent (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5506:5)
+    at renderNode (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5422:5)
+    at render (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5676:5)
+    at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5720:9)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6027:22
+    at <anonymous>
+2017-07-05 10:57:36,998 ERROR 10104 [user/user.js] server render bundle error, try client render, the server render error Error: render function or template not defined in component: Layout
+    at normalizeRender (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5413:13)
+    at renderComponentInner (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5535:3)
+    at renderComponent (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5506:5)
+    at renderNode (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5422:5)
+    at render (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5676:5)
+    at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5720:9)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6027:22
+    at <anonymous>
+2017-07-05 10:57:38,153 ERROR 10104 [user/user.js] server render bundle error, try client render, the server render error Error: render function or template not defined in component: Layout
+    at normalizeRender (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5413:13)
+    at renderComponentInner (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5535:3)
+    at renderComponent (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5506:5)
+    at renderNode (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5422:5)
+    at render (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5676:5)
+    at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5720:9)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6027:22
+    at <anonymous>
+2017-07-05 10:57:40,385 ERROR 10104 [about/about.js] server render bundle error, try client render, the server render error Error: render function or template not defined in component: Layout
+    at normalizeRender (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5413:13)
+    at renderComponentInner (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5535:3)
+    at renderComponent (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5506:5)
+    at renderNode (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5422:5)
+    at render (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5676:5)
+    at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5720:9)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6027:22
+    at <anonymous>
+2017-07-05 11:15:38,170 ERROR 9824 [about/about.js] server render bundle error, try client render, the server render error TypeError: Cannot read property 'render' of undefined
+    at normalizeRender (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5403:19)
+    at render (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5675:5)
+    at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5720:9)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6027:22
+    at <anonymous>
+2017-07-05 12:11:08,788 ERROR 8172 [about/about.js] server render bundle error, try client render, the server render error TypeError: Cannot read property 'render' of undefined
+    at normalizeRender (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5403:19)
+    at render (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5675:5)
+    at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5720:9)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6027:22
+    at <anonymous>
+2017-07-05 12:18:09,642 ERROR 8076 [about/about.js] server render bundle error, try client render, the server render error TypeError: Cannot read property 'render' of undefined
+    at normalizeRender (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5403:19)
+    at render (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5675:5)
+    at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5720:9)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6027:22
+    at <anonymous>
+2017-07-05 12:20:23,491 ERROR 9016 [about/about.js] server render bundle error, try client render, the server render error TypeError: Cannot read property 'render' of undefined
+    at normalizeRender (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5403:19)
+    at render (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5675:5)
+    at Object.renderToString (C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5720:9)
+    at C:\Users\81947\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6027:22
+    at <anonymous>

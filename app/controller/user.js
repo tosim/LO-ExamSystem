@@ -6,7 +6,7 @@ module.exports = app => {
       //对象解构，简化赋值，this就是app对象,含有ctx和service
       const {ctx,service} = this;
       const user = yield ctx.service.user.find();
-      yield ctx.render('user/user.js', user);
+      yield ctx.render('js/user.js', user);
    }
   }
 
