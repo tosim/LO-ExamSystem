@@ -31,6 +31,7 @@
         "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view\\config\\locales",
         "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view-vue\\config\\locales",
         "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view-vue-ssr\\config\\locales",
+        "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-mysql\\config\\locales",
         "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-cors\\config\\locales",
         "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-webpack\\config\\locales",
         "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-webpack-vue\\config\\locales",
@@ -65,19 +66,19 @@
       "domainWhiteList": [
         "http://localhost:9000",
         "http://127.0.0.1:9000",
-        "http://192.168.1.102:9000",
+        "http://192.168.0.105:9000",
         "http://localhost:9001",
         "http://127.0.0.1:9001",
-        "http://192.168.1.102:9001",
+        "http://192.168.0.105:9001",
         "http://localhost:9002",
         "http://127.0.0.1:9002",
-        "http://192.168.1.102:9002",
+        "http://192.168.0.105:9002",
         "http://localhost:9003",
         "http://127.0.0.1:9003",
-        "http://192.168.1.102:9003",
+        "http://192.168.0.105:9003",
         "http://localhost:9004",
         "http://127.0.0.1:9004",
-        "http://192.168.1.102:9004"
+        "http://192.168.0.105:9004"
       ],
       "protocolWhiteList": [],
       "defaultMiddleware": "csrf,hsts,methodnoallow,noopen,nosniff,csp,xssProtection,xframe,dta",
@@ -192,6 +193,21 @@
       "fallbackToClient": true,
       "afterRender": "<Function afterRender>"
     },
+    "mysql": {
+      "default": {
+        "database": null,
+        "connectionLimit": 5
+      },
+      "app": true,
+      "agent": false,
+      "client": {
+        "host": "localhost",
+        "port": "3306",
+        "user": "root",
+        "password": "<String len: 0>",
+        "database": "lo_examsystem"
+      }
+    },
     "cors": {
       "origin": "<Function corsOrigin>",
       "allowMethods": "GET,HEAD,PUT,POST,DELETE,PATCH",
@@ -204,6 +220,7 @@
         {
           "entry": {
             "\\about\\about": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\about\\about.js",
+            "\\user\\user": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\user\\user.js",
             "vendor": [
               "vue"
             ]
@@ -324,6 +341,7 @@
         {
           "entry": {
             "\\about\\about": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\about\\about.js",
+            "\\user\\user": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\app\\web\\page\\user\\user.js",
             "vendor": [
               "vue"
             ]
@@ -376,6 +394,7 @@
             "agentkeepalive": "commonjs2 agentkeepalive",
             "ajv": "commonjs2 ajv",
             "ajv-keywords": "commonjs2 ajv-keywords",
+            "ali-rds": "commonjs2 ali-rds",
             "align-text": "commonjs2 align-text",
             "alphanum-sort": "commonjs2 alphanum-sort",
             "amdefine": "commonjs2 amdefine",
@@ -498,6 +517,7 @@
             "bcrypt-pbkdf": "commonjs2 bcrypt-pbkdf",
             "beeper": "commonjs2 beeper",
             "big.js": "commonjs2 big.js",
+            "bignumber.js": "commonjs2 bignumber.js",
             "bin-build": "commonjs2 bin-build",
             "bin-check": "commonjs2 bin-check",
             "bin-version": "commonjs2 bin-version",
@@ -577,6 +597,7 @@
             "co-read": "commonjs2 co-read",
             "co-thread": "commonjs2 co-thread",
             "co-wait": "commonjs2 co-wait",
+            "co-wrap-all": "commonjs2 co-wrap-all",
             "coa": "commonjs2 coa",
             "code-point-at": "commonjs2 code-point-at",
             "color": "commonjs2 color",
@@ -699,6 +720,7 @@
             "egg-logrotator": "commonjs2 egg-logrotator",
             "egg-logview": "commonjs2 egg-logview",
             "egg-multipart": "commonjs2 egg-multipart",
+            "egg-mysql": "commonjs2 egg-mysql",
             "egg-onerror": "commonjs2 egg-onerror",
             "egg-path-matching": "commonjs2 egg-path-matching",
             "egg-schedule": "commonjs2 egg-schedule",
@@ -1069,6 +1091,7 @@
             "multipipe": "commonjs2 multipipe",
             "mustache": "commonjs2 mustache",
             "mute-stream": "commonjs2 mute-stream",
+            "mysql": "commonjs2 mysql",
             "mz": "commonjs2 mz",
             "nan": "commonjs2 nan",
             "natural-compare": "commonjs2 natural-compare",
@@ -1306,6 +1329,7 @@
             "spdx-expression-parse": "commonjs2 spdx-expression-parse",
             "spdx-license-ids": "commonjs2 spdx-license-ids",
             "sprintf-js": "commonjs2 sprintf-js",
+            "sqlstring": "commonjs2 sqlstring",
             "squeak": "commonjs2 squeak",
             "sshpk": "commonjs2 sshpk",
             "stack-trace": "commonjs2 stack-trace",
@@ -2019,6 +2043,17 @@
       "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.js",
       "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-view-vue-ssr",
       "version": "1.0.0"
+    },
+    "mysql": {
+      "enable": true,
+      "package": "egg-mysql",
+      "name": "mysql",
+      "dependencies": [],
+      "optionalDependencies": [],
+      "env": [],
+      "from": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\config\\plugin.js",
+      "path": "C:\\Users\\81947\\Documents\\GitHub\\LO-ExamSystem\\node_modules\\egg-mysql",
+      "version": "3.0.0"
     },
     "cors": {
       "enable": true,
