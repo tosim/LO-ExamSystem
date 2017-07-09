@@ -12,11 +12,10 @@ const template = `<!DOCTYPE html>
   <meta http-equiv="content-type" content="text/html;charset=utf-8">
   <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="./layui/css/layui.css">
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-default/index.css">
 </head>
 <body :class="baseClass">
   <div id="app">${content}</div>
-  <script src="./layui/lay/dest/layui.all.js"></script>
 </body>
 </html>`;
 

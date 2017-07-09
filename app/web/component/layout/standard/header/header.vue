@@ -1,15 +1,13 @@
 <template>
+  <!-- `checked` 为 true 或 false -->
+  <el-checkbox v-model="checked">备选项</el-checkbox>
 </template>
-<style>
-</style>
-<script type="text/babel">
-  export default{
-    data(){
+<script>
+  export default {
+    data() {
       return {
-      }
-    },
-    computed:{
-
+        checked: true
+      };
     }
-  }
+  };
 </script>

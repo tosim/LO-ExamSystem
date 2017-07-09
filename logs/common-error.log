@@ -263,3 +263,398 @@ name: 'ECONNREFUSEDError'
 pid: 8552
 hostname: DESKTOP-VJM3NPM
 
+2017-07-09 12:52:38,146 ERROR 864 [-/127.0.0.1/-/1ms GET /] nodejs.ER_ACCESS_DENIED_ERRORError: ER_ACCESS_DENIED_ERROR: Access denied for user 'root'@'localhost' (using password: NO)
+    at Handshake.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Handshake.js:103:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:250:12)
+    at readableAddChunk (_stream_readable.js:237:11)
+    at Socket.Readable.push (_stream_readable.js:195:10)
+    at TCP.onread (net.js:586:20)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ER_ACCESS_DENIED_ERROR'
+errno: 1045
+sqlState: '28000'
+fatal: true
+name: 'ER_ACCESS_DENIED_ERRORError'
+pid: 864
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 12:52:38,097 ERROR 10984 [-/127.0.0.1/-/0ms GET /] nodejs.ER_ACCESS_DENIED_ERRORError: ER_ACCESS_DENIED_ERROR: Access denied for user 'root'@'localhost' (using password: NO)
+    at Handshake.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Handshake.js:103:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:250:12)
+    at readableAddChunk (_stream_readable.js:237:11)
+    at Socket.Readable.push (_stream_readable.js:195:10)
+    at TCP.onread (net.js:586:20)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ER_ACCESS_DENIED_ERROR'
+errno: 1045
+sqlState: '28000'
+fatal: true
+name: 'ER_ACCESS_DENIED_ERRORError'
+pid: 10984
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 12:52:38,128 ERROR 13932 [-/127.0.0.1/-/1ms GET /] nodejs.ER_ACCESS_DENIED_ERRORError: ER_ACCESS_DENIED_ERROR: Access denied for user 'root'@'localhost' (using password: NO)
+    at Handshake.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Handshake.js:103:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:250:12)
+    at readableAddChunk (_stream_readable.js:237:11)
+    at Socket.Readable.push (_stream_readable.js:195:10)
+    at TCP.onread (net.js:586:20)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ER_ACCESS_DENIED_ERROR'
+errno: 1045
+sqlState: '28000'
+fatal: true
+name: 'ER_ACCESS_DENIED_ERRORError'
+pid: 13932
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 12:52:38,133 ERROR 5192 [-/127.0.0.1/-/1ms GET /] nodejs.ER_ACCESS_DENIED_ERRORError: ER_ACCESS_DENIED_ERROR: Access denied for user 'root'@'localhost' (using password: NO)
+    at Handshake.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Handshake.js:103:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:250:12)
+    at readableAddChunk (_stream_readable.js:237:11)
+    at Socket.Readable.push (_stream_readable.js:195:10)
+    at TCP.onread (net.js:586:20)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ER_ACCESS_DENIED_ERROR'
+errno: 1045
+sqlState: '28000'
+fatal: true
+name: 'ER_ACCESS_DENIED_ERRORError'
+pid: 5192
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 12:58:25,484 ERROR 13932 nodejs.SyntaxError: Unexpected token m in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at Object.manifest.saveFile (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\webpack-manifest-normalize\lib\manifest.js:41:59)
+    at promise.then.content (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-webpack-vue\app.js:30:20)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+
+pid: 13932
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 12:58:25,484 ERROR 10984 nodejs.SyntaxError: Unexpected token m in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at Object.manifest.saveFile (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\webpack-manifest-normalize\lib\manifest.js:41:59)
+    at promise.then.content (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-webpack-vue\app.js:30:20)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+
+pid: 10984
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 12:58:25,486 ERROR 5192 nodejs.SyntaxError: Unexpected token m in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at Object.manifest.saveFile (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\webpack-manifest-normalize\lib\manifest.js:41:59)
+    at promise.then.content (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-webpack-vue\app.js:30:20)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+
+pid: 5192
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 12:58:25,817 ERROR 864 nodejs.SyntaxError: Unexpected token m in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at Object.manifest.saveFile (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\webpack-manifest-normalize\lib\manifest.js:41:59)
+    at promise.then.content (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-webpack-vue\app.js:30:20)
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+
+pid: 864
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 13:18:15,417 ERROR 10732 [-/127.0.0.1/-/1ms GET /] nodejs.ER_ACCESS_DENIED_ERRORError: ER_ACCESS_DENIED_ERROR: Access denied for user 'root'@'localhost' (using password: NO)
+    at Handshake.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Handshake.js:103:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:250:12)
+    at readableAddChunk (_stream_readable.js:237:11)
+    at Socket.Readable.push (_stream_readable.js:195:10)
+    at TCP.onread (net.js:586:20)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ER_ACCESS_DENIED_ERROR'
+errno: 1045
+sqlState: '28000'
+fatal: true
+name: 'ER_ACCESS_DENIED_ERRORError'
+pid: 10732
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 13:18:15,499 ERROR 12720 [-/127.0.0.1/-/0ms GET /] nodejs.ER_ACCESS_DENIED_ERRORError: ER_ACCESS_DENIED_ERROR: Access denied for user 'root'@'localhost' (using password: NO)
+    at Handshake.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Handshake.js:103:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:250:12)
+    at readableAddChunk (_stream_readable.js:237:11)
+    at Socket.Readable.push (_stream_readable.js:195:10)
+    at TCP.onread (net.js:586:20)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ER_ACCESS_DENIED_ERROR'
+errno: 1045
+sqlState: '28000'
+fatal: true
+name: 'ER_ACCESS_DENIED_ERRORError'
+pid: 12720
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 13:18:15,465 ERROR 7716 [-/127.0.0.1/-/0ms GET /] nodejs.ER_ACCESS_DENIED_ERRORError: ER_ACCESS_DENIED_ERROR: Access denied for user 'root'@'localhost' (using password: NO)
+    at Handshake.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Handshake.js:103:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:250:12)
+    at readableAddChunk (_stream_readable.js:237:11)
+    at Socket.Readable.push (_stream_readable.js:195:10)
+    at TCP.onread (net.js:586:20)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ER_ACCESS_DENIED_ERROR'
+errno: 1045
+sqlState: '28000'
+fatal: true
+name: 'ER_ACCESS_DENIED_ERRORError'
+pid: 7716
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 13:18:15,552 ERROR 8332 [-/127.0.0.1/-/0ms GET /] nodejs.ER_ACCESS_DENIED_ERRORError: ER_ACCESS_DENIED_ERROR: Access denied for user 'root'@'localhost' (using password: NO)
+    at Handshake.Sequence._packetToError (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Sequence.js:52:14)
+    at Handshake.ErrorPacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\sequences\Handshake.js:103:18)
+    at Protocol._parsePacket (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:280:23)
+    at Parser.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Parser.js:75:12)
+    at Protocol.write (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:39:16)
+    at Socket.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:103:28)
+    at emitOne (events.js:115:13)
+    at Socket.emit (events.js:210:7)
+    at addChunk (_stream_readable.js:250:12)
+    at readableAddChunk (_stream_readable.js:237:11)
+    at Socket.Readable.push (_stream_readable.js:195:10)
+    at TCP.onread (net.js:586:20)
+    --------------------
+    at Protocol._enqueue (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:141:48)
+    at Protocol.handshake (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\protocol\Protocol.js:52:41)
+    at PoolConnection.connect (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Connection.js:130:18)
+    at Pool.getConnection (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:48:16)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as getConnection] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at Pool.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\mysql\lib\Pool.js:202:8)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:29:7
+    at Promise (<anonymous>)
+    at Pool.<anonymous> (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:12:10)
+    at Pool.ret [as query] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\pify\index.js:56:34)
+    at RDSClient.proto._query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\client.js:34:20)
+    at RDSClient.proto.query (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\ali-rds\lib\operator.js:54:29)
+    at proto.query.next (<anonymous>)
+    sql: select now() as currentTime;
+code: 'ER_ACCESS_DENIED_ERROR'
+errno: 1045
+sqlState: '28000'
+fatal: true
+name: 'ER_ACCESS_DENIED_ERRORError'
+pid: 8332
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 13:18:25,966 ERROR 8332 [about/about.js] server render bundle error, try client render, the server render error TypeError: Cannot read property 'render' of undefined
+    at normalizeRender (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5403:19)
+    at render (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5675:5)
+    at Object.renderToString (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:5720:9)
+    at C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\vue-server-renderer\build.js:6027:22
+    at <anonymous>
+    at process._tickCallback (internal/process/next_tick.js:169:7)
+2017-07-09 13:55:56,686 ERROR 12876 nodejs.ClusterClientNoResponseError: client no response in 780779ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\cluster-client\lib\leader.js:72:23)
+    at ontimeout (timers.js:488:11)
+    at tryOnTimeout (timers.js:323:5)
+    at Timer.listOnTimeout (timers.js:283:5)
+name: 'ClusterClientNoResponseError'
+pid: 12876
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 13:55:56,915 ERROR 12876 nodejs.ClusterClientNoResponseError: client no response in 780712ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\cluster-client\lib\leader.js:72:23)
+    at ontimeout (timers.js:488:11)
+    at tryOnTimeout (timers.js:323:5)
+    at Timer.listOnTimeout (timers.js:283:5)
+name: 'ClusterClientNoResponseError'
+pid: 12876
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 13:55:56,916 ERROR 12876 nodejs.ClusterClientNoResponseError: client no response in 780729ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\cluster-client\lib\leader.js:72:23)
+    at ontimeout (timers.js:488:11)
+    at tryOnTimeout (timers.js:323:5)
+    at Timer.listOnTimeout (timers.js:283:5)
+name: 'ClusterClientNoResponseError'
+pid: 12876
+hostname: DESKTOP-VJM3NPM
+
+2017-07-09 13:55:56,919 ERROR 12876 nodejs.ClusterClientNoResponseError: client no response in 780717ms exceeding maxIdleTime 60000ms, maybe the connection is close on other side.
+    at Timeout.Leader._heartbeatTimer.setInterval [as _onTimeout] (C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\cluster-client\lib\leader.js:72:23)
+    at ontimeout (timers.js:488:11)
+    at tryOnTimeout (timers.js:323:5)
+    at Timer.listOnTimeout (timers.js:283:5)
+name: 'ClusterClientNoResponseError'
+pid: 12876
+hostname: DESKTOP-VJM3NPM
+

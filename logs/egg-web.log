@@ -825,3 +825,114 @@ hostname: DESKTOP-1KF8B8T
 2017-07-05 12:47:53,381 INFO 8552 [egg-security] use dta middleware
 2017-07-05 12:47:53,381 INFO 8552 [egg-security] compose 6 middlewares into one security middleware
 2017-07-05 12:47:54,591 INFO 8552 [egg-watcher:app] watcher start success
+2017-07-09 12:52:37,403 INFO 10984 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-09 12:52:37,521 INFO 10984 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\clean_log.js
+2017-07-09 12:52:37,521 INFO 10984 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2017-07-09 12:52:37,557 INFO 10984 [egg-mysql] connecting root@localhost:3306/lo_examsystem
+2017-07-09 12:52:37,907 INFO 10984 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\public
+2017-07-09 12:52:37,913 INFO 10984 [egg-security] use methodnoallow middleware
+2017-07-09 12:52:37,915 INFO 10984 [egg-security] use noopen middleware
+2017-07-09 12:52:37,918 INFO 10984 [egg-security] use nosniff middleware
+2017-07-09 12:52:37,920 INFO 10984 [egg-security] use xssProtection middleware
+2017-07-09 12:52:37,921 INFO 10984 [egg-security] use xframe middleware
+2017-07-09 12:52:37,923 INFO 10984 [egg-security] use dta middleware
+2017-07-09 12:52:37,923 INFO 10984 [egg-security] compose 6 middlewares into one security middleware
+2017-07-09 12:52:38,343 INFO 10984 [egg-watcher:app] watcher start success
+2017-07-09 12:52:37,403 INFO 864 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-09 12:52:37,541 INFO 864 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\clean_log.js
+2017-07-09 12:52:37,541 INFO 864 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2017-07-09 12:52:37,613 INFO 864 [egg-mysql] connecting root@localhost:3306/lo_examsystem
+2017-07-09 12:52:37,931 INFO 864 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\public
+2017-07-09 12:52:37,938 INFO 864 [egg-security] use methodnoallow middleware
+2017-07-09 12:52:37,940 INFO 864 [egg-security] use noopen middleware
+2017-07-09 12:52:37,941 INFO 864 [egg-security] use nosniff middleware
+2017-07-09 12:52:37,942 INFO 864 [egg-security] use xssProtection middleware
+2017-07-09 12:52:37,944 INFO 864 [egg-security] use xframe middleware
+2017-07-09 12:52:37,948 INFO 864 [egg-security] use dta middleware
+2017-07-09 12:52:37,948 INFO 864 [egg-security] compose 6 middlewares into one security middleware
+2017-07-09 12:52:38,346 INFO 864 [egg-watcher:app] watcher start success
+2017-07-09 12:52:37,411 INFO 13932 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-09 12:52:37,532 INFO 13932 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\clean_log.js
+2017-07-09 12:52:37,532 INFO 13932 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2017-07-09 12:52:37,581 INFO 13932 [egg-mysql] connecting root@localhost:3306/lo_examsystem
+2017-07-09 12:52:37,909 INFO 13932 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\public
+2017-07-09 12:52:37,919 INFO 13932 [egg-security] use methodnoallow middleware
+2017-07-09 12:52:37,920 INFO 13932 [egg-security] use noopen middleware
+2017-07-09 12:52:37,921 INFO 13932 [egg-security] use nosniff middleware
+2017-07-09 12:52:37,923 INFO 13932 [egg-security] use xssProtection middleware
+2017-07-09 12:52:37,924 INFO 13932 [egg-security] use xframe middleware
+2017-07-09 12:52:37,925 INFO 13932 [egg-security] use dta middleware
+2017-07-09 12:52:37,925 INFO 13932 [egg-security] compose 6 middlewares into one security middleware
+2017-07-09 12:52:38,346 INFO 13932 [egg-watcher:app] watcher start success
+2017-07-09 12:52:37,415 INFO 5192 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-09 12:52:37,517 INFO 5192 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\clean_log.js
+2017-07-09 12:52:37,517 INFO 5192 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2017-07-09 12:52:37,557 INFO 5192 [egg-mysql] connecting root@localhost:3306/lo_examsystem
+2017-07-09 12:52:37,906 INFO 5192 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\public
+2017-07-09 12:52:37,912 INFO 5192 [egg-security] use methodnoallow middleware
+2017-07-09 12:52:37,914 INFO 5192 [egg-security] use noopen middleware
+2017-07-09 12:52:37,928 INFO 5192 [egg-security] use nosniff middleware
+2017-07-09 12:52:37,930 INFO 5192 [egg-security] use xssProtection middleware
+2017-07-09 12:52:37,931 INFO 5192 [egg-security] use xframe middleware
+2017-07-09 12:52:37,933 INFO 5192 [egg-security] use dta middleware
+2017-07-09 12:52:37,934 INFO 5192 [egg-security] compose 6 middlewares into one security middleware
+2017-07-09 12:52:38,347 INFO 5192 [egg-watcher:app] watcher start success
+2017-07-09 13:18:14,569 INFO 12720 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-09 13:18:14,677 INFO 12720 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\clean_log.js
+2017-07-09 13:18:14,677 INFO 12720 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2017-07-09 13:18:14,737 INFO 12720 [egg-mysql] connecting root@localhost:3306/lo_examsystem
+2017-07-09 13:18:15,248 INFO 12720 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\public
+2017-07-09 13:18:15,260 INFO 12720 [egg-security] use methodnoallow middleware
+2017-07-09 13:18:15,264 INFO 12720 [egg-security] use noopen middleware
+2017-07-09 13:18:15,266 INFO 12720 [egg-security] use nosniff middleware
+2017-07-09 13:18:15,267 INFO 12720 [egg-security] use xssProtection middleware
+2017-07-09 13:18:15,272 INFO 12720 [egg-security] use xframe middleware
+2017-07-09 13:18:15,274 INFO 12720 [egg-security] use dta middleware
+2017-07-09 13:18:15,274 INFO 12720 [egg-security] compose 6 middlewares into one security middleware
+2017-07-09 13:18:14,569 INFO 10732 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-09 13:18:14,677 INFO 10732 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\clean_log.js
+2017-07-09 13:18:14,677 INFO 10732 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2017-07-09 13:18:14,715 INFO 10732 [egg-mysql] connecting root@localhost:3306/lo_examsystem
+2017-07-09 13:18:15,245 INFO 10732 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\public
+2017-07-09 13:18:15,251 INFO 10732 [egg-security] use methodnoallow middleware
+2017-07-09 13:18:15,253 INFO 10732 [egg-security] use noopen middleware
+2017-07-09 13:18:15,254 INFO 10732 [egg-security] use nosniff middleware
+2017-07-09 13:18:15,256 INFO 10732 [egg-security] use xssProtection middleware
+2017-07-09 13:18:15,258 INFO 10732 [egg-security] use xframe middleware
+2017-07-09 13:18:15,259 INFO 10732 [egg-security] use dta middleware
+2017-07-09 13:18:15,259 INFO 10732 [egg-security] compose 6 middlewares into one security middleware
+2017-07-09 13:18:14,580 INFO 7716 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-09 13:18:14,677 INFO 7716 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\clean_log.js
+2017-07-09 13:18:14,677 INFO 7716 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2017-07-09 13:18:14,755 INFO 7716 [egg-mysql] connecting root@localhost:3306/lo_examsystem
+2017-07-09 13:18:15,245 INFO 7716 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\public
+2017-07-09 13:18:15,251 INFO 7716 [egg-security] use methodnoallow middleware
+2017-07-09 13:18:15,253 INFO 7716 [egg-security] use noopen middleware
+2017-07-09 13:18:15,254 INFO 7716 [egg-security] use nosniff middleware
+2017-07-09 13:18:15,256 INFO 7716 [egg-security] use xssProtection middleware
+2017-07-09 13:18:15,258 INFO 7716 [egg-security] use xframe middleware
+2017-07-09 13:18:15,259 INFO 7716 [egg-security] use dta middleware
+2017-07-09 13:18:15,259 INFO 7716 [egg-security] compose 6 middlewares into one security middleware
+2017-07-09 13:18:14,804 INFO 8332 [egg:logger] init all loggers with options: {"dir":"C:\\Users\\Administrator\\Documents\\GitHub\\LO-ExamSystem\\logs","encoding":"utf8","env":"local","level":"INFO","consoleLevel":"DEBUG","disableConsoleAfterReady":false,"outputJSON":false,"buffer":true,"appLogName":"egg-vue-webpack-boilerplate-web.log","coreLogName":"egg-web.log","agentLogName":"egg-agent.log","errorLogName":"common-error.log","coreLogger":{"consoleLevel":"WARN"},"type":"application"}
+2017-07-09 13:18:14,915 INFO 8332 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\clean_log.js
+2017-07-09 13:18:14,915 INFO 8332 [egg-schedule]: register schedule egg-schedule:C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\node_modules\egg-logrotator\app\schedule\rotate_by_file.js
+2017-07-09 13:18:14,970 INFO 8332 [egg-mysql] connecting root@localhost:3306/lo_examsystem
+2017-07-09 13:18:15,367 INFO 8332 [egg-static] starting static serve /public/ -> C:\Users\Administrator\Documents\GitHub\LO-ExamSystem\public
+2017-07-09 13:18:15,377 INFO 8332 [egg-security] use methodnoallow middleware
+2017-07-09 13:18:15,379 INFO 8332 [egg-security] use noopen middleware
+2017-07-09 13:18:15,387 INFO 8332 [egg-security] use nosniff middleware
+2017-07-09 13:18:15,393 INFO 8332 [egg-security] use xssProtection middleware
+2017-07-09 13:18:15,396 INFO 8332 [egg-security] use xframe middleware
+2017-07-09 13:18:15,398 INFO 8332 [egg-security] use dta middleware
+2017-07-09 13:18:15,398 INFO 8332 [egg-security] compose 6 middlewares into one security middleware
+2017-07-09 13:18:15,842 INFO 12720 [egg-watcher:app] watcher start success
+2017-07-09 13:18:15,772 INFO 10732 [egg-watcher:app] watcher start success
+2017-07-09 13:18:15,841 INFO 7716 [egg-watcher:app] watcher start success
+2017-07-09 13:18:15,844 INFO 8332 [egg-watcher:app] watcher start success
+2017-07-09 13:55:56,682 WARN 7716 [ClusterClient:Watcher] follower closed, and try to init it again
+2017-07-09 13:55:56,682 WARN 10732 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2017-07-09 13:55:56,838 WARN 10732 [ClusterClient:Watcher] follower closed, and try to init it again
+2017-07-09 13:55:56,682 WARN 12720 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2017-07-09 13:55:56,933 WARN 12720 [ClusterClient:Watcher] follower closed, and try to init it again
+2017-07-09 13:55:56,684 WARN 8332 [TCPBase] socket is closed by other side while there were still unhandled data in the socket buffer
+2017-07-09 13:55:56,917 WARN 8332 [ClusterClient:Watcher] follower closed, and try to init it again

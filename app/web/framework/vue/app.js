@@ -1,8 +1,9 @@
 import Vue from 'vue';
+import Element from 'element-ui';
 import './filter';
 import './directive';
 import './component';
-
+Vue.use(Element);
 const App = {};
 
 App.data = () => {
