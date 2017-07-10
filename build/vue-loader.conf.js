@@ -1,5 +1,5 @@
 var utils = require('./utils')
-var config = require('../config/webpack')
+var config = require('../config/config.webpack')
 var isProduction = process.env.NODE_ENV === 'production'
 
 module.exports = {
