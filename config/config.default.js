@@ -1,19 +1,33 @@
-'use strict';
-
 const path = require('path');
-
-module.exports = appInfo => {
+const fs = require('fs');
+module.exports = app => {
   const exports = {};
-
-  // should change to your own
-  exports.keys = appInfo.name + '_1499517575542_5800';
-
-  // add your config here
+  exports.keys = app.name + '_1499517575542_5800';
+  exports.siteFile = {
+    '/favicon.ico': fs.readFileSync(path.join(app.baseDir, 'app/web/asset/favicon.ico'))
+  };
+  exports.view = {
+    cache: false
+  };
+  exports.logger = {
+    consoleLevel: 'DEBUG',
+    dir: path.join(app.baseDir, 'logs')
+  };
   exports.static = {
-    prefix: '/public/',
-    dir: path.join(appInfo.baseDir, 'public')
+    prefix: '/public/',//   '/public/'
+    dir: path.join(app.baseDir, 'public')
   };
 
+  //add my config
+  exports.middleware = [
+    'access','saveSession'
+  ];
+
+  exports.security = {
+    csrf: false,
+    ctoken: false
+  }
+  
   exports.mysql = {
     // database configuration
     client: {
