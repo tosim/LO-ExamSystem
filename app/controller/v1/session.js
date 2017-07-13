@@ -21,6 +21,7 @@ module.exports = app => {
         }else{
             const result = yield app.mysql.get('user',{u_email:req.u_email});
             console.dir(result);
+            ctx.session.user = result;
             delete result.u_pass;//不将密码传回客户端
             ctx.body={
                 success:1,

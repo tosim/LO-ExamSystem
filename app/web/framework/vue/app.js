@@ -4,6 +4,8 @@ import './directive';
 import './component';
 
 Vue.prototype.domain = 'http://127.0.0.1:7001';
+import ElementUI from 'element-ui';
+Vue.use(ElementUI);
 
 const App = {};
 

@@ -23,11 +23,12 @@ module.exports = app => {
     'access','saveSession'
   ];
 
+
   exports.security = {
     csrf: false,
     ctoken: false
   }
-  
+
   exports.mysql = {
     // database configuration
     client: {

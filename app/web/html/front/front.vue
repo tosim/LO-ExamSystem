@@ -1,5 +1,6 @@
 <template>
-  <HtmlLayout description="vue server side render" keywords="egg, vue, webpack, server side render">
+  <!--<HtmlLayout description="vue server side render" keywords="egg, vue, webpack, server side render">-->
+    <div>
     <!--<div v-for="item in list">-->
       <!--{{item.title}}-->
     <!--</div>-->
@@ -50,7 +51,8 @@
         :total="total">
       </el-pagination>
     </div>
-  </HtmlLayout>
+  </div>
+  <!--</HtmlLayout>-->
 </template>
 <style>
   @import "front.css";

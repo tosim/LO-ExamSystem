@@ -96,28 +96,16 @@ npm run build-prod
     │   ├── proxy
     │   ├── router.js
     │   ├── view
-    │   │   ├── about                         // 服务器编译的jsbundle文件
-    │   │   │   └── about.js
-    │   │   ├── home
-    │   │   │     └── home.js                 // 服务器编译的jsbundle文件
-    │   │   └── layout                        // 用于根据指定的layout生成对应的html页面, 用于服务器渲染失败时,采用客户端渲染
-    │   │       └── layout.html
     │   └── web                               // 前端工程目录
     │       ├── asset                         // 存放公共js,css资源
-    │       ├── framework                     // 前端公共库和第三方库
-    │       │   ├── fastclick
-    │       │   │   └── fastclick.js
-    │       │   ├── sdk
-    │       │   │   ├── sdk.js
-    │       │   ├── storage
-    │       │   │   └── storage.js
+    │       ├── framework                     // 前端公用部分，header,footer
+    │       │   ├── inject        
     │       │   └── vue                           // 与vue相关的公开代码
     │       │       ├── app.js                    // 前后端调用入口, 默认引入componet/directive/filter
-    │       │       ├── component.js              // 组件入口, 可以增加component目录,类似下面的directive
+    │       │       ├── component                 // 组件入口, 可以增加component目录,类似下面的directive
     │       │       ├── directive                 // directive 目录,存放各种directive组件
-    │       │       ├── directive.js              // directive引用入口
-    │       │       └── filter.js                 // filter引用入口
-    │       ├── page                              // 前端页面和webpack构建目录, 也就是webpack打包配置entryDir
+    │       │       └── filter                    // filter
+    │       ├── html                              // 前端页面和webpack构建目录, 也就是webpack打包配置entryDir
     │       │   ├── home                          // 每个页面遵循目录名, js文件名, scss文件名, vue文件名相同
     │       │   │   ├── home.js                   // 服务器render渲染时, 传入 render('home/home.js', data)
     │       │   │   ├── home.scss
@@ -151,14 +139,10 @@ npm run build-prod
     ├── build                                   //  webpack 自定义配置入口, 会与默认配置进行合并(看似这么多,其实这里只是占个位说明一下)
     │   ├── base
     │   │   └── index.js                        // 公共配置        
-    │   ├──  client                             // 客户端webpack编译配置
+    │   ├── html                                // 客户端webpack编译配置
     │   │   ├── dev.js
     │   │   ├── prod.js
     │   │   └── index.js
-    │   ├──  server                             // 服务端webpack编译配置
-    │   │    ├── dev.js
-    │   │    ├── prod.js
-    │   │    └── index.js
     │   └── index.js
     ├── config
     │   ├── config.default.js
@@ -169,8 +153,7 @@ npm run build-prod
     ├── doc
     ├── index.js
     ├── public                                 // webpack编译目录结构, render文件查找目录
-    │   ├── manifest.json                      // 资源依赖表
-    │   ├── static
+    │   ├── html
     │   │   ├── css
     │   │   │   ├── home
     │   │   │   │   ├── home.07012d33.css

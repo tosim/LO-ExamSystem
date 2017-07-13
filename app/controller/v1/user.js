@@ -28,6 +28,9 @@ module.exports = app => {
           p_id:parseInt(req.p_id)
         });
         req.u_id = result.insertId;
+        delete req.re_pass;
+        ctx.session.user = req;
+        delete req.u_pass;
         ctx.body = {
           success:1,
           data:req,

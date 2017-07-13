@@ -1,6 +1,6 @@
 import App from 'app';
-import Login from './login/login.vue';
+import Test from './test/addProfession.vue';
 
 export default App.client({
-  ...Login
+  ...Test
 });

@@ -1,6 +1,7 @@
 <template>
-<HtmlLayout title="testTitle" description="vue server side render" keywords="egg, vue, webpack, server side render">
+<!--<HtmlLayout title="testTitle" description="vue server side render" keywords="egg, vue, webpack, server side render">-->
   <div id="all">
+    <!--<h1>asdasd</h1>-->
     <div class="content">
       <el-row class="title" type="flex" justify="center">
         <el-col :span="12">
@@ -9,11 +10,11 @@
       </el-row>
       <div class="bottom">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" :label-position='labelPosition'>
-          <el-form-item label="电子邮箱" prop='email'>
-            <el-input v-model="ruleForm.email" placeholder="请输入电子邮箱"></el-input>
+          <el-form-item label="电子邮箱" prop='u_email'>
+            <el-input v-model="ruleForm.u_email" placeholder="请输入电子邮箱"></el-input>
           </el-form-item>
-          <el-form-item label="密码" prop='password'>
-            <el-input v-model="ruleForm.password" placeholder="请输入密码"></el-input>
+          <el-form-item label="密码" prop='u_pass'>
+            <el-input v-model="ruleForm.u_pass" placeholder="请输入密码"></el-input>
           </el-form-item>
           <el-form-item label="验证码" prop='yzm'>
             <el-input v-model="ruleForm.yzm" placeholder="请输入验证码" style="width:60%"></el-input>
@@ -26,7 +27,7 @@
       </div>
     </div>
   </div>
-</HtmlLayout>
+<!--</HtmlLayout>-->
 </template>
 
 <script>
@@ -35,8 +36,8 @@ export default {
     return {
       labelPosition: 'left',
       ruleForm: {
-        email: '',
-        password: '',
+        u_email: '',
+        u_password: '',
         yzm: ''
       },
       rules: {
@@ -55,6 +56,15 @@ export default {
   },
   methods: {
     submitForm() {
+      console.dir(this.ruleForm);
+      this.$http.post(this.domain + '/v1/sessions',this.ruleForm).then((res)=>{
+        res = res.data;
+        if(res.success === 1){
+          window.location.href = '/public/afterlogin.html';
+        }else{
+          console.log('登录失败');
+        }
+      });
 
     }
   }
@@ -103,3 +113,6 @@ export default {
   min-width: 500px;
 }
 </style>
+
+
+
