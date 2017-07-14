@@ -5,15 +5,14 @@ module.exports = app => {
   app.get('/v1/questions',app.controller.v1.question.index);//考试抽题，random，taged，返回试题列表
   app.post('/v1/questions',app.controller.v1.question.create);//录入题目
 
-  app.get('/', 'home.index');
+  app.get('/', app.controller.home.index);
   app.get('/v1/test',app.controller.v1.test.index);
   app.get('/test/count',app.controller.test.count);
   app.post('/v1/test',app.controller.v1.test.index);
-  app.get('/pager',app.controller.home.home.pager);
   app.get('/test/select',app.controller.test.select);
   app.get('/test/asyncFunc',app.controller.test.asyncFunc);
-
-
+  app.get('/test/randomSelect',app.controller.test.randomSelect);
+  app.get('/test/randomTest',app.controller.v1.question.index);
 
 
 
