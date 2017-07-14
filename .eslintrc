@@ -8,6 +8,7 @@
   "rules": {
     "array-bracket-spacing": "off",
     "eol-last": "off",
+    "linebreak-style":"off",
     "comma-dangle": [
       "error",
       "never"
