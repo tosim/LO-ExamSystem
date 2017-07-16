@@ -11,6 +11,10 @@ module.exports = app => {
            const result = yield this.app.mysql.query('select * from tag limit ?,8',currnum);
            return result;
         }
+        * getalltag(){
+            const result = yield this.app.mysql.query('select * from tag');
+            return result;
+        }
         * gettagnum(){
             const result = yield this.app.mysql.query('select count(*) as tnum from tag');
             return result;

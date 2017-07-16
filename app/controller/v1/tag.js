@@ -50,7 +50,26 @@ module.exports = app => {
                 };
             }
 
-        }     
+        }  
+    * getalltag(){
+        const { ctx, service } = this;
+        const TagList = yield service.v1.tag.getalltag();
+         if (TagList.length == 0) {
+                ctx.response.body = {
+                    success: 0,
+                    data: '',
+                    msg: '列出标签失败',
+                };
+            } else {
+                ctx.response.body = {
+                    success: 1,
+                    data: {
+                        taglist: TagList,
+                    },
+                    msg: '列出标签成功',
+                };
+            }
+    }   
     }
     return TagController;
 }

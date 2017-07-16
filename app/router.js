@@ -33,6 +33,7 @@ module.exports = app => {
   app.get('/getprofessionlist',app.controller.v1.profession.index);
   app.post('/addtag',app.controller.v1.tag.create);
   app.get('/gettaglist',app.controller.v1.tag.index);
+  app.get('/getalltag',app.controller.v1.tag.getalltag);
 };
 
 
