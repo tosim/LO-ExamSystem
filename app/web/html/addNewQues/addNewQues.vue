@@ -54,36 +54,32 @@
         </div>
       </div>
       <el-row>
-        <template>
-          <el-table ref="multipleTable" :data="tableData2" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
-            <el-table-column type="selection" width="55">
-            </el-table-column>
-            <el-table-column label="试题内容" width="320" show-overflow-tooltip>
-              <template scope="scope">{{ scope.row.content }}</template>
-            </el-table-column>
-            <el-table-column prop="type" label="题型" width="120">
-            </el-table-column>
-            <el-table-column prop="tag" label="标签" show-overflow-tooltip>
-            </el-table-column>
-            <el-table-column prop="diff" label="难度" show-overflow-tooltip>
-            </el-table-column>
-            <el-table-column prop="ans" label="标准答案" show-overflow-tooltip>
-            </el-table-column>
-            <el-table-column prop="frac" label="分数" show-overflow-tooltip>
-            </el-table-column>
-            <el-table-column label="操作" width="120">
-              <template scope="scope">
-                <span class="dele" @click="delswit2(scope.row)">删除</span>
-              </template>
-            </el-table-column>
-          </el-table>
-          <div style="margin-top: 20px">
-            <el-button @click="toggleSelection([tableData2[0], tableData2[1]])">切换第1、第2行的选中状态</el-button>
-            <el-button @click="toggleSelection()">取消选择</el-button>
-          </div>
-        </template>
+        <el-table ref="multipleTable" :data="tableData2" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
+          <el-table-column type="selection" width="55">
+          </el-table-column>
+          <el-table-column label="试题内容" width="320" show-overflow-tooltip>
+            <template scope="scope">{{ scope.row.content }}</template>
+          </el-table-column>
+          <el-table-column prop="type" label="题型" width="120">
+          </el-table-column>
+          <el-table-column prop="tag" label="标签" show-overflow-tooltip>
+          </el-table-column>
+          <el-table-column prop="diff" label="难度" show-overflow-tooltip>
+          </el-table-column>
+          <el-table-column prop="ans" label="标准答案" show-overflow-tooltip>
+          </el-table-column>
+          <el-table-column prop="frac" label="分数" show-overflow-tooltip>
+          </el-table-column>
+          <el-table-column label="操作" width="120">
+            <template scope="scope">
+              <span class="dele" @click="delswit2(scope.row)">删除</span>
+            </template>
+          </el-table-column>
+        </el-table>
       </el-row>
-      <el-row></el-row>
+      <el-row>
+        <div id="page1" style="margin-top:12px;text-align:center;"></div>
+      </el-row>
     </div>
   
     <!-- <el-button @click="dialogVisible = true">点击打开 Dialog</el-button> -->
@@ -97,10 +93,30 @@ export default {
   components: {
     "dial": dial
   },
+  mounted:function () {
+    this.drawPag();
+  },
   methods: {
     handleSelectionChange(val) {
       this.multipleSelection = val;
     },
+    drawPag(){
+      let  _this = this;
+      layui.laypage({
+      cont: 'page1', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+      pages: 2, //通过后台拿到的总页数
+      curr: _this.currpage, //当前页
+      skin: 'yahei', //加载内置皮肤，也可以直接赋值16进制颜色值，如:#c00
+      jump: function (obj, first) { //触发分页后的回调
+        if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+          _this.currpage = obj.curr;
+          console.log(_this.currpage);
+          _this.drawPag();
+        }
+      }
+    });
+    },
+
 
 
     delswit2(item) {
@@ -126,6 +142,7 @@ export default {
   },
   data() {
     return {
+      currpage:1,
       radio: 1,
       dialogVisible: false,
       multipleSelection: [],
