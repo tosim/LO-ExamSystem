@@ -26,6 +26,13 @@ module.exports = app => {
   app.get('/getquestionbyid',app.controller.v1.question.getquestionbyid);
   app.get('/updatequestion',app.controller.v1.question.updatequestion);
   app.get('/deletequestion',app.controller.v1.question.deletequestion);
+
+
+
+  app.post('/addprofession',app.controller.v1.profession.create);
+  app.get('/getprofessionlist',app.controller.v1.profession.index);
+  app.post('/addtag',app.controller.v1.tag.create);
+  app.get('/gettaglist',app.controller.v1.tag.index);
 };
 
 

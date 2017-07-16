@@ -35,11 +35,11 @@ module.exports = app => {
       // host
       host: '127.0.0.1',
       // port
-      port: '3306',
+      port: '3307',
       // username
       user: 'root',
       // password
-      password: '056210',
+      password: '',
       // database
       database: 'lo_examsystem',    
     },

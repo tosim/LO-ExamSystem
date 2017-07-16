@@ -2,12 +2,11 @@
 'use strict';
 
 module.exports = app => {
-    class UserService extends app.Service {
+    class QuestionService extends app.Service {
         * create(params) {
-            const result = yield this.app.mysql.insert('question', { q_type: params.q_type, q_answer: params.q_answer, q_analysis: params.q_analysis, q_right: params.q_right, q_wrong: params.q_wrong });
-            const insertSuccess = result.affectedRow === 1;
-            // console.log(insertSuccess);
-            return insertSuccess;
+            const result = yield this.app.mysql.insert('question', { q_type: params.q_type,q_content:params.q_content,q_answer: params.q_answer, q_analysis: params.q_analysis,q_difficulty:params.q_difficulty,e_id:params.e_id});
+            const insertSuccess = result.affectedRows === 1;
+                return result.insertId;
         }
         * getquestionnum() {
             const result = yield this.app.mysql.query('select count(*) as qnum from question');
@@ -55,14 +54,21 @@ module.exports = app => {
            q_right:params.q_right,
            q_wrong:params.q_wrong,
         };
-         const updateSuccess = yield app.mysql.update('question',row,{where:{q_id:q_id}});
+         const updateSuccess = yield this.app.mysql.update('question',row,{where:{q_id:q_id}});
          console.log(updateSuccess);
          return updateSuccess;
         }
         * deletequestion(q_id){
-         const deleteSuccess = yield app.mysql.delete('question',{q_id:q_id});
+         const deleteSuccess = yield this.app.mysql.delete('question',{q_id:q_id});
          return deleteSuccess;
         }
+        * insertquetag(q_id,tag_id){
+            const result = yield this.app.mysql.insert('que_tag',{q_id:q_id,tag_id:tag_id});
+            console.log(result);
+            const insertSuccess =  result.affectedRows === 1;
+            return insertSuccess;
+        }
+
     }
-    return UserService;
+    return QuestionService;
 }

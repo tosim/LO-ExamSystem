@@ -1,72 +1,90 @@
 'use strict';
 
 module.exports = app => {
-  class QuestionController extends app.Controller {
-    //1.随机考试，2.专项训练;返回试题列表？type='random' or 'taged'
-    * index(){
-        const {ctx} = this;
-        ctx.validate({
-            type:['random','taged'],
-            time:['30','60','90'],
-            difficulty:['1','2','3']
-        },ctx.request.query);
-        if(ctx.session.user == null){
-            ctx.body = {
-                success:0,
-                data: null,
-                msg:'not login'
+    class QuestionController extends app.Controller {
+        //1.随机考试，2.专项训练;返回试题列表？type='random' or 'taged'
+        * index() {
+            const { ctx } = this;
+            ctx.validate({
+                type: ['random', 'taged'],
+                time: ['30', '60', '90'],
+                difficulty: ['1', '2', '3']
+            }, ctx.request.query);
+            if (ctx.session.user == null) {
+                ctx.body = {
+                    success: 0,
+                    data: null,
+                    msg: 'not login'
+                };
+                return;
+            }
+
+            const req = ctx.request.query;
+            req.time = parseInt(req.time);
+            req.p_id = ctx.session.user.p_id;
+
+            var data = {
+                success: 1,
+                msg: ''
             };
-            return;
-        }
-        
-        const req = ctx.request.query;
-        req.time = parseInt(req.time);
-        req.p_id = ctx.session.user.p_id;
+            if (type === 'random') {
 
-        var data = {
-            success:1,
-            msg:''
-        };
-        if(type === 'random'){
+            } else if (type === 'taged') {
+                data.data = yield app.mysql.select('question', {
+                    // where
+                });
+            }
 
-        }else if(type === 'taged'){
-            data.data = yield app.mysql.select('question',{
-                // where
-            });
+
+            ctx.body = {
+                success: 1,
+                data: req,
+                msg: ''
+            }
         }
 
-
-        ctx.body = {
-            success:1,
-            data:req,
-            msg:''
-        }
-    }
-
-    * create() {
+        * create() {
             const { ctx, service } = this;
             const createRule = {
-                q_type: { type: 'id' },
-                q_content: { type: 'string' },
-                q_answer: { type: 'string' },
-                q_analysis: { type: 'string' },
+                question:'object',
+                tag:'object',
             };
             ctx.validate(createRule);
             console.log(ctx.request.body);
-            const insertSuccess = yield service.v1.question.create(ctx.request.body);
-            if (insertSuccess) {
-                ctx.response.body = {
-                    success: 1,
-                    data: '',
-                    msg: '添加成功',
+            const tag = ctx.request.body.tag;
+            const question = ctx.request.body.question;
+            // console.log(question.q_content);
+            const insertId = yield service.v1.question.create(question);
+            console.log(typeof insertId);
+            if (typeof insertId === 'number') {
+
+                for(let value of tag){
+                    console.log(value.tag_id);
+                    var insertSuccess = yield service.v1.question.insertquetag(insertId,value.tag_id);
+                    console.log(insertSuccess);
+                }
+
+                if (insertSuccess) {
+                    ctx.response.body = {
+                        success: 1,
+                        data: '',
+                        msg: '添加成功',
+                    }
+                } else {
+                    ctx.response.body = {
+                        success: 0,
+                        data: '',
+                        msg: '添加失败',
+                    }
                 }
             } else {
                 ctx.response.body = {
                     success: 0,
                     data: '',
-                    msg: '添加失败',
+                    msg: '添加题目失败',
                 }
             }
+
         }
         * list() {
             const { ctx, service } = this;
