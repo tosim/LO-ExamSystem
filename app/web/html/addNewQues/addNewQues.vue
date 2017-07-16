@@ -1,124 +1,111 @@
 <template>
   <div id="all">
     <el-dialog title="添加试题" :visible.sync="dialogVisible" size="small" :before-close="handleClose">
-      <div id="dial">
-        <div id="cont">
-          <el-row :span="24" class="row-1">
-            <el-col :span="12">
-              <el-col class="inputer-1" :span="12">试题类型</el-col>
-              <el-col :span="12">
-                <el-select v-model="value" placeholder="请选择" class="inputer-2">
-                  <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                  </el-option>
-                </el-select>
-              </el-col>
-            </el-col>
-            <el-col :span="12">
-              <el-col class="inputer-1" :span="12">所属目录</el-col>
-              <el-col :span="12">
-                <el-input v-model="Catalog" placeholder="请选择试题分类" class="inputer-2"></el-input>
-              </el-col>
-            </el-col>
-          </el-row>
-          <el-row :span="24" class="row-1">
-            <el-col :span="12">
-              <el-col :span="12" class="inputer-1">试题分数</el-col>
-              <el-col :span="12">
-                <el-input v-model="fraction" placeholder="请输入分数" class="inputer-2"></el-input>
-              </el-col>
-            </el-col>
-            <el-col :span="12">
-              <el-col :span="12" class="inputer-1">难度</el-col>
-              <el-col :span="12">
-                <el-select v-model="tes" placeholder="请选择难度" class="inputer-2">
-                  <el-option v-for="i in difficulty" :key="i.value" :label="i.label" :value="i.value">
-                  </el-option>
-                </el-select>
-              </el-col>
-            </el-col>
-          </el-row>
-          <el-row :span="24" class="row-2">
-            <el-col :span="2" class="inputer-3">试题内容</el-col>
-            <el-col :span="21" style="width: 654px;">
-              <el-input type="textarea" :rows="5" class="textarea-1" id="textarea_1"></el-input>
-            </el-col>
-          </el-row>
-          <el-row :span="24">
-            <el-col :span="24">
-              <table class="layui-table">
-                <colgroup>
-                  <col width="60">
-                  <col>
-                  <col width="100">
-                  <col width="60">
-                  <col>
-                </colgroup>
-                <thead>
-                  <tr>
-                    <th>选项</th>
-                    <th>描述</th>
-                    <th>正确答案</th>
-                    <th>操作</th>
-                  </tr>
-                </thead>
-                <tr v-for="item in tableData" :key="item.swit_1">
-                  <td>{{item.swit_1}}</td>
-                  <td>
-                    <el-input type="textarea" :rows="4" v-model="item.content" class="textarea-1"></el-input>
-                  </td>
-                  <td>
-                    <input type="radio" name="trueAns" :value="item.radi_lab" title="" :checked="item.swit_2">
-                  </td>
-                  <td>
-                    <span class="dele" @click="delswit(item)">删除</span>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="4">
-                    <button class="layui-btn" @click="getRad">添加选项</button>
-                  </td>
-                </tr>
-              </table>
-            </el-col>
-          </el-row>
-          <div class="row-2">
-            <el-col :span="2" class="inputer-4">试题分析</el-col>
-            <el-col :span="21" style="width: 654px;">
-              <el-input type="textarea" :rows="4" class="textarea-1"></el-input>
-            </el-col>
-          </div>
-        </div>
-      </div>
+      <dial></dial>
       <div slot="footer" class="dialog-footer " style="text-align: center;">
         <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存</button>
         <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存并关闭</button>
         <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存并新增</button>
-        <button class="layui-btn layui-btn-primary" @click="dialogVisible = false">取 消</button>
+        <button class="layui-btn layui-btn-primary" @click="dialogVisible = false">取消</button>
       </div>
-  
     </el-dialog>
     <!-- 下面开始主界面绘制。。。 -->
-
-
-    <el-button @click="dialogVisible = true">点击打开 Dialog</el-button>
+  
+    <div class="div-1">
+      <el-row :span="24">
+        <el-col :span="8">
+          <div class="layui-form-item">
+            <label class="layui-form-label">关键字检索</label>
+            <div class="layui-input-block">
+              <input type="text" class="layui-input" />
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="8">
+          <div class="layui-form-item">
+            <label class="layui-form-label">标签检索</label>
+            <div class="layui-input-block">
+              <input type="text" class="layui-input" />
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="8">
+          <div class="layui-form-item">
+            <label class="layui-form-label">难度检索</label>
+            <div class="layui-input-block">
+              <input type="text" class="layui-input" />
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+      <div style="text-align:center;">
+        <button class="layui-btn">查询</button>
+        <button class="layui-btn layui-btn-primary">重置</button>
+      </div>
+    </div>
+    <div class="div-1">
+      <div class=" div-2 ">
+        <div class="layui-btn-group ">
+          <button class="layui-btn layui-btn-small" @click="dialogVisible = true">新增</button>
+          <button class="layui-btn layui-btn-small">批量新增</button>
+          <button class="layui-btn layui-btn-small">导入试题</button>
+          <button class="layui-btn layui-btn-small">批量删除</button>
+          <button class="layui-btn layui-btn-small">导出</button>
+        </div>
+      </div>
+      <el-row>
+        <template>
+          <el-table ref="multipleTable" :data="tableData2" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
+            <el-table-column type="selection" width="55">
+            </el-table-column>
+            <el-table-column label="试题内容" width="320" show-overflow-tooltip>
+              <template scope="scope">{{ scope.row.content }}</template>
+            </el-table-column>
+            <el-table-column prop="type" label="题型" width="120">
+            </el-table-column>
+            <el-table-column prop="tag" label="标签" show-overflow-tooltip>
+            </el-table-column>
+            <el-table-column prop="diff" label="难度" show-overflow-tooltip>
+            </el-table-column>
+            <el-table-column prop="ans" label="标准答案" show-overflow-tooltip>
+            </el-table-column>
+            <el-table-column prop="frac" label="分数" show-overflow-tooltip>
+            </el-table-column>
+            <el-table-column label="操作" width="120">
+              <template scope="scope">
+                <span class="dele" @click="delswit2(scope.row)">删除</span>
+              </template>
+            </el-table-column>
+          </el-table>
+          <div style="margin-top: 20px">
+            <el-button @click="toggleSelection([tableData2[0], tableData2[1]])">切换第1、第2行的选中状态</el-button>
+            <el-button @click="toggleSelection()">取消选择</el-button>
+          </div>
+        </template>
+      </el-row>
+      <el-row></el-row>
+    </div>
+  
+    <!-- <el-button @click="dialogVisible = true">点击打开 Dialog</el-button> -->
   </div>
 </template>
 
 <script>
+import dial from '../../component/addNewQuesComp/addSingleNewQues'
+
 export default {
+  components: {
+    "dial": dial
+  },
   methods: {
-    getRad() {
-      // alert(this.radio);
-      this.tableData.push({
-        swit_1: "C",
-        content: '测试内容',
-        swit_2: false,
-        radi_lab: 3,
-      });
+    handleSelectionChange(val) {
+      this.multipleSelection = val;
     },
-    delswit(item) {
+
+
+    delswit2(item) {
       let ind = this.tableData.indexOf(item);
-      this.tableData.splice(ind, 1);
+      this.tableData2.splice(ind, 1);
     },
     handleClose(done) {
       this.$confirm('确认关闭？')
@@ -126,58 +113,37 @@ export default {
           done();
         })
         .catch(_ => { });
-    }
+    },
+    toggleSelection(rows) {
+      if (rows) {
+        rows.forEach(row => {
+          this.$refs.multipleTable.toggleRowSelection(row);
+        });
+      } else {
+        this.$refs.multipleTable.clearSelection();
+      }
+    },
   },
   data() {
     return {
       radio: 1,
       dialogVisible: false,
-      options: [{
-        value: '1',
-        label: '单选题'
+      multipleSelection: [],
+
+      tableData2: [{
+        content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
+        type: '单选题',
+        tag: "css",
+        diff: "难",
+        ans: "B",
+        frac: 5,
       }, {
-        value: '2',
-        label: '多选题'
-      }, {
-        value: '3',
-        label: '判断题'
-      }, {
-        value: '4',
-        label: '填空题'
-      }, {
-        value: '5',
-        label: '简答题'
-      }, {
-        value: '6',
-        label: '编程题'
-      }],
-      difficulty: [{
-        value: '1',
-        label: '简单'
-      }, {
-        value: '2',
-        label: '中等'
-      }, {
-        value: '3',
-        label: '稍难'
-      }, {
-        value: '4',
-        label: '困难'
-      }],
-      value: '',
-      tes: '',
-      Catalog: '',
-      fraction: 0,
-      tableData: [{
-        swit_1: 'A',
-        content: '测试内容',
-        swit_2: true,
-        radi_lab: 1,
-      }, {
-        swit_1: "B",
-        content: '测试内容',
-        swit_2: false,
-        radi_lab: 2,
+        content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
+        type: '单选题',
+        tag: "css",
+        diff: "难",
+        ans: "B",
+        frac: 5,
       }],
     }
   },
@@ -186,76 +152,5 @@ export default {
 </script>
 
 <style>
-#all {
-  width: 650px;
-  margin: 0 auto;
-  font-size: 16px;
-  padding-top: 25px;
-  font-family: Microsoft YaHei;
-}
-
-#dial {
-  width: 100%;
-  height: 500px;
-  overflow: auto;
-  overflow-x: none;
-}
-
-#cont {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.inputer-2 {
-  width: 290px;
-}
-
-.inputer-1 {
-  width: 70px;
-  line-height: 36px;
-  text-align: center;
-}
-
-.inputer-3 {
-  width: 70px;
-  line-height: 125px;
-  text-align: center;
-}
-
-.inputer-4 {
-  width: 70px;
-  line-height: 100px;
-  text-align: center;
-}
-
-.row-1 {
-  margin-bottom: 12px;
-}
-
-.row-2 {
-  height: 125px;
-}
-
-.textarea-1 {
-  height: 95px;
-  margin: 0;
-  padding: 0;
-  width: 100%
-}
-
-.layui-table td,
-.layui-table th {
-  text-align: center;
-  vertical-align: middle;
-}
-
-.dele {
-  color: #01AAED;
-  cursor: pointer;
-}
-
-.el-dialog__body {
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
+@import "./addNewQues.css";
 </style>
