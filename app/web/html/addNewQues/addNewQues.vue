@@ -80,6 +80,7 @@
       <el-row>
         <div id="page1" style="margin-top:12px;text-align:center;"></div>
       </el-row>
+      
     </div>
   
     <!-- <el-button @click="dialogVisible = true">点击打开 Dialog</el-button> -->
@@ -117,10 +118,8 @@ export default {
     });
     },
 
-
-
     delswit2(item) {
-      let ind = this.tableData.indexOf(item);
+      let ind = this.tableData2.indexOf(item);
       this.tableData2.splice(ind, 1);
     },
     handleClose(done) {

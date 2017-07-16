@@ -2,43 +2,53 @@
     <div>
         <el-row :span="24" class="row-1">
             <el-col :span="12">
-                <el-col class="inputer-1" :span="12">试题类型</el-col>
-                <el-col :span="12">
-                    <el-select v-model="value" placeholder="请选择" class="inputer-2">
-                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-                        </el-option>
-                    </el-select>
-                </el-col>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">试题类型</label>
+                    <div class="layui-input-block">
+                        <el-select v-model="value" placeholder="请选择" style="width:100%;">
+                            <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                </div>
             </el-col>
             <el-col :span="12">
-                <el-col class="inputer-1" :span="12">所属目录</el-col>
-                <el-col :span="12">
-                    <el-input v-model="Catalog" placeholder="请选择试题分类" class="inputer-2"></el-input>
-                </el-col>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所属目录</label>
+                    <div class="layui-input-block">
+                        <el-input v-model="Catalog" placeholder="请选择试题分类"></el-input>
+                    </div>
+                </div>
             </el-col>
         </el-row>
         <el-row :span="24" class="row-1">
             <el-col :span="12">
-                <el-col :span="12" class="inputer-1">试题分数</el-col>
-                <el-col :span="12">
-                    <el-input v-model="fraction" placeholder="请输入分数" class="inputer-2"></el-input>
-                </el-col>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">试题分数</label>
+                    <div class="layui-input-block">
+                        <el-input v-model="fraction" placeholder="请输入分数"></el-input>
+                    </div>
+                </div>
             </el-col>
             <el-col :span="12">
-                <el-col :span="12" class="inputer-1">难度</el-col>
-                <el-col :span="12">
-                    <el-select v-model="tes" placeholder="请选择难度" class="inputer-2">
-                        <el-option v-for="i in difficulty" :key="i.value" :label="i.label" :value="i.value">
-                        </el-option>
-                    </el-select>
-                </el-col>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">难度</label>
+                    <div class="layui-input-block">
+                        <el-select v-model="tes" placeholder="请选择难度" style="width:100%;">
+                            <el-option v-for="i in difficulty" :key="i.value" :label="i.label" :value="i.value">
+                            </el-option>
+                        </el-select>
+                    </div>
+                </div>
             </el-col>
         </el-row>
         <el-row :span="24" class="row-2">
-            <el-col :span="2" class="inputer-3">试题内容</el-col>
-            <el-col :span="21" style="width: 654px;">
-                <el-input type="textarea" :rows="5" class="textarea-1" id="textarea_1"></el-input>
-            </el-col>
+            <div class="layui-form-item">
+                <label class="layui-form-label">试题内容</label>
+                <div class="layui-input-block">
+                    <el-input type="textarea" :rows="5" class="textarea-1" id="textarea_1"></el-input>
+                </div>
+            </div>
         </el-row>
     </div>
 </template>

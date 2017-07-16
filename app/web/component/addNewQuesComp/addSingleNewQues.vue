@@ -41,11 +41,11 @@
             </table>
           </el-col>
         </el-row>
-        <div class="row-2">
-          <el-col :span="2" class="inputer-4">试题分析</el-col>
-          <el-col :span="21" style="width: 654px;">
-            <el-input type="textarea" :rows="4" class="textarea-1"></el-input>
-          </el-col>
+        <div class="layui-form-item">
+          <label class="layui-form-label">试题分析</label>
+          <div class="layui-input-block">
+            <el-input type="textarea" :rows="5" class="textarea-1" id="textarea_1"></el-input>
+          </div>
         </div>
       </div>
     </div>
