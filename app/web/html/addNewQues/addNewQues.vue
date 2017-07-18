@@ -1,7 +1,7 @@
 <template>
   <div id="all">
     <el-dialog title="添加试题" :visible.sync="dialogVisible" size="small" :before-close="handleClose">
-      <dial></dial>
+      <dial v-bind:currentContent="currentContent"></dial>
       <div slot="footer" class="dialog-footer " style="text-align: center;">
         <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存</button>
         <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存并关闭</button>
@@ -9,6 +9,24 @@
         <button class="layui-btn layui-btn-primary" @click="dialogVisible = false">取消</button>
       </div>
     </el-dialog>
+  
+    <el-dialog title="批量添加试题" :visible.sync="MutiVisible" size="small" :before-close="handleClose">
+      <dial2></dial2>
+      <div slot="footer" class="dialog-footer " style="text-align: center;">
+        <button class="layui-btn layui-btn-normal" type="primary" @click="MutiVisible = false">检查格式</button>
+        <button class="layui-btn layui-btn-normal" type="primary" @click="MutiVisible = false">导入</button>
+        <button class="layui-btn layui-btn-primary" @click="MutiVisible = false">取消</button>
+      </div>
+    </el-dialog>
+  
+    <el-dialog title="导入试题" :visible.sync="ImportVisible" size="small" :before-close="handleClose">
+      <dial3></dial3>
+      <div slot="footer" class="dialog-footer " style="text-align: center;">
+        <button class="layui-btn layui-btn-normal" type="primary" @click="ImportVisible = false">导入</button>
+        <button class="layui-btn layui-btn-primary" @click="ImportVisible = false">关闭</button>
+      </div>
+    </el-dialog>
+  
     <!-- 下面开始主界面绘制。。。 -->
   
     <div class="div-1">
@@ -46,10 +64,10 @@
     <div class="div-1">
       <div class=" div-2 ">
         <div class="layui-btn-group ">
-          <button class="layui-btn layui-btn-small" @click="dialogVisible = true">新增</button>
-          <button class="layui-btn layui-btn-small">批量新增</button>
-          <button class="layui-btn layui-btn-small">导入试题</button>
-          <button class="layui-btn layui-btn-small">批量删除</button>
+          <button class="layui-btn layui-btn-small" @click="editblock()">新增</button>
+          <button class="layui-btn layui-btn-small" @click="MutiVisible = true">批量新增</button>
+          <button class="layui-btn layui-btn-small" @click="ImportVisible = true">导入试题</button>
+          <button class="layui-btn layui-btn-small" @click="delMut()">批量删除</button>
           <button class="layui-btn layui-btn-small">导出</button>
         </div>
       </div>
@@ -63,6 +81,7 @@
           <el-table-column prop="type" label="题型" width="120">
           </el-table-column>
           <el-table-column prop="tag" label="标签" show-overflow-tooltip>
+            <template scope="scope">{{ scope.row.tag }}</template>
           </el-table-column>
           <el-table-column prop="diff" label="难度" show-overflow-tooltip>
           </el-table-column>
@@ -72,7 +91,7 @@
           </el-table-column>
           <el-table-column label="操作" width="120">
             <template scope="scope">
-              <span class="dele" @click="delswit2(scope.row)">删除</span>
+              <span class="dele" @click="editswit2(scope.row)">编辑</span>
             </template>
           </el-table-column>
         </el-table>
@@ -80,7 +99,7 @@
       <el-row>
         <div id="page1" style="margin-top:12px;text-align:center;"></div>
       </el-row>
-      
+  
     </div>
   
     <!-- <el-button @click="dialogVisible = true">点击打开 Dialog</el-button> -->
@@ -89,38 +108,95 @@
 
 <script>
 import dial from '../../component/addNewQuesComp/addSingleNewQues'
+import dial2 from '../../component/addNewQuesComp/addMutiNewQues'
+import dial3 from '../../component/addNewQuesComp/importQuesFile'
 
 export default {
+
   components: {
-    "dial": dial
+    "dial": dial,
+    "dial2": dial2,
+    "dial3": dial3,
   },
-  mounted:function () {
+  mounted: function () {
     this.drawPag();
   },
   methods: {
     handleSelectionChange(val) {
       this.multipleSelection = val;
+      console.log(this.multipleSelection);
     },
-    drawPag(){
-      let  _this = this;
-      layui.laypage({
-      cont: 'page1', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
-      pages: 2, //通过后台拿到的总页数
-      curr: _this.currpage, //当前页
-      skin: 'yahei', //加载内置皮肤，也可以直接赋值16进制颜色值，如:#c00
-      jump: function (obj, first) { //触发分页后的回调
-        if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
-          _this.currpage = obj.curr;
-          console.log(_this.currpage);
-          _this.drawPag();
-        }
+    delMut() {
+      let items = this.multipleSelection;
+      for (let i = 0; i < items.length; i++) {
+        this.delswit2(items[i]);
       }
-    });
+    },
+
+    drawPag() {
+      let _this = this;
+      layui.laypage({
+        cont: 'page1', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+        pages: 2, //通过后台拿到的总页数
+        curr: _this.currpage, //当前页
+        skin: 'yahei', //加载内置皮肤，也可以直接赋值16进制颜色值，如:#c00
+        jump: function (obj, first) { //触发分页后的回调
+          if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+            _this.currpage = obj.curr;
+            console.log(_this.currpage);
+            _this.drawPag();
+          }
+        }
+      });
     },
 
     delswit2(item) {
       let ind = this.tableData2.indexOf(item);
       this.tableData2.splice(ind, 1);
+    },
+    editblock() {
+      this.currentContent = {
+        cont:'',
+        typeval: '',
+        tags: '',
+        fraction: 0,
+        diffc: '',
+        tableData: [{
+          swit_1: 'A',
+          content: '测试内容',
+          swit_2: true,
+          radi_lab: 1,
+        }, {
+          swit_1: "B",
+          content: '测试内容',
+          swit_2: false,
+          radi_lab: 2,
+        }],
+      },
+      this.dialogVisible = true;
+    },
+    editswit2(item) {
+      this.currentContent = {
+        cont:item.content,
+        typeval: item.type,
+        tags: item.tag,
+        fraction: item.frac,
+        diffc: item.diff,
+        tableData: [{
+          swit_1: 'A',
+          content: '测试内容',
+          swit_2: true,
+          radi_lab: 1,
+        }, {
+          swit_1: "B",
+          content: '测试内容',
+          swit_2: false,
+          radi_lab: 2,
+        }],
+      }
+
+      this.dialogVisible = true;
+
     },
     handleClose(done) {
       this.$confirm('确认关闭？')
@@ -141,24 +217,50 @@ export default {
   },
   data() {
     return {
-      currpage:1,
+      currpage: 1,
       radio: 1,
       dialogVisible: false,
+      MutiVisible: false,
+      ImportVisible: false,
       multipleSelection: [],
-
+      currentContent: {
+        cont:'',
+        typeval: '',
+        tags: '',
+        fraction: 0,
+        diffc: '',
+        tableData: [{
+          swit_1: 'A',
+          content: '测试内容',
+          swit_2: true,
+          radi_lab: 1,
+        }, {
+          swit_1: "B",
+          content: '测试内容',
+          swit_2: false,
+          radi_lab: 2,
+        }],
+      },
       tableData2: [{
         content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
         type: '单选题',
-        tag: "css",
-        diff: "难",
+        tag: ["css"],
+        diff: "困难",
         ans: "B",
         frac: 5,
       }, {
         content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
         type: '单选题',
-        tag: "css",
-        diff: "难",
+        tag: ["css"],
+        diff: "困难",
         ans: "B",
+        frac: 5,
+      }, {
+        content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦阿拉啦啦啦啦啦啦啦阿拉啦啦啦啦啦啦啦阿拉啦啦啦啦啦啦啦阿拉啦啦啦啦啦啦啦阿拉啦啦啦啦啦啦啦',
+        type: '单选题',
+        tag: ["html","css"],
+        diff: "困难",
+        ans: "C",
         frac: 5,
       }],
     }
