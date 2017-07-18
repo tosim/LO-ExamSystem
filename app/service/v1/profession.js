@@ -26,6 +26,12 @@ module.exports = app => {
             const insertSuccess = result.affectedRows === 1;
             return insertSuccess;
         }
+        * deleteprofession(p_id){
+            const deleteSuccess = yield this.app.mysql.delete('profession',{p_id:p_id});
+            console.log(deleteSuccess);
+            return deleteSuccess;
+            
+        }
 
     }
     return ProfessionService;

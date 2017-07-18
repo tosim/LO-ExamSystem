@@ -71,6 +71,23 @@ module.exports = app => {
                 };
             }
         }
+        * deleteprofession(){
+            const { ctx, service } = this;
+            const deleteSuccess = yield service.v1.profession.deleteprofession(ctx.query.p_id);
+            if (deleteSuccess) {
+                ctx.response.body = {
+                    success: 1,
+                    data: '',
+                    msg: '删除成功',
+                }
+            } else {
+                ctx.response.body = {
+                    success: 0,
+                    data: '',
+                    msg: '删除失败',
+                }
+            }
+        }
     }
     return ProfessionController;
 }

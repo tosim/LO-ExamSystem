@@ -4,7 +4,6 @@
         <div class="content"></div>
         <el-row type="flex" justify="center">
             <el-col :span="12">
-                1223
                 <table class="layui-table" lay-even="" lay-skin="row">
                     <colgroup>
                         <col width="150">
@@ -39,39 +38,71 @@
                 <div class="cont">
                     <el-row class="row_1">
                         <el-col :span="8">
-                            <el-col class="label_1">职业名称</el-col>
+                            <el-col class="label_1" style="text-align:center;"><span>职业名称</span></el-col>
                         </el-col>
                         <el-col :span="8">
-                            <el-input placeholder="请输入职业名称" class="input_1"></el-input>
+                            <el-input placeholder="请输入职业名称" class="input_1" v-model="p_name"></el-input>
                         </el-col>
                     </el-row>
                     <el-row class="row_1" type="flex" justify="center">
+                        <!-- t_ochoose_num: 0,
+                            t_mchoose_num: 0,
+                            t_judge_num: 0,
+                            t_fill_num: 0,
+                            t_squestion_num: 0,
+                            t_code_num: 0,
+                            t_ochoose_score: 0,
+                            t_mchoose_score: 0,
+                            t_judge_score:0,
+                            t_fill_score:0,
+                            t_squestion_score:0,
+                            t_code_score:0,  -->
                         <div class="paperarea">
-    
+                            <!--一条  -->
+                          <el-row v-for="item in testpaper" :key="item" class="onetestpaper">
+                              <el-col :span="24">
+                                  <span>单选题：{{item.t_ochoose_num}}</span>
+                                  <span>多选题：{{item.t_mchoose_num}}</span>
+                                  <span>判断题：{{item.t_judge_num}}</span>
+                                  <span>填空题：{{item.t_fill_num}}</span>
+                                  <span>简答题：{{item.t_squestion_num}}</span>
+                                  <span>编程题：{{item.t_code_num}}</span>
+                              </el-col>
+                          </el-row>
                         </div>
                     </el-row>
                     <el-row class="row_1" type="flex" justify="center">
-                        <el-col :span="24">
+                        <el-col :span="8" style="text-align:center;">
                             <el-button type="primary" @click="dialogFormVisible = true" class="addpaper">添加试卷</el-button>
                         </el-col>
+                        <el-col :span="8"></el-col>
+                        <el-col :span="8"></el-col>
                     </el-row>
                     <div class="tagarea">
-                        <el-row class="row_1" type="flex" justify="center">
-                            <el-col :span="24">
-                                <el-checkbox-group v-model="checkboxgroup">
-                                    <el-checkbox-button class="tagbutton" v-for="item in taglist" :label="item.tag_name" :key="item.tag_id">{{item.tag_name}}</el-checkbox-button>
-                                </el-checkbox-group>
-                            </el-col>
-                        </el-row>
+                    <el-row class="row_1">
+                        <el-col :span="8">
+                            <el-col class="label_1"><span>对应标签</span></el-col>
+                        </el-col>
+                        <el-col :span="8">
+                         <el-select v-model="choosetag" multiple placeholder="请选择标签">
+                            <el-option
+                            v-for="item in taglist"
+                            :key="item.tag_id"
+                            :label="item.tag_name"
+                            :value="item.tag_id">
+                            </el-option>
+                        </el-select>
+                        </el-col>
+                    </el-row>
                     </div>
                     <div class="footerarea">
                         <span slot="footer" class="dialog-footer">
                             <el-row>
                                 <el-col :span="12">
-                                    <el-button @click="dialogVisible = false">取 消</el-button>
+                                    <el-button @click="canceladdprofession()">取 消</el-button>
                                 </el-col>
                                 <el-col :span="8">
-                                    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+                                    <el-button type="primary" @click="addprofession()">确 定</el-button>
                                 </el-col>
                             </el-row>
                         </span>
@@ -79,8 +110,8 @@
                 </div>
             </div>
         </el-dialog>
-    
-        <el-dialog title="添加试卷" :visible.sync="dialogFormVisible">
+        <!--添加试卷  -->
+        <el-dialog title="添加试卷" :visible.sync="dialogFormVisible" :before-close="handleClose">
             <el-form :model="newpaper">
                 <el-form-item label="单选题数量" :label-width="formLabelWidth">
                     <el-input v-model="newpaper.t_ochoose_num" auto-complete="off" class="forminput"></el-input>
@@ -121,7 +152,7 @@
                 <h2 style="">{{newpaper.t_ochoose_num*newpaper.t_ochoose_score+newpaper.t_mchoose_num*newpaper.t_mchoose_score+newpaper.t_judge_num*newpaper.t_judge_score+newpaper.t_fill_num*newpaper.t_fill_score}}</h2>
             </el-form>
             <div slot="footer" class="dialog-footer" style="margin-top:350px;">
-                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button @click="canceladdpaper()">取 消</el-button>
                 <el-button type="primary" @click="checkpaper()">确 定</el-button>
             </div>
         </el-dialog>
@@ -166,7 +197,8 @@ export default {
             choosetag: [],
             totalnum: 0,
             currpage: 1,
-            checkboxgroup: [],
+            // checkboxgroup: [],
+            choosetag:[],
             testpaper:[],
             newpaper: {
                 t_ochoose_num: 0,
@@ -182,6 +214,9 @@ export default {
                 t_squestion_score:0,
                 t_code_score:0,
             },
+            p_name:'',
+            tag:[],
+            professiondata : [],
             formLabelWidth: '45%'
         }
     },
@@ -231,6 +266,41 @@ export default {
                 console.log("end---------");
             })
         },
+        addprofession(){
+            console.log("p_name");
+            console.log(this.p_name)
+            console.log("tag");
+            console.log(this.choosetag)
+            console.log("paper");
+            console.log(this.testpaper);
+        if(this.p_name !=='' && this.choosetag.length>0 && this.testpaper.length>0){
+          for(let item of this.choosetag){
+              let onetag = {
+                  tag_id:item,
+                  pt_rate:20,
+              };
+              this.tag.push(onetag);
+          }
+
+           this.professiondata = {
+             p_name:this.p_name,
+             testpaper:this.testpaper,
+             tag:this.tag,
+            };
+            this.$http.post(`http://127.0.0.1:7001/addprofession`, this.professiondata, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(function (response) {
+                console.log(response);
+                })
+                .catch(function (error) {
+                console.log(error);
+                });
+              this.dialogVisible = false;
+           }
+        },
         checkpaper(){
             const newpaper = this.newpaper;
             var totalscore = newpaper.t_ochoose_num*newpaper.t_ochoose_score+newpaper.t_mchoose_num*newpaper.t_mchoose_score+newpaper.t_judge_num*newpaper.t_judge_score+newpaper.t_fill_num*newpaper.t_fill_score;
@@ -238,7 +308,7 @@ export default {
             if(totalscore !==100){
               this.WarnVisible=true; 
             }else{
-                this.dialogFormVisible=false;
+                this.dialogFormVisible = false;
                 const onepaper ={
                     t_ochoose_num:newpaper.t_ochoose_num,
                     t_mchoose_num:newpaper.t_mchoose_num,
@@ -255,22 +325,50 @@ export default {
                 } 
                 this.testpaper.push(onepaper);
                 console.log(this.testpaper);
+                this.SuccessVisible = true;
+                this.turntozero(newpaper);
             }   
         },
-       
+        canceladdprofession(){
+          this.dialogVisible = false;
+          this.testpaper = [];
+          this.turntozero(this.newpaper);
+        },
+        canceladdpaper(){
+           this.dialogFormVisible = false;
+           this.turntozero(this.newpaper);
+        },
         handleClose(done) {
             this.$confirm('确认关闭？')
                 .then(_ => {
+                    this.testpaper = [];
+                    this.turntozero(this.newpaper);
                     done();
                 })
                 .catch(_ => { });
-        }
+        },
+        turntozero(newpaper){
+            newpaper.t_ochoose_num = 0;
+            newpaper.t_ochoose_score = 0;
+            newpaper.t_mchoose_num = 0;
+            newpaper.t_mchoose_score = 0;
+            newpaper.t_judge_num = 0;
+            newpaper.t_judge_score = 0;
+            newpaper.t_fill_num = 0;
+            newpaper.t_fill_score = 0;
+            newpaper.t_squestion_num = 0;
+            newpaper.t_code_num = 0;
+        },
     }
 
 }
 </script>
 
 <style scoped>
+.label_1{
+    height: 36px;
+    line-height: 36px;
+}
 .el-form-item {
     width: 45%;
     float: left
@@ -309,5 +407,12 @@ export default {
 
 .forminput {
     width: 45%;
+}
+.paperarea{
+    width: 100%;
+    margin-top: 5%;
+}
+.onetestpaper{
+    margin: 5%;
 }
 </style>

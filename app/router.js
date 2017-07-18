@@ -31,6 +31,7 @@ module.exports = app => {
 
   app.post('/addprofession',app.controller.v1.profession.create);
   app.get('/getprofessionlist',app.controller.v1.profession.index);
+  app.get('/deleteprofession',app.controller.v1.profession.deleteprofession);
   app.post('/addtag',app.controller.v1.tag.create);
   app.get('/gettaglist',app.controller.v1.tag.index);
   app.get('/getalltag',app.controller.v1.tag.getalltag);
