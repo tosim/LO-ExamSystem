@@ -1,7 +1,7 @@
 <template>
   <div id="all">
     <el-dialog title="添加试题" :visible.sync="dialogVisible" size="small" :before-close="handleClose">
-      <dial v-bind:currentContent="currentContent"></dial>
+      <dial v-bind:currentId="currentId"></dial>
       <div slot="footer" class="dialog-footer " style="text-align: center;">
         <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存</button>
         <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存并关闭</button>
@@ -79,11 +79,19 @@
             <template scope="scope">{{ scope.row.content }}</template>
           </el-table-column>
           <el-table-column prop="type" label="题型" width="120">
+            <template scope="scope">
+              <span v-for="ite in scope.row.type" :key="ite" style="padding:5px;">{{typeNam[ite]}}</span>
+            </template>
           </el-table-column>
           <el-table-column prop="tag" label="标签" show-overflow-tooltip>
-            <template scope="scope">{{ scope.row.tag }}</template>
+            <template scope="scope">
+              <span v-for="ite in scope.row.tag" :key="ite" style="padding:5px;">{{tagNam[ite]}}</span>
+            </template>
           </el-table-column>
           <el-table-column prop="diff" label="难度" show-overflow-tooltip>
+            <template scope="scope">
+              <span v-for="ite in scope.row.diff" :key="ite" style="padding:5px;">{{diffNam[ite]}}</span>
+            </template>
           </el-table-column>
           <el-table-column prop="ans" label="标准答案" show-overflow-tooltip>
           </el-table-column>
@@ -155,46 +163,11 @@ export default {
       this.tableData2.splice(ind, 1);
     },
     editblock() {
-      this.currentContent = {
-        cont:'',
-        typeval: '',
-        tags: '',
-        fraction: 0,
-        diffc: '',
-        tableData: [{
-          swit_1: 'A',
-          content: '测试内容',
-          swit_2: true,
-          radi_lab: 1,
-        }, {
-          swit_1: "B",
-          content: '测试内容',
-          swit_2: false,
-          radi_lab: 2,
-        }],
-      },
+      this.currentId = -1;
       this.dialogVisible = true;
     },
     editswit2(item) {
-      this.currentContent = {
-        cont:item.content,
-        typeval: item.type,
-        tags: item.tag,
-        fraction: item.frac,
-        diffc: item.diff,
-        tableData: [{
-          swit_1: 'A',
-          content: '测试内容',
-          swit_2: true,
-          radi_lab: 1,
-        }, {
-          swit_1: "B",
-          content: '测试内容',
-          swit_2: false,
-          radi_lab: 2,
-        }],
-      }
-
+      this.currentId = item.q_id;
       this.dialogVisible = true;
 
     },
@@ -218,48 +191,52 @@ export default {
   data() {
     return {
       currpage: 1,
-      radio: 1,
+      currentId: -1,
       dialogVisible: false,
       MutiVisible: false,
       ImportVisible: false,
       multipleSelection: [],
-      currentContent: {
-        cont:'',
-        typeval: '',
-        tags: '',
-        fraction: 0,
-        diffc: '',
-        tableData: [{
-          swit_1: 'A',
-          content: '测试内容',
-          swit_2: true,
-          radi_lab: 1,
-        }, {
-          swit_1: "B",
-          content: '测试内容',
-          swit_2: false,
-          radi_lab: 2,
-        }],
+      tagNam: {
+        "5001": "css",
+        "5002": "html",
+        "5003": "javascript"
+      },
+      diffNam: {
+        "1": "简单",
+        "2": "中等",
+        "3": "稍难",
+        "4": "困难"
+      },
+      typeNam: {
+        "1": "单选题",
+        "2": "多选题",
+        "3": "判断题",
+        "4": "填空题",
+        "5": "简答题",
+        "6": "编程题",
       },
       tableData2: [{
+        q_id: 2014,
         content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
-        type: '单选题',
-        tag: ["css"],
-        diff: "困难",
+        type: '1',//1是单选 2是多选 3是判断。。。看addSingleNewQues.vue
+        tag: ["5001"],
+        diff: "4",
         ans: "B",
         frac: 5,
       }, {
+        q_id: 2015,
         content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
-        type: '单选题',
-        tag: ["css"],
-        diff: "困难",
+        type: '1',
+        tag: ["5001"],
+        diff: "4",
         ans: "B",
         frac: 5,
       }, {
-        content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦阿拉啦啦啦啦啦啦啦阿拉啦啦啦啦啦啦啦阿拉啦啦啦啦啦啦啦阿拉啦啦啦啦啦啦啦阿拉啦啦啦啦啦啦啦',
-        type: '单选题',
-        tag: ["html","css"],
-        diff: "困难",
+        q_id: 2016,
+        content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
+        type: '1',
+        tag: ["5002", "5003"],
+        diff: "4",
         ans: "C",
         frac: 5,
       }],

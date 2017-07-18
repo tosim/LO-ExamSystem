@@ -7,7 +7,8 @@
             <div class="layui-form-item">
               <label class="layui-form-label">试题类型</label>
               <div class="layui-input-block">
-                <el-select v-model="currentContent.typeval" placeholder="请选择" style="width:100%;">
+                <el-select v-model="SingleQues.typeval" placeholder="请选择" style="width:100%;">
+                  <!--   currentContent.    -->
                   <el-option v-for="item in typeOptions" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
@@ -18,7 +19,7 @@
             <div class="layui-form-item">
               <label class="layui-form-label">标签</label>
               <div class="layui-input-block">
-                <el-select v-model="currentContent.tags" multiple filterable placeholder="请选择试题标签" style="width:100%;">
+                <el-select v-model="SingleQues.tags" multiple filterable placeholder="请选择试题标签" style="width:100%;">
                   <el-option v-for="item in tagOptions" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
@@ -31,7 +32,7 @@
             <div class="layui-form-item">
               <label class="layui-form-label">试题分数</label>
               <div class="layui-input-block">
-                <el-input v-model="currentContent.fraction" placeholder="请输入分数"></el-input>
+                <el-input v-model="SingleQues.fraction" placeholder="请输入分数"></el-input>
               </div>
             </div>
           </el-col>
@@ -39,7 +40,7 @@
             <div class="layui-form-item">
               <label class="layui-form-label">难度</label>
               <div class="layui-input-block">
-                <el-select v-model="currentContent.diffc" placeholder="请选择难度" style="width:100%;">
+                <el-select v-model="SingleQues.diffc" placeholder="请选择难度" style="width:100%;">
                   <el-option v-for="i in difficulty" :key="i.value" :label="i.label" :value="i.value">
                   </el-option>
                 </el-select>
@@ -51,7 +52,7 @@
           <div class="layui-form-item">
             <label class="layui-form-label">试题内容</label>
             <div class="layui-input-block">
-              <el-input type="textarea" :rows="5" class="textarea-1" v-model="currentContent.cont"></el-input>
+              <el-input type="textarea" :rows="5" class="textarea-1" v-model="SingleQues.cont"></el-input>
             </div>
           </div>
         </el-row>
@@ -73,7 +74,7 @@
                   <th>操作</th>
                 </tr>
               </thead>
-              <tr v-for="item in currentContent.tableData" :key="item.swit_1">
+              <tr v-for="item in SingleQues.tableData" :key="item.swit_1">
                 <td>{{item.swit_1}}</td>
                 <td>
                   <el-input type="textarea" :rows="4" v-model="item.content" class="textarea-1"></el-input>
@@ -108,39 +109,49 @@
 
 export default {
   props: [
-    'currentContent',
+    'currentId',
   ],
+  mounted: function () {
+    console.log('currentId:' + this.currentId);
+  },
+  watch: {
+    currentId: function (val) {
+      console.log('currentId: %s', val);
+    }
+  },
   methods: {
     getRad() {
-      this.tableData.push({
+      this.SingleQues.tableData.push({
         swit_1: "C",
         content: '测试内容',
         swit_2: false,
         radi_lab: 3,
       });
     }, delswit(item) {
-      let ind = this.tableData.indexOf(item);
-      this.tableData.splice(ind, 1);
+      let ind = this.SingleQues.tableData.indexOf(item);
+      this.SingleQues.tableData.splice(ind, 1);
     },
   },
   data() {
     return {
-      cont:'',
-      typeval: '',
-      tags: [],
-      fraction: 0,
-      diffc: '',
-      tableData: [{
-        swit_1: 'A',
-        content: '测试内容',
-        swit_2: true,
-        radi_lab: 1,
-      }, {
-        swit_1: "B",
-        content: '测试内容',
-        swit_2: false,
-        radi_lab: 2,
-      }],
+      SingleQues: {
+        cont: '',
+        typeval: '1',
+        tags: [],
+        fraction: 0,
+        diffc: '',
+        tableData: [{
+          swit_1: 'A',
+          content: '测试内容',
+          swit_2: true,
+          radi_lab: 1,
+        }, {
+          swit_1: "B",
+          content: '测试内容',
+          swit_2: false,
+          radi_lab: 2,
+        }],
+      },
       typeOptions: [{
         value: '1',
         label: '单选题'
