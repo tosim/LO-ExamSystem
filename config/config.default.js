@@ -14,20 +14,20 @@ module.exports = app => {
     dir: path.join(app.baseDir, 'logs')
   };
   exports.static = {
-    prefix: '/public/',//   '/public/'
+    prefix: '/public/', //   '/public/'
     dir: path.join(app.baseDir, 'public')
   };
 
-  //add my config
+  // add my config
   exports.middleware = [
-    'access','saveSession'
+    'access', 'saveSession'
   ];
 
 
   exports.security = {
     csrf: false,
     ctoken: false
-  }
+  };
 
   exports.mysql = {
     // database configuration
@@ -39,14 +39,14 @@ module.exports = app => {
       // username
       user: 'root',
       // password
-      password: '056210',
+      password: '123698745',
       // database
-      database: 'lo_examsystem',    
+      database: 'lo_examsystem'
     },
     // load into app, default is open
     app: true,
     // load into agent, default is close
-    agent: false,
+    agent: false
   };
   return exports;
 };
