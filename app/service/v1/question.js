@@ -25,12 +25,8 @@ module.exports = app => {
             const result = yield this.app.mysql.query('select * from question limit ?,8', currnum);
             return result;
         }
-        * listorderbyzan(currnum){
-            const result = yield this.app.mysql.query('select * from question order by q_zan desc limit ?,8 ',currnum);
-            return result;
-        }
-        * listorderbycai(currnum){
-            const result = yield this.app.mysql.query('select * from question order by q_cai desc limit ?,8 ',currnum);
+        * gettagbyid(q_id){
+            const result = yield this.app.mysql.query('select tag.tag_id,tag.tag_name from tag,que_tag where que_tag.tag_id = tag.tag_id where que_tag.q_id=?',q_id);
             return result;
         }
         * getlistbytag(tag_id, currnum) {
@@ -46,6 +42,7 @@ module.exports = app => {
             return result;
         }
         * updatequestion(q_id,params){
+         var pendding = [];
          const row = {
            q_id:q_id,
            q_content:params.q_content,
@@ -55,6 +52,9 @@ module.exports = app => {
            q_wrong:params.q_wrong,
         };
          const updateSuccess = yield this.app.mysql.update('question',row,{where:{q_id:q_id}});
+         for(let item of params.tag_id){
+             const result = yield this.app.mysql.query('update que_tag set tag_id = ? where q_id = ?',q_id);
+         }
          console.log(updateSuccess);
          return updateSuccess;
         }

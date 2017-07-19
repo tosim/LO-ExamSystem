@@ -216,7 +216,7 @@ export default {
             },
             p_name:'',
             tag:[],
-            professiondata : [],
+            professiondata : {},
             formLabelWidth: '45%'
         }
     },
@@ -237,6 +237,10 @@ export default {
         }
     },
     methods: {
+        chooseRate(){
+            // console.log("chooseRate");
+            alert('choosed');
+        },
         fetch() {
             let _this = this;
             _this.$http.get(`http://127.0.0.1:7001/getprofessionlist?page=${_this.currpage}`).then(res => {
@@ -267,6 +271,7 @@ export default {
             })
         },
         addprofession(){
+            let _this = this;
             console.log("p_name");
             console.log(this.p_name)
             console.log("tag");
@@ -274,10 +279,12 @@ export default {
             console.log("paper");
             console.log(this.testpaper);
         if(this.p_name !=='' && this.choosetag.length>0 && this.testpaper.length>0){
+         const pt_rate = 100/this.choosetag.length;
+         console.log(pt_rate);
           for(let item of this.choosetag){
               let onetag = {
                   tag_id:item,
-                  pt_rate:20,
+                  pt_rate:pt_rate,
               };
               this.tag.push(onetag);
           }
@@ -294,6 +301,11 @@ export default {
                 })
                 .then(function (response) {
                 console.log(response);
+                _this.professiondata = {};
+                _this.p_name = '';
+                _this.testpaper = [];
+                _this.tag = [];
+                _this.choosetag = [];
                 })
                 .catch(function (error) {
                 console.log(error);
@@ -359,6 +371,10 @@ export default {
             newpaper.t_squestion_num = 0;
             newpaper.t_code_num = 0;
         },
+
+        removeprofession(){
+            
+        }
     }
 
 }

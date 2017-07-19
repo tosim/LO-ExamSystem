@@ -52,7 +52,14 @@ module.exports = app => {
             const pagesize = 8;
             const currnum = (curr - 1) * pagesize;
             const professionnum = (yield service.v1.profession.getprofessionnum())[0].pnum;
-            const ProfessionList = yield service.v1.profession.index(currnum);
+            let ProfessionList = yield service.v1.profession.index(currnum);
+            for(let item of ProfessionList){
+              const testpaper = yield service.v1.profession.getpaperbyid(item.p_id);
+              const tag = yield service.v1.profession.gettagbyid(item.p_id);
+              item.testpaper = testpaper;
+               item.tag = tag; 
+            }
+
             const totalnum = Math.ceil(professionnum / pagesize);
             if (ProfessionList.length == 0) {
                 ctx.response.body = {

@@ -143,7 +143,6 @@ module.exports = app => {
             const totalnum = Math.ceil(questionnum / pagesize);
             yield this.myresponse(ctx, QuestionList, totalnum);
         } 
-
         * getquestionbyid() {
             const { ctx, service } = this;
             const q_id = ctx.query.q_id;
