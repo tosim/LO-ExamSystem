@@ -19,10 +19,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="item of professionlist" :key="item">
+                        <tr v-for="(item,index) of professionlist" :key="item" >
                             <td>{{item.p_id}}</td>
                             <td>{{item.p_name}}</td>
-                            <td></td>
+                            <td><el-button type="text" @click="removeprofession(index)">删除</el-button></td>
                         </tr>
     
                     </tbody>
@@ -372,8 +372,21 @@ export default {
             newpaper.t_code_num = 0;
         },
 
-        removeprofession(){
+        removeprofession(index){
+          const  _this = this; 
+          console.log(this.professionlist[index].p_id);
+           
+            this.$http.get(`http://127.0.0.1:7001/deleteprofession?p_id=${this.professionlist[index].p_id}`)
+                .then(res=> {
+                console.log(res);
+                _this.professionlist.splice(index,1);
+                })
+                .catch(err=> {
+                console.log(err);
+                });
             
+
+
         }
     }
 
