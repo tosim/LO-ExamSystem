@@ -22,7 +22,8 @@
                         <tr v-for="(item,index) of professionlist" :key="item" >
                             <td>{{item.p_id}}</td>
                             <td>{{item.p_name}}</td>
-                            <td><el-button type="text" @click="removeprofession(index)">删除</el-button></td>
+                            <td><el-button type="text" @click="removeprofession(index)" style="margin-right:10%">删除</el-button>
+                            <el-button type="text" @click="updateprofession(index)">修改</el-button></td>
                         </tr>
     
                     </tbody>
@@ -385,9 +386,17 @@ export default {
                 console.log(err);
                 });
             
-
-
-        }
+        },
+        updateprofession(index){
+           this.dialogVisible = true;
+           const profession = this.professionlist[index]; 
+           this.p_name = profession.p_name;
+           this.testpaper = profession.testpaper;
+           for(let item of profession.tag){
+                 this.choosetag.push(item.tag_id);
+           }
+          console.log(this.choosetag);
+        },
     }
 
 }

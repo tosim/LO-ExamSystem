@@ -42,8 +42,7 @@ module.exports = app => {
             return result;
         }
         * updatequestion(q_id,params){
-         var pendding = [];
-         const row = {
+          const row = {
            q_id:q_id,
            q_content:params.q_content,
            q_answer:params.q_answer,

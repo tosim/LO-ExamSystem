@@ -34,11 +34,22 @@ module.exports = app => {
             const insertSuccess = result.affectedRows === 1;
             return insertSuccess;
         }
+        * updateprofession(params){
+            const p_id = params.p_id;
+            const success1 = yield this.app.mysql.query("update profession set p_id=?,p_name=?",[p_id,params.p_name]);
+            const success2 = yield deletetestpaperbyid(p_id);
+            const success3 = yield insertpaper(p_id,params.testpaper);
+            const success4 = yield service.v1.mysql.query();
+           
+        }
         * deleteprofession(p_id){
             const deleteSuccess = yield this.app.mysql.delete('profession',{p_id:p_id});
             console.log(deleteSuccess);
             return deleteSuccess;
-            
+        }
+        * deletetestpaperbyid(p_id){
+            const deleteSuccess = yield extend-this.app.mysql.delete('testpaper',{p_id:p_id});
+            return deleteSuccess;
         }
 
     }

@@ -19,6 +19,10 @@ module.exports = app => {
             const result = yield this.app.mysql.query('select count(*) as tnum from tag');
             return result;
         }
+        * deletetagbyid(p_id){
+            const result = yield this.app.mysql.query('pro_tag',{p_id:p_id});
+            return result;
+        }
     }
     return TagService;
 }
