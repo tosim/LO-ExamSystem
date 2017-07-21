@@ -26,7 +26,8 @@ module.exports = app => {
             return result;
         }
         * gettagbyid(q_id){
-            const result = yield this.app.mysql.query('select tag.tag_id,tag.tag_name from tag,que_tag where que_tag.tag_id = tag.tag_id where que_tag.q_id=?',q_id);
+            console.log(q_id)
+            const result = yield this.app.mysql.query('select tag.tag_id,tag.tag_name from tag,que_tag where que_tag.tag_id = tag.tag_id and que_tag.q_id=?',q_id);
             return result;
         }
         * getlistbytag(tag_id, currnum) {

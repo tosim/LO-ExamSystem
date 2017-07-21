@@ -20,7 +20,11 @@ module.exports = app => {
             return result;
         }
         * deletetagbyid(p_id){
-            const result = yield this.app.mysql.query('pro_tag',{p_id:p_id});
+            const result = yield this.app.mysql.delete('pro_tag',{p_id:p_id});
+            return result;
+        }
+        * insertprotag(p_id,params){
+            const result = yield this.app.mysql.insert('pro_tag',{p_id:p_id,tag_id:params.tag_id,pt_rate:params.pt_rate});
             return result;
         }
     }

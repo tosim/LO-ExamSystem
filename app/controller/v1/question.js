@@ -96,6 +96,11 @@ module.exports = app => {
             const questionnum = (yield service.v1.question.getquestionnum())[0].qnum;
             console.log(questionnum);
             const QuestionList = yield service.v1.question.list(currnum);
+            for (let item of QuestionList){
+                console.log(item.q_id);
+                const tag = yield service.v1.question.gettagbyid(item.q_id);
+                item.tag =tag; 
+            }
             // console.log(QuestionList[0].q_id);
             const totalnum = Math.ceil(questionnum / pagesize);
             // console.log(typeof QuestionList);

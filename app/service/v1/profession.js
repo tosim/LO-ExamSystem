@@ -16,7 +16,7 @@ module.exports = app => {
             return result;
         }
         * getpaperbyid(p_id){
-            const result = yield this.app.mysql.query('select t_id t_ochoose_num,t_mchoose_num,t_judge_num,t_fill_num,t_squestion_num,t_code_num,t_ochoose_score,t_mchoose_score,t_judge_score,t_fill_score,t_squestion_score,t_code_score from testpaper where p_id=?',p_id);
+            const result = yield this.app.mysql.query('select t_id,t_ochoose_num,t_mchoose_num,t_judge_num,t_fill_num,t_squestion_num,t_code_num,t_ochoose_score,t_mchoose_score,t_judge_score,t_fill_score,t_squestion_score,t_code_score from testpaper where p_id=?',p_id);
             return result;
         }
         * gettagbyid(p_id){
@@ -35,11 +35,44 @@ module.exports = app => {
             return insertSuccess;
         }
         * updateprofession(params){
+            // console.log(params.p_id);
+            // console.log(params.testpaper);
             const p_id = params.p_id;
-            const success1 = yield this.app.mysql.query("update profession set p_id=?,p_name=?",[p_id,params.p_name]);
-            const success2 = yield deletetestpaperbyid(p_id);
-            const success3 = yield insertpaper(p_id,params.testpaper);
-            const success4 = yield service.v1.mysql.query();
+            const success1 = yield this.app.mysql.query("update profession set p_name=? where p_id=?",[params.p_name,p_id]);
+            for(let item of params.testpaper){
+            const row = {
+            p_id:p_id,
+            t_id:item.t_id,
+            t_ochoose_num:item.t_ochoose_num,
+            t_mchoose_num:item.t_mchoose_num,
+            t_judge_num:item.t_judge_num,
+            t_fill_num:item.t_fill_num,
+            t_squestion_num:item.t_squestion_num,
+            t_code_num:item.t_code_num,
+            t_ochoose_score:item.t_ochoose_score,
+            t_mchoose_score:item.t_mchoose_score,
+            t_judge_score:item.t_judge_score,
+            t_fill_score:item.t_fill_score,
+            t_squestion_score:item.t_squestion_score,
+            t_code_score:item.t_code_score
+            };
+            console.log(typeof item.t_id);
+            if(typeof item.t_id === "undefined"){
+              const success = yield this.insertpaper(p_id,item);
+            }else{
+                const success6 = yield this.app.mysql.delete('testpaper',{p_id:p_id});
+              const success2 = yield this.app.mysql.insert('testpaper',row);
+            }
+            }
+            const success3 = yield this.service.v1.tag.deletetagbyid(p_id);
+            for(let item of params.tag){
+            const success4 = yield this.service.v1.tag.insertprotag(p_id,item);
+            }
+        if(success1&&success3){
+            return true;
+        }else{
+            return false;
+        }
            
         }
         * deleteprofession(p_id){
