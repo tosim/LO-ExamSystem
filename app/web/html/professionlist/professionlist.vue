@@ -33,8 +33,12 @@
         <el-row type="flex" justify="center">
             <div id="page1" class="page1"></div>
         </el-row>
-        <el-button type="text" @click="dialogVisible = true">添加新职业</el-button>
-        <el-dialog title="添加职业" :visible.sync="dialogVisible" :before-close="handleClose1">
+        <el-row type="flex" justify="center">
+        <el-col style="text-align:center;">
+        <el-button type="primary" @click="dialogVisible = true">添加新职业</el-button>
+        </el-col>
+        </el-row>
+        <el-dialog title="添加职业" :visible.sync="dialogVisible" :before-close="handleClose1" class="addprofessiondia">
             <div class="dia">
                 <div class="cont">
                     <el-row class="row_1">
@@ -60,8 +64,8 @@
                             t_code_score:0,  -->
                         <div class="paperarea">
                             <!--一条  -->
-                          <el-row v-for="(item,index) in testpaper" :key="item" class="onetestpaper" style="text-align:center;width:100%">
-                              <el-col :span="20" >
+                          <el-row v-for="(item,index) in testpaper" :key="item" class="onetestpaper" style="text-align:center;width:100%" >
+                              <el-col :span="20">
                                   <span>单选题：{{item.t_ochoose_num}}</span>
                                   <span>多选题：{{item.t_mchoose_num}}</span>
                                   <span>判断题：{{item.t_judge_num}}</span>
@@ -329,31 +333,29 @@ export default {
             alert('choosed');
         },
         fetch() {
-            let _this = this;
-            _this.$http.get(`http://127.0.0.1:7001/getprofessionlist?page=${_this.currpage}`).then(res => {
-                _this.totalnum = res.data.data.totalnum;
-                _this.professionlist = res.data.data.professionlist;
+            this.$http.get(`http://127.0.0.1:7001/getprofessionlist?page=${this.currpage}`).then(res => {
+                this.totalnum = res.data.data.totalnum;
+                this.professionlist = res.data.data.professionlist;
                 layui.laypage({
                     cont: 'page1', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
-                    pages: _this.totalnum, //通过后台拿到的总页数
-                    curr: _this.currpage, //当前页
+                    pages: this.totalnum, //通过后台拿到的总页数
+                    curr: this.currpage, //当前页
                     skin: 'yahei', //加载内置皮肤，也可以直接赋值16进制颜色值，如:#c00
                     jump: function (obj, first) { //触发分页后的回调
                         if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
-                            _this.currpage = obj.curr;
-                            _this.fetch();
+                            this.currpage = obj.curr;
+                            this.fetch();
                         }
                     }
                 });
             })
         },
         gettaglist() {
-            let _this = this;
             this.$http.get(`http://127.0.0.1:7001/getalltag`).then(res => {
                 console.log(res.data.data.taglist)
-                _this.taglist = res.data.data.taglist;
+                this.taglist = res.data.data.taglist;
                 console.log("start---------");
-                console.log(_this.taglist);
+                console.log(this.taglist);
                 console.log("end---------");
             })
         },
@@ -574,7 +576,7 @@ export default {
             this.$http.get(`http://127.0.0.1:7001/deleteprofession?p_id=${this.professionlist[index].p_id}`)
                 .then(res => {
                     console.log(res);
-                    _this.professionlist.splice(index, 1);
+                    this.professionlist.splice(index, 1);
                 })
                 .catch(err => {
                     console.log(err);
@@ -582,8 +584,11 @@ export default {
 
         },
         updateprofession(index) {
+            this.fetch();
+            console.log(this.professionlist);
             this.dialogVisible = true;
             this.profession = this.professionlist[index];
+            console.log(this.profession);
             this.p_id = this.profession.p_id;
             this.p_name = this.profession.p_name;
             this.testpaper = this.profession.testpaper;
@@ -599,7 +604,10 @@ export default {
             this.testpaper.splice(index,1);
         },
         removetestpaper(index){
+            console.log("11111");
+            console.log(this.testpaper);
             this.testpaper.splice(index,1);
+            console.log(this.professionlist);
         }
     }
 }
@@ -655,5 +663,9 @@ export default {
 }
 .onetestpaper{
     margin: 5%;
+}
+
+.addprofessiondia{
+    width: 100%;
 }
 </style>

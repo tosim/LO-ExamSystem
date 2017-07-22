@@ -34,46 +34,64 @@ module.exports = app => {
             const insertSuccess = result.affectedRows === 1;
             return insertSuccess;
         }
-        * updateprofession(params){
+        * updateprofession(params) {
             // console.log(params.p_id);
             // console.log(params.testpaper);
             const p_id = params.p_id;
-            const success1 = yield this.app.mysql.query("update profession set p_name=? where p_id=?",[params.p_name,p_id]);
-            for(let item of params.testpaper){
-            const row = {
-            p_id:p_id,
-            t_id:item.t_id,
-            t_ochoose_num:item.t_ochoose_num,
-            t_mchoose_num:item.t_mchoose_num,
-            t_judge_num:item.t_judge_num,
-            t_fill_num:item.t_fill_num,
-            t_squestion_num:item.t_squestion_num,
-            t_code_num:item.t_code_num,
-            t_ochoose_score:item.t_ochoose_score,
-            t_mchoose_score:item.t_mchoose_score,
-            t_judge_score:item.t_judge_score,
-            t_fill_score:item.t_fill_score,
-            t_squestion_score:item.t_squestion_score,
-            t_code_score:item.t_code_score
-            };
-            console.log(typeof item.t_id);
-            if(typeof item.t_id === "undefined"){
-              const success = yield this.insertpaper(p_id,item);
-            }else{
-                const success6 = yield this.app.mysql.delete('testpaper',{p_id:p_id});
-              const success2 = yield this.app.mysql.insert('testpaper',row);
+            var arr = [];
+            const t_idlist = yield this.app.mysql.query('select t_id from testpaper where p_id = ?', p_id);
+            for (let item of t_idlist) {
+                arr.push(item.t_id);
             }
+            
+            const success1 = yield this.app.mysql.query("update profession set p_name=? where p_id=?", [params.p_name, p_id]);
+            for (let item of params.testpaper) {
+                console.log(typeof item.t_id);
+                if (typeof item.t_id === "undefined") {
+                    console.log("11111");
+                    const success = yield this.insertpaper(p_id, item);
+                } else {
+                    console.log("222222");
+                    const row = {
+                        p_id: p_id,
+                        t_id: item.t_id,
+                        t_ochoose_num: item.t_ochoose_num,
+                        t_mchoose_num: item.t_mchoose_num,
+                        t_judge_num: item.t_judge_num,
+                        t_fill_num: item.t_fill_num,
+                        t_squestion_num: item.t_squestion_num,
+                        t_code_num: item.t_code_num,
+                        t_ochoose_score: item.t_ochoose_score,
+                        t_mchoose_score: item.t_mchoose_score,
+                        t_judge_score: item.t_judge_score,
+                        t_fill_score: item.t_fill_score,
+                        t_squestion_score: item.t_squestion_score,
+                        t_code_score: item.t_code_score
+                    };
+
+                    console.log(arr);
+                    let index = arr.indexOf(item.t_id);
+                    console.log(index);
+                    const success2 = yield this.app.mysql.update('testpaper', row, { where: { p_id: p_id, t_id: item.t_id } });
+                    arr.splice(index,1);
+                     }
             }
+                     if (arr.length > 0) {
+                            for (let t of arr) {
+                                console.log("剩余id"+t);
+                             const deleteSuccess2 = yield this.app.mysql.delete('testpaper', { p_id: p_id, t_id: t });
+                            }
+                        }
             const success3 = yield this.service.v1.tag.deletetagbyid(p_id);
-            for(let item of params.tag){
-            const success4 = yield this.service.v1.tag.insertprotag(p_id,item);
+            for (let item of params.tag) {
+                const success4 = yield this.service.v1.tag.insertprotag(p_id, item);
             }
-        if(success1&&success3){
-            return true;
-        }else{
-            return false;
-        }
-           
+            if (success1 && success3) {
+                return true;
+            } else {
+                return false;
+            }
+
         }
         * deleteprofession(p_id){
             const deleteSuccess = yield this.app.mysql.delete('profession',{p_id:p_id});
@@ -84,7 +102,15 @@ module.exports = app => {
             const deleteSuccess = yield extend-this.app.mysql.delete('testpaper',{p_id:p_id});
             return deleteSuccess;
         }
-
-    }
+       * contains(arr, obj) {
+            var i = arr.length;
+            while (i--) {
+                if (arr[i] === obj) {
+                return true;
+                }
+            }
+            return false;
+            }
+                }
     return ProfessionService;
 }
