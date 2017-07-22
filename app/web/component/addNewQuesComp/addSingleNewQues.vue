@@ -6,7 +6,7 @@
           <el-row :span="24" class="row-1">
             <el-col :span="12">
               <el-form-item label="试题类型">
-                <el-select v-model="SingleQues.typeval" placeholder="请选择" style="width:100%;">
+                <el-select v-model="SingleQues.q_type" placeholder="请选择" style="width:100%;">
                   <el-option v-for="item in typeOptions" :key="item.value" :label="item.label" :value="item.value">
                   </el-option>
                 </el-select>
@@ -15,7 +15,7 @@
             <el-col :span="12">
               <el-form-item label="标签">
                 <el-select v-model="SingleQues.tags" multiple filterable placeholder="请选择试题标签" style="width:100%;">
-                  <el-option v-for="item in tagOptions" :key="item.value" :label="item.label" :value="item.value">
+                  <el-option v-for="item in SingleQues.tag" :key="item.tag_id" :label="item.tag_name" :value="item.tag_id">
                   </el-option>
                 </el-select>
               </el-form-item>
@@ -29,7 +29,7 @@
             </el-col>
             <el-col :span="12">
               <el-form-item label="难度">
-                <el-select v-model="SingleQues.diffc" placeholder="请选择难度" style="width:100%;">
+                <el-select v-model="SingleQues.q_difficulty" placeholder="请选择难度" style="width:100%;">
                   <el-option v-for="i in difficulty" :key="i.value" :label="i.label" :value="i.value">
                   </el-option>
                 </el-select>
@@ -111,14 +111,20 @@
 
 export default {
   props: [
-    'currentId',
+    'currentItem',
   ],
   mounted: function () {
-    console.log('currentId:' + this.currentId);
+    console.log(this.currentItem);
+    if (this.currentItem !== '') {
+      this.SingleQues = this.currentItem;
+    }
   },
   watch: {
-    currentId: function (val) {
-      console.log('currentId: %s', val);
+    currentItem: function (val) {
+      console.log(val);
+      if (this.currentItem !== '') {
+        this.SingleQues = this.currentItem;
+      }
     },
   },
   methods: {
@@ -141,16 +147,25 @@ export default {
   data() {
     return {
       SingleQues: {
+        q_id:2014,
+        q_content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
+        q_type: 1,//1是单选 2是多选 3是判断。。。看addSingleNewQues.vue
+        tag: [{
+          tag_id: 2,
+          tag_name: "css"
+        }],
+        q_difficulty: 9,
+        ans: "B",
         typeval: '1',//题目类型
         tags: [],//题目标签
         fraction: 0,//分数
         diffc: '',//难度选择 文本的1到4
         cont: '',//题目内容
         judgeAns: -1,//判断正误
-        checkAns:[],//多选的选项 数字的 1 2 3
+        checkAns: [],//多选的选项 数字的 1 2 3
         SingleChooseAns: 2, //单选题的正确答案
-        CurrentBlankAns:'',
-        QuesAnal:'', //试题分析
+        CurrentBlankAns: '',
+        QuesAnal: '', //试题分析
         tableData: [{ //单选，多选的选项
           swit_1: 'A',
           content: '测试内容',
@@ -162,49 +177,59 @@ export default {
           swit_2: false,
           radi_lab: 2,
         }],
+        tag: [{
+          tag_id: 2,
+          tag_name: "css"
+        }],
 
       },
       typeOptions: [{
-        value: '1',
+        value: 1,
         label: '单选题'
       }, {
-        value: '2',
+        value: 2,
         label: '多选题'
       }, {
-        value: '3',
+        value: 3,
         label: '判断题'
       }, {
-        value: '4',
+        value: 4,
         label: '填空题'
       }, {
-        value: '5',
+        value: 5,
         label: '简答题'
       }, {
-        value: '6',
+        value: 6,
         label: '编程题'
       }],
-      tagOptions: [{
-        label: 'html',
-        value: '5001'
-      }, {
-        label: 'css',
-        value: '5002'
-      }, {
-        label: 'javascript',
-        value: '5003'
-      }],
+      
       difficulty: [{
-        value: '1',
-        label: '简单'
+        value: 1,
+        label: '一段'
       }, {
-        value: '2',
-        label: '中等'
+        value: 2,
+        label: '二段'
       }, {
-        value: '3',
-        label: '稍难'
+        value: 3,
+        label: '三段'
       }, {
-        value: '4',
-        label: '困难'
+        value: 4,
+        label: '四段'
+      }, {
+        value: 5,
+        label: '五段'
+      }, {
+        value: 6,
+        label: '六段'
+      }, {
+        value: 7,
+        label: '七段'
+      }, {
+        value: 8,
+        label: '八段'
+      }, {
+        value: 9,
+        label: '九段'
       }],
     }
   }

@@ -1,7 +1,7 @@
 <template>
   <div id="all">
     <el-dialog title="添加试题" :visible.sync="dialogVisible" size="small" :before-close="handleClose">
-      <dial v-bind:currentId="currentId"></dial>
+      <dial v-bind:currentItem="currentItem"></dial>
       <div slot="footer" class="dialog-footer " style="text-align: center;">
         <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存</button>
         <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存并关闭</button>
@@ -72,30 +72,28 @@
         </div>
       </div>
       <el-row>
-        <el-table ref="multipleTable" :data="tableData2" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
+        <el-table ref="multipleTable" :data="questionlist" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
           <el-table-column type="selection" width="55">
           </el-table-column>
           <el-table-column label="试题内容" width="320" show-overflow-tooltip>
-            <template scope="scope">{{ scope.row.content }}</template>
+            <template scope="scope">{{ scope.row.q_content }}</template>
           </el-table-column>
           <el-table-column prop="type" label="题型" width="120">
             <template scope="scope">
-              <span v-for="ite in scope.row.type" :key="ite" style="padding:5px;">{{typeNam[ite]}}</span>
+              <span style="padding:5px;">{{typeNam[scope.row.q_type]}}</span>
             </template>
           </el-table-column>
           <el-table-column prop="tag" label="标签" show-overflow-tooltip>
             <template scope="scope">
-              <span v-for="ite in scope.row.tag" :key="ite" style="padding:5px;">{{tagNam[ite]}}</span>
+              <span v-for="ite in scope.row.tag" :key="ite.tag_name" style="padding:5px;">{{ite.tag_name}}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="diff" label="难度" show-overflow-tooltip>
+          <el-table-column prop="q_difficulty" label="难度" show-overflow-tooltip>
             <template scope="scope">
-              <span v-for="ite in scope.row.diff" :key="ite" style="padding:5px;">{{diffNam[ite]}}</span>
+              <span style="padding:5px;">{{diffNam[scope.row.q_difficulty]}}</span>
             </template>
           </el-table-column>
-          <el-table-column prop="ans" label="标准答案" show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column prop="frac" label="分数" show-overflow-tooltip>
+          <el-table-column prop="q_answer" label="标准答案" show-overflow-tooltip>
           </el-table-column>
           <el-table-column label="操作" width="120">
             <template scope="scope">
@@ -127,7 +125,7 @@ export default {
     "dial3": dial3,
   },
   mounted: function () {
-    this.drawPag();
+    this.fetchData();
   },
   methods: {
     handleSelectionChange(val) {
@@ -140,34 +138,36 @@ export default {
         this.delswit2(items[i]);
       }
     },
-
-    drawPag() {
+    fetchData() {
       let _this = this;
-      layui.laypage({
-        cont: 'page1', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
-        pages: 2, //通过后台拿到的总页数
-        curr: _this.currpage, //当前页
-        skin: 'yahei', //加载内置皮肤，也可以直接赋值16进制颜色值，如:#c00
-        jump: function (obj, first) { //触发分页后的回调
-          if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
-            _this.currpage = obj.curr;
-            console.log(_this.currpage);
-            _this.drawPag();
+      _this.$http.get(`http://192.168.0.107:7001/getquestionlist?page=${_this.currpage}`).then(res => {
+        console.log(res);
+        _this.totalnum = res.data.data.totalnum;
+        _this.questionlist = res.data.data.questionlist;
+        layui.laypage({
+          cont: 'page1', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
+          pages: _this.totalnum, //通过后台拿到的总页数
+          curr: _this.currpage, //当前页
+          skin: 'yahei', //加载内置皮肤，也可以直接赋值16进制颜色值，如:#c00
+          jump: function (obj, first) { //触发分页后的回调
+            if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
+              _this.currpage = obj.curr;
+              _this.fetchData();
+            }
           }
-        }
-      });
+        });
+      })
     },
-
     delswit2(item) {
-      let ind = this.tableData2.indexOf(item);
-      this.tableData2.splice(ind, 1);
+      let ind = this.questionlist.indexOf(item);
+      this.questionlist.splice(ind, 1);
     },
     editblock() {
-      this.currentId = -1;
+      this.currentItem = '';
       this.dialogVisible = true;
     },
     editswit2(item) {
-      this.currentId = item.q_id;
+      this.currentItem = item;
       this.dialogVisible = true;
 
     },
@@ -191,7 +191,8 @@ export default {
   data() {
     return {
       currpage: 1,
-      currentId: -1,
+      currentItem: '',
+      totalnum: 1,
       dialogVisible: false,
       MutiVisible: false,
       ImportVisible: false,
@@ -201,44 +202,59 @@ export default {
         "5002": "html",
         "5003": "javascript"
       },
-      diffNam: {
-        "1": "简单",
-        "2": "中等",
-        "3": "稍难",
-        "4": "困难"
-      },
-      typeNam: {
-        "1": "单选题",
-        "2": "多选题",
-        "3": "判断题",
-        "4": "填空题",
-        "5": "简答题",
-        "6": "编程题",
-      },
-      tableData2: [{
+      diffNam: [
+        "空段",
+        "一段",
+        "二段",
+        "三段",
+        "四段",
+        "五段",
+        "六段",
+        "七段",
+        "八段",
+        "九段"
+      ],
+      typeNam: [
+        "保留题",
+        "单选题",
+        "多选题",
+        "判断题",
+        "填空题",
+        "简答题",
+        "编程题",
+      ],
+      questionlist: [{
         q_id: 2014,
-        content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
-        type: '1',//1是单选 2是多选 3是判断。。。看addSingleNewQues.vue
-        tag: ["5001"],
-        diff: "4",
+        q_content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
+        q_type: 1,//1是单选 2是多选 3是判断。。。看addSingleNewQues.vue
+        tag: [{
+          tag_id: 2,
+          tag_name: "css"
+        }],
+        q_difficulty: 9,
+        q_answer: "awda",
+        q_analysis: "wada",
         ans: "B",
-        frac: 5,
       }, {
         q_id: 2015,
-        content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
-        type: '1',
-        tag: ["5001"],
-        diff: "4",
+        q_content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
+        q_type: '1',
+        tag: [{
+          tag_id: 2,
+          tag_name: "css"
+        }],
+        q_difficulty: 9,
         ans: "B",
-        frac: 5,
       }, {
         q_id: 2016,
-        content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
-        type: '1',
-        tag: ["5002", "5003"],
-        diff: "4",
+        q_content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
+        q_type: '1',
+        tag: [{
+          tag_id: 2,
+          tag_name: "css"
+        }],
+        q_difficulty: "4",
         ans: "C",
-        frac: 5,
       }],
     }
   },
