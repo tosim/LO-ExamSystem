@@ -22,7 +22,14 @@ module.exports = app => {
             return result;
         }
         * list(currnum) {
-            const result = yield this.app.mysql.query('select * from question limit ?,8', currnum);
+            const result = yield this.app.mysql.query('select * from question order by q_id asc limit ?,8 ', currnum);
+            return result;
+        }
+        * getlistbykey(currnum,key,tag){
+            console.log("12378")
+            console.log(tag);
+            key = '%'+key+'%';
+            const result = yield this.app.mysql.query('select * from question where q_content like ? order by q_id asc  limit ?,8',[key,currnum]);
             return result;
         }
         * gettagbyid(q_id){
@@ -52,11 +59,16 @@ module.exports = app => {
            q_wrong:params.q_wrong,
         };
          const updateSuccess = yield this.app.mysql.update('question',row,{where:{q_id:q_id}});
+         const deleteSuccess = yield this.app.mysql.delete('que_tag',{q_id:q_id});
          for(let item of params.tag_id){
-             const result = yield this.app.mysql.query('update que_tag set tag_id = ? where q_id = ?',q_id);
+            const insertSuccess = yield this.app.mysql.insert('que_tag',{q_id:q_id,tag_id:tag_id});
          }
-         console.log(updateSuccess);
-         return updateSuccess;
+        console.log(updateSuccess);
+        if(updateSuccess&&deleteSuccess&&insertSuccess){
+            return true;
+        }else{
+            return false;
+        }
         }
         * deletequestion(q_id){
          const deleteSuccess = yield this.app.mysql.delete('question',{q_id:q_id});

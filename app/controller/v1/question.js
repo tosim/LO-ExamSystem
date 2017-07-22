@@ -106,6 +106,37 @@ module.exports = app => {
             // console.log(typeof QuestionList);
             yield this.myresponse(ctx, QuestionList, totalnum);
         }
+        * getlistbykey(){
+            const { ctx, service } = this;
+            ctx.validate({
+                key:{
+                  required:false,
+                  type:'string',
+                },
+                tag:{
+                    required:false,
+                    type:'string',
+                }
+            }, ctx.request.query);
+            const key = (ctx.query.key).toString();
+            const curr = parseInt(ctx.query.page);
+            console.log(typeof curr);
+            const pagesize = 8;
+            // console.log(pagesize);
+            const currnum = (curr - 1) * pagesize;
+            const questionnum = (yield service.v1.question.getquestionnum())[0].qnum;
+            console.log(questionnum);
+            const QuestionList = yield service.v1.question.getlistbykey(currnum,key);
+            for (let item of QuestionList){
+                console.log(item.q_id);
+                const tag = yield service.v1.question.gettagbyid(item.q_id);
+                item.tag =tag; 
+            }
+            // console.log(QuestionList[0].q_id);
+            const totalnum = Math.ceil(questionnum / pagesize);
+            // console.log(typeof QuestionList);
+            yield this.myresponse(ctx, QuestionList, totalnum);
+        }
         * listorderbyzan(){
             const { ctx, service } = this;
             const curr = parseInt(ctx.query.page);
@@ -200,6 +231,18 @@ module.exports = app => {
                     data: '',
                     msg: '删除失败',
                 }
+            }
+        }
+        * batchdelete(){
+            const {ctx, service} = this;
+            const q_idlist = ctx.request.body.q_id;
+            for(let item of q_idlist){
+              yield service.v1.question.deletequestion(item);
+            };
+            ctx.response.body = {
+                    success: 1,
+                    data: '',
+                    msg: '删除成功',
             }
         } 
         * myresponse(ctx, QuestionList, totalnum) {

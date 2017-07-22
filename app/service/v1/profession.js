@@ -12,7 +12,7 @@ module.exports = app => {
           return result; 
         }
         * index(currnum){
-            const result = yield this.app.mysql.query('select * from profession limit ?,8',currnum);
+            const result = yield this.app.mysql.query('select * from profession order by p_id asc limit ?,8',currnum);
             return result;
         }
         * getpaperbyid(p_id){

@@ -19,6 +19,7 @@ module.exports = app => {
 
   app.post('/addquestion', app.controller.v1.question.create);
   app.get('/getquestionlist', app.controller.v1.question.list);
+  app.get('/getlistbykey',app.controller.v1.question.getlistbykey);
   app.get('/getquestionlistorderbyzan', app.controller.v1.question.listorderbyzan);
   app.get('/getquestionlistorderbycai', app.controller.v1.question.listorderbycai);
   app.get('/getquestionlistbytag',app.controller.v1.question.getlistbytag);
