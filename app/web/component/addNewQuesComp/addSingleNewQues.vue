@@ -23,10 +23,10 @@
           </el-row>
           <el-row :span="24" class="row-1">
             <!-- <el-col :span="12">
-                      <el-form-item label="试题分数">
-                        <el-input v-model="SingleQues.fraction" placeholder="请输入分数"></el-input>
-                      </el-form-item>
-                    </el-col> -->
+                          <el-form-item label="试题分数">
+                            <el-input v-model="SingleQues.fraction" placeholder="请输入分数"></el-input>
+                          </el-form-item>
+                        </el-col> -->
             <el-col :span="12">
               <el-form-item label="难度">
                 <el-select v-model="SingleQues.q_difficulty" placeholder="请选择难度" style="width:100%;">
@@ -162,33 +162,36 @@ export default {
           }
         }
       }
-      if (this.SingleQues.q_type === 2) {
-        let tpm = this.currentItem.q_answer.split('&');
-        for (let i = 0, j = 0; i < this.SingleQues.q_content.items.length; i++) {
-          if (this.SingleQues.tableData[i].swit_1 === tpm[j]) {
-            this.SingleQues.checkAns[j++] = i + 1;
+      switch (this.SingleQues.q_type) {
+        case 2: {
+          let tpm = this.currentItem.q_answer.split('&');
+          for (let i = 0, j = 0; i < this.SingleQues.q_content.items.length; i++) {
+            if (this.SingleQues.tableData[i].swit_1 === tpm[j]) {
+              this.SingleQues.checkAns[j++] = i + 1;
+            }
           }
+          break;
         }
-      } else if (this.SingleQues.q_type === 3) {
-        //判断题
-        this.SingleQues.judgeAns = this.SingleQues.q_answer === 'T' ? "1" : "0";
-        console.log(this.SingleQues.q_answer + ':' + this.SingleQues.judgeAns);
-      } else if (this.SingleQues.q_type === 4) {
-        this.SingleQues.q_content.main = this.currentItem.q_content; //填空题内容
-      } else if (this.SingleQues.q_type === 5) { // 简答题
-      } else if (this.SingleQues.q_type === 6) { // 编程题
+        case 3: {
+          // this.SingleQues.q_content.main = this.currentItem.q_content;
+          this.SingleQues.judgeAns = this.SingleQues.q_answer === 'T' ? "1" : "0";//特地不写break调用下面的内容。
+        }
+        case 4: case 5: case 6:{
+          this.SingleQues.q_content.main = this.currentItem.q_content;
+        }
       }
     },
     getRad() {
+      let leth = this.SingleQues.tableData.length+1;
       this.SingleQues.tableData.push({
-        swit_1: "E",
-        content: '测试内容',
-        radi_lab: 5,
+        swit_1: String.fromCharCode(64+leth),
+        content: '',
+        radi_lab: leth,
       });
 
     },
     delswit(index) {
-      if (this.SingleQues.SingleChooseAns != index + 1) {
+      if (this.SingleQues.q_type!==1||this.SingleQues.SingleChooseAns != index + 1) {
         this.SingleQues.tableData.splice(index, 1);
       } else {
         this.$message.error('此选项是指定的正确答案，无法删除');
