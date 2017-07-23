@@ -14,19 +14,19 @@
             </el-col>
             <el-col :span="12">
               <el-form-item label="标签">
-                <el-select v-model="SingleQues.tags" multiple filterable placeholder="请选择试题标签" style="width:100%;">
-                  <el-option v-for="item in SingleQues.tag" :key="item.tag_id" :label="item.tag_name" :value="item.tag_id">
+                <el-select v-model="SingleQues.tag" multiple filterable placeholder="请选择试题标签" style="width:100%;">
+                  <el-option v-for="item in taglist" :key="item.tag_id" :label="item.tag_name" :value="item.tag_id">
                   </el-option>
                 </el-select>
               </el-form-item>
             </el-col>
           </el-row>
           <el-row :span="24" class="row-1">
-            <el-col :span="12">
+            <!-- <el-col :span="12">
               <el-form-item label="试题分数">
                 <el-input v-model="SingleQues.fraction" placeholder="请输入分数"></el-input>
               </el-form-item>
-            </el-col>
+            </el-col> -->
             <el-col :span="12">
               <el-form-item label="难度">
                 <el-select v-model="SingleQues.q_difficulty" placeholder="请选择难度" style="width:100%;">
@@ -35,19 +35,18 @@
                 </el-select>
               </el-form-item>
             </el-col>
-            </el-col>
           </el-row>
           <el-row :span="24" class="row-2">
             <el-form-item label="试题内容">
-              <el-input type="textarea" :rows="5" class="textarea-1" v-model="SingleQues.cont"></el-input>
+              <el-input type="textarea" :rows="5" class="textarea-1" v-model="SingleQues.q_content.main"></el-input>
             </el-form-item>
           </el-row>
-          <el-form-item v-if="SingleQues.typeval === '4'">
+          <el-form-item v-if="SingleQues.q_type === 4">
             <span>填空符请用三个连续下划线表示，否则无法识别</span>
           </el-form-item>
           <el-row :span="24">
             <el-col :span="24">
-              <table class="layui-table" v-if="SingleQues.typeval ==='2'||SingleQues.typeval ==='1'">
+              <table class="layui-table" v-if="SingleQues.q_type ===2||SingleQues.q_type ===1">
                 <colgroup>
                   <col width="60">
                   <col>
@@ -63,17 +62,17 @@
                     <th>操作</th>
                   </tr>
                 </thead>
-                <tr v-for="item in SingleQues.tableData" :key="item.swit_1">
+                <tr v-for="(item,index) in SingleQues.tableData" :key="item.swit_1">
                   <td>{{item.swit_1}}</td>
                   <td>
                     <el-input type="textarea" :rows="4" v-model="item.content" class="textarea-1"></el-input>
                   </td>
+                   <td>
+                    <input type="radio" name='singlechos' v-model="SingleQues.SingleChooseAns" :value="item.radi_lab" v-if="SingleQues.q_type === 1">
+                    <input type="checkbox" v-model="SingleQues.checkAns" :value="item.radi_lab" v-if="SingleQues.q_type === 2">
+                  </td> 
                   <td>
-                    <input type="radio" v-model="SingleQues.SingleChooseAns" :value="item.radi_lab" v-if="SingleQues.typeval === '1'">
-                    <input type="checkbox" v-model="SingleQues.checkAns" :value="item.radi_lab" v-if="SingleQues.typeval === '2'">
-                  </td>
-                  <td>
-                    <span class="dele" @click="delswit(item)">删除</span>
+                    <span class="dele" @click="delswit(index)">删除</span>
                   </td>
                 </tr>
                 <tr>
@@ -83,22 +82,22 @@
                 </tr>
               </table>
   
-              <el-form-item label="选项" v-if="SingleQues.typeval ==='3'">
+              <el-form-item label="选项" v-if="SingleQues.q_type ===3">
                 <el-radio class="radio" v-model="SingleQues.judgeAns" label="1">正确</el-radio>
                 <el-radio class="radio" v-model="SingleQues.judgeAns" label="0">错误</el-radio>
               </el-form-item>
   
-              <el-form-item label="正确答案" v-if="SingleQues.typeval ==='4'||SingleQues.typeval ==='5'||SingleQues.typeval ==='6'">
-                <el-input type="textarea" :rows="4" v-model="SingleQues.CurrentBlankAns"></el-input>
+              <el-form-item label="正确答案" v-if="SingleQues.q_type ===4||SingleQues.q_type ===5||SingleQues.q_type ===6">
+                <el-input type="textarea" :rows="4" v-model="SingleQues.q_answer"></el-input>
               </el-form-item>
             </el-col>
           </el-row>
-          <el-form-item v-if="SingleQues.typeval === '4'">
+          <el-form-item v-if="SingleQues.q_type === 4">
             <span>多个填空之间用“|”隔开，单个空有多个标准答案用“&”隔开 如：1&2|3 </span>
           </el-form-item>
   
           <el-form-item label="试题分析">
-            <el-input type="textarea" :rows="5" v-model="SingleQues.QuesAnal"></el-input>
+            <el-input type="textarea" :rows="5" v-model="SingleQues.q_analysis"></el-input>
           </el-form-item>
         </el-form>
         <el-button type="primary" @click="onSubmit">提交</el-button>
@@ -116,73 +115,117 @@ export default {
   mounted: function () {
     console.log(this.currentItem);
     if (this.currentItem !== '') {
-      this.SingleQues = this.currentItem;
+      this.analysData();
     }
+    this.gettaglist();
   },
   watch: {
     currentItem: function (val) {
-      console.log(val);
       if (this.currentItem !== '') {
-        this.SingleQues = this.currentItem;
+        this.analysData();
       }
     },
   },
   methods: {
+    analysData() {
+      this.SingleQues = this.currentItem;
+      for (let i = 0; i < this.currentItem.tag.length; i++) {
+        this.SingleQues.tag[i] = this.currentItem.tag[i].tag_id;
+      }
+      if (this.SingleQues.q_type === 1 || this.SingleQues.q_type === 2) {
+        var tmp = this.SingleQues.q_content.split(/;;/g);
+        this.SingleQues.q_content = {
+          main:tmp[0],
+          items: tmp.slice(1),
+        };
+        this.SingleQues.SingleChooseAns = 0;
+        this.SingleQues.judgeAns = '';
+        this.SingleQues.checkAns = [];
+        this.SingleQues.tableData = [];
+        for (let i = 0; i < this.SingleQues.q_content.items.length; i++) {
+          var tpm = this.SingleQues.q_content.items[i].split(/^([\S\s])\.(.*)/);
+          this.SingleQues.tableData.push({
+            swit_1:tpm[1],
+            content:tpm[2],
+            radi_lab:i+1,
+          })
+          if(this.SingleQues.q_type===1 && this.SingleQues.SingleChooseAns === 0){
+            this.SingleQues.SingleChooseAns = this.SingleQues.q_answer === tpm[1]?i+1:this.SingleQues.SingleChooseAns;
+          }
+
+        }
+        if (this.SingleQues.q_type === 2) {
+          let tpm = this.SingleQues.q_answer.split('&');
+          for(let i = 0,j = 0;i< this.SingleQues.q_content.items.length; i++ ){
+            if(this.SingleQues.tableData[i].swit_1 === tpm[j]){
+              this.SingleQues.checkAns[j++] = i+1;
+            }
+          }
+        }
+      } else if (this.SingleQues.q_type === 3) {
+        //判断题
+      } else if (this.SingleQues.q_type === 4) {
+        var origin = this.SingleQues.q_content;
+        this.SingleQues.q_content = {};
+        this.SingleQues.q_content.main = origin; //填空题内容              
+        // this.SingleQues.q_content.blankNum = origin.match(/_{3}/g); //空格个数
+      } else if (this.SingleQues.q_type === 5) { // 简答题
+      } else if (this.SingleQues.q_type === 6) { // 编程题
+      }
+    },
     getRad() {
       this.SingleQues.tableData.push({
-        swit_1: "C",
+        swit_1: "E",
         content: '测试内容',
-        swit_2: false,
-        radi_lab: 3,
+        radi_lab: 5,
       });
-    }, delswit(item) {
-      let ind = this.SingleQues.tableData.indexOf(item);
-      this.SingleQues.tableData.splice(ind, 1);
+    }, 
+    delswit(index) {
+      this.SingleQues.tableData.splice(index, 1);
     },
     onSubmit() {
       console.log('submit!');
       console.log(this.SingleQues);
     },
+    gettaglist() {
+      let _this = this;
+      this.$http.get(`http://192.168.0.107:7001/getalltag`).then(res => {
+        _this.taglist = res.data.data.taglist;
+      })
+    },
   },
   data() {
     return {
       SingleQues: {
-        q_id:2014,
-        q_content: '这个是题目的内容，阿拉啦啦啦啦啦啦啦',
+        q_id: 2014,
+        q_content: {
+          main: '这里是题目',
+          items: ['a....', 'b.....'],
+        },
         q_type: 1,//1是单选 2是多选 3是判断。。。看addSingleNewQues.vue
-        tag: [{
-          tag_id: 2,
-          tag_name: "css"
-        }],
+        tag: [],
         q_difficulty: 9,
-        ans: "B",
-        typeval: '1',//题目类型
-        tags: [],//题目标签
-        fraction: 0,//分数
-        diffc: '',//难度选择 文本的1到4
-        cont: '',//题目内容
+        q_answer:'',
+        q_analysis:'',
+
         judgeAns: -1,//判断正误
         checkAns: [],//多选的选项 数字的 1 2 3
         SingleChooseAns: 2, //单选题的正确答案
-        CurrentBlankAns: '',
-        QuesAnal: '', //试题分析
+
         tableData: [{ //单选，多选的选项
           swit_1: 'A',
           content: '测试内容',
-          swit_2: false,
           radi_lab: 1,
         }, {
           swit_1: "B",
           content: '测试内容',
-          swit_2: false,
           radi_lab: 2,
-        }],
-        tag: [{
-          tag_id: 2,
-          tag_name: "css"
         }],
 
       },
+      taglist: [{
+
+      }],
       typeOptions: [{
         value: 1,
         label: '单选题'
@@ -202,7 +245,7 @@ export default {
         value: 6,
         label: '编程题'
       }],
-      
+
       difficulty: [{
         value: 1,
         label: '一段'
