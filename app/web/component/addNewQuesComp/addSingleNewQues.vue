@@ -14,7 +14,7 @@
             </el-col>
             <el-col :span="12">
               <el-form-item label="标签">
-                <el-select v-model="SingleQues.tag" multiple filterable placeholder="请选择试题标签" style="width:100%;">
+                <el-select v-model="SingleQues.tag" multiple filterable placeholder=" " style="width:100%;">
                   <el-option v-for="item in taglist" :key="item.tag_id" :label="item.tag_name" :value="item.tag_id">
                   </el-option>
                 </el-select>
@@ -23,10 +23,10 @@
           </el-row>
           <el-row :span="24" class="row-1">
             <!-- <el-col :span="12">
-              <el-form-item label="试题分数">
-                <el-input v-model="SingleQues.fraction" placeholder="请输入分数"></el-input>
-              </el-form-item>
-            </el-col> -->
+                      <el-form-item label="试题分数">
+                        <el-input v-model="SingleQues.fraction" placeholder="请输入分数"></el-input>
+                      </el-form-item>
+                    </el-col> -->
             <el-col :span="12">
               <el-form-item label="难度">
                 <el-select v-model="SingleQues.q_difficulty" placeholder="请选择难度" style="width:100%;">
@@ -67,12 +67,13 @@
                   <td>
                     <el-input type="textarea" :rows="4" v-model="item.content" class="textarea-1"></el-input>
                   </td>
-                   <td>
+                  <td>
                     <input type="radio" name='singlechos' v-model="SingleQues.SingleChooseAns" :value="item.radi_lab" v-if="SingleQues.q_type === 1">
                     <input type="checkbox" v-model="SingleQues.checkAns" :value="item.radi_lab" v-if="SingleQues.q_type === 2">
-                  </td> 
+                  </td>
                   <td>
-                    <span class="dele" @click="delswit(index)">删除</span>
+                    <el-button @click="delswit(index)" :disabled="SingleQues.tableData.length!==(index+1)">删除</el-button>
+  
                   </td>
                 </tr>
                 <tr>
@@ -116,6 +117,8 @@ export default {
     console.log(this.currentItem);
     if (this.currentItem !== '') {
       this.analysData();
+    } else {
+      this.SingleQues = this.cloneObj(this.SingleQuesb);
     }
     this.gettaglist();
   },
@@ -123,52 +126,55 @@ export default {
     currentItem: function (val) {
       if (this.currentItem !== '') {
         this.analysData();
+      } else {
+        this.SingleQues = this.cloneObj(this.SingleQuesb);
       }
     },
   },
   methods: {
+
     analysData() {
-      this.SingleQues = this.currentItem;
+      this.SingleQues.q_type = this.currentItem.q_type;
+      this.SingleQues.q_difficulty = this.currentItem.q_difficulty;
+      this.SingleQues.tag = [];
+      this.SingleQues.q_answer = this.currentItem.q_answer;
+      this.SingleQues.q_analysis = this.currentItem.q_analysis;
       for (let i = 0; i < this.currentItem.tag.length; i++) {
         this.SingleQues.tag[i] = this.currentItem.tag[i].tag_id;
       }
       if (this.SingleQues.q_type === 1 || this.SingleQues.q_type === 2) {
-        var tmp = this.SingleQues.q_content.split(/;;/g);
+        var tmp = this.currentItem.q_content.split(/;;/g);
         this.SingleQues.q_content = {
-          main:tmp[0],
+          main: tmp[0],
           items: tmp.slice(1),
         };
-        this.SingleQues.SingleChooseAns = 0;
-        this.SingleQues.judgeAns = '';
-        this.SingleQues.checkAns = [];
         this.SingleQues.tableData = [];
         for (let i = 0; i < this.SingleQues.q_content.items.length; i++) {
           var tpm = this.SingleQues.q_content.items[i].split(/^([\S\s])\.(.*)/);
+          console.log(tpm);
           this.SingleQues.tableData.push({
-            swit_1:tpm[1],
-            content:tpm[2],
-            radi_lab:i+1,
+            swit_1: tpm[1],
+            content: tpm[2],
+            radi_lab: i + 1,
           })
-          if(this.SingleQues.q_type===1 && this.SingleQues.SingleChooseAns === 0){
-            this.SingleQues.SingleChooseAns = this.SingleQues.q_answer === tpm[1]?i+1:this.SingleQues.SingleChooseAns;
+          if (this.SingleQues.q_type === 1 && this.SingleQues.SingleChooseAns === 0) {
+            this.SingleQues.SingleChooseAns = this.SingleQues.q_answer === tpm[1] ? i + 1 : this.SingleQues.SingleChooseAns;
           }
-
         }
-        if (this.SingleQues.q_type === 2) {
-          let tpm = this.SingleQues.q_answer.split('&');
-          for(let i = 0,j = 0;i< this.SingleQues.q_content.items.length; i++ ){
-            if(this.SingleQues.tableData[i].swit_1 === tpm[j]){
-              this.SingleQues.checkAns[j++] = i+1;
-            }
+      }
+      if (this.SingleQues.q_type === 2) {
+        let tpm = this.currentItem.q_answer.split('&');
+        for (let i = 0, j = 0; i < this.SingleQues.q_content.items.length; i++) {
+          if (this.SingleQues.tableData[i].swit_1 === tpm[j]) {
+            this.SingleQues.checkAns[j++] = i + 1;
           }
         }
       } else if (this.SingleQues.q_type === 3) {
         //判断题
+        this.SingleQues.judgeAns = this.SingleQues.q_answer === 'T' ? "1" : "0";
+        console.log(this.SingleQues.q_answer + ':' + this.SingleQues.judgeAns);
       } else if (this.SingleQues.q_type === 4) {
-        var origin = this.SingleQues.q_content;
-        this.SingleQues.q_content = {};
-        this.SingleQues.q_content.main = origin; //填空题内容              
-        // this.SingleQues.q_content.blankNum = origin.match(/_{3}/g); //空格个数
+        this.SingleQues.q_content.main = this.currentItem.q_content; //填空题内容
       } else if (this.SingleQues.q_type === 5) { // 简答题
       } else if (this.SingleQues.q_type === 6) { // 编程题
       }
@@ -179,9 +185,14 @@ export default {
         content: '测试内容',
         radi_lab: 5,
       });
-    }, 
+
+    },
     delswit(index) {
-      this.SingleQues.tableData.splice(index, 1);
+      if (this.SingleQues.SingleChooseAns != index + 1) {
+        this.SingleQues.tableData.splice(index, 1);
+      } else {
+        this.$message.error('此选项是指定的正确答案，无法删除');
+      }
     },
     onSubmit() {
       console.log('submit!');
@@ -193,6 +204,21 @@ export default {
         _this.taglist = res.data.data.taglist;
       })
     },
+    cloneObj(obj) {
+      var str, newobj = obj.constructor === Array ? [] : {};
+      if (typeof obj !== 'object') {
+        return;
+      } else if (window.JSON) {
+        str = JSON.stringify(obj), //系列化对象
+          newobj = JSON.parse(str); //还原
+      } else {
+        for (var i in obj) {
+          newobj[i] = typeof obj[i] === 'object' ?
+            cloneObj(obj[i]) : obj[i];
+        }
+      }
+      return newobj;
+    }
   },
   data() {
     return {
@@ -205,13 +231,58 @@ export default {
         q_type: 1,//1是单选 2是多选 3是判断。。。看addSingleNewQues.vue
         tag: [],
         q_difficulty: 9,
-        q_answer:'',
-        q_analysis:'',
-
+        q_answer: '',
+        q_analysis: '',
         judgeAns: -1,//判断正误
         checkAns: [],//多选的选项 数字的 1 2 3
         SingleChooseAns: 2, //单选题的正确答案
+        tableData: [{ //单选，多选的选项
+          swit_1: 'A',
+          content: '测试内容',
+          radi_lab: 1,
+        }, {
+          swit_1: "B",
+          content: '测试内容',
+          radi_lab: 2,
+        }],
 
+      },
+      taglist: [{
+
+      }],
+      typeOptions: [{
+        value: 1,
+        label: '单选题'
+      }, {
+        value: 2,
+        label: '多选题'
+      }, {
+        value: 3,
+        label: '判断题'
+      }, {
+        value: 4,
+        label: '填空题'
+      }, {
+        value: 5,
+        label: '简答题'
+      }, {
+        value: 6,
+        label: '编程题'
+      }],
+      SingleQuesb: {
+        q_id: 2014,
+        q_content: {
+          main: '这里是题目',
+          items: ['a....', 'b.....'],
+        },
+        q_type: 1,//1是单选 2是多选 3是判断。。。看addSingleNewQues.vue
+        tag: [],
+        q_difficulty: 9,
+        q_answer: '',
+        q_analysis: '',
+        judgeAns: -1,//判断正误
+        checkAns: [],//多选的选项 数字的 1 2 3
+        SingleChooseAns: 2, //单选题的正确答案
         tableData: [{ //单选，多选的选项
           swit_1: 'A',
           content: '测试内容',
