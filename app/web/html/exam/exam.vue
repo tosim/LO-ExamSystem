@@ -265,6 +265,8 @@ export default {
               var queList = res.data.queList;
               self.leftTime = res.data.leftTime;
               // console.log(queList);
+
+              //开始解析
               self.ochoose = [];
               self.mchoose = [];
               self.judge = [];
@@ -304,6 +306,7 @@ export default {
                   }
               }
               console.log(queList);
+              // 解析结束
               var cnt = 0;
               cnt += self.ochoose.length === 0 ? 0 : 1;
               self.mchooseid = getId(cnt);
