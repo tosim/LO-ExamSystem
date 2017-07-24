@@ -8,5 +8,6 @@ module.exports = (options,app) => {
     // 如果 Session 是空的，则不保存
     if (!this.session.populated) return;
     this.session.save();
+    // console.log(this.session);
   };
 };

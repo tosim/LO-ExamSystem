@@ -25,10 +25,12 @@ module.exports = app => {
           u_name:req.u_name,
           u_email:req.u_email,
           u_pass:req.u_pass,
-          p_id:parseInt(req.p_id)
+          p_id:parseInt(req.p_id),
+          u_point:0
         });
         req.u_id = result.insertId;
         delete req.re_pass;
+        req.u_level = 1;
         ctx.session.user = req;
         delete req.u_pass;
         ctx.body = {
@@ -48,7 +50,10 @@ module.exports = app => {
 
     //用户修改资料，put/：id
     * update() {
+      const {ctx} = this;
+      ctx.validate({
         
+      });
     }
   }
   return UserController;

@@ -48,5 +48,9 @@ module.exports = app => {
     // load into agent, default is close
     agent: false,
   };
+  
+  exports.multipart = {
+    fileExtensions: [ '.doc','.docx' ] // 增加对 word文档的 扩展名的支持
+  }
   return exports;
 };

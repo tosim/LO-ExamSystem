@@ -2,11 +2,10 @@ import Vue from 'vue';
 import './filter';
 import './directive';
 import './component';
+import Element from 'element-ui';
 
 Vue.prototype.domain = 'http://127.0.0.1:7001';
-import ElementUI from 'element-ui';
-Vue.use(ElementUI);
-
+Vue.use(Element);
 const App = {};
 
 App.data = () => {

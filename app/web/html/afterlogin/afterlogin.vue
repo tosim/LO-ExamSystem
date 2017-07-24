@@ -32,16 +32,16 @@
         </el-form-item>
         <el-form-item label="考试难度">
           <el-select v-model="exam.difficulty" placeholder="请选择考试难度">
-            <el-option label="易" value="1"></el-option>
-            <el-option label="中" value="2"></el-option>
-            <el-option label="难" value="3"></el-option>
+            <el-option label="易" value="easy"></el-option>
+            <el-option label="中" value="normal"></el-option>
+            <el-option label="难" value="hard"></el-option>
           </el-select>
         </el-form-item>
         <p id="prompt">系统根据您的职业为您智能组卷，祝您考试愉快！</p>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="gotoexam = false">取 消</el-button>
-        <el-button type="primary" @click="startExam()">开始考试</el-button>
+        <el-button type="primary" @click="randomTest()">开始考试</el-button>
       </div>
     </el-dialog>
     <!--  专项训练弹窗 -->
@@ -117,14 +117,21 @@ export default {
   components: {
     'lo-head': head
   },
+  created() {
+    let x = window.screen.height - 110;
+    document.body.setAttribute("style", "height:"+x+"px");
+  },
   methods:{
-    startExam(type){
-      if(typeof type === 'undefined'){
-        return;
-      }else{
-
-      }
-    }
+    randomTest(){
+      // console.log('examtime = ' + this.examtime);
+      // this.$http.get(this.domain + '/v1/questions?time='+this.examtime).then((res)=>{
+      //   res = res.data;
+      //   // console.log(res.data);
+      //   window.location.href = '/public/exam.html';
+      // })
+      window.localStorage.examtime = this.examtime;
+      window.location.href = '/public/exam.html';
+    },
   }
 }
 </script>
@@ -136,7 +143,7 @@ export default {
   font-size: 12px;
 }
 .el-dialog--small {
-  width: 20%;
+  width: 350px;
 }
 
 #all {

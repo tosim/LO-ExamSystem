@@ -20,6 +20,7 @@ module.exports = app => {
       this.ctx.status = 200;
 
     }
+    
   }
   return TestController;
 };

@@ -40,6 +40,10 @@ export default {
   },
   components: {
     'lo-head': head
+  },
+  created() {
+    let x = window.screen.height - 110;
+    document.body.setAttribute("style", "height:"+x+"px");
   }
 }
 </script>

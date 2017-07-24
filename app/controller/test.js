@@ -1,6 +1,7 @@
 'use strict';
 
 var EventProxy = require('eventproxy');
+var path = require('path');
 
 module.exports = app => {
   class TestController extends app.Controller {
@@ -43,7 +44,14 @@ module.exports = app => {
       // ,[1,1]);
       const difficulty = 5,num = 5;
       this.ctx.body = yield app.mysql.query(sql,[1,1,2,difficulty,num]);
-  }
+    }
+    * testapp(){
+      console.log(app.baseDir);
+      this.ctx.body = {
+        data:path.join(app.baseDir,'app/words')
+      }
+    }
+
   }
   return TestController;
 };

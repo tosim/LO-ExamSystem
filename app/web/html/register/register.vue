@@ -3,7 +3,7 @@
     <div class="content">
       <el-row class="title" type="flex" justify="center">
         <el-col :span="12">
-          蓝鸥IT考评系统
+          蓝鸥IT考评系统用户注册
         </el-col>
       </el-row>
       <div class="bottom">
@@ -74,12 +74,19 @@ export default {
       this.$http.post(this.domain+'/v1/users',this.ruleForm).then((res)=>{
         res = res.data;
         if(res.success === 1){
-          window.location.href = '/public/afterlogin.html';
+          console.log("注册成功，页面即将跳转");
+          setTimeout(2000,function(){
+            window.location.href = '/public/afterlogin.html';
+          });
         }else{
           console.log('注册失败');
         }
       });
     }
+  },
+  created() {
+    let x = window.screen.height - 110;
+    document.body.setAttribute("style", "height:"+x+"px");
   }
 }
 </script>

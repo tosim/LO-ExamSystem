@@ -1,11 +1,9 @@
 <template>
-<!--<HtmlLayout title="testTitle" description="vue server side render" keywords="egg, vue, webpack, server side render">-->
   <div id="all">
-    <!--<h1>asdasd</h1>-->
     <div class="content">
-      <el-row class="title" type="flex" justify="center">
-        <el-col :span="12">
-          蓝鸥IT考评系统
+      <el-row class="title" type="flex" justify="center" style="text-align:center">
+        <el-col>
+          蓝鸥IT考评系统用户登录
         </el-col>
       </el-row>
       <div class="bottom">
@@ -27,7 +25,6 @@
       </div>
     </div>
   </div>
-<!--</HtmlLayout>-->
 </template>
 
 <script>
@@ -37,15 +34,15 @@ export default {
       labelPosition: 'left',
       ruleForm: {
         u_email: '',
-        u_password: '',
+        u_pass: '',
         yzm: ''
       },
       rules: {
-        email: [
+        u_email: [
           { required: true, message: '请输入电子邮箱', trigger: 'blur' },
           { min: 1, max: 20, message: '长度不能超过 20 个字符', trigger: 'blur' }
         ],
-        password: [
+        u_pass: [
           { required: true, message: '请输入密码', trigger: 'blur' }
         ],
         yzm: [
@@ -56,17 +53,31 @@ export default {
   },
   methods: {
     submitForm() {
-      console.dir(this.ruleForm);
       this.$http.post(this.domain + '/v1/sessions',this.ruleForm).then((res)=>{
         res = res.data;
         if(res.success === 1){
+          // window.user = res.data;
           window.location.href = '/public/afterlogin.html';
-        }else{
-          console.log('登录失败');
+          // console.log(res);
         }
       });
-
     }
+  },
+  created() {
+    let x = window.screen.height - 110;
+    document.body.setAttribute("style", "height:"+x+"px");
+  },
+  mounted:function(){
+    this.$http.get(this.domain + '/v1/sessions').then((res)=>{
+      res = res.data;
+      console.log(res);
+      if(res.success === 1){
+        // window.user = res.data;
+        window.location.href = '/public/afterlogin.html';
+      }else{
+
+      }
+    })
   }
 }
 </script>
@@ -76,6 +87,7 @@ export default {
 #submit {
   width: 100%;
 }
+
 .el-form-item {
   margin-bottom: 40px;
 }
@@ -113,6 +125,4 @@ export default {
   min-width: 500px;
 }
 </style>
-
-
 
