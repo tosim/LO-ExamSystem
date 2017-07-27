@@ -3,6 +3,7 @@
         <lo-head></lo-head>
         <div class="content"></div>
         <el-row type="flex" justify="center" style="text-align:center">
+            <el-col :span="6.3" style="text-align:center">
     <!-- 标签列表 -->
     <el-table ref="multipleTable" :data="taglist" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
         <el-table-column type="selection" width="55">
@@ -13,8 +14,13 @@
         <el-table-column label="标签名称" width="120">
             <template scope="scope">{{ scope.row.tag_name}}</template>
         </el-table-column>
+        <el-table-column label="操作" width="120">
+            <template scope="scope">
+                <el-button type="text" @click="updtetag(scope.row)">编辑</el-button>
+            </template>
+          </el-table-column>
     </el-table>
-
+        </el-col>
         </el-row>
         <el-row type="flex" justify="center">
             <div id="page1" class="page1"></div>
