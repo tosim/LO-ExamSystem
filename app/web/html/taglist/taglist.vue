@@ -43,15 +43,15 @@
     <el-dialog title="添加标签" :visible.sync="addtagformVisible" :before-close="handleClose">
         <el-row >
             <el-col :span="24" style="text-align: right;padding-right:20%;">
-               <el-button type="primary" @click="addtaginput">批量添加</el-button>
+               <el-button type="primary" size="small" @click="addtaginput">添加</el-button>
+               <el-button type="primary" size="small" @click="removetaginput">删除</el-button>
             </el-col>
         </el-row>
         <el-row>
             <el-col :span="24" style="padding-left:0;">
         <el-form :model="tagform" >
-            <el-form-item  style="padding-right:20%"  label="标签名称"  v-for="(item,index) in tagform.taglist" :key="item.tag_name" :label-width="formLabelWidth">
+            <el-form-item  style="padding-right:20%"  label="标签名称"  v-for="(item,index) in tagform.taglist" :key="item" :label-width="formLabelWidth">
                 <el-input type="text" v-model="item.tag_name" placeholder="请输入要添加的标签" auto-complete="off"></el-input>
-
             </el-form-item>
         </el-form>
             </el-col>
@@ -109,6 +109,10 @@ export default {
             };
             this.tagform.taglist.push(onetag);
         },
+        removetaginput(){
+            let lastindex = this.tagform.taglist.length;
+           this.tagform.taglist.splice(lastindex-1,1);
+        },
         gettaglist() {
             let _this = this;
             _this.$http.get(`http://127.0.0.1:7001/gettaglist?page=${_this.currpage}`).then(res => {
@@ -129,13 +133,33 @@ export default {
                 });
             })
         },
-     addtag(){
-       this.addtagformVisible = false;
-        console.log(this.tagform);
+        addtag() {
+            this.addtagformVisible = false;
+            console.log(this.tagform);
+            var tag_namelist = {tag_namelist:[]};
+            this.tagform.taglist.forEach(function (value) {
+                tag_namelist.tag_namelist.push(value.tag_name);
+            })
+            console.log(tag_namelist);
+            this.$http.post(`http://127.0.0.1:7001/addtaglist`, tag_namelist, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(res => {
+                console.log(res);
+                this.tagform.taglist =[{
+                    tag_name:'',
+                }];
+                this.gettaglist();
+            })
+            .catch(function (error) {
+                        console.log(error);
+                    });
         },
-     handleClose(done) {
+        handleClose(done) {
             this.$confirm('确认关闭？')
-                .then(_ => {  
+                .then(_ => {
                     done();
                 })
                 .catch(_ => { });

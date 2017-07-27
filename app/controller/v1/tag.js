@@ -25,6 +25,31 @@ module.exports = app => {
                     }
                 }
         }
+       * addtaglist(){
+          const {ctx, service} = this;
+             ctx.validate({
+               tag_namelist:{
+                   type: 'object'
+               }
+            }, ctx.request.body);
+            const tag_namelist = ctx.request.body.tag_namelist;
+            for(let item of tag_namelist){
+                var insertSuccess = yield service.v1.tag.create(item);
+            }
+            if (insertSuccess) {
+                    ctx.response.body = {
+                        success: 1,
+                        data: '',
+                        msg: '添加成功',
+                    }
+                } else {
+                    ctx.response.body = {
+                        success: 0,
+                        data: '',
+                        msg: '添加失败',
+                    }
+                }
+    }
        * index(){
             const { ctx, service } = this;
             const curr = parseInt(ctx.query.page);
