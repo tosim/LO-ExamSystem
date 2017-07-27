@@ -2,33 +2,19 @@
     <div id="all">
         <lo-head></lo-head>
         <div class="content"></div>
-        <el-row type="flex" justify="center">
-            <el-col :span="12">
-                <table class="layui-table" lay-even="" lay-skin="row">
-                    <colgroup>
-                        <col width="150">
-                        <col width="150">
-                        <col width="200">
-                        <col>
-                    </colgroup>
-                    <thead>
-                        <tr>
-                            <th>标签ID</th>
-                            <th>标签名称</th>
-                            <th>操作</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="(item,index) of taglist" :key="item" >
-                            <td>{{item.tag_id}}</td>
-                            <td>{{item.tag_name}}</td>
-                            <td><el-button type="text" @click="removetag(index)" style="margin-right:10%">删除</el-button>
-                            <el-button type="text" @click="updateprofession(index)">修改</el-button></td>
-                        </tr>
-    
-                    </tbody>
-                </table>
-            </el-col>
+        <el-row type="flex" justify="center" style="text-align:center">
+    <!-- 标签列表 -->
+    <el-table ref="multipleTable" :data="taglist" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
+        <el-table-column type="selection" width="55">
+        </el-table-column>
+        <el-table-column label="标签ID" width="120">
+            <template scope="scope">{{ scope.row.tag_id }}</template>
+        </el-table-column>
+        <el-table-column label="标签名称" width="120">
+            <template scope="scope">{{ scope.row.tag_name}}</template>
+        </el-table-column>
+    </el-table>
+
         </el-row>
         <el-row type="flex" justify="center">
             <div id="page1" class="page1"></div>
@@ -164,7 +150,20 @@ export default {
                 })
                 .catch(_ => { });
         },
-     }
+        toggleSelection(rows) {
+            if (rows) {
+                rows.forEach(row => {
+                    this.$refs.multipleTable.toggleRowSelection(row);
+                });
+            } else {
+                this.$refs.multipleTable.clearSelection();
+            }
+        },
+        handleSelectionChange(val) {
+            this.multipleSelection = val;
+        }
+    }
+    
 }
 </script>
 
