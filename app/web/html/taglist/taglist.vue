@@ -22,7 +22,7 @@
                         <tr v-for="(item,index) of taglist" :key="item" >
                             <td>{{item.tag_id}}</td>
                             <td>{{item.tag_name}}</td>
-                            <td><el-button type="text" @click="removeprofession(index)" style="margin-right:10%">删除</el-button>
+                            <td><el-button type="text" @click="removetag(index)" style="margin-right:10%">删除</el-button>
                             <el-button type="text" @click="updateprofession(index)">修改</el-button></td>
                         </tr>
     
@@ -50,7 +50,7 @@
             <el-col :span="24" style="padding-left:0;">
         <el-form :model="tagform" >
             <el-form-item  style="padding-right:20%"  label="标签名称"  v-for="(item,index) in tagform.taglist" :key="item.tag_name" :label-width="formLabelWidth">
-                <el-input v-model="item.tag_name" placeholder="请输入要添加的标签" auto-complete="off"></el-input>
+                <el-input type="text" v-model="item.tag_name" placeholder="请输入要添加的标签" auto-complete="off"></el-input>
 
             </el-form-item>
         </el-form>
@@ -88,9 +88,9 @@ export default {
              currpage:1,
              taglist:[],
               tagform: {
-                taglist: [
+              taglist: [
                     {
-                        tag_name: ''
+                        tag_name: '',
                     }
                 ],
             },
@@ -129,11 +129,11 @@ export default {
                 });
             })
         },
-        addtag(){
+     addtag(){
        this.addtagformVisible = false;
         console.log(this.tagform);
         },
-            handleClose(done) {
+     handleClose(done) {
             this.$confirm('确认关闭？')
                 .then(_ => {  
                     done();
