@@ -42,25 +42,78 @@ module.exports = app => {
                 msg: ''
             }
         }
-
-        * create() {
-            const { ctx, service } = this;
-            const createRule = {
-                question:'object',
-                tag:'object',
-            };
-            ctx.validate(createRule);
-            console.log(ctx.request.body);
-            const tag = ctx.request.body.tag;
-            const question = ctx.request.body.question;
+         * judge(){
+            const {ctx,service} = this;
+            // const createRule = {
+            // q_analysis:"string",
+            // q_answer:"string",
+            // q_content:"string",
+            // q_difficulty:"id",
+            // q_id:"object",
+            // q_type:"id",
+            // tag:"object",
+            // };
+            // ctx.validate(createRule);
+            const params = ctx.request.body;
+            console.log(params);
+            const q_id = params.q_id;
+            console.log(q_id);
+            if(q_id === -1){
+                console.log("11111")
+               let data = {
+                 question : {
+                   q_type:params.q_type,
+                   q_content:params.q_content,
+                   q_answer:params.q_answer,
+                   q_analysis:params.q_analysis,
+                   q_difficulty:params.q_difficulty,
+                   q_right:0,
+                   q_wrong:0,
+                   q_reportnum:0,
+                   e_id:1,
+                },
+                tag :  params.tag,
+               }
+            console.log(data);
+              yield this.create(ctx,service,data);
+            }else{
+              let data = {
+              question : {
+                   q_type:params.q_type,
+                   q_content:params.q_content,
+                   q_answer:params.q_answer,
+                   q_analysis:params.q_analysis,
+                   q_difficulty:params.q_difficulty,
+                   q_right:0,
+                   q_wrong:0,
+                   q_reportnum:0,
+                   e_id:1,
+                   tag: params.tag,
+                   
+              }
+            }
+            yield this.updatequestion(ctx,service,q_id,data);
+        }
+         }
+        * create(ctx,service,data) {
+            // const { ctx, service } = this;
+            // const createRule = {
+            //     question:'object',
+            //     tag:'object',
+            // };
+            // ctx.validate(createRule);
+            // console.log(ctx.request.body);
+            // const tag = ctx.request.body.tag;
+            // const question = ctx.request.body.question;
             // console.log(question.q_content);
-            const insertId = yield service.v1.question.create(question);
+            console.log("insert");
+            const insertId = yield service.v1.question.create(data.question);
             console.log(typeof insertId);
             if (typeof insertId === 'number') {
 
-                for(let value of tag){
-                    console.log(value.tag_id);
-                    var insertSuccess = yield service.v1.question.insertquetag(insertId,value.tag_id);
+                for(let value of data.tag){
+                    console.log(value);
+                    var insertSuccess = yield service.v1.question.insertquetag(insertId,value);
                     console.log(insertSuccess);
                 }
 
@@ -198,20 +251,20 @@ module.exports = app => {
                 }
             }
         }
-        * updatequestion(){
-             const { ctx, service } = this;
-             const updateSuccess = yield service.v1.question.updatequestion(ctx.query.q_id,ctx.request.body);
+        * updatequestion(ctx,service,q_id,data){
+            //  const { ctx, service } = this;
+             const updateSuccess = yield service.v1.question.updatequestion(q_id,data.question);
              if (updateSuccess) {
                 ctx.response.body = {
                     success: 1,
                     data: '',
-                    msg: '添加成功',
+                    msg: '修改成功',
                 }
             } else {
                 ctx.response.body = {
                     success: 0,
                     data: '',
-                    msg: '添加失败',
+                    msg: '修改失败',
                 }
             }
 
@@ -235,7 +288,7 @@ module.exports = app => {
         }
         * batchdelete(){
             const {ctx, service} = this;
-            const q_idlist = ctx.request.body.q_id;
+            const q_idlist = ctx.request.body;
             for(let item of q_idlist){
               yield service.v1.question.deletequestion(item);
             };

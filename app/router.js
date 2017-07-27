@@ -16,7 +16,8 @@ module.exports = app => {
 
 
 
-
+  app.post("/judge",app.controller.v1.question.judge);
+  app.post("/batchdelete",app.controller.v1.question.batchdelete);
   app.post('/addquestion', app.controller.v1.question.create);
   app.get('/getquestionlist', app.controller.v1.question.list);
   app.get('/getlistbykey',app.controller.v1.question.getlistbykey);

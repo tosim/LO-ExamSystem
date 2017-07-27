@@ -70,6 +70,32 @@ module.exports = app => {
                 };
             }
     }   
+    * gettaglist(){
+        const {ctx,service} = this;
+        const curr = parseInt(ctx.query.page);
+        const pagesize = 8;
+        const currnum = (curr - 1) * pagesize;
+        const tagnum = (yield service.v1.tag.gettagnum())[0].tnum;
+        const taglist = yield service.v1.tag.index(currnum);
+         const totalnum = Math.ceil(tagnum / pagesize);
+         if (taglist.length === 0) {
+             ctx.response.body = {
+                 success: 0,
+                 data: '',
+                 msg: '列出题目失败',
+             }
+         } else {
+             ctx.response.body = {
+                 success: 0,
+                 data:  {
+                        taglist: tagList,
+                        totalnum: totalnum
+                    },
+                 msg: '列出题目成功',
+             }
+         }
+
+    }
     }
     return TagController;
 }

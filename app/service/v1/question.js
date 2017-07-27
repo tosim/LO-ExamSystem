@@ -4,7 +4,7 @@
 module.exports = app => {
     class QuestionService extends app.Service {
         * create(params) {
-            const result = yield this.app.mysql.insert('question', { q_type: params.q_type,q_content:params.q_content,q_answer: params.q_answer, q_analysis: params.q_analysis,q_difficulty:params.q_difficulty,e_id:params.e_id});
+            const result = yield this.app.mysql.insert('question', { q_type: params.q_type,q_content:params.q_content,q_answer: params.q_answer, q_analysis: params.q_analysis,q_difficulty:params.q_difficulty,q_right:params.q_right,q_wrong:params.q_wrong,q_reportnum:params.q_reportnum,e_id:params.e_id});
             const insertSuccess = result.affectedRows === 1;
                 return result.insertId;
         }
@@ -60,8 +60,8 @@ module.exports = app => {
         };
          const updateSuccess = yield this.app.mysql.update('question',row,{where:{q_id:q_id}});
          const deleteSuccess = yield this.app.mysql.delete('que_tag',{q_id:q_id});
-         for(let item of params.tag_id){
-            const insertSuccess = yield this.app.mysql.insert('que_tag',{q_id:q_id,tag_id:tag_id});
+         for(let item of params.tag){
+            var insertSuccess = yield this.app.mysql.insert('que_tag',{q_id:q_id,tag_id:item});
          }
         console.log(updateSuccess);
         if(updateSuccess&&deleteSuccess&&insertSuccess){

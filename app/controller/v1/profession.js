@@ -78,6 +78,7 @@ module.exports = app => {
                 };
             }
         }
+
         * updateprofession(){
             const {ctx,service} = this;
             console.log(ctx.request.body);

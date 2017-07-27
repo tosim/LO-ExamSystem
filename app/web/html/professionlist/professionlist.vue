@@ -1,7 +1,6 @@
 <template>
     <div id="all">
         <lo-head></lo-head>
-        <div class="content"></div>
         <el-row type="flex" justify="center">
             <el-col :span="12">
                 <table class="layui-table" lay-even="" lay-skin="row">
@@ -153,9 +152,9 @@
                 <el-form-item label="分数" :label-width="formLabelWidth">
                     <el-input v-model="newpaper.t_code_score" auto-complete="off" class="forminput" :disabled="true"></el-input>
                 </el-form-item>
-                <h2 style="">{{newpaper.t_ochoose_num*newpaper.t_ochoose_score+newpaper.t_mchoose_num*newpaper.t_mchoose_score+newpaper.t_judge_num*newpaper.t_judge_score+newpaper.t_fill_num*newpaper.t_fill_score}}</h2>
+                <h2 class="score">{{newpaper.t_ochoose_num*newpaper.t_ochoose_score+newpaper.t_mchoose_num*newpaper.t_mchoose_score+newpaper.t_judge_num*newpaper.t_judge_score+newpaper.t_fill_num*newpaper.t_fill_score}}</h2>
             </el-form>
-            <div slot="footer" class="dialog-footer" style="margin-top:350px;">
+            <div slot="footer" class="dialog-footer">
                 <el-button type="primary" @click="checkpaper()">确 定</el-button>
             </div>
         </el-dialog>
@@ -198,9 +197,9 @@
                 <el-form-item label="分数" :label-width="formLabelWidth">
                     <el-input v-model="newpaper.t_code_score" auto-complete="off" class="forminput" :disabled="true"></el-input>
                 </el-form-item>
-                <h2 style="">{{newpaper.t_ochoose_num*newpaper.t_ochoose_score+newpaper.t_mchoose_num*newpaper.t_mchoose_score+newpaper.t_judge_num*newpaper.t_judge_score+newpaper.t_fill_num*newpaper.t_fill_score}}</h2>
+               <h1 class="score">{{newpaper.t_ochoose_num*newpaper.t_ochoose_score+newpaper.t_mchoose_num*newpaper.t_mchoose_score+newpaper.t_judge_num*newpaper.t_judge_score+newpaper.t_fill_num*newpaper.t_fill_score}}</h1>
             </el-form>
-            <div slot="footer" class="dialog-footer" style="margin-top:350px;">
+            <div slot="footer" class="dialog-footer">
                 <el-button type="primary" @click="checkpaper()">确 定</el-button>
             </div>
         </el-dialog>
@@ -264,6 +263,13 @@
             <el-button type="primary" @click="SuccessVisible3 = false">确 定</el-button>
         </span>
         </el-dialog>
+
+    
+
+
+
+
+
     </div>
 </template>
 
@@ -308,7 +314,8 @@ export default {
             p_name:'',
             tag:[],
             professiondata : {},
-            formLabelWidth: '45%'
+            formLabelWidth: '45%',
+            
         }
     },
     components: {
@@ -325,6 +332,13 @@ export default {
         lists() {
             return this.professionlist;
             return this.taglist;
+        }
+    },
+    filters:{
+        Zero:function(value){
+            if(value === ''){
+                return 0;
+            }
         }
     },
     methods: {
@@ -608,7 +622,8 @@ export default {
             console.log(this.testpaper);
             this.testpaper.splice(index,1);
             console.log(this.professionlist);
-        }
+        },
+
     }
 }
 </script>
@@ -667,5 +682,14 @@ export default {
 
 .addprofessiondia{
     width: 100%;
+}
+
+.score{
+    color: #FF4949;
+    font-size: larger;
+    font-weight: bolder;
+    font-style: italic;
+    width: 10%;
+    margin: auto;
 }
 </style>
