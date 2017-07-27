@@ -35,7 +35,7 @@
           <div class="layui-form-item">
             <label class="layui-form-label">关键字检索</label>
             <div class="layui-input-block">
-              <input type="text" class="layui-input" />
+              <input type="text" class="layui-input" v-model="query.firs"/>
             </div>
           </div>
         </el-col>
@@ -43,22 +43,27 @@
           <div class="layui-form-item">
             <label class="layui-form-label">标签检索</label>
             <div class="layui-input-block">
-              <input type="text" class="layui-input" />
+              <el-select v-model="query.serd" multiple filterable placeholder=" " style="width:100%;">
+                <el-option v-for="(item,index) in typeNam" :key="index" :label="item" :value="index">
+                </el-option>
+              </el-select>
             </div>
           </div>
+  
         </el-col>
         <el-col :span="8">
           <div class="layui-form-item">
             <label class="layui-form-label">难度检索</label>
-            <div class="layui-input-block">
-              <input type="text" class="layui-input" />
+            <div class="layui-input-inline">
+              <input type="text" class="layui-input" placeholder="1-9" v-model="query.thre"/>
             </div>
+            <div class="layui-form-mid layui-word-aux">难度选择</div>
           </div>
         </el-col>
       </el-row>
       <div style="text-align:center;">
-        <button class="layui-btn">查询</button>
-        <button class="layui-btn layui-btn-primary">重置</button>
+        <button class="layui-btn" @click="que()">查询</button>
+        <button class="layui-btn layui-btn-primary"  @click="reset()">重置</button>
       </div>
     </div>
     <div class="div-1">
@@ -134,13 +139,22 @@ export default {
     },
     delMut() {
       let items = this.multipleSelection;
+      let deitems = [];
       for (let i = 0; i < items.length; i++) {
         this.delswit2(items[i]);
+        deitems.push(items[i].q_id);
       }
+      if (deitems.length !== 0) {
+        console.log(deitems);
+        this.$http.post(`http://192.168.1.102:7001/batchdelete`, deitems).then(res => {
+          console.log(res);
+        });
+      }
+
     },
     fetchData() {
       let _this = this;
-      _this.$http.get(`http://192.168.0.107:7001/getquestionlist?page=${_this.currpage}`).then(res => {
+      _this.$http.get(`http://192.168.1.102:7001/getquestionlist?page=${_this.currpage}`).then(res => {
         console.log(res);
         _this.totalnum = res.data.data.totalnum;
         _this.questionlist = res.data.data.questionlist;
@@ -187,12 +201,27 @@ export default {
         this.$refs.multipleTable.clearSelection();
       }
     },
+    que(){
+      console.log('submit!');
+      console.log(this.query);
+    },
+    reset(){
+      this.query.firs = '';
+      this.query.serd = [];
+      this.query.thre = '1-9';
+
+    }
   },
   data() {
     return {
       currpage: 1,
       currentItem: '',
       totalnum: 1,
+      query:{
+        firs:'',
+        serd:[],
+        thre:'1-9',
+      },
       dialogVisible: false,
       MutiVisible: false,
       ImportVisible: false,

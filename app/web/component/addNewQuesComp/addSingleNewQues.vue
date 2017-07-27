@@ -22,11 +22,6 @@
             </el-col>
           </el-row>
           <el-row :span="24" class="row-1">
-            <!-- <el-col :span="12">
-                          <el-form-item label="试题分数">
-                            <el-input v-model="SingleQues.fraction" placeholder="请输入分数"></el-input>
-                          </el-form-item>
-                        </el-col> -->
             <el-col :span="12">
               <el-form-item label="难度">
                 <el-select v-model="SingleQues.q_difficulty" placeholder="请选择难度" style="width:100%;">
@@ -134,6 +129,7 @@ export default {
   methods: {
 
     analysData() {
+      this.SingleQues.q_id = this.currentItem.q_id;
       this.SingleQues.q_type = this.currentItem.q_type;
       this.SingleQues.q_difficulty = this.currentItem.q_difficulty;
       this.SingleQues.tag = [];
@@ -176,22 +172,22 @@ export default {
           // this.SingleQues.q_content.main = this.currentItem.q_content;
           this.SingleQues.judgeAns = this.SingleQues.q_answer === 'T' ? "1" : "0";//特地不写break调用下面的内容。
         }
-        case 4: case 5: case 6:{
+        case 4: case 5: case 6: {
           this.SingleQues.q_content.main = this.currentItem.q_content;
         }
       }
     },
     getRad() {
-      let leth = this.SingleQues.tableData.length+1;
+      let leth = this.SingleQues.tableData.length + 1;
       this.SingleQues.tableData.push({
-        swit_1: String.fromCharCode(64+leth),
+        swit_1: String.fromCharCode(64 + leth),
         content: '',
         radi_lab: leth,
       });
 
     },
     delswit(index) {
-      if (this.SingleQues.q_type!==1||this.SingleQues.SingleChooseAns != index + 1) {
+      if (this.SingleQues.q_type !== 1 || this.SingleQues.SingleChooseAns != index + 1) {
         this.SingleQues.tableData.splice(index, 1);
       } else {
         this.$message.error('此选项是指定的正确答案，无法删除');
@@ -200,10 +196,47 @@ export default {
     onSubmit() {
       console.log('submit!');
       console.log(this.SingleQues);
+      let sendpkg = {};
+      sendpkg.q_id = this.SingleQues.q_id;
+      sendpkg.q_type = this.SingleQues.q_type;
+      sendpkg.q_content = this.SingleQues.q_content.main;
+      if (sendpkg.q_type === 1) {
+        sendpkg.q_answer = String.fromCharCode(64 + this.SingleQues.SingleChooseAns);
+
+        for (let i = 0; i < this.SingleQues.tableData.length; i++) {
+          sendpkg.q_content += ';;' + String.fromCharCode(65 + i) + '.' + this.SingleQues.tableData[i].content;
+        }
+
+      } else if (sendpkg.q_type === 2) {
+        let ans = '';
+        for (let i = 0, j = this.SingleQues.checkAns.length; i < j; i++) {
+          ans += i + 1 != j ? String.fromCharCode(65 + i) + '&' : String.fromCharCode(65 + i);
+        }
+        sendpkg.q_answer = ans;
+
+        for (let i = 0; i < this.SingleQues.tableData.length; i++) {
+          sendpkg.q_content += ';;' + String.fromCharCode(65 + i) + '.' + this.SingleQues.tableData[i].content;
+        }
+
+      } else if (sendpkg.q_type === 3) {
+        console.log(this.SingleQues.judgeAns)
+        sendpkg.q_answer = this.SingleQues.judgeAns === '1' ? 'T' : 'F';
+      } else if (sendpkg.q_type === 4 || sendpkg.q_type === 5 || sendpkg.q_type === 6) {
+        sendpkg.q_answer = this.SingleQues.q_answer;
+      }
+      sendpkg.q_analysis = this.SingleQues.q_analysis;
+      sendpkg.q_difficulty = this.SingleQues.q_difficulty;
+      sendpkg.tag = this.SingleQues.tag;
+
+      console.log(sendpkg);
+      this.$http.post(`http://192.168.1.102:7001/judge`, sendpkg).then(res => {
+        console.log(res);
+      })
+
     },
     gettaglist() {
       let _this = this;
-      this.$http.get(`http://192.168.0.107:7001/getalltag`).then(res => {
+      this.$http.get(`http://192.168.1.102:7001/getalltag`).then(res => {
         _this.taglist = res.data.data.taglist;
       })
     },
@@ -226,7 +259,7 @@ export default {
   data() {
     return {
       SingleQues: {
-        q_id: 2014,
+        q_id: -1,
         q_content: {
           main: '这里是题目',
           items: ['a....', 'b.....'],
@@ -273,7 +306,7 @@ export default {
         label: '编程题'
       }],
       SingleQuesb: {
-        q_id: 2014,
+        q_id: -1,
         q_content: {
           main: '这里是题目',
           items: ['a....', 'b.....'],
