@@ -121,6 +121,38 @@ module.exports = app => {
          }
 
     }
+    * updatetag(){
+        const {ctx,service} = this;
+        console.log(ctx.request.body);
+        const result = yield service.v1.tag.updatetag(ctx.request.body);
+         if (result) {
+                ctx.response.body = {
+                    success: 0,
+                    data: '',
+                    msg: '更新失败',
+                };
+            } else {
+                ctx.response.body = {
+                    success: 1,
+                    data: '',
+                    msg: '更新成功',
+                };
+            }
+
+    }
+    * deletetaglist(){
+       const {ctx,service} = this;
+       console.log(ctx.request.body);
+       const tag_idlist = ctx.request.body;
+       for(let item of tag_idlist){
+           yield service.v1.tag.deletebyid(item);
+       }
+        ctx.response.body = {
+                success: 1,
+                data:'',
+                msg: '删除成功',
+            };
+    }
     }
     return TagController;
 }

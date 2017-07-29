@@ -17,6 +17,7 @@ module.exports = app => {
 
 
   app.post("/judge",app.controller.v1.question.judge);
+  app.post("/search",app.controller.v1.question.search);
   app.post("/batchdelete",app.controller.v1.question.batchdelete);
   app.post('/addquestion', app.controller.v1.question.create);
   app.get('/getquestionlist', app.controller.v1.question.list);
@@ -37,6 +38,8 @@ module.exports = app => {
   app.post('/updateprofession',app.controller.v1.profession.updateprofession);
   app.post('/addtag',app.controller.v1.tag.create);
   app.post('/addtaglist',app.controller.v1.tag.addtaglist);
+  app.post('/deltetaglist',app.controller.v1.tag.deletetaglist);
+  app.post('/updatetag',app.controller.v1.tag.updatetag);
   app.get('/gettaglist',app.controller.v1.tag.index);
   app.get('/getalltag',app.controller.v1.tag.getalltag);
 };

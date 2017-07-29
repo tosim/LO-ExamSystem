@@ -2,6 +2,12 @@
     <div id="all">
         <lo-head></lo-head>
         <div class="content"></div>
+        <el-row>
+          <div class="layui-btn-group "style="margin-left:54.6%">
+          <button class="layui-btn layui-btn-small" @click="addtagformVisible = true">批量新增</button>
+          <button class="layui-btn layui-btn-small" @click="delMut()">批量删除</button>
+        </div>
+        </el-row>
         <el-row type="flex" justify="center" style="text-align:center">
             <el-col :span="6.3" style="text-align:center">
     <!-- 标签列表 -->
@@ -16,7 +22,7 @@
         </el-table-column>
         <el-table-column label="操作" width="120">
             <template scope="scope">
-                <el-button type="text" @click="updtetag(scope.row)">编辑</el-button>
+                <el-button type="text" @click="updatetag(scope.row)">编辑</el-button>
             </template>
           </el-table-column>
     </el-table>
@@ -24,11 +30,6 @@
         </el-row>
         <el-row type="flex" justify="center">
             <div id="page1" class="page1"></div>
-        </el-row>
-        <el-row type="flex" justify="center">
-        <el-col style="text-align:center;">
-       <el-button type="primary" @click="addtagformVisible = true">添加标签</el-button>
-        </el-col>
         </el-row>
         <!--添加标签  -->
 
@@ -42,17 +43,33 @@
         <el-row>
             <el-col :span="24" style="padding-left:0;">
         <el-form :model="tagform" >
-            <el-form-item  style="padding-right:20%"  label="标签名称"  v-for="(item,index) in tagform.taglist" :key="item" :label-width="formLabelWidth">
+            <el-form-item  style="padding-right:20%"  label="标签名称" v-for="(item,index) in tagform.taglist" :key="item" :label-width="formLabelWidth">
                 <el-input type="text" v-model="item.tag_name" placeholder="请输入要添加的标签" auto-complete="off"></el-input>
             </el-form-item>
         </el-form>
             </el-col>
         </el-row>
         <div slot="footer" class="dialog-footer">
-            <el-button @click="addtagformVisible = false">取 消</el-button>
             <el-button type="primary" @click="addtag()">确 定</el-button>
         </div>
     </el-dialog>
+
+    <!--修改标签  -->
+    <el-dialog title="修改标签" :visible.sync="updatetagformVisible" :before-close="handleClose2">
+        <el-row>
+            <el-col :span="24" style="padding-left:0;">
+        <el-form :model="tagform" >
+            <el-form-item  style="padding-right:20%"  label="标签名称"  v-for="(item,index) in tagform.taglist" :key="item" :label-width="formLabelWidth">
+                <el-input type="text" v-model="currentItem.tag_name" placeholder="请输入要添加的标签" auto-complete="off"></el-input>
+            </el-form-item>
+        </el-form>
+            </el-col>
+        </el-row>
+        <div slot="footer" class="dialog-footer">
+            <el-button type="primary" @click="updateonetag()">确 定</el-button>
+        </div>
+    </el-dialog>
+
     <!--成功对话框-->
         <el-dialog
         title="提示"
@@ -75,7 +92,10 @@ export default {
          return{
              SuccessVisible:false,
              addtagformVisible:false,
+             updatetagformVisible:false,
              formLabelWidth: '45%',
+             multipleSelection: [],
+             currentItem:{},
              totalnum:0,
              currpage:1,
              taglist:[],
@@ -145,13 +165,25 @@ export default {
                 }];
                 this.gettaglist();
             })
-            .catch(function (error) {
+            .catch(error => {
                         console.log(error);
                     });
         },
         handleClose(done) {
             this.$confirm('确认关闭？')
                 .then(_ => {
+                    this.tagform.taglist =[{
+                    tag_name:'',
+                }];
+                    done();
+                })
+                .catch(_ => { });
+        },
+       handleClose2(done) {
+            this.$confirm('确认关闭？')
+                .then(_ => {
+                    this.gettaglist();
+                    this.currentItem = {};
                     done();
                 })
                 .catch(_ => { });
@@ -167,8 +199,45 @@ export default {
         },
         handleSelectionChange(val) {
             this.multipleSelection = val;
-        }
-    }
+        },
+        delMut() {
+            let dellist = [];
+            for (let item of this.multipleSelection) {
+                this.getIndex(item);
+                dellist.push(item.tag_id);
+            }
+            if (dellist.length !== 0) {
+                console.log(dellist);
+                this.$http.post(`http://127.0.0.1:7001/deltetaglist`, dellist).then(res => {
+                    console.log(res);
+                })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            }
+        },
+    getIndex(item) {
+      let ind = this.taglist.indexOf(item);
+      this.taglist.splice(ind, 1);
+    },
+    updatetag(item){
+        console.log(item);
+        this.currentItem = item;
+        this.updatetagformVisible = true;
+    },
+     updateonetag() {
+         console.log(this.currentItem)
+         this.$http.post(`http://127.0.0.1:7001/updatetag`, this.currentItem).then(res => {
+             console.log(res);
+             this.currentItem = {};
+             this.updatetagformVisible =false;
+         })
+             .catch(err => {
+                 console.log(err);
+             });
+     },
+    },
+    
     
 }
 </script>

@@ -139,6 +139,23 @@ module.exports = app => {
             }
 
         }
+        * search(){
+            const {ctx, service} = this;
+            const curr = parseInt(ctx.request.body.page);
+             const pagesize = 8;
+            // console.log(pagesize);
+            const currnum = (curr - 1) * pagesize;
+            const result = yield service.v1.question.query(ctx.request.body.query,currnum);
+            const QuestionList = result.questionlist;
+            for (let item of QuestionList){
+                const tag = yield service.v1.question.gettagbyid(item.q_id);
+                item.tag =tag; 
+            }
+            const questionnum = result.qnum;
+            const totalnum = Math.ceil(questionnum / pagesize);
+            yield this.myresponse(ctx, QuestionList, totalnum);
+             
+        }
         * list() {
             const { ctx, service } = this;
             const curr = parseInt(ctx.query.page);
