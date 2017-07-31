@@ -6,7 +6,7 @@
         <el-row class="fracBox-2">
           <font class="frac">97</font>分</el-row>
       </div>
-      <div style="width:100%;height:250px;background-color:black;color:white;text-align:center;padding-top:50px;margin-bottom:12px;">这里是图表</div>
+      <div id="charts" style="width:100%;height:250px;background-color:black;color:white;text-align:center;padding-top:50px;margin-bottom:12px;">这里是图表</div>
       <el-row>
         <fieldset class="layui-elem-field">
           <legend>
@@ -38,23 +38,23 @@
           </tr>
         </thead>
         <tbody>
-           <tr v-for="ite in ExamQuesLst" :key="ite.q_content" v-bind:class="ite.q_answer === ite.u_answer?'':'red'">
+          <tr v-for="ite in ExamQuesLst" :key="ite.q_content" v-bind:class="ite.q_answer === ite.u_answer?'':'red'">
             <td v-if="!whetherShowWrong">{{ite.q_content}}</td>
             <td v-if="!whetherShowWrong">
-              <span v-for="i in ite.tag" :key="i.tag_id" style="padding-right:8px;">{{i.tag_name}}</span>
+              {{ite.tag}}
             </td>
             <td v-if="!whetherShowWrong">{{ite.q_answer}}</td>
             <td v-if="!whetherShowWrong">{{ite.u_answer}}</td>
-          </tr> 
-           <tr v-for="ite in ExamQuesLst" :key="ite.q_content" v-if="ite.q_answer !== ite.u_answer && whetherShowWrong" v-bind:class="ite.q_answer === ite.u_answer?'':'red'">
+          </tr>
+          <tr v-for="ite in ExamQuesLst" :key="ite.q_content" v-if="ite.q_answer !== ite.u_answer && whetherShowWrong" v-bind:class="ite.q_answer === ite.u_answer?'':'red'">
             <td>{{ite.q_content}}</td>
             <td>
-              <span v-for="i in ite.tag" :key="i.tag_id" style="padding-right:8px;">{{i.tag_name}}</span>
+              {{ite.tag}}
             </td>
             <td>{{ite.q_answer}}</td>
             <td>{{ite.u_answer}}</td>
           </tr>
-
+  
         </tbody>
       </table>
     </div>
@@ -66,35 +66,77 @@
 export default {
   data() {
     return {
-      whetherShowWrong:false,
+      whetherShowWrong: false,
       Ques: {
         tag: '断言是非',
         ErPr: 97,
       },
       ExamQuesLst: [{
         q_content: '岁月不饶人是老子说的吗？',
-        tag: [{
-          tag_id: 2,
-          tag_name: "css"
-        }],
+        tag: "css",
         q_answer: 'F',
         u_answer: 'T',
-      },{
+      }, {
         q_content: '岁月不饶人是老子说的吗？',
-        tag: [{
-          tag_id: 2,
-          tag_name: "css"
-        }],
+        tag:"css",
         q_answer: 'F',
         u_answer: 'F',
       }],
+
+      option: {
+        title: {
+          text: '考试解析图',
+          subtext: '反应本次考试的做题情况'
+        },
+        tooltip: {
+          trigger: 'axis'
+        },
+        legend: {
+          data: ['正确率']
+        },
+        toolbox: {
+          show: true,
+          feature: {
+            mark: { show: true },
+            dataView: { show: true, readOnly: false },
+            magicType: { show: true, type: ['line', 'bar'] },
+            restore: { show: true },
+            saveAsImage: { show: true }
+          }
+        },
+        calculable: true,
+        xAxis: [
+          {
+            type: 'category',
+            data: ['html', 'css', 'javascript', 'react', 'vue']
+          }
+        ],
+        yAxis: [
+          {
+            type: 'value'
+          }
+        ],
+        series: [
+          {
+            name: '正确率',
+            type: 'bar',
+            data: [2.0, 4.9, 7.0, 23.2, 25.6],
+          },
+        ]
+      }
     }
   },
   components: {
 
   },
+  mounted: function () {
+    this.init();
+  },
   methods: {
-
+    init() {
+      var myChart = echarts.init(document.getElementById('charts'),'macarons');
+      myChart.setOption(this.option);
+    }
   }
 }
 </script>
@@ -124,7 +166,7 @@ export default {
 #fracBox {
   margin: 0 auto;
   width: 280px;
-  margin-bottom:12px;
+  margin-bottom: 12px;
 }
 
 .fracBox-2 {
