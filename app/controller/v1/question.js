@@ -13,7 +13,7 @@ module.exports = app => {
         console.log("get query");
         console.log(ctx.session.user);
         console.log("end");
-        ctx.session.user = yield app.mysql.get('user',{u_id:12});
+        this.ctx.session.user = yield this.service.v1.user.show('82415327@qq.com','056210');
         //没有登录直接返回
         if(ctx.session.hasOwnProperty('user') === false){
             console.log('not login,21');
@@ -51,7 +51,7 @@ module.exports = app => {
         req.u_id = ctx.session.user.u_id;
         req.time = parseInt(req.time);//考试时间
         req.p_id = ctx.session.user.p_id;//职业 
-        req.u_level = (yield app.mysql.query('select lv_id from user,level where u_id=? and u_point >= lv_need order by lv_id desc limit 1',[req.u_id]))[0].lv_id;// 等级
+        req.u_level = ctx.session.user.u_level;//等级
         req.u_enterprises = yield app.mysql.query('select e_id from u_e where u_id=?',[req.u_id]);//用户所要申请的企业
         req.testpaper = (yield app.mysql.query('select * from testpaper where p_id=? LIMIT 1',[req.p_id]))[0];//试题类型数量
         req.pt_rates = yield app.mysql.query('select tag_id,pt_rate from pro_tag where p_id=?',[req.p_id]);//试题
@@ -136,11 +136,12 @@ module.exports = app => {
             });
             cnt.code += parseInt(req.testpaper.t_code_num*req.pt_rates[i].pt_rate/100);
         }
+        // console.log(req.select);
         const queList = yield service.v1.question.index(req);
-        console.log('quesList ok ,length = ' + queList.length);
         //将考试信息存放在session中
         
         if(queList != null){
+            console.log('quesList ok ,length = ' + queList.length);
             ctx.session.exam = {};
             ctx.session.exam.isEnd = false;
             ctx.session.exam.beginTime = new Date().getTime();

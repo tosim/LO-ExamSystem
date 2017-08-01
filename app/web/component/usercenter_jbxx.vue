@@ -5,13 +5,13 @@
         <el-col :span="12">
           <div class="jbxx-t-l" style="margin:0 auto;width:150px;height:200px;">
             <img src="../asset/images/head.png" alt="head" style="width:150px;height:150px;border-radius:75px;">
-            <span style="display:block;width:150px;text-align:center;font-size:16px;margin-top:20px;">米厘米李红</span>
+            <span style="display:block;width:150px;text-align:center;font-size:16px;margin-top:20px;">{{user.u_name}}</span>
           </div>
         </el-col>
         <el-col :span="12">
           <div class="jbxx-t-r" style="margin:0 auto;float:left;height:200px;">
-            <div style="line-height:150px;font-size:24px;text-align:center;">Web前端开发工程师
-              <span style="color:red;font-style:italic">{{rank}}</span>段</div>
+            <div style="line-height:150px;font-size:24px;text-align:center;">{{user.p_name}}
+              <span style="color:red;font-style:italic">{{user.u_level}}</span>段</div>
             <div class="layui-progress layui-progress-big" lay-filter="demo">
               <div class="layui-progress-bar layui-bg-red"></div>
             </div>
@@ -20,58 +20,58 @@
       </el-row>
       <div class="jbxx-title">
         <span>基本信息</span>
-        <button class="layui-btn setting-btn layui-btn-normal" @click="saveset" v-if="save_user">保存</button>
-        <button class="layui-btn setting-btn" @click="userset" v-if="!save_user">编辑</button>
+        <button class="layui-btn setting-btn layui-btn-normal" @click="saveset" v-if="saveuser">保存</button>
+        <button class="layui-btn setting-btn" @click="userset" v-if="!saveuser">编辑</button>
       </div>
       <div class="jbxx-body">
         <div class="user-name">
           <span class="user-left">用户名：</span>
-          <span class="user-show" v-show="!setting">{{u_name}}</span>
-          <input type="text" v-show="setting" v-model="u_name">
+          <span class="user-show" v-show="!setting">{{user.u_name}}</span>
+          <input type="text" v-show="setting" v-model="user.u_name">
         </div>
         <div class="user-email">
           <span class="user-left">我的邮箱：</span>
-          <span class="user-show" v-show="!setting">{{u_email}}</span>
-          <input type="text" v-show="setting" v-model="u_email">
+          <span class="user-show" v-show="!setting">{{user.u_email}}</span>
+          <input type="text" readonly="readonly" v-show="setting" v-model="user.u_email">
         </div>
         <div class="user-profession">
           <span class="user-left">目标职业：</span>
-          <span class="user-show" v-show="!setting">{{p_name}}</span>
+          <span class="user-show" v-show="!setting">{{user.p_name}}</span>
           <div v-show="setting">
-            <el-select v-model="p_name" placeholder="请选择职业">
-              <el-option v-for="item in professionList" :key="item.value" :label="item.label" :value="item.value">
+            <el-select v-model="user.p_id" placeholder="请选择职业">
+              <el-option v-for="item in professionList" :key="item.p_id" :label="item.p_name" :value="item.p_id">
               </el-option>
             </el-select>
           </div>
         </div>
         <div class="user-likecompany">
           <span class="user-left">感兴趣公司：</span>
-          <span v-for="item in e_name" :key="item.value" class="user-show" v-show="!setting">{{item}}&nbsp&nbsp&nbsp</span>
+          <span v-for="item in user.enterprise" :key="item" class="user-show" v-show="!setting">{{item.e_name}}&nbsp&nbsp&nbsp</span>
           <div v-show="setting" class="companyList">
-            <a href="javascript:void(0)" v-for="item in companyList" :key="item.value" @click="selectCompany(item)" v-bind:class="[item.isSelect ? 'oneCompany_select' : 'oneCompany']">{{item.value}}</a>
+            <a href="javascript:void(0)" v-for="(item,index) in companyList" :key="item.e_id" @click="selectCompany(item)" v-bind:class="[item.isSelect!=null&&item.isSelect==true ? 'oneCompany_select' : 'oneCompany']">{{item.e_name}}</a>
           </div>
         </div>
       </div>
       <div class="user-introduction">
         <div class="jbxx-title">
           <span>我的履历</span>
-          <button class="layui-btn setting-btn" @click="dialogResume = true">新建履历</button>
+          <button class="layui-btn setting-btn" @click="showDialogResume()">新建履历</button>
         </div>
         <div class="introduction-body">
-          <el-table :data="introduction" border style="width: 100%">
-            <el-table-column prop="date" label="日期" sortable width="120">
+          <el-table :data="others" border style="width: 100%">
+            <el-table-column prop="o_time" label="日期" sortable width="120">
   
             </el-table-column>
-            <el-table-column prop="name" label="标题" width="180">
+            <el-table-column prop="o_title" label="标题" width="180">
             </el-table-column>
-            <el-table-column prop="address" label="网址" width="220">
+            <el-table-column prop="o_href" label="网址" width="220">
             </el-table-column>
-            <el-table-column prop="description" label="说明" min-width="300">
+            <el-table-column prop="o_remark" label="说明" min-width="300">
             </el-table-column>
             <el-table-column label="操作" width="180">
               <template scope="scope">
                 <el-button size="small" @click="resumeEdit(scope.$index, scope.row,resume)">编辑</el-button>
-                <el-button size="small" type="danger" @click="resumeDelete(scope.$index,introduction)">删除</el-button>
+                <el-button size="small" type="danger" @click="resumeDelete(scope.$index,others)">删除</el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -82,18 +82,18 @@
       <el-form :model="resume">
         <el-form-item label="履历日期：" :label-width="formLabelWidth">
           <div class="block">
-            <el-date-picker v-model="resume.date" type="date" placeholder="选择日期">
+            <el-date-picker v-model="resume.o_time" type="date" placeholder="选择日期">
             </el-date-picker>
           </div>
         </el-form-item>
         <el-form-item label="标题：" :label-width="formLabelWidth">
-          <el-input v-model="resume.name" auto-complete="off"></el-input>
+          <el-input v-model="resume.o_title" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="成果网址：" :label-width="formLabelWidth">
-          <el-input v-model="resume.address" auto-complete="off"></el-input>
+          <el-input v-model="resume.o_href" auto-complete="off"></el-input>
         </el-form-item>
         <el-form-item label="说明：" :label-width="formLabelWidth">
-          <el-input v-model="resume.description" auto-complete="off"></el-input>
+          <el-input v-model="resume.o_remark" auto-complete="off"></el-input>
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
@@ -106,101 +106,31 @@
 
 <script>
 export default {
-  mounted: function () {
-    var $ = layui.jquery
-      , element = layui.element();
-    element.progress('demo', this.rank * 10 / 0.9 + '%');
-  },
-  methods: {
-    selectCompany: function (item) {
-      if (item.isSelect) {
-        item.isSelect = false;
-      } else {
-        item.isSelect = true;
-      }
-
-    },
-    saveset: function () {
-      this.save_user = false;
-      this.setting = false;
-    },
-    addResume: function () {
-      console.log(this.introduction);
-      console.log(this.resume);
-      this.introduction.push(this.resume);
-      this.resume.date = '';
-      this.resume.name = '';
-      this.resume.address = '';
-      this.resume.description = '';
-      this.dialogResume = false;
-    },
-    userset: function () {
-      this.save_user = true;
-      this.setting = true;
-    },
-    resumeEdit(index, row, resume) {
-      console.log(index);
-      console.log(row.date);
-      resume.date = row.date;
-      resume.name = row.name;
-      resume.address = row.address;
-      resume.description = row.description;
-      this.dialogResume = true;
-    },
-    resumeDelete(index, row) {
-      row.splice(index, 1);
-    }
-  },
+  // props:['user'],
   data() {
     return {
-      isSelect: false,
-      save_user: false,
-      resume: {
-        date: '',
-        name: '',
-        address: '',
-        description: ''
+      user:{
+        u_id:191,
+        u_name:'tmp',
+        u_level:12,
+        p_name:'asdasd',
+        u_email:'982981@qq.com',
+        enterprise:{
+          e_id:31,
+          e_name:'asdasd'
+        }
       },
-      companyList: [{
-        value: '阿里巴巴',
-        isSelect: true,
-      }, {
-        value: '腾讯',
-        isSelect: false,
-      }, {
-        value: '百度',
-        isSelect: false,
-      }, {
-        value: '网易',
-        isSelect: false,
-      }, {
-        value: 'Google',
-        isSelect: false,
-      }, {
-        value: '微软',
-        isSelect: false,
-      }, {
-        value: '华为',
-        isSelect: false,
-      }, {
-        value: '小米',
-        isSelect: false,
-      }, {
-        value: '京东',
-        isSelect: false,
-      }, {
-        value: '其他',
-        isSelect: false,
-      }
-      ],
-      professionList: [{
-        value: 'web前端开发工程师',
-        label: 'web前端开发工程师'
-      }, {
-        value: 'Java工程师',
-        label: 'Java工程师'
-      }
-      ],
+      isSelect: false,
+      saveuser: false,
+      resume: {
+        o_id:-1,
+        o_time: '',
+        o_title: '',
+        o_href: '',
+        o_remark: ''
+      },
+      companyList: null,
+      professionList: null,
       formLabelWidth: '120px',
       u_name: "胡昊",
       u_email: "819473021@qq.com",
@@ -209,27 +139,188 @@ export default {
       setting: false,
       rank: 1,
       dialogResume: false,
-      introduction: [{
-        date: '2017-07-07',
-        name: '蓝鸥IT课程考评系统',
-        address: 'https://github.com/tosim/LO-ExamSystem',
-        description: 'github项目'
+      others: [{
+        o_time: '2017-07-07',
+        o_title: '蓝鸥IT课程考评系统',
+        o_href: 'https://github.com/tosim/LO-ExamSystem',
+        o_remark: 'github项目'
       }, {
-        date: '2017-07-07',
-        name: '蓝鸥IT课程考评系统',
-        address: 'https://github.com/tosim/LO-ExamSystem',
-        description: 'github项目'
+        o_time: '2017-07-07',
+        o_title: '蓝鸥IT课程考评系统',
+        o_href: 'https://github.com/tosim/LO-ExamSystem',
+        o_remark: 'github项目'
       }, {
-        date: '2017-07-07',
-        name: '蓝鸥IT课程考评系统',
-        address: 'https://github.com/tosim/LO-ExamSystem',
-        description: 'github项目'
+        o_time: '2017-07-07',
+        o_title: '蓝鸥IT课程考评系统',
+        o_href: 'https://github.com/tosim/LO-ExamSystem',
+        o_remark: 'github项目'
       }, {
-        date: '2017-07-07',
-        name: '蓝鸥IT课程考评系统',
-        address: 'https://github.com/tosim/LO-ExamSystem',
-        description: 'github项目'
+        o_time: '2017-07-07',
+        o_title: '蓝鸥IT课程考评系统',
+        o_href: 'https://github.com/tosim/LO-ExamSystem',
+        o_remark: 'github项目'
       }]
+    }
+  },
+
+  mounted: function () {
+    var $ = layui.jquery
+      , element = layui.element();
+    element.progress('demo', this.rank * 10 / 0.9 + '%');
+    console.log('first');
+    console.log(this.user);
+    // var self = this;
+    this.$http.get(this.domain+'/v1/sessions')//1获取用户信息
+      .then((res)=>{
+        res = res.data;
+        if(res.success === 1){
+          this.user = res.data;
+          console.log('asdadasd');
+          console.log(res.data);
+        }else{
+          console.log('not login');
+          // window.location.href = '/public/login.html';
+        }
+        // console.log(this.user);
+      })
+      .then(()=>{
+          this.$http.get(this.domain + '/v1/enterprises').then((res)=>{
+              res = res.data;
+              if(res.success === 1){
+                this.companyList = res.data; 
+                console.log(this.companyList);
+              }
+          })
+          this.$http.get(this.domain + '/v1/professions').then((res)=>{
+              res = res.data;
+              console.log(res.data);
+              if(res.success === 1){
+                this.professionList = res.data;
+              }
+          })
+          this.$http.get(this.domain + '/v1/others?u_id='+this.user.u_id).then((res)=>{
+              res = res.data;
+              if(res.success === 1){
+                this.others = res.data; 
+                console.log(this.others);
+              }else{
+                this.others = [];
+              }
+          })
+      })
+
+  },
+  methods: {
+    showDialogResume:function(){
+      this.dialogResume = true;
+      this.resume = {
+        o_id:-1,
+        o_time:'',
+        o_title:'',
+        o_href:'',
+        o_remark:''
+      }
+    },
+    selectCompany: function (item) {
+      // console.log(index);
+      // console.log(this.companyList);
+      // if (this.companyList[index].isSelect) {
+      //   this.companyList[index].isSelect = false;
+      // } else {
+      //   this.companyList[index].isSelect = true;
+      // }
+      // console.log(this.companyList);
+      if(item.isSelect == true){
+        item.isSelect = false;
+        for(let i = 0;i < this.user.enterprise.length;i++){
+          if(this.user.enterprise[i].e_id === item.e_id){
+            this.user.enterprise.splice(i,1);
+          }
+        }
+      }else{
+        item.isSelect = true;
+        this.user.enterprise.push(item);
+      }
+      
+    },
+    saveset: function () {
+      this.saveuser = false;
+      this.setting = false;
+      // console.log(this.companyList);
+      // console.log(this.user);
+      this.$http.put(this.domain+'/v1/users',this.user).then((res)=>{
+        console.log(res);
+      })
+    },
+    addResume: function () {
+      // this.resume.o_time = '2017-5-5';
+      var time = new Date(this.resume.o_time);
+      // console.log(time.getFullYear());
+      this.resume.o_time = time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate();
+      console.log('resume:');
+      console.log(this.resume);
+      if(this.resume.o_id == -1){
+        this.resume.u_id = this.user.u_id;
+        this.$http.post(this.domain+'/v1/others',this.resume).then((res)=>{
+          res = res.data;
+          console.log(res);
+          this.resume.o_id = res.data;
+          this.others.push(this.resume);
+        });
+      }else{
+        this.$http.put(this.domain+'/v1/others',this.resume).then((res)=>{
+          res = res.data;
+          console.log(res);
+          this.others[this.resume.index] = res.data;
+        });
+      }
+
+      // console.log(this.others);
+      this.dialogResume = false;
+      
+    },
+    userset: function () {
+      this.saveuser = true;
+      this.setting = true;
+      // this.$http.get(this.domain + '/v1/enterprises').then((res)=>{
+      //     res = res.data;
+      //     if(res.success === 1){
+      //       this.companyList = res.data;
+            for(let i = 0;i < this.companyList.length;i++){
+            // this.companyList[i].isSelect
+              for(let j = 0;j < this.user.enterprise.length;j++){
+                if(this.companyList[i].e_id === this.user.enterprise[j].e_id){
+                  this.companyList[i].isSelect = true;
+                  break;
+                }else{
+                  this.companyList[i].isSelect = false;
+                }
+              }
+            }
+            
+      //       console.log(this.companyList);
+      //     }
+      // })
+      
+    },
+    resumeEdit(index, row, resume) {
+      console.log(index);
+      console.log(row.date);
+      resume.o_time = row.o_time;
+      resume.o_title = row.o_title;
+      resume.o_href = row.o_href;
+      resume.o_remark = row.o_remark;
+      resume.o_id = this.others[index].o_id;
+      resume.u_id = this.user.u_id;
+      resume.index = index;
+      this.dialogResume = true;
+    },
+    resumeDelete(index, others) {
+      this.$http.delete(this.domain + '/v1/others/'+others[index].o_id).then((res)=>{
+        res = res.data;
+        console.log(res);
+      });
+      others.splice(index, 1);
     }
   }
 }

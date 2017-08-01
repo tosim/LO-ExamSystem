@@ -17,40 +17,40 @@
         <div class="topictitle">
           一、单选题（每题{{singleFraction}}分，共{{singleFraction*singleNum}}分）
         </div>
-        <single-topic v-for="(item,index) in ochoose" :examindex="index+1" :titleContent="item.q_content.main" :singleoptions="item.q_content.items" :key="item.q_id"></single-topic>
+        <single-topic v-on:changeAnswer="changeAnswers" v-for="(item,index) in ochoose"  :qid="item.q_id" :examindex="index+1" :titleContent="item.q_content.main" :singleoptions="item.q_content.items" :key="item.q_id"></single-topic>
       </div>
       <div v-if="multipleNum" class="topicall">
         <div class="topictitle">
           <span>{{mchooseid}}</span>多选题（每题{{multipleFraction}}分，共{{multipleFraction*multipleNum}}分）
         </div>
-        <multiple-choice></multiple-choice>
-      </div>
-      <div v-if="fillinNum" class="topicall">
-        <div class="topictitle">
-          <span>{{fillid}}</span>填空题（每题{{fillinFraction}}分，共{{fillinFraction*fillinNum}}分）
-        </div>
-        <fillin-topic></fillin-topic>
+        <multiple-choice v-on:changeAnswer="changeAnswers" v-for="(item,index) in mchoose" :qid="item.q_id" :examindex="index+1" :titleContent="item.q_content.main" :multipleoptions="item.q_content.items" :key="item.q_id"></multiple-choice>
       </div>
       <div v-if="judgmentNum" class="topicall">
         <div class="topictitle">
          <span>{{judgeid}}</span> 判断题（每题{{judgmentFraction}}分，共{{judgmentFraction*judgmentNum}}分）
         </div>
-        <judgment-topic></judgment-topic>
+        <judgment-topic v-on:changeAnswer="changeAnswers" v-for="(item,index) in judge" :qid="item.q_id" :examindex="index+1" :titleContent="item.q_content" :key="item.q_id"></judgment-topic>
+      </div>
+      <div v-if="fillinNum" class="topicall">
+        <div class="topictitle">
+          <span>{{fillid}}</span>填空题（每题{{fillinFraction}}分，共{{fillinFraction*fillinNum}}分）
+        </div>
+        <fillin-topic v-on:changeAnswer="changeAnswers" v-for="(item,index) in fill" :qid="item.q_id" :examindex="index+1" :titleContent="item.q_content.main" :airNum="item.q_content.blankNum" :key="item.q_id"></fillin-topic>
       </div>
       <div v-if="shortNum" class="topicall">
         <div class="topictitle">
           <span>{{squestionid}}</span>简答题（每题{{shortFraction}}分，共{{shortFraction*shortNum}}分）
         </div>
-        <short-answer></short-answer>
+        <short-answer v-on:changeAnswer="changeAnswers" v-for="(item,index) in squestion" :qid="item.q_id" :examindex="index+1" :titleContent="item.q_content" :key="item.q_id"></short-answer>
       </div>
       <div v-if="programNum" class="topicall">
         <div class="topictitle">
           <span>{{codeid}}</span>编程题（每题{{programFraction}}分，共{{programFraction*programNum}}分）
         </div>
-        <program-topic></program-topic>
+        <program-topic v-on:changeAnswer="changeAnswers" v-for="(item,index) in code" :qid="item.q_id" :examindex="index+1" :titleContent="item.q_content" :key="item.q_id"></program-topic>
       </div>
       <div>
-        <button class="layui-btn layui-btn-big layui-btn-normal" style="position:relative;left:50%;margin-left:-41px;border-radius:5px;margin-bottom:20px;">提交</button>
+        <button @click="submit" class="layui-btn layui-btn-big layui-btn-normal" style="position:relative;left:50%;margin-left:-41px;border-radius:5px;margin-bottom:20px;">提交</button>
       </div>
       <div style="text-align:center;padding-top:20px;border-top:1px solid rgb(239,239,239);font-size:16px">
         蓝鸥&nbsp&nbsp提供技术支持
@@ -167,6 +167,7 @@ export default {
   },
   data() {
     return {
+      user:null,
       profession: "Web前端开发工程师",
       examtime: "30分钟",
       singleFraction: 5,
@@ -197,7 +198,8 @@ export default {
       fillid:null,
       judgeid:null,
       squestionid:null,
-      codeid:null
+      codeid:null,
+      allAnswers:{}
     }
   },
   "created": function () {
@@ -223,21 +225,28 @@ export default {
         case 5: return '六、';
        }
     }
+    // console.dir(window.localStorage.hisAnswers);
+    // if(window.localStorage.hisAnswers && typeof window.localStorage.hisAnswers != 'undefined'){
+    //   this.allAnswers = window.localStorage.hisAnswers;
+    //   console.log('init');
+    //   console.log(this.allAnswers);
+    //   // this.allAnswers = {};
+    // }
     var self = this;
     this.$http.get(this.domain+'/v1/sessions')//1获取用户信息
       .then((res)=>{
         res = res.data;
         if(res.success === 1){
-          window.user = res.data;
+          this.user = res.data;
         }else{
           console.log('not login');
           window.location.href = '/public/login.html';
         }
-        console.log(window.user);
-        return window.user;
+        console.log(this.user);
+        return this.user;
       })
       .then(function(user){//2.获取试卷分布
-        self.$http.get(self.domain+'/v1/testpapers?p_id='+window.user.p_id).then((res)=>{
+        self.$http.get(self.domain+'/v1/testpapers?p_id='+self.user.p_id).then((res)=>{
           res = res.data;
           console.log(res.data);
           if(res.success === 1){
@@ -293,9 +302,10 @@ export default {
                     self.judge.push(queList[i]);
                   }else if(queList[i].q_type === 4){
                     var origin = queList[i].q_content;
+                    queList[i].q_content = {};
                     queList[i].q_content.main = {};
                     queList[i].q_content.main = origin;//填空题内容
-                    queList[i].q_content.blankNum = origin.match(/_{3}/g);//空格个数
+                    queList[i].q_content.blankNum = origin.match(/_{3}/g).length;//空格个数
                     self.fill.push(queList[i]);
                   }else if(queList[i].q_type === 5){
                     // 简答题
@@ -306,6 +316,7 @@ export default {
                   }
               }
               console.log(queList);
+              console.log('解析结束');
               // 解析结束
               var cnt = 0;
               cnt += self.ochoose.length === 0 ? 0 : 1;
@@ -326,6 +337,44 @@ export default {
           }
       })
   },
+  methods:{
+    changeAnswers(data){
+      if(data.q_type==1){
+        data.score = this.singleFraction;
+      }else if(data.q_type==2){
+        data.score = this.multipleFraction;
+      }else if(data.q_type==3){
+        data.score = this.judgmentFraction;
+      }else if(data.q_type==4){
+        data.score = this.fillinFraction;
+      }else if(data.q_type==5){
+        data.score = this.shortFraction;
+      }else if(data.q_type==6){
+        data.score = this.programFraction;
+      }
+
+      this.allAnswers[data.q_id] = data;
+      // window.localStorage.hisAnswers = this.allAnswers;
+      // console.log(this.allAnswers);
+      // console.log(window.localStorage.hisAnswers);
+    },
+    submit(){
+      // console.log(this.allAnswers);
+      var title = window.localStorage.examTitle;
+      this.$http.post(this.domain + '/v1/judge',{title:title,u_id:this.user.u_id,allAnswers:this.allAnswers}).then((res)=>{
+        res = res.data;
+        if(res.success === 1){
+          console.log(res);
+        }else{
+          console.log('fail');
+        }
+        // window.localStorage.setItem('examResult',JSON.stringify(res.data));
+        // window.localStorage.examResult = JSON.stringify(res.data);
+        window.location.href = '/public/afterExam.html?h_id='+res.data.h_id;
+        // delete window.localStorage.hisAnswers;
+      });
+    }
+  }
 }
 </script>
 

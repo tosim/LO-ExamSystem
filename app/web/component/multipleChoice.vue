@@ -1,11 +1,11 @@
 <template>
   <div class="one-multiple">
-    <div class="topic-title">
-      {{examindex+"、"+titleContent}}
+    <div class="topic-title" v-html="examindex+'.'+titleContent">
+      <!--{{examindex+"、"+titleContent}}-->
     </div>
     <div class="topic-content">
-      <el-checkbox-group v-model="choose.answer">
-        <el-checkbox name="checkanswer" v-for="multipleoption in multipleoptions" :key="multipleoption.value" :label="multipleoption.label" :value="multipleoption.value"></el-checkbox>
+      <el-checkbox-group v-model="answers" @change="changeAnswer">
+        <el-checkbox name="checkanswer" v-for="(multipleoption,index) in multipleoptions" :key="index" :label="multipleoption" :value="index"></el-checkbox>
       </el-checkbox-group>
       <!-- <el-radio-group v-model="chooseanswer">
           <el-radio v-for="singleoption in singleoptions" :key="singleoption.value" :label="singleoption.label" :value="singleoption.value"></el-radio>
@@ -69,36 +69,54 @@
 
 <script>
 export default {
-  props: {
-    examindex: {
-      default: '1'
-    },
-    titleContent: {
-      default: '在Javascript中，以下哪些是原始值（primitive value）？'
-    }
-  },
+  props: ["examindex","titleContent","multipleoptions","qid"],
   data() {
     return {
-      multipleoptions:
-      [{
-        value: 1,
-        label: 'A、“3”'
-      }, {
-        value: 2,
-        label: "B、10"
-      }, {
-        value: 3,
-        label: "C、null"
-      }, {
-        value: 4,
-        label: "D、[1]"
-      }],
-      choose: {
-        answer:[]
-      }
+      // multipleoptions:
+      // [{
+      //   value: 1,
+      //   label: 'A、“3”'
+      // }, {
+      //   value: 2,
+      //   label: "B、10"
+      // }, {
+      //   value: 3,
+      //   label: "C、null"
+      // }, {
+      //   value: 4,
+      //   label: "D、[1]"
+      // }],
+      answers:[]
     }
   },
+  mounted:function(){
+    var tmp = {
+      q_id:this.qid,
+      q_type:1,
+      q_content:this.titleContent,
+      answers:[]
+    }
+    this.$emit("changeAnswer",tmp);
+  },
   methods: {
+    changeAnswer:function(answers){
+      console.log(answers);
+      var tmp = {
+        q_id:this.qid,
+        q_type:2,
+        q_content:this.titleContent,
+        answers:[]
+      }
+      for(let j = 0;j < answers.length;j++){
+        for(let i = 0;i < this.multipleoptions.length;i++){
+          if(this.multipleoptions[i]===answers[j]){
+            tmp.answers.push(i);
+            break;
+          }
+        }
+      }
+      this.$emit("changeAnswer",tmp);
+    }
   }
 }
 </script>

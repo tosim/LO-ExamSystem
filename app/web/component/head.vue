@@ -5,7 +5,7 @@
     </li>
     <el-dropdown style="float:right;cursor:pointer;margin-top:10px;padding-bottom:5px;">
       <span class="el-dropdown-link" id="user-head">
-        <img src="../asset/images/head.png" alt="head" style="margin-right:30px;">
+        <img src="../asset/images/default.jpg" alt="head" style="margin-right:30px;">
       </span>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item>个人中心</el-dropdown-item>

@@ -59,6 +59,9 @@ module.exports = app => {
                     }
                     if(cnt + pushed != req.select[i].num){
                         console.log('pushed = ' + pushed);
+                        console.log('cnt = ' + cnt);
+                        console.log(tmpList);
+                        console.log(sql);
                         var resql = getResql(basesql,queList,req.select[i].q_type);         
                         console.log("resql = " + resql);          
                         tmpList = yield app.mysql.query(resql,[req.select[i].tag_id,req.select[i].q_type,req.select[i].num - pushed - cnt]);
@@ -77,7 +80,7 @@ module.exports = app => {
                             queList = queList.concat(tmpList);
                         }
                     }
-                    console.log(`tag[${req.select[i].tag_id}],cnt = ${queList.length}`);
+                    console.log(`tag[${req.select[i].tag_id}],Allcnt = ${queList.length},q_type=${req.select[i].q_type}`);
                     //end 去重
                 }
                 
@@ -269,3 +272,10 @@ module.exports = app => {
     }
     return QuestionService;
 }
+
+// SELECT question.* FROM question,que_tag 
+// WHERE tag_id=2 
+// AND que_tag.q_id=question.q_id 
+// AND question.q_type=6 AND e_id in (1,1) 
+// AND question.q_id >= ((SELECT MAX(q_id) FROM question)-(SELECT MIN(q_id) FROM question)) * RAND() + (SELECT MIN(q_id) FROM question) 
+// AND abs(q_difficulty-1) <= 2 LIMIT 1

@@ -1,10 +1,10 @@
 <template>
   <div class="one-judgment">
-    <div class="topic-title">
-      {{examindex+"、"+titleContent}}
+    <div class="topic-title" v-html="examindex+'.'+titleContent">
+      <!--{{examindex+"、"+titleContent}}-->
     </div>
     <div class="topic-content">
-      <el-radio-group v-model="chooseanswer">
+      <el-radio-group v-model="chooseanswer" @change="changeAnswer">
         <el-radio v-for="singleoption in singleoptions" :key="singleoption.value" :label="singleoption.label" :value="singleoption.value"></el-radio>
       </el-radio-group>
     </div>
@@ -66,28 +66,45 @@
 
 <script>
 export default {
-  props: {
-    examindex: {
-      default: '1'
-    },
-    titleContent: {
-      default: '以下哪个是并选择器（）'
-    }
-  },
+  props: ["examindex","titleContent","qid"],
   data() {
     return {
       singleoptions:
       [{
-        value: 1,
+        value: 0,
         label: "A、对"
       }, {
-        value: 2,
+        value: 1,
         label: "B、错"
       }],
       chooseanswer: ""
     }
   },
+  mounted:function(){
+    var tmp = {
+      q_id:this.qid,
+      q_type:1,
+      q_content:this.titleContent,
+      answer:-1
+    }
+    this.$emit("changeAnswer",tmp);
+  },
   methods: {
+    changeAnswer(answer){
+      // console.log(answer);
+      var tmp = {
+        q_id:this.qid,
+        q_type:3,
+        q_content:this.titleContent,
+        answer:-1
+      }
+      if(answer !== "A、对"){
+        tmp.answer = 1;
+      }else{
+        tmp.answer = 0;
+      }
+      this.$emit("changeAnswer",tmp);
+    }
   }
 }
 </script>

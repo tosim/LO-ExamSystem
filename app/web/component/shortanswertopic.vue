@@ -1,10 +1,10 @@
 <template>
   <div class="one-short">
-    <div class="topic-title">
-      {{examindex+"、"+titleContent}}
+    <div class="topic-title" v-html="examindex+'.'+titleContent">
+      <!--{{examindex+"、"+titleContent}}-->
     </div>
     <div class="topic-content">
-      <el-input type="textarea" :rows="2" placeholder="请输入答案" v-model="chooseanswer"></el-input>
+      <el-input type="textarea" :rows="2" placeholder="请输入答案" v-model="answer" @blur="changeAnswer"></el-input>
     </div>
   </div>
 </template>
@@ -70,28 +70,37 @@ export default {
     },
     titleContent: {
       default: '以下哪个是并选择器（）'
+    },
+    qid:{
+      default:-1
     }
   },
   data() {
     return {
-      singleoptions:
-      [{
-        value: 1,
-        label: "A、item"
-      }, {
-        value: 2,
-        label: "B、span.item"
-      }, {
-        value: 3,
-        label: "C、span,.item"
-      }, {
-        value: 4,
-        label: "D、span .item"
-      }],
-      chooseanswer: ""
+      answer: ""
     }
   },
+  mounted:function(){
+    var tmp = {
+      q_id:this.qid,
+      q_type:1,
+      q_content:this.titleContent,
+      answer:''
+    }
+    this.$emit("changeAnswer",tmp);
+  },
   methods: {
+    changeAnswer(){
+      // console.log(this.answer);
+      var tmp = {
+        q_id:this.qid,
+        q_type:5,
+        q_content:this.titleContent,
+        answer:''
+      }
+      tmp.answer = this.answer;
+      this.$emit("changeAnswer",tmp);
+    }
   }
 }
 </script>

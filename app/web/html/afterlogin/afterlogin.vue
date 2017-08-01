@@ -130,6 +130,7 @@ export default {
       //   window.location.href = '/public/exam.html';
       // })
       window.localStorage.examtime = this.examtime;
+      window.localStorage.examTitle = '随机测验';
       window.location.href = '/public/exam.html';
     },
   }

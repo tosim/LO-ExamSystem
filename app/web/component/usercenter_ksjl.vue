@@ -8,9 +8,9 @@
         <el-col :span="8">
           <div class="filter-left">
             <span>排序：</span>
-            <el-select v-model="filter_onetime" placeholder="请选择排序方式">
-              <el-option label="日期由近至远" value="neartofar"></el-option>
-              <el-option label="日期由远至近" value="fartonear"></el-option>
+            <el-select v-model="filter_onetime" @change="sor()" placeholder="请选择排序方式">
+              <el-option label="日期由近至远" value=-1 ></el-option>
+              <el-option label="日期由远至近" value=1 ></el-option>
             </el-select>
           </div>
         </el-col>
@@ -18,24 +18,22 @@
     </div>
     <div class="ksjl-body">
       <el-row :gutter="20">
-        <el-col :span="8" v-for="item in ksjl" :key="item.value">
-          <div class="oneksjl">
+        <el-col :span="8" v-for="item in ksjl" :key="item.value" >
+          <div class="oneksjl" @click="goToDetail(item.h_id)">
             <div class="oneksjl-top">
-              {{item.title}}
+              {{item.h_title}}
             </div>
             <div class="oneksjl-center">
-              <span v-if="item.type==1">随机训练</span>
-              <span v-if="item.type==2">专项训练</span>
-              <span v-if="item.type==3">企业考试</span>
+              <span>{{item.h_tag + item.h_title}}</span>
             </div>
             <div class="oneksjl-bottom">
               <div class="oneksjl-bottom-t">
                 <i class="layui-icon" style="color:gray !important;">&#xe60e;</i>
-                <span>完成时间：{{item.endtime}}</span>
+                <span>考试时间：{{item.h_date}}</span>
               </div>
               <div class="oneksjl-bottom-b">
                 <i class="layui-icon" style="color:gray !important;">&#xe600;</i>
-                <span>得分：{{item.score}}</span>
+                <span>得分：{{item.h_grade}}</span>
               </div>
             </div>
           </div>
@@ -58,6 +56,21 @@
 
 <script>
 export default {
+  props:['uid'],
+  mounted:function(){
+    this.$http.get(this.domain + '/v1/examhistory?u_id='+this.uid).then((res)=>{
+      res = res.data;
+      if(res.success === 1){
+        this.ksjl = res.data;
+        for(let i in this.ksjl){
+          this.ksjl[i].h_tag = this.ksjl[i].h_tag.toUpperCase();
+          var time = new Date(this.ksjl[i].h_date);
+          this.ksjl[i].h_date = time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate();
+        }
+        this.ksjl_num = this.ksjl.length;
+      }
+    })
+  },
   data() {
     return {
       begin_date: '',
@@ -65,43 +78,33 @@ export default {
       filter_onetime: '',
       ksjl_num: 1,
       ksjl: [
-        {
-          type: 1,
-          title: "HTML专项训练",
-          endtime: "2017-07-15",
-          score: 99,
-        },
-        {
-          type: 1,
-          title: "HTML专项训练",
-          endtime: "2017-07-15",
-          score: 99,
-        },
-        {
-          type: 1,
-          title: "HTML专项训练",
-          endtime: "2017-07-15",
-          score: 99,
-        },
-        {
-          type: 1,
-          title: "HTML专项训练",
-          endtime: "2017-07-15",
-          score: 99,
-        },
-        {
-          type: 1,
-          title: "HTML专项训练",
-          endtime: "2017-07-15",
-          score: 99,
-        },
-        {
-          type: 1,
-          title: "HTML专项训练",
-          endtime: "2017-07-15",
-          score: 99,
-        }
       ]
+    }
+  },
+  methods:{
+    sor(){
+      // console.log('change');
+      // console.log(this.filter_onetime);
+      var v = this.filter_onetime;
+      function getcmp(v){
+
+        return function(a,b){
+          if(a.h_date > b.h_date){
+            return v;
+          }else if(a.h_date < b.h_date){
+            return -1*v;
+          }else{
+            return 0;
+          }
+        }
+
+      }
+      this.ksjl.sort(getcmp(v));
+      // console.log(this.ksjl);
+    },
+    goToDetail(h_id){
+      window.location.href = '/public/afterExam.html?h_id='+h_id;
+      // console.log(h_id);
     }
   }
 }

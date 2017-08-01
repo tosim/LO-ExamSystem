@@ -17,11 +17,11 @@
         </el-menu>
       </el-col>
       <el-col style="float:left;width:80%;overflow:auto;height:100%;">
-        <jbxx v-show="jbxx_show"></jbxx>
-        <nlfx v-show="nlfx_show"></nlfx>
+        <jbxx v-show="jbxx_show" ></jbxx>
+        <nlfx v-if="nlfx_show&&flag" :uid="user.u_id"></nlfx>
         <ctb v-show="ctb_show"></ctb>
         <scj v-show="scj_show"></scj>
-        <ksjl v-show="ksjl_show"></ksjl>
+        <ksjl :uid="user.u_id" v-if="flag" v-show="ksjl_show"></ksjl>
       </el-col>
     </el-row>
   </div>
@@ -51,7 +51,9 @@ export default {
       nlfx_show: false,
       ctb_show: false,
       scj_show: false,
-      ksjl_show: false
+      ksjl_show: false,
+      user:{},
+      flag:false
     }
   },
   components: {
@@ -102,6 +104,24 @@ export default {
   created() {
     let x = window.screen.height - 110;
     document.body.setAttribute("style", "height:" + x + "px");
+  },
+  mounted:function(){
+    this.$http.get(this.domain+'/v1/sessions')//1获取用户信息
+      .then((res)=>{
+        res = res.data;
+        if(res.success === 1){
+          this.user = res.data;
+          this.flag = true;
+          console.log('at usercenter');
+          console.log(this.user);
+        }else{
+          console.log('not login');
+          window.location.href = '/public/login.html';
+        }
+        // console.log(this.user);
+      })
   }
 }
 </script>
+
+

@@ -1,7 +1,7 @@
 <template>
   <div class="one-program">
-    <div class="topic-title">
-      {{examindex+"、"+titleContent}}
+    <div class="topic-title" v-html="examindex+'.'+titleContent">
+      <!--{{examindex+"、"+titleContent}}-->
     </div>
     <div class="topic-content">
       <el-select v-model="word" placeholder="请选择编译语言">
@@ -9,7 +9,7 @@
         <el-option label="c++" value="c++"></el-option>
         <el-option label="java" value="java"></el-option>
       </el-select>
-      <el-input type="textarea" :rows="10" placeholder="请输入程序代码" v-model="chooseanswer" style="margin-top:10px;"></el-input>
+      <el-input type="textarea" :rows="10" placeholder="请输入程序代码" v-model="answerCode" style="margin-top:10px;" @blur="changeAnswer"></el-input>
     </div>
   </div>
 </template>
@@ -76,16 +76,41 @@ export default {
     titleContent: {
       default: '以下哪个是并选择器（）'
     },
-    word: {
-      default: ""
+    qid:{
+      default:-1
     }
   },
   data() {
     return {
-      chooseanswer: ""
+      word:'c',
+      answerCode: ""
     }
   },
+  mounted:function(){
+    var tmp = {
+      q_id:this.qid,
+      q_type:1,
+      q_content:this.titleContent,
+      answer:{
+        word:'no',
+        code:''
+      }
+    }
+    this.$emit("changeAnswer",tmp);
+  },
   methods: {
+    changeAnswer(){
+      // console.log(this.answer);
+      var tmp = {
+        q_id:this.qid,
+        q_type:5,
+        q_content:this.titleContent,
+        answer:{}
+      }
+      tmp.answer.word = this.word;
+      tmp.answer.code = this.answerCode
+      this.$emit("changeAnswer",tmp);
+    }
   }
 }
 </script>
