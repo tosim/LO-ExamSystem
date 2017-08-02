@@ -213,8 +213,8 @@ export default {
       }
     },
     que(){
-      console.log('submit!');
-      console.log(this.query);
+      this.currpage = 1;
+      this.fetchData();
     },
     reset(){
       this.query.firs = '';
