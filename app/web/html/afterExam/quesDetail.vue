@@ -21,7 +21,7 @@
                         <i class="layui-icon">&#xe600;</i> 收藏
                     </button>
                     <button class="layui-btn layui-btn-primary layui-btn-big" style="border:none;">
-                        <i class="layui-icon">&#xe619;</i> 825
+                        <i class="layui-icon">&#xe619;</i> {{agreN}}
                     </button>
                     <button class="layui-btn layui-btn-primary layui-btn-big" style="border:none;">
                         <i class="layui-icon">&#x1006;</i> 举报
@@ -71,6 +71,7 @@ export default {
         return {
             totalnum: 2,
             currpage: 1,
+            agreN:8,
             content:'',
             QuesDet: {
                 CurrentAvg: '78.24%',

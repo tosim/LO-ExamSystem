@@ -44,7 +44,7 @@
             <label class="layui-form-label">标签检索</label>
             <div class="layui-input-block">
               <el-select v-model="query.serd" multiple filterable placeholder=" " style="width:100%;">
-                <el-option v-for="(item,index) in typeNam" :key="index" :label="item" :value="index">
+                <el-option v-for="(item,index) in taglist" :key="item.tag_id" :label="item.tag_name" :value="item.tag_id">
                 </el-option>
               </el-select>
             </div>
@@ -131,6 +131,7 @@ export default {
   },
   mounted: function () {
     this.fetchData();
+    this.gettaglist();
   },
   methods: {
     handleSelectionChange(val) {
@@ -152,9 +153,19 @@ export default {
       }
 
     },
+    gettaglist() {
+      let _this = this;
+      this.$http.get(`http://192.168.1.102:7001/getalltag`).then(res => {
+        _this.taglist = res.data.data.taglist;
+      })
+    },
     fetchData() {
       let _this = this;
-      _this.$http.get(`http://192.168.1.102:7001/getquestionlist?page=${_this.currpage}`).then(res => {
+      let pkage = {
+        query:this.query,
+        page:this.currpage,
+      }
+      _this.$http.post(`http://192.168.1.102:7001/search`,pkage).then(res => {
         console.log(res);
         _this.totalnum = res.data.data.totalnum;
         _this.questionlist = res.data.data.questionlist;
@@ -222,6 +233,9 @@ export default {
         serd:[],
         thre:'1-9',
       },
+      taglist: [{
+
+      }],
       dialogVisible: false,
       MutiVisible: false,
       ImportVisible: false,
