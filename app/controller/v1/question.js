@@ -314,7 +314,26 @@ module.exports = app => {
                     data: '',
                     msg: '删除成功',
             }
-        } 
+        }
+        * addexamquestion() {
+            console.log("111111")
+            const { ctx, service } = this;
+            const result = yield service.v1.question.addexamquestion(ctx.request.body);
+            if (result) {
+                ctx.response.body = {
+                    success: 1,
+                    data: '',
+                    msg: '添加成功',
+                }
+            } else {
+                ctx.response.body = {
+                    success: 0,
+                    data: '',
+                    msg: '添加失败',
+                }
+            }
+        }
+        
         * myresponse(ctx, QuestionList, totalnum) {
             if (QuestionList.length == 0) {
                 ctx.response.body = {

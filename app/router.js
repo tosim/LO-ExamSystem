@@ -29,6 +29,7 @@ module.exports = app => {
   app.get('/getquestionbyid',app.controller.v1.question.getquestionbyid);
   app.get('/updatequestion',app.controller.v1.question.updatequestion);
   app.get('/deletequestion',app.controller.v1.question.deletequestion);
+  app.post('/addexamquestion',app.controller.v1.question.addexamquestion);
 
 
 

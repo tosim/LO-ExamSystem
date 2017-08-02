@@ -140,6 +140,55 @@ module.exports = app => {
             return result;
 
         }
+        * addexamquestion(params){
+            const questionlist = params.questionlist
+            const exam = params.exam;
+            let examdata = {
+                e_id : exam.e_id,
+                p_id : exam.p_id,
+                start_time : exam.start_time,
+                last_time : exam.last_time
+            }
+            const examId = yield this.insertexam(examdata);
+            console.log("考试id")
+            console.log(examId)
+            for(let item of questionlist){
+                let data = {
+                 question : {
+                   q_type:item.q_type,
+                   q_content:item.q_content,
+                   q_answer:item.q_answer,
+                   q_analysis:item.q_analysis,
+                   q_difficulty:item.q_difficulty,
+                   q_right:0,
+                   q_wrong:0,
+                   q_reportnum:0,
+                   e_id:exam.e_id,
+                },
+                tag :  item.tag,
+               }
+            const insertId  = yield this.create(data.question);
+            console.log(insertId);
+            if (typeof insertId === 'number') {
+               for(let value of data.tag){
+                    var insertSuccess = yield this.insertquetag(insertId,value);
+                }
+                
+               const insertSuccess2 = yield this.insertq_exam(insertId,examId)
+                return true;
+            }else{
+                return false;
+            }
+        }
+        }
+        * insertexam(params){
+            const result = yield this.app.mysql.insert('e_exam',{e_id:params.e_id,p_id:params.p_id,start_time:params.start_time,last_time:params.last_time})
+            return result.insertId;
+        }
+        * insertq_exam(q_id,exam_id){
+            const result = yield this.app.mysql.insert('q_exam', {q_id:q_id,exam_id:exam_id});
+            return result.insertId;
+        }
         // * unique(arr) {
         //     console.log("55555")
         //     console.log(arr.length);
@@ -184,61 +233,61 @@ module.exports = app => {
     //     }
     //     return tmp;
     // }
-    * GetRepeatFwxmmc(ary1){
-    // console.log(ary1.length)
-　　var ary = ary1.sort(yield this.compare('q_id'));//数组排序
-    // console.log(ary);
-　　var cffwxmsAry = new Array();
-　　//所有重复元素添加进新数组内
+//     * GetRepeatFwxmmc(ary1){
+//     // console.log(ary1.length)
+// 　　var ary = ary1.sort(yield this.compare('q_id'));//数组排序
+//     // console.log(ary);
+// 　　var cffwxmsAry = new Array();
+// 　　//所有重复元素添加进新数组内
 
-　　for(var i=0;i<ary.length-1;i++){
+// 　　for(var i=0;i<ary.length-1;i++){
 
-　　　　if (ary[i].q_id === ary[i+1].q_id){
+// 　　　　if (ary[i].q_id === ary[i+1].q_id){
 
-　　　　　　cffwxmsAry.push(ary[i]);
+// 　　　　　　cffwxmsAry.push(ary[i]);
 
-　　　　}
+// 　　　　}
 
-　　}
-   console.log(cffwxmsAry)
+// 　　}
+//    console.log(cffwxmsAry)
 
-　　var result = [], isRepeated;
+// 　　var result = [], isRepeated;
 
-　　//对重复元素数组进行元素去重
+// 　　//对重复元素数组进行元素去重
 
-　　for (var k = 0; k < cffwxmsAry.length; k++) {
+// 　　for (var k = 0; k < cffwxmsAry.length; k++) {
 
-　　　　isRepeated = false;
+// 　　　　isRepeated = false;
 
-　　　　for (var j = 0;j < result.length; j++) {
+// 　　　　for (var j = 0;j < result.length; j++) {
 
-　　　　　　if (cffwxmsAry[k].q_id === result[j].q_id) {
+// 　　　　　　if (cffwxmsAry[k].q_id === result[j].q_id) {
 
-　　　　　　　　isRepeated = true; break;
+// 　　　　　　　　isRepeated = true; break;
 
-　　　　　　}
+// 　　　　　　}
 
-　　　　}
+// 　　　　}
 
-　　　　if (!isRepeated) {
+// 　　　　if (!isRepeated) {
 
-　　　　　　result.push(cffwxmsAry[k]);
+// 　　　　　　result.push(cffwxmsAry[k]);
 
-　　　　}
+// 　　　　}
 
-　　}
+// 　　}
 
-　　return result;
+// 　　return result;
 
-}
+// }
 
-* compare(property){
-    return function(a,b){
-        var value1 = a[property];
-        var value2 = b[property];
-        return value1 - value2;
-    }
-}
+// * compare(property){
+//     return function(a,b){
+//         var value1 = a[property];
+//         var value2 = b[property];
+//         return value1 - value2;
+//     }
+// }
 
 //     * common(arr) {  
 //     var q_idlist = new Array();
@@ -252,6 +301,6 @@ module.exports = app => {
 //     return tmp;  
 //   }  
   
-    }
+   }
     return QuestionService;
 }
