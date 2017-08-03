@@ -1,11 +1,9 @@
 <template>
   <div id="all">
     <el-dialog title="添加试题" :visible.sync="dialogVisible" size="small" :before-close="handleClose">
-      <dial v-bind:currentItem="currentItem"></dial>
+      <dial v-bind:currentItem="currentItem" ref="dial"></dial>
       <div slot="footer" class="dialog-footer " style="text-align: center;">
-        <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存</button>
-        <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存并关闭</button>
-        <button class="layui-btn layui-btn-normal" type="primary" @click="dialogVisible = false">保存并新增</button>
+        <button class="layui-btn layui-btn-normal" type="primary" @click="submitDia">保存</button>
         <button class="layui-btn layui-btn-primary" @click="dialogVisible = false">取消</button>
       </div>
     </el-dialog>
@@ -123,7 +121,7 @@ import dial2 from '../../component/addNewQuesComp/addMutiNewQues'
 import dial3 from '../../component/addNewQuesComp/importQuesFile'
 
 export default {
-
+  
   components: {
     "dial": dial,
     "dial2": dial2,
@@ -134,6 +132,10 @@ export default {
     this.gettaglist();
   },
   methods: {
+    submitDia(){
+      this.dialogVisible = false;
+      this.$refs.dial.onSubmit()
+    },
     handleSelectionChange(val) {
       this.multipleSelection = val;
       console.log(this.multipleSelection);

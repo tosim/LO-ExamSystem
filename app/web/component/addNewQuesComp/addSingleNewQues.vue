@@ -96,7 +96,7 @@
             <el-input type="textarea" :rows="5" v-model="SingleQues.q_analysis"></el-input>
           </el-form-item>
         </el-form>
-        <el-button type="primary" @click="onSubmit">提交</el-button>
+        <!-- <el-button type="primary" @click="onSubmit">提交</el-button> -->
       </div>
     </div>
   </div>
@@ -105,6 +105,7 @@
 <script>
 
 export default {
+  name: "dial",
   props: [
     'currentItem',
   ],
@@ -115,7 +116,9 @@ export default {
     } else {
       this.SingleQues = this.cloneObj(this.SingleQuesb);
     }
+
     this.gettaglist();
+
   },
   watch: {
     currentItem: function (val) {
