@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="bjks-all">
-      <div class="bjks-title">
-        <span>发布新考试</span>
+    <div class="fbxks-all">
+      <div class="fbxks-title">
+        <span>编辑考试</span>
       </div>
-      <div class="bjks-body">
+      <div class="fbxks-body">
       <div id="all">
     <!-- 创建考试 -->
 
@@ -58,7 +58,6 @@
     </el-dialog>
       <div class=" div-2 ">
         <div class="layui-btn-group ">
-          <button class="layui-btn layui-btn-small" @click="dialogFormVisible = true">创建考试</button>
           <button class="layui-btn layui-btn-small" @click="editblock()">添加试题</button>
           <button class="layui-btn layui-btn-small" @click="MutiVisible = true">批量新增</button>
           <button class="layui-btn layui-btn-small" @click="ImportVisible = true">导入试题</button>
@@ -99,7 +98,6 @@
       </el-row>
       <el-row style="text-align:center">
         <div id="page1" style="margin-top:12px;text-align:center;"></div>
-        <el-button type="primary" size="large" @click="save" style="margin-top:12px;text-align:center;">保存</el-button>
       </el-row>
     </div>
 
@@ -124,10 +122,19 @@ export default {
     "dial2": dial2,
     "dial3": dial3,
   },
+  props:["examId"],
   mounted: function () {
+    console.log(this.examId)
     this.fetch();
     this.gettaglist();
     this.getprofession();
+  },
+   watch: {
+    examId: function (val) {
+      if (this.examId !== -1) {
+        this.fetch();
+      } 
+    },
   },
   methods: {
     submitDia(){
@@ -164,30 +171,6 @@ export default {
        this.$http.get(`http://127.0.0.1:7001/getexamquestionlist?examid=${this.examId}`).then(res => {
         this.questionlist = res.data.data.questionlist;
         console.log(this.questionlist)
-      })
-    },
-    fetchData() {
-      let _this = this;
-      let pkage = {
-        query:this.query,
-        page:this.currpage,
-      }
-      _this.$http.post(`http://127.0.0.1:7001/search`,pkage).then(res => {
-        console.log(res);
-        _this.totalnum = res.data.data.totalnum;
-        _this.questionlist = res.data.data.questionlist;
-        layui.laypage({
-          cont: 'page1', //容器。值支持id名、原生dom对象，jquery对象。【如该容器为】：<div id="page1"></div>
-          pages: _this.totalnum, //通过后台拿到的总页数
-          curr: _this.currpage, //当前页
-          skin: 'yahei', //加载内置皮肤，也可以直接赋值16进制颜色值，如:#c00
-          jump: function (obj, first) { //触发分页后的回调
-            if (!first) { //点击跳页触发函数自身，并传递当前页：obj.curr
-              _this.currpage = obj.curr;
-              _this.fetchData();
-            }
-          }
-        });
       })
     },
     delswit2(item) {
@@ -257,29 +240,11 @@ export default {
                     .catch( err=> {
                         console.log(err);
                     });
-  },
-  save(){
-      this.$emit("sendMsg",this.examId);
-      this.examId = -1,
-      this.enterprise = { 
-        e_id:2,
-        e_name:'阿里巴巴',
-      };
-      this.exam = {
-         e_id:-1,
-         p_id:'',
-         start_time:'',
-         last_time:'',
-      };
-      this.professionlist = [];
-      this.questionlist = [];
-      this.$emit('bjks');
   }
   },
   data() {
     return {
       formLabelWidth: '120px',
-      examId:-1,
       enterprise:{
         e_id:2,
         e_name:'阿里巴巴',
@@ -373,12 +338,12 @@ export default {
 </script>
 
 <style scoped>
-.bjks-all {
+.fbxks-all {
   width: 90%;
   margin: 0 auto;
 }
 
-.bjks-title {
+.fbxks-title {
   line-height: 35px;
   width: 90%;
   margin: 50px auto 0 auto;
@@ -386,18 +351,18 @@ export default {
   border-bottom: 1px solid rgb(212, 212, 212);
 }
 
-.bjks-body {
+.fbxks-body {
   font-size: 15px;
   width: 90%;
   margin: 0 auto;
   padding: 10px;
 }
 
-.bjks-title span {
+.fbxks-title span {
   font-family: "微软雅黑Light";
   font-size: 18px;
 }
-.bjks-title span::before {
+.fbxks-title span::before {
   background: #FF6547;
   content: "";
   display: inline-block;
