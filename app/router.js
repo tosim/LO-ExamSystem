@@ -24,40 +24,39 @@ module.exports = app => {
   app.get('/v1/rank/list',app.controller.v1.rank.list);//获取榜单数据
   app.get('/v1/rank/single',app.controller.v1.rank.show);//获取榜单数据
 
-
-  app.get('/v1/questions',app.controller.v1.question.index);//考试抽题，random，taged，返回试题列表
-  app.post('/v1/questions',app.controller.v1.question.create);//录入题目
-
-  app.get('/', app.controller.home.index);
-  app.get('/v1/test',app.controller.v1.test.index);
-  app.get('/test/count',app.controller.test.count);
-  app.post('/v1/test',app.controller.v1.test.index);
-  app.get('/test/select',app.controller.test.select);
-  app.get('/test/asyncFunc',app.controller.test.asyncFunc);
-  app.get('/test/randomSelect',app.controller.test.randomSelect);
-  app.get('/test/randomTest',app.controller.v1.question.index);//
-  app.get('/test/testapp',app.controller.test.testapp);
+  //文件上传
   app.post('/v1/upload',app.controller.v1.upload);
+
   //题目相关
-  app.get('/v1/questions/index',app.controller.v1.question.index);//随机抽题
+  app.get('/v1/questions',app.controller.v1.question.index);//考试抽题，random，taged，返回试题列表
   app.get('/v1/questions/topic',app.controller.v1.question.topic);//专题抽题
   app.post('/v1/questions/bash',app.controller.v1.question.createBash);//批量导入
-  app.post('/addquestion', app.controller.v1.question.create);  //单题录入
-  app.get('/getquestionlist', app.controller.v1.question.list); 
-  app.get('/getquestionlistorderbyzan', app.controller.v1.question.listorderbyzan);
-  app.get('/getquestionlistorderbycai', app.controller.v1.question.listorderbycai);
+
+  //
+  app.post("/judge",app.controller.v1.question.judge);
+  app.post("/search",app.controller.v1.question.search);
+  app.post("/batchdelete",app.controller.v1.question.batchdelete);
+  app.post('/addquestion', app.controller.v1.question.create);
+  app.get('/getquestionlist', app.controller.v1.question.list);
+  app.get('/getlistbykey',app.controller.v1.question.getlistbykey);
   app.get('/getquestionlistbytag',app.controller.v1.question.getlistbytag);
   app.get('/getquestionlistbytype',app.controller.v1.question.getlistbytype);
   app.get('/getquestionbyid',app.controller.v1.question.getquestionbyid);
   app.get('/updatequestion',app.controller.v1.question.updatequestion);
   app.get('/deletequestion',app.controller.v1.question.deletequestion);
+  app.post('/addexamquestion',app.controller.v1.question.addexamquestion);
 
-
-  //职业相关
-  // app.post('/addprofession',app.controller.v1.profession.create); //添加职业
-  // app.get('/getprofessionlist',app.controller.v1.profession.index);
-  // app.post('/addtag',app.controller.v1.tag.create); //添加标签
-  // app.get('/gettaglist',app.controller.v1.tag.index);
+  //
+  app.post('/addprofession',app.controller.v1.profession.create);
+  app.get('/getprofessionlist',app.controller.v1.profession.list);//////
+  app.get('/deleteprofession',app.controller.v1.profession.deleteprofession);
+  app.post('/updateprofession',app.controller.v1.profession.updateprofession);
+  app.post('/addtag',app.controller.v1.tag.create);
+  app.post('/addtaglist',app.controller.v1.tag.addtaglist);
+  app.post('/deltetaglist',app.controller.v1.tag.deletetaglist);
+  app.post('/updatetag',app.controller.v1.tag.updatetag);
+  app.get('/gettaglist',app.controller.v1.tag.index);
+  app.get('/getalltag',app.controller.v1.tag.getalltag);
 };
 
 

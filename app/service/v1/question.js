@@ -203,8 +203,9 @@ module.exports = app => {
                 return insertDatas;
             });
         }
+        
         * create(params) {
-            const result = yield this.app.mysql.insert('question', { q_type: params.q_type,q_content:params.q_content,q_answer: params.q_answer, q_analysis: params.q_analysis,q_difficulty:params.q_difficulty,e_id:params.e_id});
+            const result = yield this.app.mysql.insert('question', { q_type: params.q_type,q_content:params.q_content,q_answer: params.q_answer, q_analysis: params.q_analysis,q_difficulty:params.q_difficulty,q_right:params.q_right,q_wrong:params.q_wrong,q_reportnum:params.q_reportnum,e_id:params.e_id});
             const insertSuccess = result.affectedRows === 1;
                 return result.insertId;
         }
@@ -222,15 +223,19 @@ module.exports = app => {
             return result;
         }
         * list(currnum) {
-            const result = yield this.app.mysql.query('select * from question limit ?,8', currnum);
+            const result = yield this.app.mysql.query('select * from question order by q_id asc limit ?,8 ', currnum);
             return result;
         }
-        * listorderbyzan(currnum){
-            const result = yield this.app.mysql.query('select * from question order by q_zan desc limit ?,8 ',currnum);
+        * getlistbykey(currnum,key,tag){
+            console.log("12378")
+            console.log(tag);
+            key = '%'+key+'%';
+            const result = yield this.app.mysql.query('select * from question where q_content like ? order by q_id asc  limit ?,8',[key,currnum]);
             return result;
         }
-        * listorderbycai(currnum){
-            const result = yield this.app.mysql.query('select * from question order by q_cai desc limit ?,8 ',currnum);
+        * gettagbyid(q_id){
+            // console.log(q_id)
+            const result = yield this.app.mysql.query('select tag.tag_id,tag.tag_name from tag,que_tag where que_tag.tag_id = tag.tag_id and que_tag.q_id=?',q_id);
             return result;
         }
         * getlistbytag(tag_id, currnum) {
@@ -246,7 +251,7 @@ module.exports = app => {
             return result;
         }
         * updatequestion(q_id,params){
-         const row = {
+          const row = {
            q_id:q_id,
            q_content:params.q_content,
            q_answer:params.q_answer,
@@ -255,8 +260,16 @@ module.exports = app => {
            q_wrong:params.q_wrong,
         };
          const updateSuccess = yield this.app.mysql.update('question',row,{where:{q_id:q_id}});
-         console.log(updateSuccess);
-         return updateSuccess;
+         const deleteSuccess = yield this.app.mysql.delete('que_tag',{q_id:q_id});
+         for(let item of params.tag){
+            var insertSuccess = yield this.app.mysql.insert('que_tag',{q_id:q_id,tag_id:item});
+         }
+        console.log(updateSuccess);
+        if(updateSuccess&&deleteSuccess&&insertSuccess){
+            return true;
+        }else{
+            return false;
+        }
         }
         * deletequestion(q_id){
          const deleteSuccess = yield this.app.mysql.delete('question',{q_id:q_id});
@@ -268,14 +281,115 @@ module.exports = app => {
             const insertSuccess =  result.affectedRows === 1;
             return insertSuccess;
         }
+        // * querybydifficulty(startdiff,enddiff){
+        //     const result = yield this.app.mysql.query('select * from question where ');
+        //     return result;
+        // }
+        * query(params,currnum) {
+            console.log(params);
+            var questionarray = [];
+            var key = params.firs;
+            const taglist = params.serd;
+            // console.log((params.thre).split("-"))
+            const difficulity = (params.thre).split('-');
+             console.log(difficulity);
+            const startdiff = difficulity[0];
+            const enddiff = difficulity[1];
+            if (key === '' && taglist.length === 0) {
+                console.log("11111111");
+                var qnum = (yield this.app.mysql.query('select count(*) as qnum from question where q_difficulty >= ? and q_difficulty <= ?',[startdiff,enddiff]))[0].qnum;
+                console.log(qnum)
+                var questionlist = yield this.app.mysql.query('select * from question where q_difficulty >= ? and q_difficulty <= ? order by q_id asc limit ?,8', [startdiff, enddiff,currnum]);
+            } else if (key !== '' && taglist.length === 0) {
+                console.log("2222222");
+                key = '%'+key+'%';
+                var qnum = (yield this.app.mysql.query('select count(*) as qnum from question where q_difficulty >= ? and q_difficulty <= ? and q_content like ?',[startdiff,enddiff,key]))[0].qnum;
+                var questionlist = yield this.app.mysql.query('select * from question where q_difficulty >= ? and q_difficulty <= ? and q_content like ? order by q_id asc  limit ?,8',[startdiff, enddiff,key,currnum]);
+            }else if(key === '' && taglist.length > 0){
+                var templist =[];
+                console.log("333333333");
+                  var orignlist = yield this.app.mysql.query('select group_concat(que_tag.tag_id) as tarray,question.q_id,question.q_type,question.q_content,question.q_answer,question.q_analysis,question.q_right,question.q_wrong,question.q_difficulty,question.q_reportnum from question,que_tag where question.q_difficulty >= ? and question.q_difficulty <= ? and question.q_id=que_tag.q_id group by question.q_id',[startdiff,enddiff]);
+                  for(let item of orignlist){
+                      var tarray = item.tarray.split(',');
+                      console.log(tarray);
+                    if(tarray.sort().toString() == taglist.sort().toString()){
+                        templist.push(item);
+                        var qnum=templist.length;
+                    }
+                  }
+                     var questionlist = templist.slice(currnum,currnum+8);
+                  console.log(questionlist)
+            }else{
+                console.log("444444444");
+                key = '%'+key+'%';
+                var templist =[];
+                  var orignlist = yield this.app.mysql.query('select group_concat(que_tag.tag_id) as tarray,question.q_id,question.q_type,question.q_content,question.q_answer,question.q_analysis,question.q_right,question.q_wrong,question.q_difficulty,question.q_reportnum from question,que_tag where question.q_difficulty >= ? and question.q_difficulty <= ? and question.q_content like ? and question.q_id=que_tag.q_id group by question.q_id',[startdiff,enddiff,key]);
+                  for(let item of orignlist){
+                      var tarray = item.tarray.split(',');
+                      console.log(tarray);
+                    if(tarray.sort().toString() == taglist.sort().toString()){
+                        templist.push(item);
+                        var qnum=templist.length;
+                    }
+                  }
+                     var questionlist = templist.slice(currnum,currnum+8);
+            }
+            const result = {
+                questionlist:questionlist,
+                qnum:qnum,
+            }
+            return result;
 
+        }
+        * addexamquestion(params){
+            const questionlist = params.questionlist
+            const exam = params.exam;
+            let examdata = {
+                e_id : exam.e_id,
+                p_id : exam.p_id,
+                start_time : exam.start_time,
+                last_time : exam.last_time
+            }
+            const examId = yield this.insertexam(examdata);
+            console.log("考试id")
+            console.log(examId)
+            for(let item of questionlist){
+                let data = {
+                 question : {
+                   q_type:item.q_type,
+                   q_content:item.q_content,
+                   q_answer:item.q_answer,
+                   q_analysis:item.q_analysis,
+                   q_difficulty:item.q_difficulty,
+                   q_right:0,
+                   q_wrong:0,
+                   q_reportnum:0,
+                   e_id:exam.e_id,
+                },
+                tag :  item.tag,
+                }
+                const insertId  = yield this.create(data.question);
+                console.log(insertId);
+                if (typeof insertId === 'number') {
+                for(let value of data.tag){
+                        var insertSuccess = yield this.insertquetag(insertId,value);
+                    }
+                    
+                const insertSuccess2 = yield this.insertq_exam(insertId,examId)
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+        * insertexam(params){
+            const result = yield this.app.mysql.insert('e_exam',{e_id:params.e_id,p_id:params.p_id,start_time:params.start_time,last_time:params.last_time})
+            return result.insertId;
+        }
+        * insertq_exam(q_id,exam_id){
+            const result = yield this.app.mysql.insert('q_exam', {q_id:q_id,exam_id:exam_id});
+            return result.insertId;
+        }
     }
     return QuestionService;
 }
-
-// SELECT question.* FROM question,que_tag 
-// WHERE tag_id=2 
-// AND que_tag.q_id=question.q_id 
-// AND question.q_type=6 AND e_id in (1,1) 
-// AND question.q_id >= ((SELECT MAX(q_id) FROM question)-(SELECT MIN(q_id) FROM question)) * RAND() + (SELECT MIN(q_id) FROM question) 
-// AND abs(q_difficulty-1) <= 2 LIMIT 1
