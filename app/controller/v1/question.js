@@ -95,6 +95,46 @@ module.exports = app => {
             yield this.updatequestion(ctx,service,q_id,data);
         }
          }
+
+         * insertoneexamquestion() {
+             const { ctx, service } = this;
+             const exam = ctx.request.body.exam;
+             const question = ctx.request.body.question
+             let examdata = {
+                 e_id: exam.e_id,
+                 p_id: exam.p_id,
+                 start_time: exam.start_time,
+                 last_time: exam.last_time
+             }
+             const examId = yield service.v1.question.insertexam(examdata);
+             let data = {
+                 question: {
+                     q_type: question.q_type,
+                     q_content: question.q_content,
+                     q_answer: question.q_answer,
+                     q_analysis: question.q_analysis,
+                     q_difficulty: question.q_difficulty,
+                     q_right: 0,
+                     q_wrong: 0,
+                     q_reportnum: 0,
+                     e_id: exam.e_id,
+                 },
+                 tag: question.tag,
+             }
+             const insertId = yield service.v1.question.create(data.question);
+             if (typeof insertId === 'number') {
+                 for (let value of data.tag) {
+                     var insertSuccess = yield service.v1.question.insertquetag(insertId, value);
+                 }
+
+                 const insertSuccess2 = yield service.v1.question.insertq_exam(insertId, examId);
+             }
+             ctx.response.body = {
+                 success: 1,
+                 data: '',
+                 msg: '添加成功',
+             }
+         }
         * create(ctx,service,data) {
             // const { ctx, service } = this;
             // const createRule = {
