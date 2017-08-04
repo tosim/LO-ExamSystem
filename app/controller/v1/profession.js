@@ -46,6 +46,25 @@ module.exports = app => {
                 }
             }
         }
+        * getallprofession(){
+            const {ctx, service} = this;
+            const ProfessionList = yield service.v1.profession.getallprofession();
+            if (ProfessionList.length == 0) {
+                ctx.response.body = {
+                    success: 0,
+                    data: '',
+                    msg: '列出职业失败',
+                };
+            } else {
+                ctx.response.body = {
+                    success: 1,
+                    data: {
+                        professionlist: ProfessionList,
+                    },
+                    msg: '列出职业成功',
+                };
+        }
+        }
         * index(){
             const { ctx, service } = this;
             const curr = parseInt(ctx.query.page);

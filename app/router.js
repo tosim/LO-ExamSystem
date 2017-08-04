@@ -31,9 +31,11 @@ module.exports = app => {
   app.get('/deletequestion',app.controller.v1.question.deletequestion);
   app.post('/addexamquestion',app.controller.v1.question.addexamquestion);
   app.post('/addoneexamquestion',app.controller.v1.question.insertoneexamquestion);
+  app.post('/addexam',app.controller.v1.question.addexam);
+  app.get('/getexamquestionlist',app.controller.v1.question.getexamquestionlist);
+  app.post('/examjudge',app.controller.v1.question.examjudge);
 
-
-
+  app.get('/getallprofession',app.controller.v1.profession.getallprofession);
   app.post('/addprofession',app.controller.v1.profession.create);
   app.get('/getprofessionlist',app.controller.v1.profession.index);
   app.get('/deleteprofession',app.controller.v1.profession.deleteprofession);

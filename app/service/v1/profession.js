@@ -15,6 +15,10 @@ module.exports = app => {
             const result = yield this.app.mysql.query('select * from profession order by p_id asc limit ?,8',currnum);
             return result;
         }
+        * getallprofession(){
+            const result = yield this.app.mysql.query('select * from profession order by p_id');
+            return result;
+        }
         * getpaperbyid(p_id){
             const result = yield this.app.mysql.query('select t_id,t_ochoose_num,t_mchoose_num,t_judge_num,t_fill_num,t_squestion_num,t_code_num,t_ochoose_score,t_mchoose_score,t_judge_score,t_fill_score,t_squestion_score,t_code_score from testpaper where p_id=?',p_id);
             return result;

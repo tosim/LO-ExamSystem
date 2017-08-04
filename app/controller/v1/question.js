@@ -42,6 +42,124 @@ module.exports = app => {
                 msg: ''
             }
         }
+        * getexamquestionlist(){
+            const {ctx, service} = this;
+            const QuestionList = yield service.v1.question.getquestlistbyexamid(ctx.request.query.examid);
+            for (let item of QuestionList){
+                const tag = yield service.v1.question.gettagbyid(item.q_id);
+                item.tag =tag; 
+            }
+             if (QuestionList.length == 0) {
+                ctx.response.body = {
+                    success: 0,
+                    data: '',
+                    msg: '取出题目失败',
+                };
+            } else {
+                ctx.response.body = {
+                    success: 1,
+                    data: {questionlist:QuestionList
+                    },
+                    msg: '取出题目成功',
+                }
+            }
+        }
+          * examjudge(){
+            const {ctx, service} = this;
+            const params = ctx.request.body;
+            const q_id = params.q_id;
+            console.log(q_id);
+            if(q_id === -1){
+                console.log("11111")
+               let data = {
+                 question : {
+                   q_type:params.q_type,
+                   q_content:params.q_content,
+                   q_answer:params.q_answer,
+                   q_analysis:params.q_analysis,
+                   q_difficulty:params.q_difficulty,
+                   q_right:0,
+                   q_wrong:0,
+                   q_reportnum:0,
+                   e_id:params.e_id,
+                },
+                tag :  params.tag,
+                score:params.score,
+                examId:params.examId,
+               }
+            console.log(data);
+              yield this.insertexamquestion(ctx,service,data);
+            }else{
+              let data = {
+              question : {
+                   q_type:params.q_type,
+                   q_content:params.q_content,
+                   q_answer:params.q_answer,
+                   q_analysis:params.q_analysis,
+                   q_difficulty:params.q_difficulty,
+                   q_right:0,
+                   q_wrong:0,
+                   q_reportnum:0,
+                   e_id:1,
+                   tag: params.tag,
+                   
+              },
+                score:params.score,
+                examId:params.examId,
+            }
+            yield this.updateexamquestion(ctx,service,q_id,data);
+         }
+          }
+        * insertexamquestion(ctx,service,data){
+            console.log("插入插入")
+             const insertId = yield service.v1.question.create(data.question);
+            console.log(typeof insertId);
+            if (typeof insertId === 'number') {
+
+                for(let value of data.tag){
+                    console.log(value);
+                    var insertSuccess = yield service.v1.question.insertquetag(insertId,value);
+                    console.log(insertSuccess);
+                }
+                yield service.v1.question.insertq_exam (insertId,data.examId,data.score)
+                if (insertSuccess) {
+                    ctx.response.body = {
+                        success: 1,
+                        data: '',
+                        msg: '添加成功',
+                    }
+                } else {
+                    ctx.response.body = {
+                        success: 0,
+                        data: '',
+                        msg: '添加失败',
+                    }
+                }
+            } else {
+                ctx.response.body = {
+                    success: 0,
+                    data: '',
+                    msg: '添加题目失败',
+                }
+        }
+        }
+         * updateexamquestion(ctx,service,q_id,data){
+            const updateSuccess = yield service.v1.question.updateexamquestion(q_id,data);
+             if (updateSuccess) {
+                ctx.response.body = {
+                    success: 1,
+                    data: '',
+                    msg: '修改成功',
+                }
+            } else {
+                ctx.response.body = {
+                    success: 0,
+                    data: '',
+                    msg: '修改失败',
+                }
+            }
+        
+        }
          * judge(){
             const {ctx,service} = this;
             // const createRule = {
@@ -95,7 +213,23 @@ module.exports = app => {
             yield this.updatequestion(ctx,service,q_id,data);
         }
          }
-
+         * addexam(){
+            const{ctx, service} = this;
+            const examId = yield service.v1.question.insertexam(ctx.request.body);
+            if (typeof examId === 'number') {
+              ctx.response.body = {
+                 success: 1,
+                 data: {examId:examId},
+                 msg: '添加成功',
+             }
+                }else{
+              ctx.response.body = {
+                 success: 0,
+                 data: '',
+                 msg: '添加失败', 
+             }
+            }
+         }
          * insertoneexamquestion() {
              const { ctx, service } = this;
              const exam = ctx.request.body.exam;

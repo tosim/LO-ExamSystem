@@ -181,14 +181,42 @@ module.exports = app => {
             }
         }
         }
+        * getquestlistbyexamid(examId){
+           const result = yield this.app.mysql.query('select  question.q_id,question.q_type,question.q_content,question.q_answer,question.q_analysis,question.q_right,question.q_wrong,question.q_reportnum,question.q_difficulty,question.e_id,q_exam.score from question,q_exam where question.q_id = q_exam.q_id and q_exam.exam_id = ?',examId);
+           return result;
+        }
         * insertexam(params){
             const result = yield this.app.mysql.insert('e_exam',{e_id:params.e_id,p_id:params.p_id,start_time:params.start_time,last_time:params.last_time})
             return result.insertId;
         }
-        * insertq_exam(q_id,exam_id){
-            const result = yield this.app.mysql.insert('q_exam', {q_id:q_id,exam_id:exam_id});
+        * insertq_exam(q_id,exam_id,score){
+            const result = yield this.app.mysql.insert('q_exam', {q_id:q_id,exam_id:exam_id,score:score});
             return result.insertId;
         }
+
+        * updateexamquestion(q_id,params){
+          const question = params.question;
+          const row = {
+           q_id:q_id,
+           q_content:question.q_content,
+           q_answer:question.q_answer,
+           q_analysis:question.q_analysis,
+           q_right:question.q_right,
+           q_wrong:question.q_wrong,
+        };
+         const updateSuccess = yield this.app.mysql.update('question',row,{where:{q_id:q_id}});
+         const deleteSuccess = yield this.app.mysql.delete('que_tag',{q_id:q_id});
+         for(let item of question.tag){
+            var insertSuccess = yield this.app.mysql.insert('que_tag',{q_id:q_id,tag_id:item});
+         }
+        const updateSuccess2 = yield this.app.mysql.update('q_exam',{score:params.score},{where:{exam_id:params.examId,q_id:q_id}})
+         if(updateSuccess&&deleteSuccess&&insertSuccess&&updateSuccess2){
+            return true;
+        }else{
+            return false;
+        }    
+    }
+
         // * unique(arr) {
         //     console.log("55555")
         //     console.log(arr.length);
