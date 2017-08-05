@@ -23,6 +23,10 @@ module.exports = app => {
             const result = yield this.app.mysql.query('select tag.tag_id,tag.tag_name,pro_tag.pt_rate from tag,pro_tag where tag.tag_id = pro_tag.tag_id and pro_tag.p_id=?',p_id);
             return result;
         }
+        * getallprofession(){
+            const result = yield this.app.mysql.query('select * from profession order by p_id');
+            return result;
+        }
         * insertpaper(p_id,params) {
             const result = yield this.app.mysql.insert('testpaper', { p_id: p_id, t_ochoose_num: params.t_ochoose_num, t_mchoose_num: params.t_mchoose_num, t_judge_num: params.t_judge_num, t_fill_num: params.t_fill_num, t_squestion_num:params.t_squestion_num, t_code_num:params.t_code_num, t_ochoose_score:params.t_ochoose_score, t_mchoose_score:params.t_mchoose_score, t_judge_score:params.t_judge_score, t_fill_score:params.t_fill_score, t_squestion_score:params.t_squestion_score, t_code_score:params.t_code_score });
             const insertSuccess = result.affectedRows === 1;

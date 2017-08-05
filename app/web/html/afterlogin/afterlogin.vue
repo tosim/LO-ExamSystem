@@ -55,7 +55,7 @@
         </el-form-item>
         <el-form-item label="选择标签">
           <el-select v-model="speciallabel" placeholder="请选择考试标签">
-            <el-option v-for="speciallabel in speciallabels" :key="speciallabel.value" :label="speciallabel.label" :value="speciallabel.value">
+            <el-option v-for="(speciallabel,index) in speciallabels" :key="speciallabel.value" :label="speciallabel.tag_name" :value="index">
             </el-option>
           </el-select>
         </el-form-item>
@@ -63,7 +63,7 @@
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button @click="gotospecial = false">取 消</el-button>
-        <el-button type="primary" @click="gotospecial = false">开始专项训练</el-button>
+        <el-button type="primary" @click="topicTest()">开始专项训练</el-button>
       </div>
     </el-dialog>
   </div>
@@ -74,6 +74,7 @@ import head from 'component/head'
 export default {
   data() {
     return {
+      user:{},
       gotoexam: false,
       gotospecial: false,
       examtimes: [{
@@ -121,6 +122,15 @@ export default {
     let x = window.screen.height - 110;
     document.body.setAttribute("style", "height:"+x+"px");
   },
+  mounted:function(){
+    this.user = JSON.parse(window.localStorage.user);
+    this.$http.get(this.domain + '/v1/tags/'+this.user.p_id).then((res)=>{
+      // console.log(res.data);
+      res = res.data;
+      if(res.success !== 1) return;
+      this.speciallabels = res.data;
+    })
+  },
   methods:{
     randomTest(){
       // console.log('examtime = ' + this.examtime);
@@ -129,10 +139,22 @@ export default {
       //   // console.log(res.data);
       //   window.location.href = '/public/exam.html';
       // })
+      window.localStorage.examType = 1;
       window.localStorage.examtime = this.examtime;
       window.localStorage.examTitle = '随机测验';
       window.location.href = '/public/exam.html';
     },
+    topicTest(){
+      // console.log(this.speciallabel);
+      window.localStorage.examType = 2;
+      window.localStorage.examtime = this.specialtime;
+      window.localStorage.examTitle = this.speciallabels[this.speciallabel].tag_name+'-'+'专项训练';
+      window.localStorage.examTagId = this.speciallabels[this.speciallabel].tag_id;
+      window.localStorage.examTagName = this.speciallabels[this.speciallabel].tag_name;
+      // console.log(window.localStorage);
+
+      window.location.href = '/public/exam.html';
+    }
   }
 }
 </script>

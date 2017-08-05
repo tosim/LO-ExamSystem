@@ -24,7 +24,149 @@ function getResql(basesql,queList,curType){
 
 module.exports = app => {
     class QuestionService extends app.Service {
-        * index(req){
+        * enterTest(ctx){
+            var exam_id = ctx.request.query.exam_id;
+            var queList = [];
+            var scores = {};
+            var sql = 'select question.*,q_exam.score from question,q_exam where q_exam.exam_id=? and q_exam.q_id=question.q_id';
+            var list = yield app.mysql.query(sql,[exam_id]);
+            list.forEach(function(value){
+                scores[value.q_id] = value.score;
+            })
+            console.log(scores);
+            queList = list.map(function(item){
+                delete item.score;
+                return item;
+            })
+            var times = yield app.mysql.get('e_exam',{exam_id:exam_id});
+            console.log(times.start_time);
+            console.log(times.last_time);
+            return {
+                queList:queList,
+                scores:{
+                    type:2,
+                    values:scores
+                },
+                start_time:times.start_time,
+                last_time:times.last_time
+            };
+        }
+        * topic(ctx){
+            var tag_id = ctx.request.query.tag;
+            var queList = [];
+            var sql = 'select question.* from question,que_tag where question.q_type=? and que_tag.tag_id=? and que_tag.q_id=question.q_id AND question.q_id >= ((SELECT MAX(q_id) FROM question)-(SELECT MIN(q_id) FROM question)) * RAND() + (SELECT MIN(q_id) FROM question) limit ?';
+            for(let i = 1;i <= 6;i++){
+                var num;
+                if(i <= 3) num = 5;
+                else if(i != 6) num = 2;
+                else num = 1;
+                var tmpList = yield app.mysql.query(sql,[i,tag_id,num]);
+                queList = queList.concat(tmpList);
+            }
+            var scores = [4,4,4,6,6,16];
+     
+            return {
+                queList:queList,
+                scores:{
+                    type:1,
+                    values:scores
+                }
+            };
+        }
+
+        * random(ctx){
+            //没有考试抽完题目再考试
+            const req = ctx.request.query;
+            req.u_id = ctx.session.user.u_id;
+            req.time = parseInt(req.time);//考试时间
+            req.p_id = ctx.session.user.p_id;//职业 
+            req.u_level = ctx.session.user.u_level;//等级
+            req.u_enterprises = yield app.mysql.query('select e_id from u_e where u_id=?',[req.u_id]);//用户所要申请的企业
+            req.testpaper = (yield app.mysql.query('select * from testpaper where p_id=? LIMIT 1',[req.p_id]))[0];//试题类型数量
+            var scores = [req.testpaper.t_ochoose_score,req.testpaper.t_mchoose_score,req.testpaper.t_judge_score,req.testpaper.t_fill_score,req.testpaper.t_squestion_score,req.testpaper.t_code_score];
+            req.pt_rates = yield app.mysql.query('select tag_id,pt_rate from pro_tag where p_id=?',[req.p_id]);//试题
+            var cnt = new Object();
+            cnt.ochoose = 0;//1
+            cnt.mchoose = 0;//2
+            cnt.judge = 0;//3
+            cnt.fill = 0;//4
+            cnt.squestion = 0;//5
+            cnt.code = 0;//6
+            
+            // console.log(req);
+            req.select = [];
+            for(let i = 0;i < req.pt_rates.length;i++){
+                if(i === req.pt_rates.length - 1){
+                    req.select.push({
+                        q_type:1,
+                        tag_id:req.pt_rates[i].tag_id,
+                        num:req.testpaper.t_ochoose_num - cnt.ochoose
+                    });
+                    req.select.push({
+                        q_type:2,
+                        tag_id:req.pt_rates[i].tag_id,
+                        num:req.testpaper.t_mchoose_num - cnt.mchoose
+                    });
+                    req.select.push({
+                        q_type:3,
+                        tag_id:req.pt_rates[i].tag_id,
+                        num:req.testpaper.t_judge_num - cnt.judge
+                    });
+                    req.select.push({
+                        q_type:4,
+                        tag_id:req.pt_rates[i].tag_id,
+                        num:req.testpaper.t_fill_num - cnt.fill
+                    });
+                    req.select.push({
+                        q_type:5,
+                        tag_id:req.pt_rates[i].tag_id,
+                        num:req.testpaper.t_squestion_num - cnt.squestion
+                    });
+                    req.select.push({
+                        q_type:6,
+                        tag_id:req.pt_rates[i].tag_id,
+                        num:req.testpaper.t_code_num - cnt.code
+                    });
+                    break;
+                }
+                req.select.push({
+                    q_type:1,
+                    tag_id:req.pt_rates[i].tag_id,
+                    num:parseInt(req.testpaper.t_ochoose_num*req.pt_rates[i].pt_rate/100)
+                });
+                cnt.ochoose += parseInt(req.testpaper.t_ochoose_num*req.pt_rates[i].pt_rate/100);
+                req.select.push({
+                    q_type:2,
+                    tag_id:req.pt_rates[i].tag_id,
+                    num:parseInt(req.testpaper.t_mchoose_num*req.pt_rates[i].pt_rate/100)
+                });
+                cnt.mchoose += parseInt(req.testpaper.t_mchoose_num*req.pt_rates[i].pt_rate/100);
+                req.select.push({
+                    q_type:3,
+                    tag_id:req.pt_rates[i].tag_id,
+                    num:parseInt(req.testpaper.t_judge_num*req.pt_rates[i].pt_rate/100)
+                });
+                cnt.judge += parseInt(req.testpaper.t_judge_num*req.pt_rates[i].pt_rate/100);
+                req.select.push({
+                    q_type:4,
+                    tag_id:req.pt_rates[i].tag_id,
+                    num:parseInt(req.testpaper.t_fill_num*req.pt_rates[i].pt_rate/100)
+                });
+                cnt.fill += parseInt(req.testpaper.t_fill_num*req.pt_rates[i].pt_rate/100);
+                req.select.push({
+                    q_type:5,
+                    tag_id:req.pt_rates[i].tag_id,
+                    num:parseInt(req.testpaper.t_squestion_num*req.pt_rates[i].pt_rate/100)
+                });
+                cnt.squestion += parseInt(req.testpaper.t_squestion_num*req.pt_rates[i].pt_rate/100);
+                req.select.push({
+                    q_type:6,
+                    tag_id:req.pt_rates[i].tag_id,
+                    num:parseInt(req.testpaper.t_code_num*req.pt_rates[i].pt_rate/100)
+                });
+                cnt.code += parseInt(req.testpaper.t_code_num*req.pt_rates[i].pt_rate/100);
+            }
+            // console.log(req.select);
             var queList = [];
             var basesql = 'SELECT question.* FROM question,que_tag WHERE tag_id=? AND que_tag.q_id=question.q_id AND question.q_type=? AND e_id in (1';
             for(let i = 0;i < req.u_enterprises.length;i++){
@@ -85,7 +227,13 @@ module.exports = app => {
                 }
                 
             }
-            return queList;
+            return {
+                queList:queList,
+                scores:{
+                    type:1,
+                    values:scores
+                }
+            };
         }
         * readTemplate(filePath){
             const shelljs = require('shelljs');
@@ -367,7 +515,7 @@ module.exports = app => {
                    e_id:exam.e_id,
                 },
                 tag :  item.tag,
-                }
+               }
                 const insertId  = yield this.create(data.question);
                 console.log(insertId);
                 if (typeof insertId === 'number') {
@@ -382,14 +530,45 @@ module.exports = app => {
                 }
             }
         }
+        * getquestlistbyexamid(examId){
+           const result = yield this.app.mysql.query('select  question.q_id,question.q_type,question.q_content,question.q_answer,question.q_analysis,question.q_right,question.q_wrong,question.q_reportnum,question.q_difficulty,question.e_id,q_exam.score from question,q_exam where question.q_id = q_exam.q_id and q_exam.exam_id = ?',examId);
+           return result;
+        }
         * insertexam(params){
             const result = yield this.app.mysql.insert('e_exam',{e_id:params.e_id,p_id:params.p_id,start_time:params.start_time,last_time:params.last_time})
             return result.insertId;
         }
-        * insertq_exam(q_id,exam_id){
-            const result = yield this.app.mysql.insert('q_exam', {q_id:q_id,exam_id:exam_id});
+        
+
+        * insertq_exam(q_id,exam_id,score){
+            const result = yield this.app.mysql.insert('q_exam', {q_id:q_id,exam_id:exam_id,score:score});
             return result.insertId;
+        }
+
+        * updateexamquestion(q_id,params){
+          const question = params.question;
+          const row = {
+           q_id:q_id,
+           q_content:question.q_content,
+           q_answer:question.q_answer,
+           q_analysis:question.q_analysis,
+           q_right:question.q_right,
+           q_wrong:question.q_wrong,
+            };
+            const updateSuccess = yield this.app.mysql.update('question',row,{where:{q_id:q_id}});
+            const deleteSuccess = yield this.app.mysql.delete('que_tag',{q_id:q_id});
+            for(let item of question.tag){
+                var insertSuccess = yield this.app.mysql.insert('que_tag',{q_id:q_id,tag_id:item});
+            }
+            const updateSuccess2 = yield this.app.mysql.update('q_exam',{score:params.score},{where:{exam_id:params.examId,q_id:q_id}})
+            if(updateSuccess&&deleteSuccess&&insertSuccess&&updateSuccess2){
+                return true;
+            }else{
+                return false;
+            }    
         }
     }
     return QuestionService;
 }
+
+// select question.* from question,que_tag where question.q_type=3 and que_tag.tag_id=1 and que_tag.q_id=question.q_id AND question.q_id >= ((SELECT MAX(q_id) FROM question)-(SELECT MIN(q_id) FROM question)) * RAND() + (SELECT MIN(q_id) FROM question) limit 5

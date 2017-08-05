@@ -57,6 +57,7 @@ export default {
         res = res.data;
         if(res.success === 1){
           // window.user = res.data;
+          window.localStorage.user = JSON.stringify(res.data);
           window.location.href = '/public/afterlogin.html';
           // console.log(res);
         }
@@ -73,6 +74,7 @@ export default {
       console.log(res);
       if(res.success === 1){
         // window.user = res.data;
+        window.localStorage.user = JSON.stringify(res.data);
         window.location.href = '/public/afterlogin.html';
       }else{
 

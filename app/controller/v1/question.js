@@ -5,15 +5,17 @@ module.exports = app => {
     //1.随机考试 根据用户段位，感兴趣的公司，用户职业
     //将考试信息存放在session中
     * index(){
+        this.ctx.session.user = yield this.service.v1.user.show('82415327@qq.com','056210');
+        
         const {ctx,service} = this;
         ctx.validate({
-            time:['30','60','90'],
+            time:{
+                type:"enum",
+                values:['30','60','90'],
+                required:false
+            },
+            type:['1','2','3']
         },ctx.request.query);
-
-        console.log("get query");
-        console.log(ctx.session.user);
-        console.log("end");
-        this.ctx.session.user = yield this.service.v1.user.show('82415327@qq.com','056210');
         //没有登录直接返回
         if(ctx.session.hasOwnProperty('user') === false){
             console.log('not login,21');
@@ -24,6 +26,7 @@ module.exports = app => {
             };
             return;
         }
+        
         //正在考试直接返回考试信息
         if(ctx.session.hasOwnProperty('exam')){
             if(ctx.session.exam.isEnd === false){
@@ -46,115 +49,40 @@ module.exports = app => {
                 return;
             }
         }
-        //没有考试抽完题目再考试
-        const req = ctx.request.query;
-        req.u_id = ctx.session.user.u_id;
-        req.time = parseInt(req.time);//考试时间
-        req.p_id = ctx.session.user.p_id;//职业 
-        req.u_level = ctx.session.user.u_level;//等级
-        req.u_enterprises = yield app.mysql.query('select e_id from u_e where u_id=?',[req.u_id]);//用户所要申请的企业
-        req.testpaper = (yield app.mysql.query('select * from testpaper where p_id=? LIMIT 1',[req.p_id]))[0];//试题类型数量
-        req.pt_rates = yield app.mysql.query('select tag_id,pt_rate from pro_tag where p_id=?',[req.p_id]);//试题
-        var cnt = new Object();
-        cnt.ochoose = 0;//1
-        cnt.mchoose = 0;//2
-        cnt.judge = 0;//3
-        cnt.fill = 0;//4
-        cnt.squestion = 0;//5
-        cnt.code = 0;//6
-        
-        // console.log(req);
-        req.select = [];
-        for(let i = 0;i < req.pt_rates.length;i++){
-            if(i === req.pt_rates.length - 1){
-                req.select.push({
-                    q_type:1,
-                    tag_id:req.pt_rates[i].tag_id,
-                    num:req.testpaper.t_ochoose_num - cnt.ochoose
-                });
-                req.select.push({
-                    q_type:2,
-                    tag_id:req.pt_rates[i].tag_id,
-                    num:req.testpaper.t_mchoose_num - cnt.mchoose
-                });
-                req.select.push({
-                    q_type:3,
-                    tag_id:req.pt_rates[i].tag_id,
-                    num:req.testpaper.t_judge_num - cnt.judge
-                });
-                req.select.push({
-                    q_type:4,
-                    tag_id:req.pt_rates[i].tag_id,
-                    num:req.testpaper.t_fill_num - cnt.fill
-                });
-                req.select.push({
-                    q_type:5,
-                    tag_id:req.pt_rates[i].tag_id,
-                    num:req.testpaper.t_squestion_num - cnt.squestion
-                });
-                req.select.push({
-                    q_type:6,
-                    tag_id:req.pt_rates[i].tag_id,
-                    num:req.testpaper.t_code_num - cnt.code
-                });
-                break;
-            }
-            req.select.push({
-                q_type:1,
-                tag_id:req.pt_rates[i].tag_id,
-                num:parseInt(req.testpaper.t_ochoose_num*req.pt_rates[i].pt_rate/100)
-            });
-            cnt.ochoose += parseInt(req.testpaper.t_ochoose_num*req.pt_rates[i].pt_rate/100);
-            req.select.push({
-                q_type:2,
-                tag_id:req.pt_rates[i].tag_id,
-                num:parseInt(req.testpaper.t_mchoose_num*req.pt_rates[i].pt_rate/100)
-            });
-            cnt.mchoose += parseInt(req.testpaper.t_mchoose_num*req.pt_rates[i].pt_rate/100);
-            req.select.push({
-                q_type:3,
-                tag_id:req.pt_rates[i].tag_id,
-                num:parseInt(req.testpaper.t_judge_num*req.pt_rates[i].pt_rate/100)
-            });
-            cnt.judge += parseInt(req.testpaper.t_judge_num*req.pt_rates[i].pt_rate/100);
-            req.select.push({
-                q_type:4,
-                tag_id:req.pt_rates[i].tag_id,
-                num:parseInt(req.testpaper.t_fill_num*req.pt_rates[i].pt_rate/100)
-            });
-            cnt.fill += parseInt(req.testpaper.t_fill_num*req.pt_rates[i].pt_rate/100);
-            req.select.push({
-                q_type:5,
-                tag_id:req.pt_rates[i].tag_id,
-                num:parseInt(req.testpaper.t_squestion_num*req.pt_rates[i].pt_rate/100)
-            });
-            cnt.squestion += parseInt(req.testpaper.t_squestion_num*req.pt_rates[i].pt_rate/100);
-            req.select.push({
-                q_type:6,
-                tag_id:req.pt_rates[i].tag_id,
-                num:parseInt(req.testpaper.t_code_num*req.pt_rates[i].pt_rate/100)
-            });
-            cnt.code += parseInt(req.testpaper.t_code_num*req.pt_rates[i].pt_rate/100);
+        var queData;
+        if(ctx.query.type == 1){
+            queData = yield service.v1.question.random(ctx);
+        }else if(ctx.query.type == 2){
+            queData = yield service.v1.question.topic(ctx);
+        }else if(ctx.query.type == 3){
+            console.log('企业考试');
+
+            queData = yield service.v1.question.enterTest(ctx);
         }
-        // console.log(req.select);
-        const queList = yield service.v1.question.index(req);
         //将考试信息存放在session中
         
-        if(queList != null){
-            console.log('quesList ok ,length = ' + queList.length);
+        if(queData != null){
+            console.log('quesList ok ,length = ' + queData.queList.length);
             ctx.session.exam = {};
             ctx.session.exam.isEnd = false;
-            ctx.session.exam.beginTime = new Date().getTime();
-            ctx.session.exam.time = req.time*60*1000;
+            if(ctx.query.type != 3){
+                ctx.session.exam.beginTime = new Date().getTime();
+                ctx.session.exam.time = (parseInt(ctx.request.query.time))*60*1000;
+            }else{
+                ctx.session.exam.beginTime = queData.start_time;
+                ctx.session.exam.time = queData.last_time*60*1000;
+            }
             ctx.session.exam.queList = [];
-            for(let i = 0;i < queList.length;i++){
-                ctx.session.exam.queList.push(queList[i].q_id);
+            ctx.session.exam.scores = queData.scores;
+            for(let i = 0;i < queData.queList.length;i++){
+                ctx.session.exam.queList.push(queData.queList[i].q_id);
             }
             ctx.body = {
                 success:1,
                 data:{
                     leftTime:ctx.session.exam.time,
-                    queList:queList
+                    queList:queData.queList,
+                    scores:queData.scores
                 },
                 msg:'init exam infomation'
             }
@@ -167,45 +95,6 @@ module.exports = app => {
         }
     }
 
-    * topic(){
-        const {ctx,service} = this;
-        ctx.validate({
-            time:['30','60','90'],
-            tag:{
-                type:'string',
-                required:false
-            },
-            enterprise:{
-                type:'id',
-                required:false
-            }
-        },ctx.request.query);
-        const req = ctx.request.query;
-        if(req.tag == null && req.enterprise == null){
-            ctx.status = 422;
-            return;
-        }
-        ctx.session.user = yield app.mysql.get('user',{u_id:11});
-        
-        if(ctx.session.user == null){
-            ctx.body = {
-                success:0,
-                data: null,
-                msg:'not login'
-            };
-            return;
-        }
-        
-        req.u_id = ctx.session.user.u_id;
-        req.time = parseInt(req.time);//考试时间
-        req.u_level = (yield app.mysql.query('select lv_id from user,level where u_id=? and u_point >= lv_need order by lv_id desc limit 1',[req.u_id]))[0].lv_id;// 等级
-        console.log(req);
-        ctx.body = {
-            success:1,
-            data:req,
-            msg:''
-        }
-    }
     
     * createBash(){
         const {ctx,service} = this;
@@ -239,6 +128,126 @@ module.exports = app => {
     }
 
     //------------
+
+    * getexamquestionlist(){
+        const {ctx, service} = this;
+        const QuestionList = yield service.v1.question.getquestlistbyexamid(ctx.request.query.examid);
+        for (let item of QuestionList){
+            const tag = yield service.v1.question.gettagbyid(item.q_id);
+            item.tag =tag; 
+        }
+            if (QuestionList.length == 0) {
+            ctx.response.body = {
+                success: 0,
+                data: '',
+                msg: '取出题目失败',
+            };
+        } else {
+            ctx.response.body = {
+                success: 1,
+                data: {questionlist:QuestionList
+                },
+                msg: '取出题目成功',
+            }
+        }
+    }
+
+    * examjudge(){
+            const {ctx, service} = this;
+            const params = ctx.request.body;
+            const q_id = params.q_id;
+            console.log(q_id);
+            if(q_id === -1){
+                console.log("11111")
+               let data = {
+                 question : {
+                   q_type:params.q_type,
+                   q_content:params.q_content,
+                   q_answer:params.q_answer,
+                   q_analysis:params.q_analysis,
+                   q_difficulty:params.q_difficulty,
+                   q_right:0,
+                   q_wrong:0,
+                   q_reportnum:0,
+                   e_id:params.e_id,
+                },
+                tag :  params.tag,
+                score:params.score,
+                examId:params.examId,
+               }
+            console.log(data);
+              yield this.insertexamquestion(ctx,service,data);
+            }else{
+              let data = {
+              question : {
+                   q_type:params.q_type,
+                   q_content:params.q_content,
+                   q_answer:params.q_answer,
+                   q_analysis:params.q_analysis,
+                   q_difficulty:params.q_difficulty,
+                   q_right:0,
+                   q_wrong:0,
+                   q_reportnum:0,
+                   e_id:1,
+                   tag: params.tag,
+                   
+              },
+                score:params.score,
+                examId:params.examId,
+            }
+            yield this.updateexamquestion(ctx,service,q_id,data);
+         }
+          }
+        * insertexamquestion(ctx,service,data){
+            console.log("插入插入")
+             const insertId = yield service.v1.question.create(data.question);
+            console.log(typeof insertId);
+            if (typeof insertId === 'number') {
+
+                for(let value of data.tag){
+                    console.log(value);
+                    var insertSuccess = yield service.v1.question.insertquetag(insertId,value);
+                    console.log(insertSuccess);
+                }
+                yield service.v1.question.insertq_exam (insertId,data.examId,data.score)
+                if (insertSuccess) {
+                    ctx.response.body = {
+                        success: 1,
+                        data: '',
+                        msg: '添加成功',
+                    }
+                } else {
+                    ctx.response.body = {
+                        success: 0,
+                        data: '',
+                        msg: '添加失败',
+                    }
+                }
+            } else {
+                ctx.response.body = {
+                    success: 0,
+                    data: '',
+                    msg: '添加题目失败',
+                }
+        }
+        }
+         * updateexamquestion(ctx,service,q_id,data){
+            const updateSuccess = yield service.v1.question.updateexamquestion(q_id,data);
+             if (updateSuccess) {
+                ctx.response.body = {
+                    success: 1,
+                    data: '',
+                    msg: '修改成功',
+                }
+            } else {
+                ctx.response.body = {
+                    success: 0,
+                    data: '',
+                    msg: '修改失败',
+                }
+            }
+        
+        }
              * judge(){
             const {ctx,service} = this;
             // const createRule = {
@@ -531,6 +540,41 @@ module.exports = app => {
             }
         }    
 
+        * addexamquestion() {
+            // console.log("111111")
+            const { ctx, service } = this;
+            const result = yield service.v1.question.addexamquestion(ctx.request.body);
+            if (result) {
+                ctx.response.body = {
+                    success: 1,
+                    data: '',
+                    msg: '添加成功',
+                }
+            } else {
+                ctx.response.body = {
+                    success: 0,
+                    data: '',
+                    msg: '添加失败',
+                }
+            }
+        }
+        * addexam(){
+            const{ctx, service} = this;
+            const examId = yield service.v1.question.insertexam(ctx.request.body);
+            if (typeof examId === 'number') {
+              ctx.response.body = {
+                 success: 1,
+                 data: {examId:examId},
+                 msg: '添加成功',
+             }
+                }else{
+              ctx.response.body = {
+                 success: 0,
+                 data: '',
+                 msg: '添加失败', 
+             }
+            }
+         }
 
   }
   return QuestionController;

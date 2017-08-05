@@ -8,6 +8,7 @@ module.exports = app => {
         ///
 
         const {ctx} = this;
+        console.log('ctx.request.body.tag = ' + ctx.request.body.tag);
         // console.log(ctx.request.body);
         var score = 0;
         var req = ctx.request.body.allAnswers;
@@ -31,10 +32,22 @@ module.exports = app => {
             u_id:u_id,
             h_grade:score,
             h_title:ctx.request.body.title,
-            h_tag:ctx.request.body.tag ? ctx.request.body.tag : '',
+            h_tag:ctx.request.body.tag != -1 ? ctx.request.body.tag : '',
             h_data:JSON.stringify(tmpdata),
             u_point:u_point
         })).insertId;
+        console.log('exam_id = ' + ctx.request.body.exam_id);
+        if(ctx.request.body.exam_id != -1){
+            const isPart = (yield app.mysql.query('select count(*) as cnt from u_exam where u_id=? and exam_id=?',[u_id,ctx.request.body.exam_id]))[0].cnt;
+            // console.log(isPart);
+            if(isPart === 0){
+                yield app.mysql.insert('u_exam',{
+                    u_id:u_id,
+                    exam_id:ctx.request.body.exam_id,
+                    score:score
+                })
+            }
+        }
         // for(let i in req){
         //     yield app.mysql.insert('h_que',{
         //         h_id:h_id,
@@ -227,3 +240,5 @@ module.exports = app => {
   }
   return JudgeController;
 };
+
+

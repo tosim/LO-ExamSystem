@@ -2,6 +2,17 @@
 
 module.exports = app => {
     class TagController extends app.Controller{
+        * listBypid(){
+            const {ctx} = this;
+            var p_id = parseInt(ctx.params.p_id);
+            console.log('p_id = ' + p_id);
+            var tagList = yield app.mysql.query('select tag.* from pro_tag,tag where p_id=? and pro_tag.tag_id=tag.tag_id',[p_id]);
+            ctx.body = {
+                success:1,
+                data:tagList,
+                msg:''
+            }
+        }
         * create(){
             const { ctx, service } = this;
             const createRule = {

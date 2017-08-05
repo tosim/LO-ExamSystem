@@ -5,6 +5,8 @@ module.exports = app => {
   app.get('/v1/sessions',app.controller.v1.session.show)//判断用户是否登录
   app.get('/v1/testpapers',app.controller.v1.testpaper.show);//获取不同职业的考试试卷分布
   app.get('/v1/enterprises',app.controller.v1.enterprise.index);//获取所有的入驻企业
+  app.post('/v1/enterprises',app.controller.v1.enterprise.create);//注册企业
+
   app.get('/v1/professions',app.controller.v1.profession.index);//获取所有的职业
   app.put('/v1/users',app.controller.v1.user.update);//更新用户
   app.get('/v1/others',app.controller.v1.others.index);//获取个人履历
@@ -23,14 +25,16 @@ module.exports = app => {
   app.get('/v1/rank',app.controller.v1.rank.index);//获取榜单数据
   app.get('/v1/rank/list',app.controller.v1.rank.list);//获取榜单数据
   app.get('/v1/rank/single',app.controller.v1.rank.show);//获取榜单数据
+  app.get('/v1/e_exam/:e_id',app.controller.v1.eexam.show);//获取特定企业的考试
+  app.get('/v1/tags/:p_id',app.controller.v1.tag.listBypid);//根据职业获取对应的tag列表
 
   //文件上传
   app.post('/v1/upload',app.controller.v1.upload);
 
   //题目相关
   app.get('/v1/questions',app.controller.v1.question.index);//考试抽题，random，taged，返回试题列表
-  app.get('/v1/questions/topic',app.controller.v1.question.topic);//专题抽题
   app.post('/v1/questions/bash',app.controller.v1.question.createBash);//批量导入
+  app.post('/addexamquestion',app.controller.v1.question.addexamquestion);
 
   //
   app.post("/judge",app.controller.v1.question.judge);
@@ -45,8 +49,12 @@ module.exports = app => {
   app.get('/updatequestion',app.controller.v1.question.updatequestion);
   app.get('/deletequestion',app.controller.v1.question.deletequestion);
   app.post('/addexamquestion',app.controller.v1.question.addexamquestion);
+  app.post('/addexam',app.controller.v1.question.addexam);
+  app.get('/getexamquestionlist',app.controller.v1.question.getexamquestionlist);
+  app.post('/examjudge',app.controller.v1.question.examjudge);
 
-  //
+
+  app.get('/getallprofession',app.controller.v1.profession.getallprofession);
   app.post('/addprofession',app.controller.v1.profession.create);
   app.get('/getprofessionlist',app.controller.v1.profession.list);//////
   app.get('/deleteprofession',app.controller.v1.profession.deleteprofession);

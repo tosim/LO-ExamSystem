@@ -141,6 +141,9 @@ export default {
         }else if(item.p_id){
           name = item.p_name;
           query = 'p_id='+item.p_id;
+        }else if(item.exam_id){
+          name = item.e_name + item.p_name + item.exam_id;
+          query = 'exam_id='+item.exam_id;
         }
         
         return {name:name,query:query};
@@ -151,7 +154,8 @@ export default {
       var query = url.parse(window.location.href,true).query;
       var tag_id = query.tag_id;
       var p_id = query.p_id;
-      if(!tag_id && !p_id){
+      var exam_id = query.exam_id;
+      if(!tag_id && !p_id && !exam_id){
         p_id = 1;
       }
       if(p_id){
@@ -168,7 +172,15 @@ export default {
           this.rank = res.data;
           console.log(this.rank);
         })
+      }else if(exam_id){
+        this.$http.get(this.domain + '/v1/rank/single?exam_id='+exam_id).then((res)=>{
+          res = res.data;
+          if(res.success!==1) return;
+          this.rank = res.data;
+          console.log(this.rank);
+        })
       }
+
     })
     
   }

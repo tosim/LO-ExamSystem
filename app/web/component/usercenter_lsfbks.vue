@@ -27,21 +27,21 @@
         <div class="lsfbks-main">
           <div class="one-ks" v-for="(item,index) in examList" :key="item.value" @mouseenter="showBtn(index)" @mouseleave="hideBtn">
             <div class="ks-img">
-              <img :src="'../asset/images/'+item.examImg" alt="top">
+              <img :src="'/public/img/'+item.exam_img" alt="top">
             </div>
             <div class="ks-info">
-              <h3>{{item.examName}}</h3>
+              <h3>{{item.exam_title}}</h3>
               <div class="exam-detail">
                 <div class="exam-date">
-                  {{item.examDate}}
+                  {{item.exam_date}}
                 </div>
                 <div class="exam-join">
-                  <span style="color:#25bb9b">{{item.joinNum}}</span>
+                  <span style="color:#25bb9b">{{item.exam_participate}}</span>
                   人参加
                 </div>
               </div>
             </div>
-            <button class="layui-btn layui-btn-small look-detail" v-show="showbtn==index">查看详情</button>
+            <button class="layui-btn layui-btn-small look-detail" v-show="showbtn==index" @click="showExamDetail(item)">查看详情</button>
           </div>
         </div>
       </div>
@@ -51,9 +51,58 @@
 
 <script>
 export default {
+  mounted:function(){
+    this.$http.get(this.domain+'/v1/e_exam/1').then((res)=>{
+      res = res.data;
+      if(res.success !== 1) return;
+      // console.log(res);
+      
+      this.originList = res.data.map(function(item){
+        var time = new Date(item.start_time);
+        var tmp = time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
+        return {
+          exam_id:item.exam_id,
+          exam_img:'head.png',
+          exam_title:item.e_name+item.p_name+item.exam_id,
+          exam_date:tmp,
+          exam_participate:item.participate,
+          exam_last:item.last_time
+        }
+      });
+      this.examList = this.originList ;
+      console.log(this.examList);
+    })
+  },
   methods: {
+    showExamDetail(item){
+      // console.log(item);
+      window.location.href = '/public/rankdetail.html?exam_id='+item.exam_id;
+    },
     selected: function (selectLi) {
       this.activeName = selectLi;
+      console.log(selectLi);
+      // console.log(new Date(this.examList[0].exam_date).getTime());
+      if(selectLi === '正在进行'){
+        this.examList = this.originList.filter(function(item){
+          var start = new Date(item.exam_date).getTime();
+          var now = new Date().getTime();
+          return now >= start && now <= (start+item.exam_last);
+        })
+      }else if(selectLi === '已结束'){
+        this.examList = this.originList.filter(function(item){
+          var start = new Date(item.exam_date).getTime();
+          var now = new Date().getTime();
+          return now >= (start+item.exam_last);
+        })
+      }else if(selectLi === '即将开始'){
+        this.examList = this.originList.filter(function(item){
+          var start = new Date(item.exam_date).getTime();
+          var now = new Date().getTime();
+          return now < start;
+        })
+      }else{
+        this.examList = this.originList;
+      }
     },
     showBtn: function(index1) {
       this.showbtn = index1;
@@ -64,39 +113,40 @@ export default {
   },
   data() {
     return {
-      activeName: '全部',
-      professionList: ["web前端开发工程师", "java工程师"],
-      examList: [{
-        examImg: 'head.png',
-        examName: '蓝鸥前端开发考试',
-        examDate: '2017/07/25 20:25',
-        joinNum: 119
+      originList: [{
+        exam_img: 'head.png',
+        exam_title: '蓝鸥前端开发考试',
+        exam_date: '2017/07/25 20:25',
+        exam_participate: 119
       },
       {
-        examImg: 'head.png',
-        examName: '蓝鸥前端开发考试',
-        examDate: '2017/07/25 20:25',
-        joinNum: 119
+        exam_img: 'head.png',
+        exam_title: '蓝鸥前端开发考试',
+        exam_date: '2017/07/25 20:25',
+        exam_participate: 119
       },
       {
-        examImg: 'head.png',
-        examName: '蓝鸥前端开发考试',
-        examDate: '2017/07/25 20:25',
-        joinNum: 119
+        exam_img: 'head.png',
+        exam_title: '蓝鸥前端开发考试',
+        exam_date: '2017/07/25 20:25',
+        exam_participate: 119
       },
       {
-        examImg: 'head.png',
-        examName: '蓝鸥前端开发考试',
-        examDate: '2017/07/25 20:25',
-        joinNum: 119
+        exam_img: 'head.png',
+        exam_title: '蓝鸥前端开发考试',
+        exam_date: '2017/07/25 20:25',
+        exam_participate: 119
       },
       {
-        examImg: 'head.png',
-        examName: '蓝鸥前端开发考试',
-        examDate: '2017/07/25 20:25',
-        joinNum: 119
+        exam_img: 'head.png',
+        exam_title: '蓝鸥前端开发考试',
+        exam_date: '2017/07/25 20:25',
+        exam_participate: 119
       }
       ],
+      activeName: '全部',
+      professionList: [],
+      examList: [],
       showbtn: -1
     }
   }
