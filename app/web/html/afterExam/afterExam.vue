@@ -31,7 +31,7 @@
         </colgroup>
         <thead>
           <tr>
-            <th>题目</th>
+            <th>题目 <span style="font-size:12px;color:#999;">(点击题目可查看试题详情)</span></th>
             <th>题目标签</th>
             <th>标准答案</th>
             <th>你的答案</th>
@@ -39,7 +39,7 @@
         </thead>
         <tbody>
           <tr v-for="ite in ExamQuesLst" :key="ite.q_content" v-bind:class="ite.q_answer === ite.u_answer?'':'red'">
-            <td v-if="!whetherShowWrong">{{ite.q_content}}</td>
+            <td v-if="!whetherShowWrong"><a v-bind:href="'/details?'" v-bind:class="ite.q_answer === ite.u_answer?'':'red'">{{ite.q_content}}</a></td>
             <td v-if="!whetherShowWrong">
               {{ite.tag}}
             </td>
@@ -76,11 +76,13 @@ export default {
         tag: "css",
         q_answer: 'F',
         u_answer: 'T',
+        id:4,
       }, {
         q_content: '岁月不饶人是老子说的吗？',
         tag:"css",
         q_answer: 'F',
         u_answer: 'F',
+        id:4,
       }],
 
       option: {
