@@ -13,11 +13,15 @@
       </el-dropdown-menu>
     </el-dropdown>
     <div style="float:right;margin-right:60px;">
+
+      <!--<li class="layui-nav-item">
+        <a href="">企业入口</a>
+      </li>-->
       <li class="layui-nav-item">
-        <a href="">企业考试</a>
+        <a href="/public/com_exam.html">企业考试</a>
       </li>
       <li class="layui-nav-item">
-        <a href="">职业排行榜</a>
+        <a href="/public/ranking.html">职业排行榜</a>
       </li>
     </div>
   
