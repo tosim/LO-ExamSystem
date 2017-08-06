@@ -12,7 +12,7 @@
             <el-input v-model="ruleForm.u_email" placeholder="请输入电子邮箱"></el-input>
           </el-form-item>
           <el-form-item label="密码" prop='u_pass'>
-            <el-input v-model="ruleForm.u_pass" placeholder="请输入密码"></el-input>
+            <el-input type="password" v-model="ruleForm.u_pass" placeholder="请输入密码"></el-input>
           </el-form-item>
           <el-form-item label="验证码" prop='yzm'>
             <el-input v-model="ruleForm.yzm" placeholder="请输入验证码" style="width:60%"></el-input>

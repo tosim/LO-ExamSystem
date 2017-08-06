@@ -258,7 +258,7 @@ module.exports = app => {
                     }
                     // console.log(tag_id);
                 }
-                insertCount++;
+                // insertCount++;
             }
             return insertIds;
         }
