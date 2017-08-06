@@ -1,5 +1,5 @@
 <template>
-  <div id="all">
+  <div id="all" :style="{background: 'url(/public/img/exam'+ 3 + '.jpg)'}">
     <lo-head></lo-head>
     <div id="All">
     <div id="container">
@@ -119,7 +119,7 @@ export default {
         if(this.ExamQuesLst[i].answer.length > 20){
           this.ExamQuesLst[i].answer = this.ExamQuesLst[i].answer.substring(0,20) + '...';
         }else{
-          this.ExamQuesLst[i].answer = this.ExamQuesLst[i].answer.substring(0,20);
+          // this.ExamQuesLst[i].answer = this.ExamQuesLst[i].answer.substring(0,20);
         }
         
       }
@@ -202,9 +202,11 @@ export default {
 
 <style scope>
 #All {
-  width: 80%;
+  background: white;
+  /*opacity: 0.4;*/
+  width: 52%;
   margin: 0 auto;
-  margin-top:70px;
+  margin-top:60px;
   font-size: 16px;
   padding-top: 25px;
   font-family: Microsoft YaHei;
@@ -216,7 +218,7 @@ export default {
   color:#2F4056;
 }
 #container {
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
 }
 .layui-field-box {

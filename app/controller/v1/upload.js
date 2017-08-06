@@ -19,28 +19,28 @@ module.exports = function* () {
     yield sendToWormhole(stream);
     throw err;
   }
-
+  
   console.log('get upload request');
   const result = yield this.service.v1.question.readTemplate(`app/uploads/questions.docx`);
   // console.log('~~~~~~--------------');
   // console.log(result);
 
-  yield this.service.v1.question.createBash(result);   //插入解析后的数据
+  const ids = yield this.service.v1.question.createBash(result);   //插入解析后的数据
 
   var exam_id = this.request.query.exam_id;
   console.log('has exam_id = ' + exam_id);
-  
+  // console.log('at upload.js',result);
   if(exam_id){
     console.log('will insert into q_exam');
     for(let i = 0;i < result.length;i++){
-      yield this.app.mysql.insert('q_exam',{exam_id:exam_id,q_id:result[i],score:5});  //若是考试试题还要插入q_exam表
+      yield this.app.mysql.insert('q_exam',{exam_id:exam_id,q_id:ids[i],score:5});  //若是考试试题还要插入q_exam表
     }
   }else{
     console.log('will not insert into q_exam');
   }
   this.body = {
     success:1,
-    data:result,
+    data:'ok',
     msg:''
   };
 };

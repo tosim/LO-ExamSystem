@@ -10,7 +10,7 @@
       <div class="bottom">
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" :label-position='labelPosition'>
           <el-form-item label="管理员密码" prop='u_pass'>
-            <el-input v-model="ruleForm.u_pass" placeholder="请输入管理员密码"></el-input>
+            <el-input type="password" v-model="ruleForm.u_pass" placeholder="请输入管理员密码"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="submitForm()" id="submit">立即进入</el-button>

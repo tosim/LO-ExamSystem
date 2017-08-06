@@ -4,7 +4,7 @@
       <el-row>
         <el-col :span="12">
           <div class="jbxx-t-l" style="margin:0 auto;width:150px;height:200px;">
-            <img src="../asset/images/head.png" alt="head" style="width:150px;height:150px;border-radius:75px;">
+            <img src="../asset/images/default.jpg" alt="head" style="width:150px;height:150px;border-radius:75px;">
             <span style="display:block;width:150px;text-align:center;font-size:16px;margin-top:20px;">{{user.u_name}}</span>
           </div>
         </el-col>
