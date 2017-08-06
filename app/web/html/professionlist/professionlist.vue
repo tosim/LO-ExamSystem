@@ -1,6 +1,6 @@
 <template>
     <div id="all">
-        <lo-head></lo-head>
+        <lo-bkhead></lo-bkhead>
         <el-row type="flex" justify="center">
             <el-col :span="12">
                 <table class="layui-table" lay-even="" lay-skin="row">
@@ -629,6 +629,9 @@ export default {
 </script>
 
 <style scoped>
+#all{
+    padding-top:70px;
+}
 .label_1{
     height: 36px;
     line-height: 36px;

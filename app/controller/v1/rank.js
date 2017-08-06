@@ -31,15 +31,17 @@ module.exports = app => {
         var rankList = [];
         for(let i = 0;i < professions.length;i++){
             var myRank = (yield app.mysql.query('select count(*)+1 as cnt from user where p_id=? and u_point>?',[professions[i].p_id,ctx.session.user.u_point]))[0].cnt;
-            var rankData = yield app.mysql.query('select u_img,u_name,u_point from user where p_id=? order by u_point desc limit ?',[professions[i].p_id,10]);
-            for(let j in rankData){
-                rankData[j].attribute = rankData[j].u_point;
-                delete rankData[j].u_point;
-            }
+            var rankData = yield app.mysql.query('select user.u_id,u_img,u_name,u_point as attribute from user where p_id=? order by u_point desc limit ?',[professions[i].p_id,5]);
+            // for(let j in rankData){
+            //     rankData[j].attribute = rankData[j].u_point;
+            //     delete rankData[j].u_point;
+            // }
             var rank = {
+                query:'p_id='+professions[i].p_id,
                 rankName:professions[i].p_name,
                 rankAttribute:'rank点',
                 myAttribute:ctx.session.user.u_point ? ctx.session.user.u_point : '无',
+                myId:ctx.session.user.u_id,
                 myImg: ctx.session.user.u_img,
                 myName: ctx.session.user.u_name,
                 myRank:myRank ? myRank : '无',
@@ -61,14 +63,16 @@ module.exports = app => {
             if(myRatio.length !== 0){
                 myRank = (yield app.mysql.query('select count(*)+1 as cnt from u_tag where tag_id=? and (ut_right/(ut_right+ut_wrong))>?',[tags[i].tag_id,myRatio[0].ratio]))[0].cnt;
             }
-            var rankData = yield app.mysql.query('select u_img,u_name,(ut_right/(ut_right+ut_wrong))*100 as attribute from u_tag,user where tag_id=? and u_tag.u_id=user.u_id order by attribute desc',[tags[i].tag_id]);
+            var rankData = yield app.mysql.query('select user.u_id,u_img,u_name,(ut_right/(ut_right+ut_wrong))*100 as attribute from u_tag,user where tag_id=? and u_tag.u_id=user.u_id order by attribute desc limit ?',[tags[i].tag_id,5]);
             for(let j in rankData){
                 rankData[j].attribute = rankData[j].attribute.toFixed(2);
             }
             var rank = {
+                query:'tag_id='+tags[i].tag_id,
                 rankName:tags[i].tag_name,
                 rankAttribute:'正确率',
                 myAttribute:myRatio.length !==0 ? myRatio[0].ratio.toFixed(2):'无',
+                myId:ctx.session.user.u_id,
                 myImg: ctx.session.user.u_img,
                 myName: ctx.session.user.u_name,
                 myRank:myRank ? myRank : '无',
@@ -80,7 +84,7 @@ module.exports = app => {
         }
         for(let i = 0;i < e_exams.length;i++){
             var myRank = (yield app.mysql.query('select count(*)+1 as cnt from u_exam where exam_id=? and score>(select score from u_exam where u_id=? and exam_id=?) ',[e_exams[i].exam_id,ctx.session.user.u_id,e_exams[i].exam_id]))[0].cnt;
-            var rankData = yield app.mysql.query('select u_img,u_name,score as attribute from user,u_exam where exam_id=? and u_exam.u_id=user.u_id order by score desc limit ?',[e_exams[i].exam_id,10]);
+            var rankData = yield app.mysql.query('select user.u_id,u_img,u_name,score as attribute from user,u_exam where exam_id=? and u_exam.u_id=user.u_id order by score desc limit ?',[e_exams[i].exam_id,5]);
             var myScore = yield app.mysql.get('u_exam',{
                 u_id:ctx.session.user.u_id,
                 exam_id:e_exams[i].exam_id
@@ -89,9 +93,11 @@ module.exports = app => {
             var rankName = yield app.mysql.query('select enterprise.e_name,profession.p_name from enterprise,profession,e_exam where e_exam.exam_id=? and enterprise.e_id=e_exam.e_id and profession.p_id=e_exam.p_id',[e_exams[i].exam_id]);
             rankName = rankName[0];
             var rank = {
+                query:'exam_id='+e_exams[i].exam_id,
                 rankName:rankName.e_name+rankName.p_name+'_'+e_exams[i].exam_id,//
                 rankAttribute:'分数',
                 myAttribute:myScore ? myScore.score : '无',
+                myId:ctx.session.user.u_id,
                 myImg: ctx.session.user.u_img,
                 myName: ctx.session.user.u_name,
                 myRank:myRank ? myRank : '无',
@@ -101,6 +107,13 @@ module.exports = app => {
                 rankList.push(rank);
             }
         }
+        //-----------
+        // var fakeData = yield app.mysql.query('select user.u_id,u_img,u_name,u_point as attribute from user order by u_point desc limit 5');
+        // rankList = rankList.map(function(item){
+        //     item.rankData
+        //     return
+        // })
+        //-----------
         ctx.body = {
             success:1,
             data:rankList,
@@ -121,11 +134,12 @@ module.exports = app => {
             var p_name = (yield app.mysql.query('select p_name from profession where p_id=?',[p_id]))[0].p_name;
             var myRank = (yield app.mysql.query('select count(*)+1 as cnt from user where p_id=? and u_point>?',[p_id,ctx.session.user.u_point]))[0].cnt;
             
-            var rankData = yield app.mysql.query('select u_img,u_name,u_point as attribute from user where p_id=? order by u_point desc limit ?',[p_id,10]);
+            var rankData = yield app.mysql.query('select user.u_id,u_img,u_name,u_point as attribute from user where p_id=? order by u_point desc limit ?',[p_id,10]);
             rank = {
                 rankName:p_name,
                 rankAttribute:'rank点',
                 myAttribute:ctx.session.user.u_point ? ctx.session.user.u_point : '无',
+                myId:ctx.session.user.u_id,
                 myImg: ctx.session.user.u_img,
                 myName: ctx.session.user.u_name,
                 myRank:myRank ? myRank : '无',
@@ -143,7 +157,7 @@ module.exports = app => {
             }else{
                 myRank = '无';
             }
-            var rankData = yield app.mysql.query('select u_img,u_name,(ut_right/(ut_right+ut_wrong))*100 as attribute from u_tag,user where tag_id=? and u_tag.u_id=user.u_id order by attribute desc',[tag_id]);
+            var rankData = yield app.mysql.query('select user.u_id,u_img,u_name,(ut_right/(ut_right+ut_wrong))*100 as attribute from u_tag,user where tag_id=? and u_tag.u_id=user.u_id order by attribute desc',[tag_id]);
             for(let j in rankData){
                 rankData[j].attribute = rankData[j].attribute.toFixed(2);
             }
@@ -151,6 +165,7 @@ module.exports = app => {
                 rankName:tag_name,
                 rankAttribute:'正确率',
                 myAttribute:myRatio.length!==0 ? myRatio[0].ratio.toFixed(2) : '无',
+                myId:ctx.session.user.u_id,
                 myImg: ctx.session.user.u_img,
                 myName: ctx.session.user.u_name,
                 myRank:myRank ? myRank : '无',
@@ -158,7 +173,7 @@ module.exports = app => {
             }
         }else if(exam_id){
             var myRank = (yield app.mysql.query('select count(*)+1 as cnt from u_exam where exam_id=? and score>(select score from u_exam where u_id=? and exam_id=?) ',[exam_id,ctx.session.user.u_id,exam_id]))[0].cnt;
-            var rankData = yield app.mysql.query('select u_img,u_name,score as attribute from user,u_exam where exam_id=? and u_exam.u_id=user.u_id order by score desc limit ?',[exam_id,10]);
+            var rankData = yield app.mysql.query('select user.u_id,u_img,u_name,score as attribute from user,u_exam where exam_id=? and u_exam.u_id=user.u_id order by score desc limit ?',[exam_id,10]);
             var myScore = yield app.mysql.get('u_exam',{
                 u_id:ctx.session.user.u_id,
                 exam_id:exam_id
@@ -170,6 +185,7 @@ module.exports = app => {
                 rankName:rankName.e_name+rankName.p_name+'_'+exam_id,//
                 rankAttribute:'分数',
                 myAttribute:myScore ? myScore.score : '无',
+                myId:ctx.session.user.u_id,
                 myImg: ctx.session.user.u_img,
                 myName: ctx.session.user.u_name,
                 myRank:myRank ? myRank : '无',

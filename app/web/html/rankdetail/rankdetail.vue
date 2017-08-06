@@ -38,7 +38,7 @@
                     <a href="javascript:void(0)" class="head-pic">
                       <img :src="'/public/img/'+item.u_img" alt="img">
                     </a>
-                    <a href="javascript:void(0)" style="display: inline-block;white-space: nowrap;width: 4em;overflow: hidden;text-overflow: ellipsis;}">{{item.u_name}}</a>
+                    <a href="javascript:void(0)" style="display: inline-block;white-space: nowrap;width: 4em;overflow: hidden;text-overflow: ellipsis;}" @click="lookUser(item.u_id)">{{item.u_name}}</a>
                   </td>
                   <td>
                     <span>{{item.doQues_num}}</span>
@@ -121,6 +121,12 @@ export default {
         }],
       },
       list: ["web前端开发工程师", "java工程师", "HTML", "css", "javascript", "java"]
+    }
+  },
+  methods:{
+    lookUser(u_id){
+      console.log(u_id);
+      window.location.href = '/public/look_usercenter.html?u_id='+u_id;
     }
   },
   components: {

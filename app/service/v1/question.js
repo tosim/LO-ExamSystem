@@ -75,6 +75,8 @@ module.exports = app => {
         }
 
         * random(ctx){
+            console.log('start random');
+            console.log(ctx.session.user);
             //没有考试抽完题目再考试
             const req = ctx.request.query;
             req.u_id = ctx.session.user.u_id;
@@ -235,6 +237,32 @@ module.exports = app => {
                 }
             };
         }
+
+        * createBash(questions){
+            var insertIds = [];
+            for(let i = 0;i < questions.length;i++){
+                // const isExist = (yield app.mysql.query('select count(*) as count from question where q_answer like "%' + questions[i].question.q_answer.replace(/(["'])/g,'\\$1') + '%"'))[0].count;
+                // console.log(isExist);
+                // if(isExist != 0){
+                //     continue;
+                // }
+                const q_id = (yield app.mysql.insert('question',questions[i].question)).insertId;
+                insertIds.push(q_id);
+                console.log("q_id = " + q_id);
+                for(let j = 0;j < questions[i].tags.length;j++){
+                    const result = (yield app.mysql.query('select tag_id from tag where tag_name like "%' + questions[i].tags[j] + '%"'))[0];
+                    if(typeof result == 'undefined' === false){
+                        console.log('adadad');
+                        console.log('tag_id = ' + result.tag_id);
+                        yield app.mysql.insert('que_tag',{q_id:q_id,tag_id:result.tag_id});
+                    }
+                    // console.log(tag_id);
+                }
+                insertCount++;
+            }
+            return insertIds;
+        }
+
         * readTemplate(filePath){
             const shelljs = require('shelljs');
             const cheerio = require('cheerio');
@@ -242,114 +270,120 @@ module.exports = app => {
             var path = require('path');
 
             var data = '';
-            shelljs.exec('unoconv --stdout --format=html ' + path.join(app.baseDir,filePath), {silent: true}, function (code, result) {
-                if (code) {
-                    console.log('Error code: ' + code);
-                    return;
-                }
-                const $ = cheerio.load(result);
-                $('p').each(function (i) {
-                    var text = $(this).text();
-                    // 这里一行一行读取文本，可以根据需要自己解析文本
-                    data += text;
-                    // console.log(text);
+            var promise = new Promise(function(resolve,reject){
+                shelljs.exec('unoconv --stdout --format=html ' + path.join(app.baseDir,filePath), {silent: true}, function (code, result) {
+                    if (code) {
+                        console.log('Error code: ' + code);
+                        return;
+                    }
+                    const $ = cheerio.load(result);
+                    $('p').each(function (i) {
+                        var text = $(this).text();
+                        // 这里一行一行读取文本，可以根据需要自己解析文本
+                        data += text;
+                        // console.log(text);
+                    });
+                    // console.log(data);
+                    var reg = /\(题型[:：]([\s\S]*?)\)\n?\(标准答案[:：]([\s\S]*?)\)\n?\(难度[:：]([\s\S]*?)\)\n?\(试题分析[:：]([\s\S]*?)\)\n?\(标签[:：]([\s\S]*?)\)\n((?:.+\n)+)/g;
+
+                    var res = data.match(reg);
+                    var insertDatas = [];
+                    for(let i = 0;i < res.length;i++){
+                        reg.lastIndex=0;
+                        var data = {};
+                        data.question = {};
+                        var queParam = reg.exec(res[i]);
+                        // console.log(queParam);
+                        //ok
+                        if(queParam[1] === '单选题'){
+                            data.question.q_type = 1;
+                        }else if(queParam[1] === '多选题'){
+                            data.question.q_type = 2;
+                        }else if(queParam[1] === '判断题'){
+                            data.question.q_type = 3;
+                        }else if(queParam[1] === '填空题'){
+                            data.question.q_type = 4;
+                        }else if(queParam[1] === '简答题'){
+                            data.question.q_type = 5;
+                        }else if(queParam[1] === '编程题'){
+                            data.question.q_type = 6;
+                        }
+                        data.question.q_answer = queParam[2];//
+                        data.question.q_difficulty = queParam[3];//ok
+                        data.question.q_analysis = queParam[4];//ok
+                        data.tags = queParam[5].split(/[,， ]/);//ok   
+                        data.question.q_content = queParam[6];
+
+
+                        if(data.question.q_type === 1 || data.question.q_type === 2){
+                            data.question.q_content = data.question.q_content.replace(/\n([A-Za-z])([\.,， 、])(.*)/g,';;$1.$3');//替换选择题各个选项的格式，以符合存入数据库的条件
+                            data.question.q_answer = data.question.q_answer.split(/[,， ]/).join('&');//替换答案的格式以存入数据库
+                            
+                            //test
+                            if(/.*(;[A-Za-z]\..+){2,}/.test(data.question.q_content) === false){
+                                //content fail
+                                continue;
+                            }
+                            if(/[A-Za-z](&[A-Za-z])*/.test(data.question.q_answer) === false){
+                                //answer fail
+                                continue;
+                            }            
+                        }else if(data.question.q_type === 3){//判断题
+                            data.question.q_content = data.question.q_content.replace(/\n([A-Za-zTFtf])([\.,， 、]?)(正确|对|错误|错*)/g,'');//删除判断题的对错选项
+                            data.question.q_answer = data.question.q_answer.replace(/[Aa1]/g,'T');
+                            data.question.q_answer = data.question.q_answer.replace(/[Bb2]/g,'F');
+
+                            if(/[TF]/.test(data.question.q_answer) === false){
+                                //answer fail
+                                continue;
+                            }
+                        }else if(data.question.q_type === 4){//填空题
+                            let t = data.question.q_answer.match(/\|/g);
+                            t = t == null ? 0 : t.length;
+                            var answer_num = t + 1;
+                            var blank_num = data.question.q_content.match(/_{3,}/g).length;
+                            data.question.q_content = data.question.q_content.replace(/_{3,}/g,'___');
+                            if(answer_num != blank_num){
+                                //答案和空格数量不匹配 fail
+                                continue;
+                            }
+                            if(/.*(_{3})*.*/.test(data.question.q_content) === false){
+                                //content fail
+                                continue;
+                            }
+                            
+                        }
+                        // data.question.q_content = data.question.q_content.replace(/\n/g,'');
+                        var mark = data.question.q_content.search(/;;(?!;)/);
+                        if(mark != -1){
+                            //不去除题目描述中的\n
+                            data.question.q_content = data.question.q_content.substring(0,mark) + data.question.q_content.substring(mark).replace(/\n/g,'');
+                        }
+                        // console.log(question);
+                        data.question.e_id = 1;
+                        data.question.q_right = 0;
+                        data.question.q_wrong = 0;
+                        data.question.q_reportnum = 0;
+                        insertDatas.push(data);
+                    }
+                    console.log(res.length);
+                    // insertDatas = insertDatas.slice(0,1);
+                    // console.log(insertDatas);
+                    
+                    // request.post({url:'http://127.0.0.1:7001/v1/questions/bash', form:{questions:insertDatas}}, function (err, res, body) {
+                    //     if (err) {
+                    //         return console.error('upload failed:', err);
+                    //     }
+                    //     console.log('Upload successful!  Server responded with:', body);
+                    // });
+
+                    // console.log(insertDatas.length);
+                    // console.log(insertDatas);
+                    resolve(insertDatas);
                 });
-                // console.log(data);
-                var reg = /\(题型[:：]([\s\S]*?)\)\n?\(标准答案[:：]([\s\S]*?)\)\n?\(难度[:：]([\s\S]*?)\)\n?\(试题分析[:：]([\s\S]*?)\)\n?\(标签[:：]([\s\S]*?)\)\n((?:.+\n)+)/g;
-
-                var res = data.match(reg);
-                var insertDatas = [];
-                for(let i = 0;i < res.length;i++){
-                    reg.lastIndex=0;
-                    var data = {};
-                    data.question = {};
-                    var queParam = reg.exec(res[i]);
-                    // console.log(queParam);
-                    //ok
-                    if(queParam[1] === '单选题'){
-                        data.question.q_type = 1;
-                    }else if(queParam[1] === '多选题'){
-                        data.question.q_type = 2;
-                    }else if(queParam[1] === '判断题'){
-                        data.question.q_type = 3;
-                    }else if(queParam[1] === '填空题'){
-                        data.question.q_type = 4;
-                    }else if(queParam[1] === '简答题'){
-                        data.question.q_type = 5;
-                    }else if(queParam[1] === '编程题'){
-                        data.question.q_type = 6;
-                    }
-                    data.question.q_answer = queParam[2];//
-                    data.question.q_difficulty = queParam[3];//ok
-                    data.question.q_analysis = queParam[4];//ok
-                    data.tags = queParam[5].split(/[,， ]/);//ok   
-                    data.question.q_content = queParam[6];
-
-
-                    if(data.question.q_type === 1 || data.question.q_type === 2){
-                        data.question.q_content = data.question.q_content.replace(/\n([A-Za-z])([\.,， 、])(.*)/g,';;$1.$3');//替换选择题各个选项的格式，以符合存入数据库的条件
-                        data.question.q_answer = data.question.q_answer.split(/[,， ]/).join('&');//替换答案的格式以存入数据库
-                        
-                        //test
-                        if(/.*(;[A-Za-z]\..+){2,}/.test(data.question.q_content) === false){
-                            //content fail
-                            continue;
-                        }
-                        if(/[A-Za-z](&[A-Za-z])*/.test(data.question.q_answer) === false){
-                            //answer fail
-                            continue;
-                        }            
-                    }else if(data.question.q_type === 3){//判断题
-                        data.question.q_content = data.question.q_content.replace(/\n([A-Za-zTFtf])([\.,， 、]?)(正确|对|错误|错*)/g,'');//删除判断题的对错选项
-                        data.question.q_answer = data.question.q_answer.replace(/[Aa1]/g,'T');
-                        data.question.q_answer = data.question.q_answer.replace(/[Bb2]/g,'F');
-
-                        if(/[TF]/.test(data.question.q_answer) === false){
-                            //answer fail
-                            continue;
-                        }
-                    }else if(data.question.q_type === 4){//填空题
-                        let t = data.question.q_answer.match(/\|/g);
-                        t = t == null ? 0 : t.length;
-                        var answer_num = t + 1;
-                        var blank_num = data.question.q_content.match(/_{3,}/g).length;
-                        data.question.q_content = data.question.q_content.replace(/_{3,}/g,'___');
-                        if(answer_num != blank_num){
-                            //答案和空格数量不匹配 fail
-                            continue;
-                        }
-                        if(/.*(_{3})*.*/.test(data.question.q_content) === false){
-                            //content fail
-                            continue;
-                        }
-                        
-                    }
-                    // data.question.q_content = data.question.q_content.replace(/\n/g,'');
-                    var mark = data.question.q_content.search(/;;(?!;)/);
-                    if(mark != -1){
-                        //不去除题目描述中的\n
-                        data.question.q_content = data.question.q_content.substring(0,mark) + data.question.q_content.substring(mark).replace(/\n/g,'');
-                    }
-                    // console.log(question);
-                    data.question.e_id = 1;
-                    data.question.q_right = 0;
-                    data.question.q_wrong = 0;
-                    data.question.q_reportnum = 0;
-                    insertDatas.push(data);
-                }
-                console.log(res.length);
-                // insertDatas = insertDatas.slice(0,1);
-                console.log(insertDatas);
-                request.post({url:'http://127.0.0.1:7001/v1/questions/bash', form:{questions:insertDatas}}, function (err, res, body) {
-                    if (err) {
-                        return console.error('upload failed:', err);
-                    }
-                    console.log('Upload successful!  Server responded with:', body);
-                });
-                // console.log(insertDatas.length);
-                // console.log(insertDatas);
-                return insertDatas;
             });
+            const result = yield promise;
+            return result;
         }
         
         * create(params) {

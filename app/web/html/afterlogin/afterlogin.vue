@@ -30,13 +30,13 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="考试难度">
+        <!--<el-form-item label="考试难度">
           <el-select v-model="exam.difficulty" placeholder="请选择考试难度">
             <el-option label="易" value="easy"></el-option>
             <el-option label="中" value="normal"></el-option>
             <el-option label="难" value="hard"></el-option>
           </el-select>
-        </el-form-item>
+        </el-form-item>-->
         <p id="prompt">系统根据您的职业为您智能组卷，祝您考试愉快！</p>
       </el-form>
       <div slot="footer" class="dialog-footer">

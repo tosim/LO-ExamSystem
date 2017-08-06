@@ -1,5 +1,6 @@
 <template>
   <div id="all">
+    <lo-head></lo-head>
     <div class="content">
       <el-row class="title" type="flex" justify="center">
         <el-col :span="12">
@@ -30,6 +31,7 @@
             <el-button type="primary" @click="submitForm()" id="submit">立即注册</el-button>
           </el-form-item>
         </el-form>
+        <el-button type="success" @click="gotocom()" id="gotocom">企业注册通道</el-button>
       </div>
     </div>
   </div>
@@ -82,6 +84,9 @@ export default {
           console.log('注册失败');
         }
       });
+    },
+    gotocom() {
+      window.location.href = '/public/com_regist.html';
     }
   },
   created() {
@@ -93,6 +98,11 @@ export default {
 
 
 <style scoped>
+#gotocom {
+  position: fixed;
+  right: 100px;
+  bottom: 100px;
+}
 #submit {
   width: 100%;
 }

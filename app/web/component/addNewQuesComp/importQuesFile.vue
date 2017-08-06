@@ -5,7 +5,10 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">下载模板</label>
                     <div class="layui-input-block cent">
-                        <button class="layui-btn layui-btn-small layui-btn-primary">Word模板</button>
+                        <button class="layui-btn layui-btn-small layui-btn-primary" ><a href="http://127.0.0.1:7001/v1/tamplates/questions.docx">Word模板</a></button>                                                                
+                        <button class="layui-btn layui-btn-small layui-btn-primary" ><a href="http://127.0.0.1:7001/v1/tamplates/questions.docx">Txt模板</a></button>                                                                
+                        <button class="layui-btn layui-btn-small layui-btn-primary" ><a href="http://127.0.0.1:7001/v1/tamplates/questions.docx">Excel模板</a></button>                                                                
+
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -21,7 +24,7 @@
                 <div class="layui-form-item">
                     <label class="layui-form-label">试题文件</label>
                     <div class="layui-input-block">
-                        <el-upload class="upload-demo" action="https://jsonplaceholder.typicode.com/posts/" :on-preview="handlePreview" :file-list="fileList">
+                        <el-upload class="upload-demo" :action="this.domain+'/v1/upload'+query" :on-preview="handlePreview" :file-list="fileList">
                             <el-button size="small" type="primary">点击上传</el-button>
                             <div slot="tip" class="el-upload__tip">只能上传doc文件，且不超过9MB</div>
                         </el-upload>
@@ -40,6 +43,14 @@
 <script>
 
 export default {
+    props:['examId'],
+    mounted:function(){
+        console.log('at import examId = ' + this.examId);
+        if(this.examId){
+            this.query = '?exam_id='+this.examId;
+        }
+
+    },
     methods: {
         handleRemove(file, fileList) {
             console.log(file, fileList);
@@ -61,14 +72,9 @@ export default {
                 label: 'javascript',
                 value: '5003'
             }],
-            fileList: [{
-                name: 'food.jpeg',
-                url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-            }, {
-                name: 'food2.jpeg',
-                url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100'
-            }],
+            fileList: [],
             cont: '',
+            query:''
         }
     }
 }

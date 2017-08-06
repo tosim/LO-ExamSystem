@@ -1,5 +1,7 @@
 <template>
   <div id="all">
+    <lo-head></lo-head>
+    <div id="All">
     <div id="container">
       <div id="fracBox">
         <el-row>你的得分为：</el-row>
@@ -31,7 +33,7 @@
         </colgroup>
         <thead>
           <tr>
-            <th>题目</th>
+            <th>题目 <span style="font-size:12px;color:#999;">(点击题目可查看试题详情)</span></th>
             <th>题目标签</th>
             <th>标准答案</th>
             <th>你的答案</th>
@@ -39,7 +41,8 @@
         </thead>
         <tbody>
           <tr v-for="ite in ExamQuesLst" :key="ite.q_content" v-bind:class="ite.isRight === 1 ? '' : 'red'">
-            <td v-if="!whetherShowWrong">{{ite.q_content}}</td>
+            <td v-if="!whetherShowWrong"><a v-bind:href="'/public/details.html?q_id='+ite.q_id " v-bind:class="ite.isRight === 1 ? 'black' : 'red'">{{ite.q_content}}</a>
+</td>
             <td v-if="!whetherShowWrong">
               {{ite.tags}}
             </td>
@@ -57,6 +60,7 @@
   
         </tbody>
       </table>
+    </div>
     </div>
   </div>
 </template>
@@ -140,6 +144,7 @@ export default {
         tag:"css",
         trueAnswer: 'F',
         answer: 'F',
+        isRight:1
       }],
       option: {
         title: {
@@ -196,15 +201,19 @@ export default {
 </script>
 
 <style scope>
-#all {
+#All {
   width: 80%;
   margin: 0 auto;
+  margin-top:70px;
   font-size: 16px;
   padding-top: 25px;
   font-family: Microsoft YaHei;
 }
 .red {
-  color: red
+  color: #FF5722
+}
+.black{
+  color:#2F4056;
 }
 #container {
   width: 60%;

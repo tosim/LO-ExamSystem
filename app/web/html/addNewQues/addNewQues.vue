@@ -1,5 +1,7 @@
 <template>
   <div id="all">
+    <lo-bkhead></lo-bkhead>
+    <div id="All">
     <el-dialog title="添加试题" :visible.sync="dialogVisible" size="small" :before-close="handleClose">
       <dial v-bind:currentItem="currentItem"></dial>
       <div slot="footer" class="dialog-footer " style="text-align: center;">
@@ -112,7 +114,7 @@
       </el-row>
   
     </div>
-  
+    </div>
     <!-- <el-button @click="dialogVisible = true">点击打开 Dialog</el-button> -->
   </div>
 </template>

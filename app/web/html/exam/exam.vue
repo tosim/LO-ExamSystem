@@ -1,5 +1,5 @@
 <template>
-  <div class="exam-all">
+  <div class="exam-all" :style="{background: 'url(/public/img/exam'+ exam_id%4 + '.jpg)'}">
     <lo-head></lo-head>
     <div class="exam-body">
       <el-row type="flex" class="row-bg" justify="center">
@@ -97,7 +97,6 @@
 .exam-all {
   width: 100%;
   height: 100%;
-  background-image: url("../../asset/images/background.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -167,7 +166,7 @@ export default {
   },
   data() {
     return {
-      exam_id:-1,
+      exam_id:5,
       examType:1,
       exam_title:'',
       examTagId:-1,

@@ -1,6 +1,6 @@
 <template>
     <div id="all">
-        <lo-head></lo-head>
+        <lo-bkhead></lo-bkhead>
         <div class="content"></div>
         <el-row>
           <div class="layui-btn-group "style="margin-left:54.6%">
@@ -242,6 +242,8 @@ export default {
 }
 </script>
 
-style>
-  
+<style>
+  .content{
+      margin-top: 70px;
+  }
 </style>

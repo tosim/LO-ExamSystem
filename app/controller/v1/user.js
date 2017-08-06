@@ -2,10 +2,19 @@
 
 module.exports = app => {
   class UserController extends app.Controller {
-      * show(){
-     
+    * show(){
+      var u_id = this.ctx.params.u_id;
+      const user = yield this.service.v1.user.showById(u_id);
+      console.log('get from here');
+      console.log(u_id);
+      console.log(user);
+      this.ctx.body = {
+        success:1,
+        data:user,
+        msg:''
       }
-      
+    }
+    
     //用户注册
     * create() {
       const {ctx} = this;

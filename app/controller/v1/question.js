@@ -100,29 +100,31 @@ module.exports = app => {
         const {ctx,service} = this;
         // console.log(ctx.request.body.questions);
         var questions =  ctx.request.body.questions;
-        var insertCount = 0;
-        for(let i = 0;i < questions.length;i++){
-            // const isExist = (yield app.mysql.query('select count(*) as count from question where q_answer like "%' + questions[i].question.q_answer.replace(/(["'])/g,'\\$1') + '%"'))[0].count;
-            // console.log(isExist);
-            // if(isExist != 0){
-            //     continue;
-            // }
-            const q_id = (yield app.mysql.insert('question',questions[i].question)).insertId;
-            console.log("q_id = " + q_id);
-            for(let j = 0;j < questions[i].tags.length;j++){
-                const result = (yield app.mysql.query('select tag_id from tag where tag_name like "%' + questions[i].tags[j] + '%"'))[0];
-                if(typeof result == 'undefined' === false){
-                    console.log('adadad');
-                    console.log('tag_id = ' + result.tag_id);
-                    yield app.mysql.insert('que_tag',{q_id:q_id,tag_id:result.tag_id});
-                }
-                // console.log(tag_id);
-            }
-            insertCount++;
-        }
+        // var insertCount = 0;
+        // for(let i = 0;i < questions.length;i++){
+        //     // const isExist = (yield app.mysql.query('select count(*) as count from question where q_answer like "%' + questions[i].question.q_answer.replace(/(["'])/g,'\\$1') + '%"'))[0].count;
+        //     // console.log(isExist);
+        //     // if(isExist != 0){
+        //     //     continue;
+        //     // }
+        //     const q_id = (yield app.mysql.insert('question',questions[i].question)).insertId;
+        //     console.log("q_id = " + q_id);
+        //     for(let j = 0;j < questions[i].tags.length;j++){
+        //         const result = (yield app.mysql.query('select tag_id from tag where tag_name like "%' + questions[i].tags[j] + '%"'))[0];
+        //         if(typeof result == 'undefined' === false){
+        //             console.log('adadad');
+        //             console.log('tag_id = ' + result.tag_id);
+        //             yield app.mysql.insert('que_tag',{q_id:q_id,tag_id:result.tag_id});
+        //         }
+        //         // console.log(tag_id);
+        //     }
+        //     insertCount++;
+        // }
+        const insertIds = yield this.service.v1.question.createBash(result);
+
         ctx.body = {
             success:1,
-            data:'insertCount = ' + insertCount,
+            data:{insertIds:insertIds},
             msg:''
         };
     }
@@ -436,10 +438,32 @@ module.exports = app => {
             const totalnum = Math.ceil(questionnum / pagesize);
             yield this.myresponse(ctx, QuestionList, totalnum);
         } 
+        // * getquestionbyid() {
+        //     const { ctx, service } = this;
+        //     const q_id = ctx.query.q_id;
+        //     const question = yield service.v1.question.getquestionbyid(q_id);
+        //     if (question.length == 0) {
+        //         ctx.response.body = {
+        //             success: 0,
+        //             data: '',
+        //             msg: '取出题目失败',
+        //         };
+        //     } else {
+        //         ctx.response.body = {
+        //             success: 1,
+        //             data: {Question:question
+        //             },
+        //             msg: '取出题目成功',
+        //         }
+        //     }
+        // }
         * getquestionbyid() {
             const { ctx, service } = this;
             const q_id = ctx.query.q_id;
-            const question = yield service.v1.question.getquestionbyid(q_id);
+            const question = (yield service.v1.question.getquestionbyid(q_id))[0];
+            console.log(question)
+            const tag = yield service.v1.question.gettagbyid(question.q_id);
+            question.tag =tag; 
             if (question.length == 0) {
                 ctx.response.body = {
                     success: 0,

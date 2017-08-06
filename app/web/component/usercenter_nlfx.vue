@@ -1,12 +1,19 @@
 <template>
-  <div>
+  <div class="nlfx-all">
     <div id="points" style="width: 600px;height:400px;"></div>
     <div id="tags" style="width: 600px;height:400px;"></div>
-    
   </div>
 </template>
 
-<<script>
+<style scoped>
+.nlfx-all {
+  width: 90%;
+  margin: 50px  auto;
+}
+</style>
+
+
+<script>
 export default {
   props:['uid'],
   data(){

@@ -58,6 +58,7 @@ export default {
   },
   methods: {
     init(){
+      var imgs = ['qiye1.png','qiye2.jpg','qiye3.png','qiye4.jpg','qiye5.jpg','qiye6.png'];
       this.$http.get(this.domain+'/v1/e_exam/1').then((res)=>{
         res = res.data;
         if(res.success !== 1) return;
@@ -68,7 +69,7 @@ export default {
           var tmp = time.getFullYear() + '-' + (time.getMonth()+1) + '-' + time.getDate() + ' ' + time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
           return {
             exam_id:item.exam_id,
-            exam_img:'head.png',
+            exam_img:imgs[item.exam_id %　6],
             exam_title:item.e_name+item.p_name+item.exam_id,
             exam_date:tmp,
             exam_participate:item.participate,

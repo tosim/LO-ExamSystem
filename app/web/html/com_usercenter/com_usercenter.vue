@@ -1,6 +1,6 @@
 <template>
   <div id="usercenter-all" style="height:100%">
-    <lo-head></lo-head>
+    <lo-head ></lo-head>
     <el-row style="height:91%;position:fixed;top:60px;width:100%">
       <el-col style="background:rgb(238,241,246);height:100%;width:12%;float:left">
         <el-menu default-active="1">

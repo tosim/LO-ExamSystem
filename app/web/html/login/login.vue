@@ -1,5 +1,6 @@
 <template>
   <div id="all">
+    <lo-head></lo-head>
     <div class="content">
       <el-row class="title" type="flex" justify="center" style="text-align:center">
         <el-col>

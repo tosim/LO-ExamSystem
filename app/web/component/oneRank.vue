@@ -20,9 +20,9 @@
               </td>
               <td width="132">
                 <a href="javascript:void(0)" class="head-pic">
-                  <img :src="'/public/img/'+myImg" alt="img">
+                  <img :src="'/public/img/'+item.u_img" alt="img">
                 </a>
-                <a href="javascript:void(0)" style="display: inline-block;white-space: nowrap;width: 4em;overflow: hidden;text-overflow: ellipsis;}">{{item.u_name}}</a>
+                <a href="javascript:void(0)" style="display: inline-block;white-space: nowrap;width: 4em;overflow: hidden;text-overflow: ellipsis;}" @click="lookUser(item.u_id)">{{item.u_name}}</a>
               </td>
               <td width="77">{{item.attribute}}</td>
             </tr>
@@ -43,7 +43,7 @@
             </tr>
           </tbody>
         </table>
-        <a href="#" class="lookAll">查看全部榜单 ></a>
+        <a href="#" class="lookAll" @click="lookAll">查看全部榜单 ></a>
       </div>
       <div class="look_more">
         <a href=""></a>
@@ -54,7 +54,14 @@
 
 <script>
 export default {
+  data(){
+    return{
+      tRankData:[]
+    }
+  },
   props: [
+    'query',
+    'myId',
     'rankName',
     'rankAttribute',//这是每个排行榜不同的属性，职业就是段位，标签就是正确率
     'myRank',
@@ -63,8 +70,19 @@ export default {
     'myAttribute',//这是段位分，要转换成段位显示
     'rankData' 
   ],
+  methods:{
+    lookUser(u_id){
+      window.location.href = '/public/look_usercenter.html?u_id='+u_id;
+    },
+    lookAll(){
+      // this.$emit();
+      // console.log(this.type);
+      window.location.href = '/public/rankdetail.html?'+this.query;
+    }
+  },
   mounted:function(){
-
+    // var icons = ['icon1.jpg','icon2.jpg','icon3.jpg','icon4.jpg','head.png'];
+    // this.tRankData = this.tRankData.map(function())
   }
 }
 </script>
@@ -124,7 +142,8 @@ export default {
   overflow: hidden;
   border: 1px solid #e0e0e0;
   border-radius: 3px;
-  background: #fff;
+  /*background: #fff;*/
+  height: 458px;
 }
 
 .onerank_title {

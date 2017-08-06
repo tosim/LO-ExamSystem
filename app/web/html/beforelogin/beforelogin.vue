@@ -1,6 +1,6 @@
 <template>
   <div id="all">
-    <lo-head></lo-head>
+    <lo-head hide=true></lo-head>
     <div class="content">
       <el-row class="title" type="flex" justify="center">
         <el-col :span="12">
@@ -28,6 +28,19 @@
 <script>
 import head from 'component/head'
 export default {
+  mounted:function(){
+    this.$http.get(this.domain + '/v1/sessions').then((res)=>{
+      res = res.data;
+      console.log(res);
+      if(res.success === 1){
+        // window.user = res.data;
+        window.localStorage.user = JSON.stringify(res.data);
+        window.location.href = '/public/afterlogin.html';
+      }else{
+
+      }
+    })
+  },
   methods: {
     login: function() {
       // this.$router.push({name: 'Login'});

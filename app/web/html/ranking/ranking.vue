@@ -9,7 +9,7 @@
     </div>
     <div class="ranking_body">
       <div style="margin-right:-50px;">
-        <one-rank v-for="item in rankList" v-if="item.rankData.length > 0" :key="item.rankName" :rankName="item.rankName" :rankAttribute="item.rankAttribute" :myRank="item.myRank" :myImg="item.myImg" :myName="item.myName" :myAttribute="item.myAttribute" :rankData="item.rankData"></one-rank>
+        <one-rank v-for="item in rankList" v-if="item.rankData.length > 0" :key="item.rankName" :myId="item.myId" :query="item.query" :rankName="item.rankName" :rankAttribute="item.rankAttribute" :myRank="item.myRank" :myImg="item.myImg" :myName="item.myName" :myAttribute="item.myAttribute" :rankData="item.rankData"></one-rank>
       </div>
     </div>
   </div>
@@ -104,11 +104,24 @@ export default {
     'one-rank': OneRank
   },
   mounted:function(){
+    // var names = ['王前','李阳','赵立','徐永','李东'];
+    var icons = ['icon1.jpg','icon2.jpg','icon3.jpg','icon4.jpg','head.png'];
     this.$http.get(this.domain + '/v1/rank').then((res)=>{
       res = res.data;
       console.log(res.data);
       if(res.success === 1){
         this.rankList = res.data;
+        console.log(this.rankList);
+        this.rankList = this.rankList.sort(function(a,b){
+          return a.rankData.length < b.rankData.length;
+        })
+        // this.rankList = this.rankList.map(function(item){
+        //   item.rankData = item.rankData.map(function(jtem){
+        //     jtem.u_img = icons[jtem.u_id%5];
+        //     return jtem;
+        //   });
+        //   return item;
+        // });
       }
     })
   }

@@ -5,108 +5,107 @@
         <span>发布新考试</span>
       </div>
       <div class="bjks-body">
-      <div id="all">
-    <!-- 创建考试 -->
-
-    <el-dialog title="创建考试" :visible.sync="dialogFormVisible">
-      <el-form :model="exam">
-        <el-form-item label="企业名称" :label-width="formLabelWidth">
-           <el-input placeholder="请输入内容" v-model="enterprise.e_name" :disabled="true" style="width:30%"></el-input>
-        </el-form-item>
-        <el-form-item label="职业" :label-width="formLabelWidth">
-          <el-select v-model="exam.p_id" placeholder="请选择职业">
-            <el-option v-for="(item,index) in professionlist" :key="item" :label="item.p_name" :value="item.p_id"></el-option>
-          </el-select>
-        </el-form-item>
-       <el-form-item label="持续时间" :label-width="formLabelWidth">
-      <el-select v-model="exam.last_time" placeholder="请选择持续时间">
-        <el-option label="30" value="30"></el-option>
-        <el-option label="60" value="60"></el-option>
-        <el-option label="90" value="90"></el-option>
-      </el-select>
-    </el-form-item>
-      </el-form>
-      <div slot="footer" class="dialog-footer " style="text-align: center;">
-        <button class="layui-btn layui-btn-normal" type="primary" @click="submitexam">保存</button>
-        <button class="layui-btn layui-btn-primary" @click="dialogVisible = false">取消</button>
-      </div>
-    </el-dialog>
-
-    <el-dialog title="添加试题" :visible.sync="dialogVisible" size="small" :before-close="handleClose">
-      <dial v-bind:currentItem="currentItem" :enterprise="enterprise" :examId="examId" @fetch="fetch" ref="dial"></dial>
-      <div slot="footer" class="dialog-footer " style="text-align: center;">
-        <button class="layui-btn layui-btn-normal" type="primary" @click="submitDia">保存</button>
-        <button class="layui-btn layui-btn-primary" @click="dialogVisible = false">取消</button>
-      </div>
-    </el-dialog>
+        <div id="all">
+          <!-- 创建考试 -->
+          <el-dialog title="创建考试" :visible.sync="dialogFormVisible" :modal-append-to-body="false">
+            <el-form :model="exam">
+              <el-form-item label="企业名称" :label-width="formLabelWidth">
+                <el-input placeholder="请输入内容" v-model="enterprise.e_name" :disabled="true" style="width:30%"></el-input>
+              </el-form-item>
+              <el-form-item label="职业" :label-width="formLabelWidth">
+                <el-select v-model="exam.p_id" placeholder="请选择职业">
+                  <el-option v-for="(item,index) in professionlist" :key="item" :label="item.p_name" :value="item.p_id"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="持续时间" :label-width="formLabelWidth">
+                <el-select v-model="exam.last_time" placeholder="请选择持续时间">
+                  <el-option label="30" value="30"></el-option>
+                  <el-option label="60" value="60"></el-option>
+                  <el-option label="90" value="90"></el-option>
+                </el-select>
+              </el-form-item>
+              <el-form-item label="开始时间" :label-width="formLabelWidth">
+                <el-date-picker v-model="exam.begin_time" type="datetime" placeholder="选择日期时间">
+                </el-date-picker>
+              </el-form-item>
+            </el-form>
+            <div slot="footer" class="dialog-footer " style="text-align: center;">
+              <button class="layui-btn layui-btn-normal" type="primary" @click="submitexam">保存</button>
+              <button class="layui-btn layui-btn-primary" @click="dialogVisible = false">取消</button>
+            </div>
+          </el-dialog>
   
-    <el-dialog title="批量添加试题" :visible.sync="MutiVisible" size="small" :before-close="handleClose">
-      <dial2></dial2>
-      <div slot="footer" class="dialog-footer " style="text-align: center;">
-        <button class="layui-btn layui-btn-normal" type="primary" @click="MutiVisible = false">检查格式</button>
-        <button class="layui-btn layui-btn-normal" type="primary" @click="MutiVisible = false">导入</button>
-        <button class="layui-btn layui-btn-primary" @click="MutiVisible = false">取消</button>
-      </div>
-    </el-dialog>
+          <el-dialog title="添加试题" :visible.sync="dialogVisible" size="small" :before-close="handleClose" :modal-append-to-body="false">
+            <dial v-bind:currentItem="currentItem" :enterprise="enterprise" :examId="examId" @fetch="fetch" ref="dial"></dial>
+            <div slot="footer" class="dialog-footer " style="text-align: center;">
+              <button class="layui-btn layui-btn-normal" type="primary" @click="submitDia">保存</button>
+              <button class="layui-btn layui-btn-primary" @click="dialogVisible = false">取消</button>
+            </div>
+          </el-dialog>
   
-    <el-dialog title="导入试题" :visible.sync="ImportVisible" size="small" :before-close="handleClose">
-      <dial3></dial3>
-      <div slot="footer" class="dialog-footer " style="text-align: center;">
-        <button class="layui-btn layui-btn-normal" type="primary" @click="ImportVisible = false">导入</button>
-        <button class="layui-btn layui-btn-primary" @click="ImportVisible = false">关闭</button>
-      </div>
-    </el-dialog>
-      <div class=" div-2 ">
-        <div class="layui-btn-group ">
-          <button class="layui-btn layui-btn-small" @click="dialogFormVisible = true">创建考试</button>
-          <button class="layui-btn layui-btn-small" @click="editblock()">添加试题</button>
-          <button class="layui-btn layui-btn-small" @click="MutiVisible = true">批量新增</button>
-          <button class="layui-btn layui-btn-small" @click="ImportVisible = true">导入试题</button>
-          <button class="layui-btn layui-btn-small" @click="delMut()">批量删除</button>
-          <button class="layui-btn layui-btn-small">导出</button>
+          <el-dialog title="批量添加试题" :visible.sync="MutiVisible" size="small" :before-close="handleClose" :modal-append-to-body="false">
+            <dial2></dial2>
+            <div slot="footer" class="dialog-footer " style="text-align: center;">
+              <button class="layui-btn layui-btn-normal" type="primary" @click="MutiVisible = false">检查格式</button>
+              <button class="layui-btn layui-btn-normal" type="primary" @click="MutiVisible = false">导入</button>
+              <button class="layui-btn layui-btn-primary" @click="MutiVisible = false">取消</button>
+            </div>
+          </el-dialog>
+  
+          <el-dialog title="导入试题" :visible.sync="ImportVisible" size="small" :before-close="handleClose" :modal-append-to-body="false">
+            <dial3 v-if="ready" :examId="examId" ></dial3>
+            <div slot="footer" class="dialog-footer " style="text-align: center;">
+              <button class="layui-btn layui-btn-normal" type="primary" @click="ImportVisible = false">导入</button>
+              <button class="layui-btn layui-btn-primary" @click="ImportVisible = false">关闭</button>
+            </div>
+          </el-dialog>
+          <div class=" div-2 ">
+            <div class="layui-btn-group ">
+              <button class="layui-btn layui-btn-small" @click="dialogFormVisible = true">创建考试</button>
+              <button class="layui-btn layui-btn-small" @click="editblock()">添加试题</button>
+              <button class="layui-btn layui-btn-small" @click="MutiVisible = true">批量新增</button>
+              <button class="layui-btn layui-btn-small" @click="ImportVisible = true">导入试题</button>
+              <button class="layui-btn layui-btn-small" @click="delMut()">批量删除</button>
+              <button class="layui-btn layui-btn-small">导出</button>
+            </div>
+          </div>
+          <el-row>
+            <el-table ref="multipleTable" :data="questionlist" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
+              <el-table-column type="selection" width="55">
+              </el-table-column>
+              <el-table-column label="试题内容" width="320" show-overflow-tooltip>
+                <template scope="scope">{{ scope.row.q_content }}</template>
+              </el-table-column>
+              <el-table-column prop="type" label="题型" width="120">
+                <template scope="scope">
+                  <span style="padding:5px;">{{typeNam[scope.row.q_type]}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column prop="tag" label="标签" show-overflow-tooltip>
+                <template scope="scope">
+                  <span v-for="ite in scope.row.tag" :key="ite.tag_name" style="padding:5px;">{{ite.tag_name}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column prop="q_difficulty" label="难度" show-overflow-tooltip>
+                <template scope="scope">
+                  <span style="padding:5px;">{{diffNam[scope.row.q_difficulty]}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column prop="q_answer" label="标准答案" show-overflow-tooltip>
+              </el-table-column>
+              <el-table-column label="操作" width="120">
+                <template scope="scope">
+                  <span class="dele" @click="editswit2(scope.row)">编辑</span>
+                </template>
+              </el-table-column>
+            </el-table>
+          </el-row>
+          <el-row style="text-align:center">
+            <div id="page1" style="margin-top:12px;text-align:center;"></div>
+            <el-button type="primary" size="large" @click="save" style="margin-top:12px;text-align:center;">保存</el-button>
+          </el-row>
         </div>
-      </div>
-      <el-row>
-        <el-table ref="multipleTable" :data="questionlist" border tooltip-effect="dark" style="width: 100%" @selection-change="handleSelectionChange">
-          <el-table-column type="selection" width="55">
-          </el-table-column>
-          <el-table-column label="试题内容" width="320" show-overflow-tooltip>
-            <template scope="scope">{{ scope.row.q_content }}</template>
-          </el-table-column>
-          <el-table-column prop="type" label="题型" width="120">
-            <template scope="scope">
-              <span style="padding:5px;">{{typeNam[scope.row.q_type]}}</span>
-            </template>
-          </el-table-column>
-          <el-table-column prop="tag" label="标签" show-overflow-tooltip>
-            <template scope="scope">
-              <span v-for="ite in scope.row.tag" :key="ite.tag_name" style="padding:5px;">{{ite.tag_name}}</span>
-            </template>
-          </el-table-column>
-          <el-table-column prop="q_difficulty" label="难度" show-overflow-tooltip>
-            <template scope="scope">
-              <span style="padding:5px;">{{diffNam[scope.row.q_difficulty]}}</span>
-            </template>
-          </el-table-column>
-          <el-table-column prop="q_answer" label="标准答案" show-overflow-tooltip>
-          </el-table-column>
-          <el-table-column label="操作" width="120">
-            <template scope="scope">
-              <span class="dele" @click="editswit2(scope.row)">编辑</span>
-            </template>
-          </el-table-column>
-        </el-table>
-      </el-row>
-      <el-row style="text-align:center">
-        <div id="page1" style="margin-top:12px;text-align:center;"></div>
-        <el-button type="primary" size="large" @click="save" style="margin-top:12px;text-align:center;">保存</el-button>
-      </el-row>
-    </div>
-
-
-
-
-
+  
       </div>
     </div>
   </div>
@@ -117,7 +116,7 @@ import dial from '../component/addNewQueEnter/addSingleNewQues'
 import dial2 from '../component/addNewQuesComp/addMutiNewQues'
 import dial3 from '../component/addNewQuesComp/importQuesFile'
 export default {
-  
+
   components: {
     "dial": dial,
     "dial2": dial2,
@@ -129,7 +128,7 @@ export default {
     this.getprofession();
   },
   methods: {
-    submitDia(){
+    submitDia() {
       this.dialogVisible = false;
       this.$refs.dial.onSubmit()
     },
@@ -146,20 +145,20 @@ export default {
       }
       if (deitems.length !== 0) {
         console.log(deitems);
-        this.$http.post(this.domain+`/batchdelete`, deitems).then(res => {
+        this.$http.post(this.domain + `/batchdelete`, deitems).then(res => {
           console.log(res);
         });
       }
     },
     gettaglist() {
       let _this = this;
-      this.$http.get(this.domain+`/getalltag`).then(res => {
+      this.$http.get(this.domain + `/getalltag`).then(res => {
         _this.taglist = res.data.data.taglist;
       })
     },
-    fetch(){
+    fetch() {
       let _this = this;
-       this.$http.get(this.domain+`/getexamquestionlist?examid=${this.examId}`).then(res => {
+      this.$http.get(this.domain + `/getexamquestionlist?examid=${this.examId}`).then(res => {
         this.questionlist = res.data.data.questionlist;
         console.log(this.questionlist)
       })
@@ -167,10 +166,10 @@ export default {
     fetchData() {
       let _this = this;
       let pkage = {
-        query:this.query,
-        page:this.currpage,
+        query: this.query,
+        page: this.currpage,
       }
-      _this.$http.post(this.domain+`/search`,pkage).then(res => {
+      _this.$http.post(this.domain + `/search`, pkage).then(res => {
         console.log(res);
         _this.totalnum = res.data.data.totalnum;
         _this.questionlist = res.data.data.questionlist;
@@ -216,84 +215,87 @@ export default {
         this.$refs.multipleTable.clearSelection();
       }
     },
-    que(){
+    que() {
       this.currpage = 1;
       this.fetchData();
     },
-    reset(){
+    reset() {
       this.query.firs = '';
       this.query.serd = [];
       this.query.thre = '1-9';
     },
-    getprofession(){
+    getprofession() {
       let _this = this;
-      this.$http.get(this.domain+`/getallprofession`).then(res => {
+      this.$http.get(this.domain + `/getallprofession`).then(res => {
         this.professionlist = res.data.data.professionlist;
       })
     },
-    submitexam(){
+    submitexam() {
       this.exam.e_id = this.enterprise.e_id;
-      this.exam.start_time = Date.parse(new Date())+24*60*60*1000; 
-       this.$http.post(this.domain+`/addexam`, this.exam, {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-                    .then(res => {
-                       console.log(res);
-                       this.exam={
-                          e_id:-1,
-                          p_id:'',
-                          start_time:'',
-                          last_time:30,
-                        }
-                        this.examId= res.data.data.examId;
-                        this.dialogFormVisible = false;
-                    })
-                    .catch( err=> {
-                        console.log(err);
-                    });
-  },
-  save(){
+      this.exam.start_time = Date.parse(new Date()) + 24 * 60 * 60 * 1000;
+      this.$http.post(this.domain + `/addexam`, this.exam, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(res => {
+          console.log(res);
+          this.exam = {
+            e_id: -1,
+            p_id: '',
+            start_time: '',
+            last_time: 30,
+          }
+          this.examId = res.data.data.examId;
+          this.dialogFormVisible = false;
+          this.ready = true;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    save() {
       this.examId = -1,
-      this.enterprise = { 
-        e_id:2,
-        e_name:'阿里巴巴',
-      };
+        this.enterprise = {
+          e_id: 2,
+          e_name: '阿里巴巴',
+        };
       this.exam = {
-         e_id:-1,
-         p_id:'',
-         start_time:'',
-         last_time:'',
+        e_id: -1,
+        p_id: '',
+        start_time: '',
+        last_time: '',
       };
       this.professionlist = [];
       this.questionlist = [];
       // this.$emit('reFreshEdit');
-  }
+    }
   },
   data() {
     return {
+      ready:false,
       formLabelWidth: '120px',
-      examId:-1,
-      enterprise:{
-        e_id:1,
-        e_name:'蓝鸥',
+      examId: -1,
+      enterprise: {
+        e_id: 1,
+        e_name: '蓝鸥',
       },
-      exam:{
-         e_id:-1,
-         p_id:'',
-         start_time:'',
-         last_time:'',
+      exam: {
+        e_id: -1,
+        p_id: '',
+        start_time: '',
+        last_time: '',
+        begin_time: ''
       },
-      professionlist:[],
-      dialogFormVisible:false,
+      professionlist: [],
+      dialogFormVisible: false,
       currpage: 1,
       currentItem: '',
       totalnum: 1,
-      query:{
-        firs:'',
-        serd:[],
-        thre:'1-9',
+      query: {
+        firs: '',
+        serd: [],
+        thre: '1-9',
       },
       taglist: [{
       }],
@@ -370,6 +372,7 @@ export default {
   width: 90%;
   margin: 0 auto;
 }
+
 .bjks-title {
   line-height: 35px;
   width: 90%;
@@ -377,16 +380,19 @@ export default {
   padding: 10px 5px;
   border-bottom: 1px solid rgb(212, 212, 212);
 }
+
 .bjks-body {
   font-size: 15px;
   width: 90%;
   margin: 0 auto;
   padding: 10px;
 }
+
 .bjks-title span {
   font-family: "微软雅黑Light";
   font-size: 18px;
 }
+
 .bjks-title span::before {
   background: #FF6547;
   content: "";
@@ -398,6 +404,7 @@ export default {
   vertical-align: middle;
   border-radius: 4px;
 }
+
 #all {
   width: 100%;
   margin: 0 auto;
@@ -405,69 +412,84 @@ export default {
   padding-top: 25px;
   font-family: Microsoft YaHei;
 }
+
 #dial {
   width: 100%;
   height: 500px;
   overflow: auto;
   overflow-x: none;
 }
+
 #cont {
   width: 90%;
   margin: 0 auto;
 }
+
 .inputer-2 {
   width: 290px;
 }
+
 .inputer-1 {
   width: 70px;
   line-height: 36px;
   text-align: center;
 }
+
 .inputer-2-1 {
   width: 100px;
   line-height: 36px;
   text-align: center;
 }
+
 .inputer-3 {
   width: 70px;
   line-height: 125px;
   text-align: center;
 }
+
 .inputer-4 {
   width: 70px;
   line-height: 100px;
   text-align: center;
 }
+
 .row-1 {
   margin-bottom: 12px;
 }
+
 .row-2 {
   height: 125px;
 }
+
 .textarea-1 {
   height: 95px;
   margin: 0;
   padding: 0;
   width: 100%
 }
+
 .layui-table td,
 .layui-table th {
   text-align: center;
   vertical-align: middle;
 }
+
 .dele {
   color: #01AAED;
   cursor: pointer;
 }
+
 .el-dialog__body {
   margin-bottom: 0;
   padding-bottom: 0;
 }
+
 .div-1 {
   margin-bottom: 12px;
   border: #EEEEEE 1px solid;
   padding: 10px 20px;
 }
+
 .div-2 {
   width: 100%;
   margin-bottom: 5px;

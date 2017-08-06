@@ -1,0 +1,151 @@
+(题型:单选题)(标准答案:B)(难度:2)(试题分析:无)(标签:css,html)
+以下程序的运行结果是（）
+	int main(void)
+{
+printf("%s,%5.3s\n","computer","computer");
+return 0;
+}
+A.computer,puter
+B.computer,com
+C.computer,computer
+D.computer,compu.ter
+
+(题型:单选题)(标准答案:B)(难度:5)(试题分析:无)(标签:css,html)
+已知数据表A中每个元素距其最终位置不远，为节省时间，应该采用的算法是（）啊打算打算
+的阿斯顿爱上阿斯顿阿斯顿阿斯顿
+A.直接选择排序
+B.堆排序
+C.快速排序
+D.直接插入排序
+
+(题型:单选题)(标准答案:B)(难度:5)(试题分析:无)(标签:css,html)
+在javascript里面，下面选项中不属于数组方法的是（）
+A.sort()
+B.length()
+C.concat()
+D.reverse()
+
+
+
+
+(题型:多选题)(标准答案:A,B)(难度:2)(试题分析:无)(标签:css,html)
+要动态改变层中的内容可以使用的方法有（）
+A.innerHTML
+B.innerHTML
+C.通过设置层的隐藏和显示来实现
+D.通过设置层的样式属性的display属性
+
+(题型:多选题)(标准答案:A,C,D)(难度:2)(试题分析:无)(标签:css,html)
+在软件生命周期中，下列说法正确的是（）
+A.软件生命周期分为计划、开发、运行三个阶段
+B.在计划阶段要进行问题定义和需求分析
+C.在开发后期要进行编写代码和软件测试
+D.在运行阶段主要进行软件维护
+
+(题型:多选题)(标准答案:B,D)(难度:2)(试题分析:无)(标签:css,html)
+在数据表的视图中，可以进行的操作是()
+A.修改字段类型
+B.修改字段名称
+C.删除一个字段
+D.删除一条记录
+
+
+(题型:判断题)(标准答案:B)(难度:2)(试题分析:启动线
+程的方法是start()，而run是线程要执行的方法，如果你直接调用run，那还是在当前线程里面的，不会启动新的线程。)(标签:html)
+启动一个线程有两种方法，分别是run或者start。
+A.正确
+B.错误
+
+(题型:判断题)(标准答案:B)(难度:2)(试题分析：sleep方法是使线程停止一段时间的方法。在sleep时间间隔期满后，线程不一定立即恢复执行；wai是线程交互时，如果对一个同步对象X发出一个wait调用，该线程会暂停执行，被调对象进入等待状态，直到被唤醒或等待时间:)(标签:html)
+Sleep()和wait()的作用是一样的。
+A.正确
+B.错误
+
+(题型:判断题)(标准答案:A)(难度:2)(试题分析:本题考查的是python中的match()与search()的区别.)(标签:html)
+python中match函数只检测RE是不是在string的开始位置，而search()会扫描整个string查找匹配。
+A.正确
+B.错误
+
+
+
+(题型:填空题)(标准答案:继承|封装|多态。)(难度:2)(试题分析:此题考查面向对象语言的特点。)(标签:css,html)
+面向对象的语言具有________性、________性、________性。
+
+(题型:填空题)(标准答案:request|response|session|application|server)(难度:2)(试题分析:无)(标签:css,html)
+写出asp中五个经常使用的对象______、______、______、______、______。
+
+(题型:填空题)(标准答案:时间复杂度|空间复杂度)(难度:2)(试题分析:无)(标签:css,html)
+算法的复杂度主要包括_____________和______________。
+
+
+(题型:简答题)(标准答案:MVC包括三类对象,分别是模型(model),视图(view)以及控制器(controller),其中，控制器定义用户界面对用户输入的响应方式。在MVC体系中模型通常被称为"业务逻辑"是真正完成任务的代码视图就是使用界面反映数据的变化。控制器控制着模型和视图之间的交互过程它决定着向用户返回怎样的视图、检查通过界面输入的信息以及选择处理输入信息的模型在MVC中表示层和逻辑层分离各部分可相互独立进行开发便于开发和维护提高了开发效率。)(难度:2)(试题分析:无)(标签:css,html)
+请概述MVC体系结构。
+
+(题型:简答题)(标准答案:类是对象的原型，代表了同一类的共性与特征，指明该类包含哪些属性与方法；对象实类的具体实现，不同对象之间存在着差异，属性值可能不同，所实现的功能也可能有差异，一个类可以定义多个对象。)(难度:2)(试题分析:无)(标签:css,html)
+请简述类与对象的区别。
+
+(题型:简答题)(标准答案:super()表示当前类的父亲；this()表示当前对象，也就是当前类的对象)(难度:2)(试题分析:super()表示当前类的父亲；this()表示当前对象，也就是当前类的对象。举个例子:假设你定义一个新的类A，这个类继承了类B,也就是说B是A的父类，那么如果A中有个方法aa()；B中也有方法aa(),那么在A中调用this.aa()调用的就是A中定义的方法，而super.aa()调用的就是A的父类B中定义的方法aa();super的三种使用方法：(1)用来访问父类中被覆盖的方法，(2)用来调用父类中的构造方法，(3)用来访问父类中被隐藏的成员变量。)(标签:css,html)
+简述super()与this()的区别。
+
+
+
+
+(题型:编程题)(标准答案:本题答案只供参考：void bubble_sort_2(int a[], int len) 
+       { 
+                int i = 0; 
+               int j = 0; 
+                int temp = 0;            //用于交换 
+                int exchange = 0;        //用于记录每次扫描时是否发生交换 
+                for(i=0; i<len-1; i++)      //进行n-1趟扫描 
+               { 
+                       exchange = 0;      //每趟扫描之前对exchange置0 
+                       for(j=len-1; j>=i; j--)  //从后往前交换，这样最小值冒泡到开头部分 
+                       { 
+                                if(a[j+1] < a[j])    //如果a[j]小于a[j-1],交换两元素值 
+                                 { 
+                                          temp = a[j]; 
+                                          a[j] = a[j+1]; 
+                                          a[j+1] = temp; 
+                                          exchange = 1;   //发生交换，exchange置1 
+                                 } 
+                       } 
+                       if (exchange != 1)      //此趟扫描没有发生过交换，说明已经是排序的 
+                                return;           //不需要进行下次扫描 
+              } 
+     })(难度:5)(试题分析:无)(标签:算法)
+编写冒泡排序算法。
+
+(题型:编程题)(标准答案:(本题答案只供参考: programme name ForTest.java
+  public class ForTest {
+        public static void main( String args[] ) {   
+                     int  i,j,mul,sum=0; 
+                     for(i=1;i<=10;i++) { 
+                            mul=1;  for(j=1,j<=i;j++) { 
+                                        mul=mul*j; }        
+                                        sum=sum+mul;  }  
+                                        System.out.println(“1！+2！+3！+……+10！= ”+sum);
+                                         } 
+                                 })(难度:5)(试题分析:无)(标签:算法)
+编写一个java程序，在屏幕上面输出1！+2！+3！+....+10！的和（循环）
+
+(题型:编程题)(标准答案:本题答案只供参考：#include intpartition（int*data,intlow,inthigh）
+{     int  t=0; t=data[low];
+      while（low<high）{
+            while（low<high&&data[high]>=t） high--; 
+            data[low]=data[high]; 
+            while（low<high&&data[low]<=t）low++;
+            data[high]=data[low]; } 
+            data[low]=t;returnlow;} 
+            voidsort（int*data,intlow,inthigh）
+                      {   if（low>=high） return; intpivotloc=0;
+                       pivotloc=partition（data,low,high);
+                       sort（data,low,pivotloc-1）;
+                       sort（data,pivotloc+1,high）；} 
+                       voidquick_sort（int*data,intn）//该函数进行sort过程的调用
+                        { sort（data,0,n-1）；}
+                        intmain（）{ inti; intdata[]={49,38,32,98,65,74,12,8};          
+                        quick_sort（data,sizeof（data）/sizeof（int））；
+                        for（i=0;i<sizeof（data）/sizeof（int）；i++）
+                        printf（“%d”,data[i]）；printf（“\n”）；
+                        return0;}  )(难度:5)(试题分析:无)(标签:算法)
+写出快速排序算法。

@@ -2,6 +2,30 @@
 
 module.exports = app => {
   class QueCollectionController extends app.Controller {
+    * create(){
+        this.ctx.session.user = yield this.service.v1.user.show('82415327@qq.com','056210');
+
+        const {ctx} = this;
+        var q_id = ctx.request.body.q_id;
+        const result = yield app.mysql.get('quecollection',{
+            q_id:q_id,
+            u_id:ctx.session.user.u_id
+        });
+        // console.log("result === null" ,result );
+        if(result === null){
+            yield app.mysql.insert('quecollection',{
+                q_id:q_id,
+                u_id:ctx.session.user.u_id
+            });
+        }
+
+        ctx.body={
+            success:1,
+            data:'ok',
+            msg:''
+        }
+    }
+
     * index() {
         const {ctx} = this;
         // console.log(ctx.request);

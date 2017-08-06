@@ -1,5 +1,6 @@
 
 module.exports = app => {
+  app.get('/v1/users/:u_id',app.controller.v1.user.show);
   app.post('/v1/users',app.controller.v1.user.create);//新建用户
   app.post('/v1/sessions',app.controller.v1.session.create)//新建session，用户登录
   app.get('/v1/sessions',app.controller.v1.session.show)//判断用户是否登录
@@ -65,6 +66,9 @@ module.exports = app => {
   app.post('/updatetag',app.controller.v1.tag.updatetag);
   app.get('/gettaglist',app.controller.v1.tag.index);
   app.get('/getalltag',app.controller.v1.tag.getalltag);
+  app.get('/v1/tamplates/:filename',app.controller.v1.template);
+  // app.get('/v1/testUp',app.controller.v1.upload);
+  app.post('/v1/quecollections',app.controller.v1.quecollection.create);
 };
 
 
