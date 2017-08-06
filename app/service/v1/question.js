@@ -494,7 +494,7 @@ module.exports = app => {
                   for(let item of orignlist){
                       var tarray = item.tarray.split(',');
                       console.log(tarray);
-                    if(tarray.sort().toString() == taglist.sort().toString()){
+                    if((yield this.isContained(tarray,taglist))){
                         templist.push(item);
                         var qnum=templist.length;
                     }
@@ -509,11 +509,13 @@ module.exports = app => {
                   for(let item of orignlist){
                       var tarray = item.tarray.split(',');
                       console.log(tarray);
-                    if(tarray.sort().toString() == taglist.sort().toString()){
+                    if((yield this.isContained(tarray,taglist))){
+                        console.log("777777")
                         templist.push(item);
                         var qnum=templist.length;
                     }
                   }
+                     console.log(templist)
                      var questionlist = templist.slice(currnum,currnum+8);
             }
             const result = {
@@ -601,6 +603,18 @@ module.exports = app => {
                 return false;
             }    
         }
+        *  isContained(a, b){
+            console.log("8888888888")
+            if(!(a instanceof Array) || !(b instanceof Array)) return false;
+            if(a.length < b.length) return false;
+            var aStr = a.toString();
+            console.info(aStr);
+            for(var i = 0, len = b.length; i < len; i++){
+            console.info(aStr.indexOf(b[i]));
+            if(aStr.indexOf(b[i]) == -1) return false;
+            }
+            return true;
+            }
     }
     return QuestionService;
 }
